@@ -1,0 +1,3 @@
+{
+  "extends": ["github>patrikbird/renovate-config"]
+}
