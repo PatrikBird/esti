@@ -21,5 +21,6 @@ declare module '@vue/runtime-core' {
     RouterView: typeof import('vue-router')['RouterView']
     TheCounter: typeof import('./components/TheCounter.vue')['default']
     TheNavbar: typeof import('./components/TheNavbar.vue')['default']
+    TheTable: typeof import('./components/TheTable.vue')['default']
   }
 }
