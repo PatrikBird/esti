@@ -11,7 +11,7 @@
               About
             </RouterLink>
             <a
-              href="https://github.com/patbird/esti"
+              href="https://github.com/PatrikBird/esti"
               target="_blank"
               title="GitHub"
               class="opacity-75 hover:opacity-100 dark:text-primary-100"
