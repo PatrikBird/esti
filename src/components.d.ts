@@ -22,5 +22,6 @@ declare module '@vue/runtime-core' {
     TheCounter: typeof import('./components/TheCounter.vue')['default']
     TheNavbar: typeof import('./components/TheNavbar.vue')['default']
     TheTable: typeof import('./components/TheTable.vue')['default']
+    VoteCard: typeof import('./components/VoteCard.vue')['default']
   }
 }
