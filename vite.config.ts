@@ -1,3 +1,5 @@
+/// <reference types="vite-ssg" />
+import path from 'path'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import Pages from 'vite-plugin-pages'
@@ -9,6 +11,11 @@ import IconsResolver from 'unplugin-icons/resolver'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  resolve: {
+    alias: {
+      '~/': `${path.resolve(__dirname, 'src')}/`,
+    },
+  },
   plugins: [
     vue(),
     Pages(),
@@ -48,4 +55,10 @@ export default defineConfig({
       scale: 1,
     }),
   ],
+  ssgOptions: {
+    includedRoutes(paths) {
+      // exclude all the route paths that contains 'about'
+      return paths.filter(i => !i.includes('about'))
+    },
+  },
 })
