@@ -10,6 +10,11 @@ const transactions = [
     status: 'Icon',
     whatever: 'IdontKnowyet',
   },
+  {
+    name: 'oha',
+    status: 'Icon',
+    whatever: 'IdontKnowyet',
+  },
 ]
 </script>
 
@@ -34,8 +39,8 @@ const transactions = [
       <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
           <div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
-            <table class="min-w-full divide-y divide-gray-300 dark:divide-gray-800 text-right">
-              <thead class="bg-gray-50 dark:bg-gray-800">
+            <table class="min-w-full divide-y divide-slate-300 dark:divide-slate-800 text-right">
+              <thead class="bg-slate-50 dark:bg-slate-800">
                 <tr>
                   <th scope="col" class="whitespace-nowrap py-3.5 pl-4 pr-3 text-sm font-semibold sm:pl-6">
                     Name
@@ -48,7 +53,7 @@ const transactions = [
                   </th>
                 </tr>
               </thead>
-              <tbody class="divide-y divide-gray-200 dark:divide-gray-800 bg-white dark:bg-gray-500">
+              <tbody class="divide-y divide-slate-200 dark:divide-slate-800 bg-white dark:bg-slate-700">
                 <tr v-for="transaction in transactions" :key="transaction.name">
                   <td class="whitespace-nowrap py-2 pl-4 pr-3 text-sm sm:pl-6">
                     {{ transaction.name }}
