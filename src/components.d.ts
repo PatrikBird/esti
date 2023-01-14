@@ -7,6 +7,7 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    HelloRTDB: typeof import('./components/HelloRTDB.vue')['default']
     HelloWorld: typeof import('./components/HelloWorld.vue')['default']
     'Icon:lineMd:githubLoop': typeof import('~icons/line-md/github-loop')['default']
     'Icon:lineMd:sunnyFilledLoop': typeof import('~icons/line-md/sunny-filled-loop')['default']

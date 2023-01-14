@@ -11,8 +11,10 @@
     "@vueuse/core": "^9.10.0",
     "@vueuse/head": "^1.0.22",
     "@vueuse/motion": "2.0.0-beta.12",
+    "firebase": "^9.15.0",
     "vue": "^3.2.45",
-    "vue-router": "^4.1.6"
+    "vue-router": "^4.1.6",
+    "vuefire": "^3.0.1"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.34.1",
