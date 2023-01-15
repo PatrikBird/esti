@@ -1,5 +1,4 @@
 <template>
-  <VoteCard />
   <TheTable />
   <h1
     v-motion

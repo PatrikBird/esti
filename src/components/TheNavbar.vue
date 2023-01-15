@@ -10,6 +10,9 @@
             <RouterLink class="icon-btn mx-2" to="/about" title="About">
               About
             </RouterLink>
+            <RouterLink class="icon-btn mx-2" to="/session" title="Session">
+              Session
+            </RouterLink>
             <a
               href="https://github.com/PatrikBird/esti"
               target="_blank"
