@@ -2,13 +2,13 @@
   "1234-session-ID-56789": {
     "user-ID-123": {
       "name": "Ada Lovelace",
-      "voteValue": 8,
+      "voteValue": "8",
       "isObserver": false,
       "lastVote": "2018-01-01T00:00:00.000Z"
     },
     "user-ID-789": {
       "name": "Grace Hopper",
-      "voteValue": null,
+      "voteValue": "null",
       "isOberver": true,
       "lastVote": null
     },
