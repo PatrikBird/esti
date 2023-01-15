@@ -3,7 +3,7 @@ import { useDatabaseList } from 'vuefire'
 import { ref as dbRef, getDatabase, ref, set } from 'firebase/database'
 
 const db = getDatabase()
-// set(ref(db, `users/${123}`), {
+// set(dbRef(db, `users/${123}`), {
 //   username: 'whatever',
 //   email: 'whatever@menubar.com',
 // })
