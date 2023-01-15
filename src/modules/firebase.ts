@@ -14,7 +14,7 @@ const firebaseApp = initializeApp({
 })
 
 const db = getDatabase()
-if (window.location.hostname.includes('localhost'))
+if (import.meta.env.DEV)
   connectDatabaseEmulator(db, 'localhost', 9000)
 
 export const install: UserModule = ({ app }) => {
