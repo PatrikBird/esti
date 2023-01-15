@@ -8,6 +8,13 @@ useHead({
       content: computed(() => isDark.value ? '#00aba9' : '#ffffff'),
     },
   ],
+  script: [
+    {
+      'src': 'https://plausible.io/js/script.js',
+      'data-domain': 'esti-eight.vercel.app',
+      'defer': true,
+    },
+  ],
   // link: [
   //   {
   //     rel: 'icon',
