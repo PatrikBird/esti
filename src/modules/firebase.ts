@@ -1,5 +1,6 @@
 import { VueFire } from 'vuefire'
 import { initializeApp } from 'firebase/app'
+import { connectDatabaseEmulator, getDatabase } from 'firebase/database'
 import { type UserModule } from '../types'
 
 const firebaseApp = initializeApp({
@@ -11,6 +12,10 @@ const firebaseApp = initializeApp({
   messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID! as string,
   appId: import.meta.env.VITE_FIREBASE_APP_ID! as string,
 })
+
+const db = getDatabase()
+if (window.location.hostname.includes('localhost'))
+  connectDatabaseEmulator(db, 'localhost', 9000)
 
 export const install: UserModule = ({ app }) => {
   app.use(VueFire, { firebaseApp })
