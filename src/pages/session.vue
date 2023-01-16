@@ -12,8 +12,8 @@
       '40',
       '100',
       '?',
-      'break',
     ]"
+    :coffee="true"
   />
   <TheButtons />
   <TheTable />
