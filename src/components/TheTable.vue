@@ -1,15 +1,15 @@
 <script setup lang="ts">
-const users = [
+const data = [
   {
-    name: 'Voter',
-    people: [
+    role: 'Voter',
+    users: [
       { id: '1234567', name: 'Lindsay Walton', voteValue: '3' },
       { id: '7654321', name: 'Courtney Henry', voteValue: '5' },
     ],
   },
   {
-    name: 'Observer',
-    people: [
+    role: 'Observer',
+    users: [
       { id: '5555555', name: 'Kirsten Dunst', voteValue: 'obs' },
       { id: '8888888', name: 'Pope Franziskus XII', voteValue: 'obs' },
     ],
@@ -36,21 +36,21 @@ const users = [
                 </tr>
               </thead>
               <tbody class="bg-white dark:bg-gray-800">
-                <template v-for="role in users" :key="role.name">
+                <template v-for="ele in data" :key="ele.role">
                   <tr class="border-t border-gray-200 dark:border-gray-600">
                     <th colspan="3" scope="colgroup" class="bg-gray-50 dark:bg-gray-700 px-4 py-2 text-left text-sm font-semibold sm:px-6">
-                      {{ role.name }}
+                      {{ ele.role }}
                     </th>
                   </tr>
-                  <tr v-for="person in role.people" :key="person.name" class="border-t border-gray-200 dark:border-gray-700">
+                  <tr v-for="user in ele.users" :key="user.name" class="border-t border-gray-200 dark:border-gray-700">
                     <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm text-left sm:pl-6">
-                      {{ person.name }}
+                      {{ user.name }}
                     </td>
                     <td class="whitespace-nowrap px-3 py-4 text-sm text-center">
-                      {{ person.voteValue }}
+                      {{ user.voteValue }}
                     </td>
                     <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                      <a href="#">Edit<span class="sr-only">, {{ person.name }}</span></a>
+                      <a href="#">Edit<span class="sr-only">, {{ user.name }}</span></a>
                     </td>
                   </tr>
                 </template>
