@@ -17,3 +17,12 @@ export interface SessionState {
   lastVoteReaveal: Date
   lastVoteReset: Date
 }
+
+export interface TableData {
+  role: string
+  users: {
+    id: string
+    name: string
+    voteValue: string
+  }[]
+}

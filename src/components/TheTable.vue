@@ -1,5 +1,7 @@
 <script setup lang="ts">
-const data = [
+import type { TableData } from '../types'
+
+const data: TableData[] = [
   {
     role: 'Voter',
     users: [
