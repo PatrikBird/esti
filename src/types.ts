@@ -3,7 +3,7 @@ import { type ViteSSGContext } from 'vite-ssg'
 export type UserModule = (ctx: ViteSSGContext) => void
 
 export interface User {
-  id: number
+  id: string
   name: string
   voteValue: string
   isObserver: boolean
@@ -11,7 +11,7 @@ export interface User {
 }
 
 export interface SessionState {
-  id: number
+  id: string
   voting: boolean
   isRevealed: boolean
   lastVoteReaveal: Date

@@ -12,6 +12,7 @@
     "@vueuse/head": "^1.0.22",
     "@vueuse/motion": "2.0.0-beta.12",
     "firebase": "^9.15.0",
+    "pinia": "^2.0.29",
     "vue": "^3.2.45",
     "vue-router": "^4.1.6",
     "vuefire": "^3.0.1"
