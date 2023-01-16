@@ -1,5 +1,4 @@
 <template>
-  <TheTable />
   <h1
     v-motion
     class="text-3xl"
@@ -14,6 +13,7 @@
   >
     Hello 👋
   </h1>
+  <TheTable />
 </template>
 
 <route lang="yaml">

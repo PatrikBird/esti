@@ -3,37 +3,22 @@ const users = [
   {
     name: 'Voter',
     people: [
-      { name: 'Lindsay Walton', status: 'voted' },
-      { name: 'Courtney Henry', status: 'not voted' },
+      { id: '1234567', name: 'Lindsay Walton', voteValue: '3' },
+      { id: '7654321', name: 'Courtney Henry', voteValue: '5' },
     ],
   },
   {
     name: 'Observer',
     people: [
-      { name: 'Kirsten Dunst', status: 'obs' },
-      { name: 'Pope Franziskus XII', status: 'obs' },
+      { id: '5555555', name: 'Kirsten Dunst', voteValue: 'obs' },
+      { id: '8888888', name: 'Pope Franziskus XII', voteValue: 'obs' },
     ],
   },
 ]
 </script>
 
 <template>
-  <div class="px-4 sm:px-6 lg:px-8">
-    <div class="sm:flex sm:items-center">
-      <div class="sm:flex-auto">
-        <h1 class="text-xl font-semibold">
-          Users
-        </h1>
-        <p class="mt-2 text-sm">
-          A list of all the users in your account including their name, title, email and role.
-        </p>
-      </div>
-      <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
-        <button type="button" class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">
-          Add user
-        </button>
-      </div>
-    </div>
+  <div class="px-4 max-w-4xl mx-auto sm:px-6 lg:px-8">
     <div class="mt-8 flex flex-col">
       <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
@@ -42,7 +27,7 @@ const users = [
               <thead class="bg-white dark:bg-gray-800">
                 <tr>
                   <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold sm:pl-6" />
-                  <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold">
+                  <th scope="col" class="px-3 py-3.5 text-center text-sm font-semibold">
                     Status
                   </th>
                   <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
@@ -58,11 +43,11 @@ const users = [
                     </th>
                   </tr>
                   <tr v-for="person in role.people" :key="person.name" class="border-t border-gray-200 dark:border-gray-700">
-                    <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm sm:pl-6">
+                    <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm text-left sm:pl-6">
                       {{ person.name }}
                     </td>
-                    <td class="whitespace-nowrap px-3 py-4 text-sm">
-                      {{ person.status }}
+                    <td class="whitespace-nowrap px-3 py-4 text-sm text-center">
+                      {{ person.voteValue }}
                     </td>
                     <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
                       <a href="#">Edit<span class="sr-only">, {{ person.name }}</span></a>

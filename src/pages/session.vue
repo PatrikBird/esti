@@ -15,4 +15,6 @@
       'break',
     ]"
   />
+  <TheButtons />
+  <TheTable />
 </template>

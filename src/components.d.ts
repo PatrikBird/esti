@@ -14,6 +14,7 @@ declare module '@vue/runtime-core' {
     'Icon:lineMd:sunnyFilledLoopToMoonFilledLoopTransition': typeof import('~icons/line-md/sunny-filled-loop-to-moon-filled-loop-transition')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    TheButtons: typeof import('./components/TheButtons.vue')['default']
     TheCounter: typeof import('./components/TheCounter.vue')['default']
     TheNavbar: typeof import('./components/TheNavbar.vue')['default']
     TheTable: typeof import('./components/TheTable.vue')['default']
