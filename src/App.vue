@@ -1,6 +1,5 @@
 <script setup lang="ts">
 useHead({
-  title: 'Esti',
   meta: [
     { name: 'description', content: 'Opinionated Vite Starter Template' },
     {
