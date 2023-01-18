@@ -20,11 +20,11 @@ const data: TableData[] = [
 </script>
 
 <template>
-  <div class="px-4 max-w-4xl mx-auto sm:px-6 lg:px-8">
+  <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
     <div class="mt-8 flex flex-col">
       <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
-          <div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
+          <div class="overflow-hidden shadow ring-1 ring-black/5 md:rounded-lg">
             <table class="min-w-full">
               <thead class="bg-white dark:bg-gray-800">
                 <tr>
@@ -40,15 +40,15 @@ const data: TableData[] = [
               <tbody class="bg-white dark:bg-gray-800">
                 <template v-for="ele in data" :key="ele.role">
                   <tr class="border-t border-gray-200 dark:border-gray-600">
-                    <th colspan="3" scope="colgroup" class="bg-gray-50 dark:bg-gray-700 px-4 py-2 text-left text-sm font-semibold sm:px-6">
+                    <th colspan="3" scope="colgroup" class="bg-gray-50 px-4 py-2 text-left text-sm font-semibold dark:bg-gray-700 sm:px-6">
                       {{ ele.role }}
                     </th>
                   </tr>
                   <tr v-for="user in ele.users" :key="user.name" class="border-t border-gray-200 dark:border-gray-700">
-                    <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm text-left sm:pl-6">
+                    <td class="whitespace-nowrap py-4 pl-4 pr-3 text-left text-sm sm:pl-6">
                       {{ user.name }}
                     </td>
-                    <td class="whitespace-nowrap px-3 py-4 text-sm text-center">
+                    <td class="whitespace-nowrap px-3 py-4 text-center text-sm">
                       {{ user.voteValue }}
                     </td>
                     <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
