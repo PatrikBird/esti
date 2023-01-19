@@ -6,8 +6,8 @@ import { FSdb } from '../modules/firebase'
 
 const coll = useCollection(collection(FSdb, 'someID'))
 const docc = useDocument(doc(collection(FSdb, 'someID'), 'voteState'))
-console.log(coll)
-console.log(docc)
+// console.log(coll)
+// console.log(docc)
 
 // const route = '1234-session-ID-56789'
 // const db = getDatabase()

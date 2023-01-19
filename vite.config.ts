@@ -58,7 +58,7 @@ export default defineConfig({
   ssgOptions: {
     includedRoutes(paths) {
       // exclude all the route paths that contains 'about'
-      return paths.filter(i => !i.includes('about'))
+      return paths.filter(i => !i.includes('session') && !i.includes('about'))
     },
   },
 })
