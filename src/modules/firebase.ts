@@ -1,6 +1,7 @@
 import { VueFire } from 'vuefire'
 import { initializeApp } from 'firebase/app'
 import { connectDatabaseEmulator, getDatabase } from 'firebase/database'
+import { connectFirestoreEmulator, getFirestore } from 'firebase/firestore'
 import { type UserModule } from '../types'
 
 const firebaseApp = initializeApp({
@@ -13,9 +14,17 @@ const firebaseApp = initializeApp({
   appId: import.meta.env.VITE_FIREBASE_APP_ID! as string,
 })
 
-const db = getDatabase()
-if (import.meta.env.DEV)
-  connectDatabaseEmulator(db, 'localhost', 9000)
+export const RTdb = getDatabase()
+if (import.meta.env.DEV) {
+  connectDatabaseEmulator(RTdb, 'localhost', 9000)
+  console.info('Using local RTdb emulator!')
+}
+
+export const FSdb = getFirestore()
+if (import.meta.env.DEV) {
+  connectFirestoreEmulator(FSdb, 'localhost', 8080)
+  console.info('Using local FireStore emulator!')
+}
 
 export const install: UserModule = ({ app }) => {
   app.use(VueFire, { firebaseApp })

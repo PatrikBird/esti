@@ -7,6 +7,9 @@
       "enabled": true,
       "port": 9001
     },
-    "singleProjectMode": true
+    "singleProjectMode": true,
+    "firestore": {
+      "port": 8080
+    }
   }
 }
