@@ -15,12 +15,15 @@ const firebaseApp = initializeApp({
 })
 
 export const RTdb = getDatabase()
+
+// FIXME: does not work
 if (import.meta.env.DEV) {
   connectDatabaseEmulator(RTdb, 'localhost', 9000)
   console.info('Using local RTdb emulator!')
 }
 
 export const FSdb = getFirestore()
+// FIXME: does not work
 if (import.meta.env.DEV) {
   connectFirestoreEmulator(FSdb, 'localhost', 8080)
   console.info('Using local FireStore emulator!')
