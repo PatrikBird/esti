@@ -1,61 +1,50 @@
 <script setup lang="ts">
-import type { TableData } from '../types'
+import type { User } from '../types'
 
-const data: TableData[] = [
-  {
-    role: 'Voter',
-    users: [
-      { id: '1234567', name: 'Lindsay Walton', voteValue: '3' },
-      { id: '7654321', name: 'Courtney Henry', voteValue: '5' },
-    ],
-  },
-  {
-    role: 'Observer',
-    users: [
-      { id: '5555555', name: 'Kirsten Dunst', voteValue: 'obs' },
-      { id: '8888888', name: 'Pope Franziskus XII', voteValue: 'obs' },
-    ],
-  },
-]
+const props = defineProps<{ allUser?: User[] }>()
+
+// TODO: split table in two parts: one for observer, one for voter
+// const allObserver = allUser.filter(user => user.isObserver === true)
+// const allVoter = allUser.filter(user => user.isObserver === false)
+
+const isEvenClasses = computed(() => ({
+  'bg-gray-50': true,
+  'dark:bg-gray-800': true,
+}))
 </script>
 
 <template>
-  <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+  <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
     <div class="mt-8 flex flex-col">
       <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
-          <div class="overflow-hidden shadow ring-1 ring-black/5 md:rounded-lg">
-            <table class="min-w-full">
-              <thead class="bg-white dark:bg-gray-800">
+          <div class="overflow-hidden shadow ring-1 ring-black/5 dark:ring-white/30 md:rounded-lg">
+            <table class="min-w-full divide-y divide-gray-300 dark:divide-gray-500">
+              <thead>
                 <tr>
-                  <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold sm:pl-6" />
-                  <th scope="col" class="px-3 py-3.5 text-center text-sm font-semibold">
-                    Status
+                  <th scope="col" class="whitespace-nowrap px-2 py-3.5 text-right text-sm font-semibold">
+                    Name
                   </th>
-                  <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
+                  <th scope="col" class="whitespace-nowrap px-2 py-3.5 text-right text-sm font-semibold">
+                    Vote
+                  </th>
+                  <th scope="col" class="relative whitespace-nowrap py-3.5 pl-3 pr-4 sm:pr-6">
                     <span class="sr-only">Edit</span>
                   </th>
                 </tr>
               </thead>
-              <tbody class="bg-white dark:bg-gray-800">
-                <template v-for="ele in data" :key="ele.role">
-                  <tr class="border-t border-gray-200 dark:border-gray-600">
-                    <th colspan="3" scope="colgroup" class="bg-gray-50 px-4 py-2 text-left text-sm font-semibold dark:bg-gray-700 sm:px-6">
-                      {{ ele.role }}
-                    </th>
-                  </tr>
-                  <tr v-for="user in ele.users" :key="user.name" class="border-t border-gray-200 dark:border-gray-700">
-                    <td class="whitespace-nowrap py-4 pl-4 pr-3 text-left text-sm sm:pl-6">
-                      {{ user.name }}
-                    </td>
-                    <td class="whitespace-nowrap px-3 py-4 text-center text-sm">
-                      {{ user.voteValue }}
-                    </td>
-                    <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                      <a href="#">Edit<span class="sr-only">, {{ user.name }}</span></a>
-                    </td>
-                  </tr>
-                </template>
+              <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                <tr v-for="(user, idx) in allUser" :key="user.id" :class="idx % 2 && isEvenClasses">
+                  <td class="whitespace-nowrap p-2 text-right text-sm font-medium">
+                    {{ user.name }}
+                  </td>
+                  <td class="whitespace-nowrap p-2 text-right text-sm">
+                    {{ user.voteValue }}
+                  </td>
+                  <td class="relative whitespace-nowrap py-2 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
+                    <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit<span class="sr-only">, {{ user.id }}</span></a>
+                  </td>
+                </tr>
               </tbody>
             </table>
           </div>

@@ -7,8 +7,8 @@ const db = getDatabase()
 const sessionID = '1234-session-ID-56789'
 const sessionData = useDatabaseObject<SessionData>(dbRef(db, sessionID))
 const sessionState = computed(() => sessionData.value?.sessionState as unknown as SessionState)
-const allUsers = computed(() => sessionData.value?.users as unknown as User[])
-const ada = computed(() => allUsers.value?.find(user => user.name === 'Ada Lovelace'))
+const allUser = computed(() => sessionData.value?.users as unknown as User[])
+const ada = computed(() => allUser.value?.find(user => user.name === 'Ada Lovelace'))
 </script>
 
 <template>
@@ -24,7 +24,7 @@ const ada = computed(() => allUsers.value?.find(user => user.name === 'Ada Lovel
     <p class="my-6">
       all Users:
     </p>
-    {{ allUsers }}
+    {{ allUser }}
     <p class="my-6">
       Ada:
     </p>
@@ -34,7 +34,7 @@ const ada = computed(() => allUsers.value?.find(user => user.name === 'Ada Lovel
     <p>
       Iterate over list:
     </p>
-    <li v-for="user in allUsers" :key="user.id">
+    <li v-for="user in allUser" :key="user.id">
       name: {{ user.name }},
       vote: {{ user.voteValue }},
       isObserver: {{ user.isObserver }}
@@ -58,5 +58,7 @@ const ada = computed(() => allUsers.value?.find(user => user.name === 'Ada Lovel
     :coffee="true"
   />
   <TheButtons />
-  <TheTable />
+  <!-- <Suspense> -->
+  <TheTable :all-user="allUser" />
+  <!-- </Suspense> -->
 </template>
