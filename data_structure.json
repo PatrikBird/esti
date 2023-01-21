@@ -1,24 +1,30 @@
 {
   "1234-session-ID-56789": {
-    "user-ID-123": {
-      "name": "Ada Lovelace",
-      "voteValue": "8",
-      "isObserver": false,
-      "lastVote": "2018-01-01T00:00:00.000Z"
-    },
-    "user-ID-789": {
-      "name": "Grace Hopper",
-      "voteValue": "null",
-      "isOberver": true,
-      "lastVote": null
-    },
-    "user-ID-0815": {
-      "name": "Alan Turing",
-      "voteValue": "?",
-      "isOberver": false,
-      "lastVote": "2018-01-01T00:00:00.000Z"
-    },
+    "users": [
+      {
+        "id": "user-ID-123",
+        "name": "Ada Lovelace",
+        "voteValue": "8",
+        "isObserver": false,
+        "lastVote": "2018-01-01T00:00:00.000Z"
+      },
+      {
+        "id": "user-ID-789",
+        "name": "Grace Hopper",
+        "voteValue": "null",
+        "isObserver": true,
+        "lastVote": null
+      },
+      {
+        "id": "user-ID-0815",
+        "name": "Alan Turing",
+        "voteValue": "?",
+        "isObserver": false,
+        "lastVote": "2018-01-01T00:00:00.000Z"
+      }
+    ],
     "sessionState": {
+      "sessionId": "1234-session-ID-56789",
       "isRevealed": false,
       "lastVoteReveal": "2018-01-01T00:00:00.000Z",
       "lastVoteReset": "2018-01-01T00:00:00.000Z"

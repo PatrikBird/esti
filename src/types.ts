@@ -2,27 +2,24 @@ import { type ViteSSGContext } from 'vite-ssg'
 
 export type UserModule = (ctx: ViteSSGContext) => void
 
+export interface SessionState {
+  sessionId: string
+  isRevealed: boolean
+  lastVoteReveal: string
+  lastVoteReset: string
+}
+
 export interface User {
   id: string
   name: string
-  voteValue: string
+  voteValue: string | null
   isObserver: boolean
-  lastVote: Date
+  lastVote: string | null
 }
 
-export interface SessionState {
-  id: string
-  voting: boolean
-  isRevealed: boolean
-  lastVoteReaveal: Date
-  lastVoteReset: Date
-}
-
-export interface TableData {
-  role: string
-  users: {
-    id: string
-    name: string
-    voteValue: string
-  }[]
+export interface SessionData {
+  [sessionId: string]: {
+    sessionState: SessionState
+    users: User[]
+  }
 }
