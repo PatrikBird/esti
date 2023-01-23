@@ -12,7 +12,7 @@ const ada = computed(() => allUser.value?.find(user => user.name === 'Ada Lovela
 </script>
 
 <template>
-  <div class="mb-6">
+  <!-- <div class="mb-6">
     <p class="mb-6">
       session data:
     </p>
@@ -40,7 +40,7 @@ const ada = computed(() => allUser.value?.find(user => user.name === 'Ada Lovela
       isObserver: {{ user.isObserver }}
       lastVote: {{ user.lastVote }}
     </li>
-  </ul>
+  </ul> -->
   <VoteCards
     :available-votes="[
       '0',

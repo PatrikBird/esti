@@ -8,8 +8,8 @@ const props = defineProps<{ allUser?: User[] }>()
 // const allVoter = allUser.filter(user => user.isObserver === false)
 
 const isEvenClasses = computed(() => ({
-  'bg-gray-50': true,
-  'dark:bg-gray-800': true,
+  'bg-slate-100': true,
+  'dark:bg-slate-700': true,
 }))
 </script>
 
@@ -18,8 +18,8 @@ const isEvenClasses = computed(() => ({
     <div class="mt-8 flex flex-col">
       <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
-          <div class="overflow-hidden shadow ring-1 ring-black/5 dark:ring-white/30 md:rounded-lg">
-            <table class="min-w-full divide-y divide-gray-300 dark:divide-gray-500">
+          <div class="overflow-hidden shadow ring-1 ring-black/5 dark:ring-slate-700 md:rounded-lg">
+            <table class="min-w-full divide-y divide-slate-300 dark:divide-slate-700 dark:bg-slate-800 dark:text-slate-400">
               <thead>
                 <tr>
                   <th scope="col" class="whitespace-nowrap px-2 py-3.5 text-right text-sm font-semibold">
@@ -33,7 +33,7 @@ const isEvenClasses = computed(() => ({
                   </th>
                 </tr>
               </thead>
-              <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+              <tbody class="divide-y divide-slate-200 dark:divide-slate-700">
                 <tr v-for="(user, idx) in allUser" :key="user.id" :class="idx % 2 && isEvenClasses">
                   <td class="whitespace-nowrap p-2 text-right text-sm font-medium">
                     {{ user.name }}
