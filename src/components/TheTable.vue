@@ -40,8 +40,8 @@ const isEvenClasses = computed(() => ({
                 <td class="whitespace-nowrap p-2 text-right text-sm">
                   {{ user.voteValue }}
                 </td>
-                <td class="relative whitespace-nowrap py-2 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                  <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit<span class="sr-only">, {{ user.id }}</span></a>
+                <td class="relative whitespace-nowrap py-2 pl-3 pr-4 text-right sm:pr-6">
+                  <icon:ic:baseline-settings class="cursor-pointer" />
                 </td>
               </tr>
             </tbody>

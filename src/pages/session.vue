@@ -14,38 +14,6 @@ const ada = computed(() => allUser.value?.find(user => user.name === 'Ada Lovela
 </script>
 
 <template>
-  <!-- {{ allObserver }} -->
-  <!-- <p>
-    {{ allObserver }}
-  </p> -->
-  <!-- <div class="mb-6">
-    <p class="mb-6">
-      session data:
-    </p>
-    {{ sessionData }}
-    <p class="my-6">
-      session state:
-    </p>
-    {{ sessionState }}
-    <p class="my-6">
-      all Users:
-    </p>
-    <p class="my-6">
-      Ada:
-    </p>
-    {{ ada }}
-  </div>
-  <ul class="my-6">
-    <p>
-      Iterate over list:
-    </p>
-    <li v-for="user in allUser" :key="user.id">
-      name: {{ user.name }},
-      vote: {{ user.voteValue }},
-      isObserver: {{ user.isObserver }}
-      lastVote: {{ user.lastVote }}
-    </li>
-  </ul> -->
   <VoteCards
     :available-votes="[
       '0',
@@ -62,11 +30,14 @@ const ada = computed(() => allUser.value?.find(user => user.name === 'Ada Lovela
     ]"
     :coffee="true"
   />
-  <TheButtons />
-  <!-- <Suspense> -->
-  <TheTable :voters="allVoter" />
-  <TheObservers :observers="allObserver" />
-  <!-- </Suspense> -->
+  <!-- align center -->
+  <div class="mx-auto max-w-3xl">
+    <TheButtons />
+    <!-- <Suspense> -->
+    <TheTable :voters="allVoter" />
+    <TheObservers :observers="allObserver" />
+    <!-- </Suspense> -->
+  </div>
 </template>
 
 <route lang="yaml">
