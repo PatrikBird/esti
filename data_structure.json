@@ -2,21 +2,49 @@
   "1234-session-ID-56789": {
     "users": [
       {
-        "id": "user-ID-123",
+        "id": "user-ID-100",
         "name": "Ada Lovelace",
         "voteValue": "8",
         "isObserver": false,
         "lastVote": "2018-01-01T00:00:00.000Z"
       },
       {
-        "id": "user-ID-789",
+        "id": "user-ID-101",
+        "name": "Grace Hopper",
+        "voteValue": "null",
+        "isObserver": false,
+        "lastVote": "13"
+      },
+      {
+        "id": "user-ID-102",
+        "name": "William Shakespeare",
+        "voteValue": "null",
+        "isObserver": true,
+        "lastVote": null
+      },
+      {
+        "id": "user-ID-103",
+        "name": "Queen Elizabeth",
+        "voteValue": "null",
+        "isObserver": true,
+        "lastVote": null
+      },
+      {
+        "id": "user-ID-104",
+        "name": "Jackie Chan",
+        "voteValue": "null",
+        "isObserver": true,
+        "lastVote": null
+      },
+      {
+        "id": "user-ID-105",
         "name": "Grace Hopper",
         "voteValue": "null",
         "isObserver": true,
         "lastVote": null
       },
       {
-        "id": "user-ID-0815",
+        "id": "user-ID-106",
         "name": "Alan Turing",
         "voteValue": "?",
         "isObserver": false,

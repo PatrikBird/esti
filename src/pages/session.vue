@@ -8,10 +8,16 @@ const sessionID = '1234-session-ID-56789'
 const sessionData = useDatabaseObject<SessionData>(dbRef(db, sessionID))
 const sessionState = computed(() => sessionData.value?.sessionState as unknown as SessionState)
 const allUser = computed(() => sessionData.value?.users as unknown as User[])
+const allObserver = computed(() => allUser.value?.filter(user => user.isObserver === true))
+const allVoter = computed(() => allUser.value?.filter(user => user.isObserver === false))
 const ada = computed(() => allUser.value?.find(user => user.name === 'Ada Lovelace'))
 </script>
 
 <template>
+  <!-- {{ allObserver }} -->
+  <!-- <p>
+    {{ allObserver }}
+  </p> -->
   <!-- <div class="mb-6">
     <p class="mb-6">
       session data:
@@ -24,7 +30,6 @@ const ada = computed(() => allUser.value?.find(user => user.name === 'Ada Lovela
     <p class="my-6">
       all Users:
     </p>
-    {{ allUser }}
     <p class="my-6">
       Ada:
     </p>
@@ -59,6 +64,12 @@ const ada = computed(() => allUser.value?.find(user => user.name === 'Ada Lovela
   />
   <TheButtons />
   <!-- <Suspense> -->
-  <TheTable :all-user="allUser" />
+  <TheTable :voters="allVoter" />
+  <TheObservers :observers="allObserver" />
   <!-- </Suspense> -->
 </template>
+
+<route lang="yaml">
+meta:
+  layout: clean
+</route>

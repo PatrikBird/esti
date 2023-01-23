@@ -9,6 +9,7 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     HelloRTDB: typeof import('./components/HelloRTDB.vue')['default']
     HelloWorld: typeof import('./components/HelloWorld.vue')['default']
+    'Icon:bx:glasses': typeof import('~icons/bx/glasses')['default']
     'Icon:lineMd:coffeeFilled': typeof import('~icons/line-md/coffee-filled')['default']
     'Icon:lineMd:githubLoop': typeof import('~icons/line-md/github-loop')['default']
     'Icon:lineMd:sunnyFilledLoop': typeof import('~icons/line-md/sunny-filled-loop')['default']
@@ -18,6 +19,7 @@ declare module '@vue/runtime-core' {
     TheButtons: typeof import('./components/TheButtons.vue')['default']
     TheCounter: typeof import('./components/TheCounter.vue')['default']
     TheNavbar: typeof import('./components/TheNavbar.vue')['default']
+    TheObservers: typeof import('./components/TheObservers.vue')['default']
     TheTable: typeof import('./components/TheTable.vue')['default']
     VoteCards: typeof import('./components/VoteCards.vue')['default']
   }
