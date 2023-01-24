@@ -9,11 +9,25 @@
         "lastVote": "2018-01-01T00:00:00.000Z"
       },
       {
+        "id": "user-ID-110",
+        "name": "Whatever Guy",
+        "voteValue": "21",
+        "isObserver": false,
+        "lastVote": "2018-01-01T00:00:00.000Z"
+      },
+      {
+        "id": "user-ID-111",
+        "name": "Whatever Lady",
+        "voteValue": "1",
+        "isObserver": false,
+        "lastVote": "2018-01-01T00:00:00.001Z"
+      },
+      {
         "id": "user-ID-101",
         "name": "Grace Hopper",
         "voteValue": "null",
         "isObserver": false,
-        "lastVote": "13"
+        "lastVote": "2018-01-01T00:00:00.001Z"
       },
       {
         "id": "user-ID-102",
@@ -39,6 +53,13 @@
       {
         "id": "user-ID-105",
         "name": "Grace Hopper",
+        "voteValue": "null",
+        "isObserver": true,
+        "lastVote": null
+      },
+      {
+        "id": "user-ID-115",
+        "name": "Ming the Merciless",
         "voteValue": "null",
         "isObserver": true,
         "lastVote": null

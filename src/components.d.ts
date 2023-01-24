@@ -15,7 +15,11 @@ declare module '@vue/runtime-core' {
     'Icon:lineMd:githubLoop': typeof import('~icons/line-md/github-loop')['default']
     'Icon:lineMd:sunnyFilledLoop': typeof import('~icons/line-md/sunny-filled-loop')['default']
     'Icon:lineMd:sunnyFilledLoopToMoonFilledLoopTransition': typeof import('~icons/line-md/sunny-filled-loop-to-moon-filled-loop-transition')['default']
+    'Icon:mdi:checkCircleOutline': typeof import('~icons/mdi/check-circle-outline')['default']
+    'Icon:mdi:circleCheckOutline': typeof import('~icons/mdi/circle-check-outline')['default']
+    'Icon:mdi:close': typeof import('~icons/mdi/close')['default']
     'Icon:mdi:eye': typeof import('~icons/mdi/eye')['default']
+    ItsToast: typeof import('./components/ItsToast.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     TheButtons: typeof import('./components/TheButtons.vue')['default']
@@ -24,5 +28,6 @@ declare module '@vue/runtime-core' {
     TheObservers: typeof import('./components/TheObservers.vue')['default']
     TheTable: typeof import('./components/TheTable.vue')['default']
     VoteCards: typeof import('./components/VoteCards.vue')['default']
+    VoteRadioGroup: typeof import('./components/VoteRadioGroup.vue')['default']
   }
 }

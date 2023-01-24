@@ -14,6 +14,7 @@ const ada = computed(() => allUser.value?.find(user => user.name === 'Ada Lovela
 </script>
 
 <template>
+  <!-- <ItsToast /> -->
   <VoteCards
     :available-votes="[
       '0',
@@ -42,5 +43,5 @@ const ada = computed(() => allUser.value?.find(user => user.name === 'Ada Lovela
 
 <route lang="yaml">
 meta:
-  layout: clean
+  layout: lay-session
 </route>
