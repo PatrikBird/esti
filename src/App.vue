@@ -10,7 +10,7 @@ useHead({
   script: [
     {
       'src': 'https://plausible.io/js/script.js',
-      'data-domain': 'esti-eight.vercel.app',
+      'data-domain': 'esti.patbird.me',
       'defer': true,
     },
   ],
