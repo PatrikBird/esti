@@ -21,8 +21,8 @@
               <td class="invisible whitespace-nowrap p-2 text-right text-sm">
                 invisible
               </td>
-              <td class="invisible whitespace-nowrap p-2 text-center text-sm">
-                invisible
+              <td class="whitespace-nowrap p-2 text-center text-sm">
+                <icon:line-md:loading-twotone-loop class="inline-block h-5 w-5" />
               </td>
               <td class="invisible text-center">
                 invisible
