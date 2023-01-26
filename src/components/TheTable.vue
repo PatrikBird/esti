@@ -19,10 +19,10 @@ const isEvenClasses = computed(() => ({
               <th scope="col" class="whitespace-nowrap px-2 py-3.5 text-right font-medium">
                 Name
               </th>
-              <th scope="col" class="whitespace-nowrap px-2 py-3.5 text-center font-bold">
+              <th scope="col" class="whitespace-nowrap px-2 py-3.5 text-center font-medium">
                 Vote
               </th>
-              <th scope="col" class="whitespace-nowrap px-2 py-3.5 text-center font-medium">
+              <th scope="col" class="select-none whitespace-nowrap px-2 py-3.5 text-center font-medium">
                 Edit
               </th>
             </tr>
@@ -32,7 +32,7 @@ const isEvenClasses = computed(() => ({
               <td class="whitespace-nowrap p-2 text-right text-sm">
                 {{ user.name }}
               </td>
-              <td class="whitespace-nowrap p-2 text-center text-sm font-bold">
+              <td class="whitespace-nowrap p-2 text-center text-sm">
                 {{ user.voteValue }}
               </td>
               <td class="text-center">

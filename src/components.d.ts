@@ -18,6 +18,7 @@ declare module '@vue/runtime-core' {
     'Icon:mdi:checkCircleOutline': typeof import('~icons/mdi/check-circle-outline')['default']
     'Icon:mdi:circleCheckOutline': typeof import('~icons/mdi/circle-check-outline')['default']
     'Icon:mdi:close': typeof import('~icons/mdi/close')['default']
+    'Icon:mdi:coffee': typeof import('~icons/mdi/coffee')['default']
     'Icon:mdi:eye': typeof import('~icons/mdi/eye')['default']
     ItsToast: typeof import('./components/ItsToast.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
