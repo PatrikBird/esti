@@ -8,6 +8,12 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     'Icon:ic:baselineSettings': typeof import('~icons/ic/baseline-settings')['default']
+    'Icon:lineMd:circle': typeof import('~icons/line-md/circle')['default']
+    'Icon:lineMd:circle-': typeof import('~icons/line-md/circle-')['default']
+    'Icon:lineMd:circleToConfirmCircleTransition': typeof import('~icons/line-md/circle-to-confirm-circle-transition')['default']
+    'Icon:lineMd:circleToConfirmCircleTwotoneTransition': typeof import('~icons/line-md/circle-to-confirm-circle-twotone-transition')['default']
+    'Icon:lineMd:coffeeFilled': typeof import('~icons/line-md/coffee-filled')['default']
+    'Icon:lineMd:confirmCircleToCircleTransition': typeof import('~icons/line-md/confirm-circle-to-circle-transition')['default']
     'Icon:lineMd:githubLoop': typeof import('~icons/line-md/github-loop')['default']
     'Icon:lineMd:sunnyFilledLoop': typeof import('~icons/line-md/sunny-filled-loop')['default']
     'Icon:lineMd:sunnyFilledLoopToMoonFilledLoopTransition': typeof import('~icons/line-md/sunny-filled-loop-to-moon-filled-loop-transition')['default']

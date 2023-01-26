@@ -35,7 +35,10 @@ const ada = computed(() => allUser.value?.find(user => user.name === 'Ada Lovela
   <div class="mx-auto max-w-3xl">
     <TheButtons />
     <!-- <Suspense> -->
-    <TheTable :voters="allVoter" />
+    <div v-if="!allVoter">
+      <p>loading...</p>
+    </div>
+    <TheTable v-else :voters="allVoter" />
     <TheObservers :observers="allObserver" />
     <!-- </Suspense> -->
   </div>

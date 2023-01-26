@@ -19,7 +19,6 @@ function selectVote(vote: string) {
   <div
     v-for="vote in votes"
     :key="vote"
-    v-motion-pop-visible-once
     tabindex="0"
     :class="{ '!bg-emerald-400': vote === selectedVote }"
     class="m-1 inline-block w-24 cursor-pointer select-none rounded-lg border border-slate-200 p-6 text-center shadow-md duration-75 ease-in hover:scale-95 hover:bg-slate-100 focus:ring-2 dark:border-slate-700 dark:bg-slate-800 dark:text-white dark:hover:bg-slate-700"
