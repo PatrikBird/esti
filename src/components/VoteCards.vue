@@ -23,7 +23,7 @@ function selectVote(vote: string) {
     :key="vote"
     tabindex="0"
     :class="[{ '!bg-emerald-400': vote === selectedVote }, { '!text-black': vote === selectedVote }]"
-    class="m-1 inline-block w-24 cursor-pointer select-none rounded-lg border border-slate-200 p-6 text-center shadow-md duration-75 ease-in hover:scale-95 hover:bg-slate-100 focus:ring-2 dark:border-slate-700 dark:bg-slate-800 dark:text-white dark:hover:bg-slate-700"
+    class="m-1 inline-block w-24 cursor-pointer select-none rounded-lg border border-slate-200 p-6 text-center shadow-md duration-75 ease-in hover:scale-95 hover:bg-slate-100 focus:ring-2 dark:border-slate-700 dark:bg-slate-800 dark:hover:bg-slate-700"
     @click="selectVote(vote)"
   >
     <p v-if="vote !== 'coffee'">
