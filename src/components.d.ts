@@ -7,16 +7,10 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    HelloRTDB: typeof import('./components/HelloRTDB.vue')['default']
-    HelloWorld: typeof import('./components/HelloWorld.vue')['default']
-    'Icon:bx:glasses': typeof import('~icons/bx/glasses')['default']
     'Icon:ic:baselineSettings': typeof import('~icons/ic/baseline-settings')['default']
-    'Icon:lineMd:coffeeFilled': typeof import('~icons/line-md/coffee-filled')['default']
     'Icon:lineMd:githubLoop': typeof import('~icons/line-md/github-loop')['default']
     'Icon:lineMd:sunnyFilledLoop': typeof import('~icons/line-md/sunny-filled-loop')['default']
     'Icon:lineMd:sunnyFilledLoopToMoonFilledLoopTransition': typeof import('~icons/line-md/sunny-filled-loop-to-moon-filled-loop-transition')['default']
-    'Icon:mdi:checkCircleOutline': typeof import('~icons/mdi/check-circle-outline')['default']
-    'Icon:mdi:circleCheckOutline': typeof import('~icons/mdi/circle-check-outline')['default']
     'Icon:mdi:close': typeof import('~icons/mdi/close')['default']
     'Icon:mdi:coffee': typeof import('~icons/mdi/coffee')['default']
     'Icon:mdi:eye': typeof import('~icons/mdi/eye')['default']
@@ -24,11 +18,9 @@ declare module '@vue/runtime-core' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     TheButtons: typeof import('./components/TheButtons.vue')['default']
-    TheCounter: typeof import('./components/TheCounter.vue')['default']
     TheNavbar: typeof import('./components/TheNavbar.vue')['default']
     TheObservers: typeof import('./components/TheObservers.vue')['default']
     TheTable: typeof import('./components/TheTable.vue')['default']
     VoteCards: typeof import('./components/VoteCards.vue')['default']
-    VoteRadioGroup: typeof import('./components/VoteRadioGroup.vue')['default']
   }
 }
