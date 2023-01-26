@@ -1,5 +1,5 @@
 <template>
-  <div class="mt-8 flex flex-col">
+  <div class="mt-8 flex animate-pulse flex-col">
     <div class="inline-block min-w-full py-2 align-middle">
       <div class="overflow-hidden shadow ring-1 ring-black/5 dark:ring-slate-700 md:rounded-lg">
         <table class="min-w-full divide-y divide-slate-300 dark:divide-slate-700 dark:bg-slate-800 dark:text-slate-400">

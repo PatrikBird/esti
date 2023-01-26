@@ -24,6 +24,7 @@ declare module '@vue/runtime-core' {
     LoadingTable: typeof import('./components/LoadingTable.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    TheActions: typeof import('./components/TheActions.vue')['default']
     TheButtons: typeof import('./components/TheButtons.vue')['default']
     TheNavbar: typeof import('./components/TheNavbar.vue')['default']
     TheObservers: typeof import('./components/TheObservers.vue')['default']

@@ -11,6 +11,9 @@ const allUser = computed(() => sessionData.value?.users as unknown as User[])
 const allObserver = computed(() => allUser.value?.filter(user => user.isObserver === true))
 const allVoter = computed(() => allUser.value?.filter(user => user.isObserver === false))
 const ada = computed(() => allUser.value?.find(user => user.name === 'Ada Lovelace'))
+// get id from route
+const route = useRoute()
+const sessionIDsoon = route.name
 </script>
 
 <template>
