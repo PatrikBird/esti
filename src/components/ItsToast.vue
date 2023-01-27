@@ -17,24 +17,24 @@ const show = ref(true)
         leave-from-class="opacity-100"
         leave-to-class="opacity-0"
       >
-        <div v-if="show" class="ring-1/5 pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg bg-slate-50 shadow-lg dark:bg-slate-200">
+        <div v-if="show" class="ring-1/5 pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg bg-zinc-50 shadow-lg dark:bg-zinc-200">
           <div class="p-4">
             <div class="flex items-center">
               <div class="shrink-0 align-middle">
                 <icon:mdi:check-circle-outline class="h-6 w-6 text-emerald-600" />
               </div>
               <div class="ml-3 w-0 flex-1 pt-0.5">
-                <p class="text-sm font-medium text-slate-900">
+                <p class="text-sm font-medium text-zinc-900">
                   Successfully saved!
                 </p>
-                <p class="mt-1 text-sm text-slate-500">
+                <p class="mt-1 text-sm text-zinc-500">
                   Anyone with a link can now view this file.
                 </p>
               </div>
               <div class="ml-4 flex shrink-0 self-start">
                 <button
                   type="button"
-                  class="inline-flex rounded-md bg-slate-50 text-slate-800 opacity-75 hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:bg-slate-200"
+                  class="inline-flex rounded-md bg-zinc-50 text-zinc-800 opacity-75 hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:bg-zinc-200"
                   @click="show = false"
                 >
                   <span class="sr-only">Close</span>

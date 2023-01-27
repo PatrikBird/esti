@@ -5,8 +5,21 @@ const props = defineProps<{ observers?: User[] }>()
 </script>
 
 <template>
-  <div class="mt-5 grid grid-cols-2 gap-2">
-    <div v-for="person in observers" :key="person.id" class="relative flex select-none items-center space-x-2 rounded-lg border border-slate-300 px-6 py-5 shadow-sm dark:border-slate-700 dark:bg-slate-800">
+  <div
+    v-motion class="mt-5 grid grid-cols-2 gap-2" :initial="{
+      opacity: 0,
+      y: 100,
+    }"
+    :enter="{
+      opacity: 1,
+      y: 0,
+    }"
+    :leave="{
+      opacity: 0,
+      y: 1,
+    }"
+  >
+    <div v-for="person in observers" :key="person.id" class="relative flex select-none items-center space-x-2 rounded-lg border border-zinc-300 px-6 py-5 shadow-sm dark:border-zinc-700 dark:bg-zinc-800">
       <div class="shrink-0">
         <icon:mdi:eye class="h-6 w-6" />
       </div>

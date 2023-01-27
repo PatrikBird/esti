@@ -34,7 +34,6 @@ const sessionIDsoon = route.name
     ]"
     :coffee="true"
   />
-  <!-- align center -->
   <div class="mx-auto max-w-3xl">
     <TheButtons />
     <!-- <Suspense> -->

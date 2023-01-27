@@ -13,7 +13,6 @@
   >
     Hello 👋
   </h1>
-  <!-- <TheTable /> -->
 </template>
 
 <route lang="yaml">

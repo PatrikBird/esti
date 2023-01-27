@@ -4,16 +4,16 @@ import type { User } from '../types'
 const props = defineProps<{ voters?: User[] }>()
 
 const isEvenClasses = computed(() => ({
-  'bg-slate-100': true,
-  'dark:bg-slate-700': true,
+  'bg-zinc-100': true,
+  'dark:bg-zinc-700/50': true,
 }))
 </script>
 
 <template>
   <div class="mt-8 flex flex-col">
     <div class="inline-block min-w-full py-2 align-middle">
-      <div class="overflow-hidden shadow ring-1 ring-black/5 dark:ring-slate-700 md:rounded-lg">
-        <table class="min-w-full divide-y divide-slate-300 dark:divide-slate-700 dark:bg-slate-800 dark:text-slate-400">
+      <div class="overflow-hidden shadow ring-1 ring-black/5 dark:ring-zinc-700 md:rounded-lg">
+        <table class="min-w-full divide-y divide-zinc-300 dark:divide-zinc-700 dark:bg-zinc-800">
           <thead>
             <tr>
               <th scope="col" class="whitespace-nowrap px-2 py-3.5 text-right font-medium">
@@ -27,7 +27,7 @@ const isEvenClasses = computed(() => ({
               </th>
             </tr>
           </thead>
-          <tbody class="divide-y divide-slate-200 dark:divide-slate-700">
+          <tbody class="divide-y divide-zinc-200 dark:divide-zinc-700">
             <tr v-for="(user, idx) in voters" :key="user.id" :class="idx % 2 && isEvenClasses">
               <td class="whitespace-nowrap p-2 text-right text-sm">
                 {{ user.name }}

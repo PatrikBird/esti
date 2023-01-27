@@ -26,7 +26,7 @@ useHead({
 
 <template>
   <TheNavbar class="mb-8" />
-  <div class="text-slate-700 dark:border-slate-700 dark:text-slate-400">
+  <div class="text-zinc-700 dark:border-zinc-700 dark:text-zinc-300">
     <RouterView />
   </div>
 </template>

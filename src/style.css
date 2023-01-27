@@ -3,6 +3,6 @@
 @tailwind utilities;
 
 html.dark {
-  background: #0F172A;
+  background: #1A1A1A;
   color-scheme: dark;
 }
