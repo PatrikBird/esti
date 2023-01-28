@@ -1,4 +1,5 @@
 <script setup lang='ts'>
+import crypto from 'crypto'
 import { ref as dbRef, getDatabase, set } from 'firebase/database'
 import { useMainStore } from '../stores/main'
 
