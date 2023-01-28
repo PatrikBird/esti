@@ -2,6 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@antfu/eslint-config': ^0.34.1
+  '@headlessui/vue': ^1.7.8
   '@iconify-json/bx': ^1.1.5
   '@iconify-json/ic': ^1.1.12
   '@iconify-json/line-md': ^1.1.22
@@ -34,6 +35,7 @@ specifiers:
   vuefire: ^3.0.1
 
 dependencies:
+  '@headlessui/vue': 1.7.8_vue@3.2.45
   '@vueuse/core': 9.11.1_vue@3.2.45
   '@vueuse/head': 1.0.23_vue@3.2.45
   '@vueuse/motion': 2.0.0-beta.12_vue@3.2.45
@@ -960,6 +962,15 @@ packages:
       long: 4.0.0
       protobufjs: 7.1.2
       yargs: 16.2.0
+    dev: false
+
+  /@headlessui/vue/1.7.8_vue@3.2.45:
+    resolution: {integrity: sha512-J83kAz3drFjndXz/AOoxmgzVo/MtSNFFn/K9qhSSJ8EGhmRfwdJLhZ0W4NSrw6A10JxhXDlkjoV0UxOiBLr5iQ==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      vue: ^3.2.0
+    dependencies:
+      vue: 3.2.45
     dev: false
 
   /@humanwhocodes/config-array/0.11.8:

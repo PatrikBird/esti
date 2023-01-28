@@ -9,8 +9,10 @@
         No ads, no distractions, no tracking, open source and free.
       </p>
       <div class="mt-10 flex items-center justify-center gap-x-6">
-        <a href="#" class="rounded-md bg-indigo-600 px-3.5 py-1.5 text-base font-semibold leading-7 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Create session</a>
-        <a href="#" class="text-base font-semibold leading-7 dark:text-white">Join session <span aria-hidden="true">→</span></a>
+        <RouterLink to="/new" class="rounded-md bg-indigo-600 px-3.5 py-1.5 text-base font-semibold leading-7 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+          Create session
+        </RouterLink>
+        <RouterLink to="/join" class="text-base font-semibold leading-7 dark:text-white">Join session <span aria-hidden="true">→</span></RouterLink>
       </div>
     </div>
     <div class="mx-auto mt-16 flex max-w-2xl sm:mt-24 lg:ml-10 lg:mt-0 lg:mr-0 lg:max-w-none lg:flex-none xl:ml-32">

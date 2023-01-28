@@ -8,12 +8,9 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     'Icon:ic:baselineSettings': typeof import('~icons/ic/baseline-settings')['default']
-    'Icon:lineMd:chevronSmallLeft': typeof import('~icons/line-md/chevron-small-left')['default']
+    'Icon:lineMd:chevronLeft': typeof import('~icons/line-md/chevron-left')['default']
     'Icon:lineMd:circle': typeof import('~icons/line-md/circle')['default']
-    'Icon:lineMd:circle-': typeof import('~icons/line-md/circle-')['default']
     'Icon:lineMd:circleToConfirmCircleTransition': typeof import('~icons/line-md/circle-to-confirm-circle-transition')['default']
-    'Icon:lineMd:circleToConfirmCircleTwotoneTransition': typeof import('~icons/line-md/circle-to-confirm-circle-twotone-transition')['default']
-    'Icon:lineMd:coffeeFilled': typeof import('~icons/line-md/coffee-filled')['default']
     'Icon:lineMd:confirmCircleToCircleTransition': typeof import('~icons/line-md/confirm-circle-to-circle-transition')['default']
     'Icon:lineMd:githubLoop': typeof import('~icons/line-md/github-loop')['default']
     'Icon:lineMd:loadingTwotoneLoop': typeof import('~icons/line-md/loading-twotone-loop')['default']
@@ -26,11 +23,11 @@ declare module '@vue/runtime-core' {
     LoadingTable: typeof import('./components/LoadingTable.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    TheActions: typeof import('./components/TheActions.vue')['default']
     TheButtons: typeof import('./components/TheButtons.vue')['default']
     TheNavbar: typeof import('./components/TheNavbar.vue')['default']
     TheObservers: typeof import('./components/TheObservers.vue')['default']
     TheTable: typeof import('./components/TheTable.vue')['default']
+    TheToggle: typeof import('./components/TheToggle.vue')['default']
     VoteCards: typeof import('./components/VoteCards.vue')['default']
   }
 }
