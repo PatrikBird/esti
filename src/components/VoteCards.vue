@@ -14,6 +14,7 @@ const votes = computed(() => {
 const selectedVote: Ref<string | undefined > = ref()
 function selectVote(vote: string) {
   selectedVote.value = vote
+  // update the vote in the firebase realtime database
 }
 </script>
 

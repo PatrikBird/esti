@@ -46,6 +46,7 @@ export default {
     </div>
   </div>
   <div v-else>
+    <user-connection v-if="!mainStore.user.id" />
     <VoteCards
       :available-votes="[
         '0',

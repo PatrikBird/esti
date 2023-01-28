@@ -7,6 +7,7 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    ComboBox: typeof import('./components/ComboBox.vue')['default']
     'Icon:ic:baselineSettings': typeof import('~icons/ic/baseline-settings')['default']
     'Icon:lineMd:chevronLeft': typeof import('~icons/line-md/chevron-left')['default']
     'Icon:lineMd:circle': typeof import('~icons/line-md/circle')['default']
@@ -14,6 +15,7 @@ declare module '@vue/runtime-core' {
     'Icon:lineMd:loadingTwotoneLoop': typeof import('~icons/line-md/loading-twotone-loop')['default']
     'Icon:lineMd:sunnyFilledLoop': typeof import('~icons/line-md/sunny-filled-loop')['default']
     'Icon:lineMd:sunnyFilledLoopToMoonFilledLoopTransition': typeof import('~icons/line-md/sunny-filled-loop-to-moon-filled-loop-transition')['default']
+    'Icon:mdi:checkCircleOutline': typeof import('~icons/mdi/check-circle-outline')['default']
     'Icon:mdi:close': typeof import('~icons/mdi/close')['default']
     'Icon:mdi:coffee': typeof import('~icons/mdi/coffee')['default']
     'Icon:mdi:eye': typeof import('~icons/mdi/eye')['default']
@@ -27,6 +29,7 @@ declare module '@vue/runtime-core' {
     TheObservers: typeof import('./components/TheObservers.vue')['default']
     TheTable: typeof import('./components/TheTable.vue')['default']
     TheToggle: typeof import('./components/TheToggle.vue')['default']
+    UserConnection: typeof import('./components/UserConnection.vue')['default']
     VoteCards: typeof import('./components/VoteCards.vue')['default']
   }
 }
