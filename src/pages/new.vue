@@ -1,11 +1,10 @@
 <script setup lang='ts'>
-import crypto from 'crypto'
 import { ref as dbRef, getDatabase, set } from 'firebase/database'
 import { useMainStore } from '../stores/main'
 
 function generateIDs() {
   const newSessionID = Date.now().toString()
-  const newUserID = crypto.getRandomValues(new Uint32Array(1))[0].toString()
+  const newUserID = Date.now().toString()
   return { newSessionID, newUserID }
 }
 const { newSessionID, newUserID } = generateIDs()
@@ -68,7 +67,7 @@ function writeData() {
 
     <div class="mx-auto mt-8 w-full max-w-md">
       <div class="rounded-lg border border-zinc-200 py-8 px-10 shadow-xl dark:border-zinc-700/50">
-        <form class="space-y-6" action="#" method="POST" @submit.prevent="writeData">
+        <form class="space-y-6" @submit.prevent="writeData">
           <div>
             <label for="username" class="block text-left text-sm font-medium">Name</label>
             <div class="mt-1">

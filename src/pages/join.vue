@@ -1,19 +1,29 @@
 <script setup lang='ts'>
-import crypto from 'crypto'
-import { ref as dbRef, getDatabase, set } from 'firebase/database'
+import { child, ref as dbRef, get, getDatabase } from 'firebase/database'
 import { useMainStore } from '../stores/main'
+// import { generateID } from '../composables/generateIDs'
 
-function generateIDs() {
-  const newUserID = crypto.getRandomValues(new Uint32Array(1))[0].toString()
-  return { newUserID }
-}
-const { newUserID } = generateIDs()
-
-const router = useRouter()
 const mainStore = useMainStore()
 const sessionID = ref(mainStore.session.id)
-
 const username = ref(mainStore.user.name)
+
+const router = useRouter()
+// const { newUserID } = generateID()
+
+// replace dash with slash in sessionID
+const idurl = computed(() => sessionID.value.replace(/-/g, '/'))
+
+function sessionLookup() {
+  const reference = dbRef(getDatabase())
+  get(child(reference, sessionID.value)).then((snapshot) => {
+    if (snapshot.exists())
+      router.push(idurl.value)
+    else
+      console.log('No data available')
+  }).catch((error) => {
+    console.error(error)
+  })
+}
 </script>
 
 <template>
@@ -33,7 +43,7 @@ const username = ref(mainStore.user.name)
 
     <div class="mx-auto mt-8 w-full max-w-md">
       <div class="rounded-lg border border-zinc-200 py-8 px-10 shadow-xl dark:border-zinc-700/50">
-        <form class="space-y-6" action="#" method="POST" @submit.prevent>
+        <form class="space-y-6" @submit.prevent="sessionLookup">
           <div>
             <label for="id" class="block text-left text-sm font-medium">Session ID</label>
             <div class="mt-1">
@@ -50,7 +60,11 @@ const username = ref(mainStore.user.name)
           </div>
 
           <div>
-            <button type="submit" class="flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+            <button
+              autofocus
+              type="submit"
+              class="flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+            >
               Join session
             </button>
           </div>
