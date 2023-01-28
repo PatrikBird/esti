@@ -10,7 +10,7 @@
             <RouterLink class="icon-btn mx-2" to="/about" title="About">
               About
             </RouterLink>
-            <RouterLink class="icon-btn mx-2" to="/session" title="Session">
+            <RouterLink class="icon-btn mx-2" to="/dummy-session" title="Session">
               Session
             </RouterLink>
             <a

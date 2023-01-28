@@ -1,17 +1,33 @@
 import { acceptHMRUpdate, defineStore } from 'pinia'
-// import type { Ref } from 'vue'
-// import type { User } from '../types'
+
+const route = useRoute()
+// create regex to match /session/1674887163002 wit hexact number of digits
+// const regex = /\/session\/\d{13}/
+// check if route.path matches regex
+// if (regex.test(route.path)) {
+//   console.log('regex.test(route.path) === true')
+// }
 
 export const useMainStore = defineStore('main', () => {
-  const user = reactive({
-    id: useLocalStorage('id', ''),
-    name: useLocalStorage('name', ''),
-    voteValue: useLocalStorage('voteValue', 'null'),
-    isObserver: useLocalStorage('isObserver', Boolean),
-    lastVote: useLocalStorage('lastVote', Date),
+  // check if route contains /session/1674887163002
+  // if so, set sessionID in localStorage
+  console.log(route)
+
+  // if (route.params?.sessionID) {
+  //   useLocalStorage('sessionID', route.params.sessionID)
+  // }
+
+  const session = ref({
+    id: useLocalStorage('sessionID', ''),
   })
 
-  return { user }
+  const user = ref({
+    id: useLocalStorage('userID', ''),
+    name: useLocalStorage('username', ''),
+    isObserver: useLocalStorage('isObserver', Boolean),
+  })
+
+  return { session, user }
 })
 
 if (import.meta.hot)

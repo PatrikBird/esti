@@ -9,6 +9,7 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     'Icon:ic:baselineSettings': typeof import('~icons/ic/baseline-settings')['default']
     'Icon:lineMd:chevronLeft': typeof import('~icons/line-md/chevron-left')['default']
+    'Icon:lineMd:chevronSmallLeft': typeof import('~icons/line-md/chevron-small-left')['default']
     'Icon:lineMd:circle': typeof import('~icons/line-md/circle')['default']
     'Icon:lineMd:circleToConfirmCircleTransition': typeof import('~icons/line-md/circle-to-confirm-circle-transition')['default']
     'Icon:lineMd:confirmCircleToCircleTransition': typeof import('~icons/line-md/confirm-circle-to-circle-transition')['default']

@@ -2,8 +2,9 @@ import { type ViteSSGContext } from 'vite-ssg'
 
 export type UserModule = (ctx: ViteSSGContext) => void
 
+// needs parsing and mapping
 export interface SessionState {
-  sessionId: string
+  // sessionId: string
   isRevealed: boolean
   lastVoteReveal: string
   lastVoteReset: string
