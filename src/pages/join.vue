@@ -4,20 +4,20 @@ import { useMainStore } from '../stores/main'
 // import { generateID } from '../composables/generateIDs'
 
 const mainStore = useMainStore()
-const sessionID = ref(mainStore.session.id)
-const username = ref(mainStore.user.name)
+// const sessionID = ref(mainStore.session.id)
+// const username = ref(mainStore.user.name)
 
 const router = useRouter()
 // const { newUserID } = generateID()
 
 // replace dash with slash in sessionID
-const idurl = computed(() => sessionID.value.replace(/-/g, '/'))
+// const idurl = computed(() => sessionID.value.replace(/-/g, '/'))
 
 function sessionLookup() {
   const reference = dbRef(getDatabase())
-  get(child(reference, sessionID.value)).then((snapshot) => {
+  get(child(reference, mainStore.session.id)).then((snapshot) => {
     if (snapshot.exists())
-      router.push(idurl.value)
+      router.push(`session/${mainStore.session.id}`)
     else
       console.log('No data available')
   }).catch((error) => {
@@ -47,11 +47,11 @@ function sessionLookup() {
           <div>
             <label for="id" class="block text-left text-sm font-medium">Session ID</label>
             <div class="mt-1">
-              <input id="id" v-model="sessionID" name="id" type="text" required class="block w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none dark:border-zinc-700 dark:bg-zinc-800 dark:focus:border-indigo-500">
+              <input id="id" v-model="mainStore.session.id" name="id" type="text" required class="block w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none dark:border-zinc-700 dark:bg-zinc-800 dark:focus:border-indigo-500">
             </div>
             <label for="username" class="mt-5 block text-left text-sm font-medium">Name</label>
             <div class="mt-1">
-              <input id="username" v-model="username" name="username" type="text" required class="block w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none dark:border-zinc-700 dark:bg-zinc-800 dark:focus:border-indigo-500">
+              <input id="username" v-model="mainStore.user.name" name="username" type="text" required class="block w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none dark:border-zinc-700 dark:bg-zinc-800 dark:focus:border-indigo-500">
             </div>
           </div>
 

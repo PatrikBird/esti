@@ -20,7 +20,7 @@ function writeData() {
   mainStore.user.name = username.value
   mainStore.user.isObserver = false
   const db = getDatabase()
-  set(dbRef(db, `session-${newSessionID}`), {
+  set(dbRef(db, newSessionID), {
     users: [
       {
         id: `${newUserID}`,

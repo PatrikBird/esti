@@ -1,5 +1,5 @@
 {
-  "1234-session-ID-56789": {
+  "123456789": {
     "users": [
       {
         "id": "user-ID-100",
@@ -73,7 +73,6 @@
       }
     ],
     "sessionState": {
-      "sessionId": "1234-session-ID-56789",
       "isRevealed": false,
       "lastVoteReveal": "2018-01-01T00:00:00.000Z",
       "lastVoteReset": "2018-01-01T00:00:00.000Z"
