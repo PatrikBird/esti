@@ -7,12 +7,7 @@ const db = getDatabase()
 const route = useRoute()
 const mainStore = useMainStore()
 
-// const regex = /\/session\/\d{13}/
-// const invalidSessionID = computed(() => !regex.test(route.path))
-
-const sessionID = `${route.params.sessionID as string}`
-mainStore.session.id = sessionID
-const { data: sessionData, pending, error } = useDatabaseObject<SessionData>(dbRef(db, sessionID))
+const { data: sessionData, pending, error } = useDatabaseObject<SessionData>(dbRef(db, route.params.sessionID as string))
 const allUser = computed(() => sessionData.value?.users as unknown as User[])
 const allVoter = computed(() => allUser.value?.filter(user => user.isObserver === false))
 const allObserver = computed(() => allUser.value?.filter(user => user.isObserver === true))

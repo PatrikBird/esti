@@ -1,32 +1,21 @@
 <script setup lang='ts'>
 import { ref as dbRef, getDatabase, set } from 'firebase/database'
-import { useMainStore } from '../stores/main'
 
-function generateIDs() {
-  const newSessionID = Date.now().toString()
-  const newUserID = Date.now().toString()
-  return { newSessionID, newUserID }
-}
 const { newSessionID, newUserID } = generateIDs()
-
 const router = useRouter()
-
 const mainStore = useMainStore()
-const username = ref(mainStore.user.name)
 
 function writeData() {
   mainStore.session.id = newSessionID
   mainStore.user.id = newUserID
-  mainStore.user.name = username.value
-  mainStore.user.isObserver = false
   const db = getDatabase()
   set(dbRef(db, newSessionID), {
     users: [
       {
         id: `${newUserID}`,
-        name: username.value,
+        name: mainStore.user.name,
         voteValue: 'null',
-        isObserver: false,
+        isObserver: mainStore.user.isObserver,
         lastVote: 'null',
       },
       {
@@ -73,7 +62,7 @@ function writeData() {
             <div class="mt-1">
               <input
                 id="username"
-                v-model="username"
+                v-model="mainStore.user.name"
                 name="username"
                 type="text"
                 required

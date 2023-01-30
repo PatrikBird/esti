@@ -1,25 +1,23 @@
 <script setup lang='ts'>
 import { child, ref as dbRef, get, getDatabase } from 'firebase/database'
-import { useMainStore } from '../stores/main'
-// import { generateID } from '../composables/generateIDs'
 
 const mainStore = useMainStore()
-// const sessionID = ref(mainStore.session.id)
-// const username = ref(mainStore.user.name)
-
 const router = useRouter()
-// const { newUserID } = generateID()
 
-// replace dash with slash in sessionID
-// const idurl = computed(() => sessionID.value.replace(/-/g, '/'))
+// TODO: generate new user ID if user is not in local storage
+// const { newUserID } = generateID()
 
 function sessionLookup() {
   const reference = dbRef(getDatabase())
-  get(child(reference, mainStore.session.id)).then((snapshot) => {
-    if (snapshot.exists())
+  get(child(reference, mainStore.session.id as string)).then((snapshot) => {
+    if (snapshot.exists()) {
+      if (!mainStore.user.id)
+        mainStore.user.id = generateIDs().newUserID
+
+      // TODO: add error class to session id input
       router.push(`session/${mainStore.session.id}`)
-    else
-      console.log('No data available')
+    }
+    else { console.log('No data available') }
   }).catch((error) => {
     console.error(error)
   })
