@@ -1,38 +1,30 @@
 <script setup lang='ts'>
-import { ref as dbRef, getDatabase, set } from 'firebase/database'
+import { ref as dbRef, getDatabase, push } from 'firebase/database'
 
-const { newSessionID, newUserID } = generateIDs()
 const router = useRouter()
 const mainStore = useMainStore()
 
 function writeData() {
-  mainStore.session.id = newSessionID
-  mainStore.user.id = newUserID
   const db = getDatabase()
-  set(dbRef(db, newSessionID), {
-    users: [
-      {
-        id: `${newUserID}`,
-        name: mainStore.user.name,
-        voteValue: 'null',
-        isObserver: mainStore.user.isObserver,
-        lastVote: 'null',
-      },
-      {
-        id: '222',
-        name: 'somePO',
-        voteValue: 'null',
-        isObserver: true,
-        lastVote: 'null',
-      },
-    ],
+  const rootRef = dbRef(db)
+
+  mainStore.session.id = push(rootRef, {
     sessionState: {
       isRevealed: false,
       lastVoteReveal: 'null',
       lastVoteReset: 'null',
     },
-  })
-  router.push(`/session/${newSessionID}`)
+  }).key!.toString()
+
+  const usersRef = dbRef(db, `${mainStore.session.id}/users`)
+  mainStore.user.id = push(usersRef, {
+    name: mainStore.user.name,
+    voteValue: 'null',
+    isObserver: mainStore.user.isObserver,
+    lastVote: 'null',
+  }).key!.toString()
+
+  router.push(`/session/${mainStore.session.id}`)
 }
 </script>
 

@@ -9,8 +9,17 @@ const mainStore = useMainStore()
 
 const { data: sessionData, pending, error } = useDatabaseObject<SessionData>(dbRef(db, route.params.sessionID as string))
 const allUser = computed(() => sessionData.value?.users as unknown as User[])
-const allVoter = computed(() => allUser.value?.filter(user => user.isObserver === false))
-const allObserver = computed(() => allUser.value?.filter(user => user.isObserver === true))
+
+watch(allUser, (val) => {
+  console.log(val)
+})
+// console.log(allUser.value)
+
+// const allUsers = computed(() => {
+//   return Object.values(allUser.value) ? allUser.value : []
+// })
+// const allVoter = computed(() => allUsers.value?.filter(user => user.isObserver === false))
+// const allObserver = computed(() => allUsers.value?.filter(user => user.isObserver === true))
 </script>
 
 <script lang="ts">
@@ -20,6 +29,7 @@ export default {
 </script>
 
 <template>
+  <p>{{ sessionData }}</p>
   <div v-if="error">
     <SessionNotFound />
   </div>
