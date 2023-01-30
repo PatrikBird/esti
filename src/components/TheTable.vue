@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import type { User } from '../types'
+import type { Users } from '../types'
 
-const props = defineProps<{ voters?: User[] }>()
+const props = defineProps<{ voters?: Users }>()
 
 const isEvenClasses = computed(() => ({
   'bg-zinc-100': true,
@@ -28,7 +28,7 @@ const isEvenClasses = computed(() => ({
             </tr>
           </thead>
           <tbody class="divide-y divide-zinc-200 dark:divide-zinc-700">
-            <tr v-for="(user, idx) in voters" :key="user.id" :class="idx % 2 && isEvenClasses">
+            <tr v-for="(user, idx) in voters" :key="idx" :class="idx as number % 2 && isEvenClasses">
               <td class="whitespace-nowrap p-2 text-right text-sm">
                 {{ user.name }}
               </td>

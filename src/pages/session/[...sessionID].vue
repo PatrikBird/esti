@@ -1,22 +1,29 @@
 <script setup lang='ts'>
 import { useDatabaseObject } from 'vuefire'
 import { ref as dbRef, getDatabase } from 'firebase/database'
-import type { SessionData, User } from '../../types'
+import type { SessionState, State, Users } from '../../types'
 
 const db = getDatabase()
 const route = useRoute()
 const mainStore = useMainStore()
+const userArr = ref([])
 
-const { data: sessionData, pending, error } = useDatabaseObject<SessionData>(dbRef(db, route.params.sessionID as string))
-const allUser = computed(() => sessionData.value?.users as unknown as User[])
+const { data: sessionData, pending, error } = useDatabaseObject<State>(dbRef(db, route.params.sessionID as string))
+const sessionState = computed(() => sessionData.value?.sessionState as SessionState)
+const allUsers = computed(() => sessionData.value?.users as Users)
 
-watch(allUser, (val) => {
-  console.log(val)
-})
-// console.log(allUser.value)
+// watch(allUsers, (val) => {
+//   console.log(val)
+//   // update userArr with Object.values(allUsers.value) ? allUsers.value : []
+//   userArr.value = Object.values(allUsers.value)
+// })
 
-// const allUsers = computed(() => {
-//   return Object.values(allUser.value) ? allUser.value : []
+// const test = computed(() => {
+//   return Object.values(allUsers)
+// })
+
+// const allUsersArr = computed(() => {
+//   return Object.values(allUsers.value) ? allUsers.value : []
 // })
 // const allVoter = computed(() => allUsers.value?.filter(user => user.isObserver === false))
 // const allObserver = computed(() => allUsers.value?.filter(user => user.isObserver === true))
@@ -29,7 +36,9 @@ export default {
 </script>
 
 <template>
-  <p>{{ sessionData }}</p>
+  <!-- <p>{{ sessionState }}</p> -->
+  <p>{{ allUsers }}</p>
+  <!-- {{ test }} -->
   <div v-if="error">
     <SessionNotFound />
   </div>
@@ -68,9 +77,10 @@ export default {
     />
     <div class="mx-auto max-w-3xl">
       <TheButtons />
-      <LoadingTable v-if="!allVoter" />
-      <TheTable v-else :voters="allVoter" />
-      <TheObservers :observers="allObserver" />
+      <!-- <LoadingTable v-if="!allVoter" /> -->
+      <!-- <TheTable v-else :voters="allVoter" /> -->
+      <TheTable :voters="allUsers" />
+      <!-- <TheObservers :observers="allObserver" /> -->
     </div>
   </div>
 </template>
