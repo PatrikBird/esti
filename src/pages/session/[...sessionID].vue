@@ -1,16 +1,17 @@
 <script setup lang='ts'>
 import { useDatabaseObject } from 'vuefire'
 import { ref as dbRef, getDatabase } from 'firebase/database'
-import type { SessionState, State, Users } from '../../types'
+import type { SessionState, State, User, Users } from '../../types'
 
 const db = getDatabase()
 const route = useRoute()
 const mainStore = useMainStore()
-const userArr = ref([])
 
 const { data: sessionData, pending, error } = useDatabaseObject<State>(dbRef(db, route.params.sessionID as string))
 const sessionState = computed(() => sessionData.value?.sessionState as SessionState)
 const allUsers = computed(() => sessionData.value?.users as Users)
+
+// const voters = computed(() => Object.values(allUsers).filter((u: User) => u.isObserver === false))
 
 // watch(allUsers, (val) => {
 //   console.log(val)
@@ -37,7 +38,7 @@ export default {
 
 <template>
   <!-- <p>{{ sessionState }}</p> -->
-  <p>{{ allUsers }}</p>
+  <!-- <p>{{ voters }}</p> -->
   <!-- {{ test }} -->
   <div v-if="error">
     <SessionNotFound />
