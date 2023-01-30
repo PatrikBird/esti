@@ -6,26 +6,17 @@ export interface SessionState {
   isRevealed: boolean
   lastVoteReset: string | null
   lastVoteReveal: string | null
+  createdOn: Date
 }
 
 export interface User {
   isObserver: boolean
-  lastVote: string | null
+  lastVoteOn: string | null
   name: string
   voteValue: string | null
-}
-export interface Users {
-  [key: string]: User
 }
 
 export interface State {
   sessionState: SessionState
-  users: Users
+  users: { [userId: string]: User }
 }
-
-// export interface SessionData {
-//   [sessionId: string]: {
-//     sessionState: SessionState
-//     users: User[]
-//   }
-// }

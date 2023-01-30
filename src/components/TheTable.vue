@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import type { Users } from '../types'
+import type { User } from '../types'
 
-const props = defineProps<{ voters?: Users }>()
+const props = defineProps<{ voters?: any[] }>()
 
 const isEvenClasses = computed(() => ({
   'bg-zinc-100': true,

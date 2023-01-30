@@ -1,31 +1,54 @@
 <script setup lang='ts'>
-import { ref as dbRef, getDatabase, push } from 'firebase/database'
+// import { ref as dbRef, getDatabase, push } from 'firebase/database'
+import { Timestamp, addDoc, collection, doc, getFirestore, setDoc } from 'firebase/firestore'
 
 const router = useRouter()
 const mainStore = useMainStore()
 
-function writeData() {
-  const db = getDatabase()
-  const rootRef = dbRef(db)
+async function writeData() {
+  const db = getFirestore()
+  mainStore.session.id = Date.now().toString()
+  const collectionRef = collection(db, mainStore.session.id)
 
-  mainStore.session.id = push(rootRef, {
-    sessionState: {
-      isRevealed: false,
-      lastVoteReveal: 'null',
-      lastVoteReset: 'null',
-    },
-  }).key!.toString()
+  await setDoc(doc(db, mainStore.session.id, 'sessionState'), {
+    isVoteRevealed: false,
+    lastRevealOn: null,
+    lastResetOn: null,
+    createdOn: Timestamp.fromDate(new Date()),
+  })
 
-  const usersRef = dbRef(db, `${mainStore.session.id}/users`)
-  mainStore.user.id = push(usersRef, {
+  const userDocRef = await addDoc(collectionRef, {
     name: mainStore.user.name,
-    voteValue: 'null',
+    voteValue: null,
     isObserver: mainStore.user.isObserver,
-    lastVote: 'null',
-  }).key!.toString()
-
+    lastVoteOn: null,
+  })
+  mainStore.user.id = userDocRef.id
   router.push(`/session/${mainStore.session.id}`)
 }
+
+// function writeData() {
+//   const db = getDatabase()
+//   const rootRef = dbRef(db)
+
+//   mainStore.session.id = push(rootRef, {
+//     sessionState: {
+//       isRevealed: false,
+//       lastVoteReveal: 'null',
+//       lastVoteReset: 'null',
+//     },
+//   }).key!.toString()
+
+//   const usersRef = dbRef(db, `${mainStore.session.id}/users`)
+//   mainStore.user.id = push(usersRef, {
+//     name: mainStore.user.name,
+//     voteValue: 'null',
+//     isObserver: mainStore.user.isObserver,
+//     lastVote: 'null',
+//   }).key!.toString()
+
+//   router.push(`/session/${mainStore.session.id}`)
+// }
 </script>
 
 <template>

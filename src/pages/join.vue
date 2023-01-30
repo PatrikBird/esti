@@ -1,37 +1,42 @@
 <script setup lang='ts'>
 import { child, ref as dbRef, get, getDatabase, push } from 'firebase/database'
+import { Timestamp, addDoc, collection, doc, getFirestore, setDoc } from 'firebase/firestore'
 
 const mainStore = useMainStore()
 const router = useRouter()
-const db = getDatabase()
+const db = getFirestore()
 
-function sessionLookup() {
-  const rootRef = dbRef(db)
-  const usersRef = dbRef(db, `${mainStore.session.id}/users`)
-
-  get(child(rootRef, mainStore.session.id as string)).then((snapshot) => {
-    if (snapshot.exists()) {
-      if (mainStore.user.id) {
-        // local user found, try to retrieve local user to db
-      }
-      else {
-        // mainStore.user.id = generateIDs().newUserID
-        console.log('no local user found, new user id generated: ', mainStore.user.id)
-        mainStore.user.id = push(usersRef, {
-          name: mainStore.user.name,
-          voteValue: 'null',
-          isObserver: mainStore.user.isObserver,
-          lastVote: 'null',
-        }).key!.toString()
-      }
-
-      router.push(`session/${mainStore.session.id}`)
-    }
-    else { console.log('No data available') }
-  }).catch((error) => {
-    console.error(error)
-  })
+function joinSession() {
+  
 }
+
+// function sessionLookup() {
+//   const rootRef = dbRef(db)
+//   const usersRef = dbRef(db, `${mainStore.session.id}/users`)
+
+//   get(child(rootRef, mainStore.session.id as string)).then((snapshot) => {
+//     if (snapshot.exists()) {
+//       if (mainStore.user.id) {
+//         // local user found, try to retrieve local user to db
+//       }
+//       else {
+//         // mainStore.user.id = generateIDs().newUserID
+//         console.log('no local user found, new user id generated: ', mainStore.user.id)
+//         mainStore.user.id = push(usersRef, {
+//           name: mainStore.user.name,
+//           voteValue: 'null',
+//           isObserver: mainStore.user.isObserver,
+//           lastVote: 'null',
+//         }).key!.toString()
+//       }
+
+//       router.push(`session/${mainStore.session.id}`)
+//     }
+//     else { console.log('No data available') }
+//   }).catch((error) => {
+//     console.error(error)
+//   })
+// }
 </script>
 
 <template>

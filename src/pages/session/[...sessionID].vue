@@ -1,33 +1,19 @@
 <script setup lang='ts'>
-import { useDatabaseObject } from 'vuefire'
+import { useCollection, useDatabaseObject, useDocument } from 'vuefire'
 import { ref as dbRef, getDatabase } from 'firebase/database'
-import type { SessionState, State, User, Users } from '../../types'
+import { collection, doc, getFirestore } from 'firebase/firestore'
+import { SessionState, State, User } from '../../types'
 
-const db = getDatabase()
+const db = getFirestore()
 const route = useRoute()
 const mainStore = useMainStore()
 
-const { data: sessionData, pending, error } = useDatabaseObject<State>(dbRef(db, route.params.sessionID as string))
-const sessionState = computed(() => sessionData.value?.sessionState as SessionState)
-const allUsers = computed(() => sessionData.value?.users as Users)
+const { data: sessionData, pending, error } = useCollection(collection(db, route.params.sessionID as string))
+// const { data: sessionState } = useDocument(doc(collection(db, route.params.sessionID as string), 'sessionState'))
 
-// const voters = computed(() => Object.values(allUsers).filter((u: User) => u.isObserver === false))
-
-// watch(allUsers, (val) => {
-//   console.log(val)
-//   // update userArr with Object.values(allUsers.value) ? allUsers.value : []
-//   userArr.value = Object.values(allUsers.value)
-// })
-
-// const test = computed(() => {
-//   return Object.values(allUsers)
-// })
-
-// const allUsersArr = computed(() => {
-//   return Object.values(allUsers.value) ? allUsers.value : []
-// })
-// const allVoter = computed(() => allUsers.value?.filter(user => user.isObserver === false))
-// const allObserver = computed(() => allUsers.value?.filter(user => user.isObserver === true))
+const allUsers = computed(() => sessionData.value.filter(u => u.id !== 'sessionState'))
+const voters = computed(() => allUsers.value.filter(u => u.isObserver === false))
+const observers = computed(() => allUsers.value.filter(u => u.isObserver === true))
 </script>
 
 <script lang="ts">
@@ -37,9 +23,6 @@ export default {
 </script>
 
 <template>
-  <!-- <p>{{ sessionState }}</p> -->
-  <!-- <p>{{ voters }}</p> -->
-  <!-- {{ test }} -->
   <div v-if="error">
     <SessionNotFound />
   </div>
@@ -78,10 +61,9 @@ export default {
     />
     <div class="mx-auto max-w-3xl">
       <TheButtons />
-      <!-- <LoadingTable v-if="!allVoter" /> -->
-      <!-- <TheTable v-else :voters="allVoter" /> -->
-      <TheTable :voters="allUsers" />
-      <!-- <TheObservers :observers="allObserver" /> -->
+      <LoadingTable v-if="!voters" />
+      <TheTable v-else :voters="voters" />
+      <TheObservers :observers="observers" />
     </div>
   </div>
 </template>
