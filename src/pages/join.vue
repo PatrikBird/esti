@@ -22,7 +22,7 @@ function sessionLookup() {
           voteValue: 'null',
           isObserver: mainStore.user.isObserver,
           lastVote: 'null',
-        }).toString()
+        }).key!.toString()
       }
 
       router.push(`session/${mainStore.session.id}`)
