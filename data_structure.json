@@ -1,81 +1,22 @@
 {
-  "123456789": {
-    "users": [
-      {
-        "id": "user-ID-100",
-        "name": "Ada Lovelace",
-        "voteValue": "8",
-        "isObserver": false,
-        "lastVote": "2018-01-01T00:00:00.000Z"
-      },
-      {
-        "id": "user-ID-110",
-        "name": "Whatever Guy",
-        "voteValue": "21",
-        "isObserver": false,
-        "lastVote": "2018-01-01T00:00:00.000Z"
-      },
-      {
-        "id": "user-ID-111",
-        "name": "Whatever Lady",
-        "voteValue": "1",
-        "isObserver": false,
-        "lastVote": "2018-01-01T00:00:00.001Z"
-      },
-      {
-        "id": "user-ID-101",
-        "name": "Grace Hopper",
-        "voteValue": "null",
-        "isObserver": false,
-        "lastVote": "2018-01-01T00:00:00.001Z"
-      },
-      {
-        "id": "user-ID-102",
-        "name": "William Shakespeare",
-        "voteValue": "null",
-        "isObserver": true,
-        "lastVote": null
-      },
-      {
-        "id": "user-ID-103",
-        "name": "Queen Elizabeth",
-        "voteValue": "null",
-        "isObserver": true,
-        "lastVote": null
-      },
-      {
-        "id": "user-ID-104",
-        "name": "Jackie Chan",
-        "voteValue": "null",
-        "isObserver": true,
-        "lastVote": null
-      },
-      {
-        "id": "user-ID-105",
-        "name": "Grace Hopper",
-        "voteValue": "null",
-        "isObserver": true,
-        "lastVote": null
-      },
-      {
-        "id": "user-ID-115",
-        "name": "Ming the Merciless",
-        "voteValue": "null",
-        "isObserver": true,
-        "lastVote": null
-      },
-      {
-        "id": "user-ID-106",
-        "name": "Alan Turing",
-        "voteValue": "?",
-        "isObserver": false,
-        "lastVote": "2018-01-01T00:00:00.000Z"
-      }
-    ],
-    "sessionState": {
-      "isRevealed": false,
-      "lastVoteReveal": "2018-01-01T00:00:00.000Z",
-      "lastVoteReset": "2018-01-01T00:00:00.000Z"
+  "collection-123456789": {
+    "document-user-123-id" :{
+      "isObserver": false,
+      "lastVoteOn": "2018-01-01T00:00:00.000Z",
+      "name": "some ganster",
+      "voteValue": null
+    },
+    "document-user-456-id" :{
+      "isObserver": false,
+      "lastVoteOn": "2018-01-01T00:00:00.000Z",
+      "name": "some ganster",
+      "voteValue": null
+    },
+    "document-sessionState": {
+      "createdOn": "2018-01-01T00:00:00.000Z",
+      "isVoteRevealed": false,
+      "lastRevealOn": "2018-01-01T00:00:00.000Z",
+      "lastResetOn": "2018-01-01T00:00:00.000Z"
     }
   }
 }

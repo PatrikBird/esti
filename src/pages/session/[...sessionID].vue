@@ -1,19 +1,34 @@
 <script setup lang='ts'>
 import { useCollection, useDatabaseObject, useDocument } from 'vuefire'
 import { ref as dbRef, getDatabase } from 'firebase/database'
-import { collection, doc, getFirestore } from 'firebase/firestore'
-import { SessionState, State, User } from '../../types'
+import { collection, doc, getFirestore, orderBy, query, where } from 'firebase/firestore'
+import type { SessionData, SessionState } from '../../types'
+import { User } from '../../types'
 
 const db = getFirestore()
 const route = useRoute()
 const mainStore = useMainStore()
 
-const { data: sessionData, pending, error } = useCollection(collection(db, route.params.sessionID as string))
-// const { data: sessionState } = useDocument(doc(collection(db, route.params.sessionID as string), 'sessionState'))
-
-const allUsers = computed(() => sessionData.value.filter(u => u.id !== 'sessionState'))
-const voters = computed(() => allUsers.value.filter(u => u.isObserver === false))
-const observers = computed(() => allUsers.value.filter(u => u.isObserver === true))
+function mapSessionState(data: any): SessionState {
+  return {
+    createdOn: `${data.createdOn.seconds}.${data.createdOn.nanoseconds}`,
+    isVoteRevealed: data.isVoteRevealed,
+    lastRevealOn: data.lastRevealOn,
+    lastResetOn: data.lastResetOn,
+  }
+}
+// const { data: sessionState, pending, error } = useDocument(doc(collection(db, route.params.sessionID as string), 'sessionState'))
+// const { data: sessionState } = useDocument<SessionState>(doc(collection(db, route.params.sessionID as string), 'sessionState'))
+const { data: sessionData, pending, error } = useCollection<SessionData>(collection(db, route.params.sessionID as string))
+const state = query(collection(db, route.params.sessionID as string), where('isVoteRevealed', '!=', null))
+const users = query(collection(db, route.params.sessionID as string), where('name', '!=', null))
+const wootstate = useCollection(state)
+const wootusers = useCollection(users)
+watchEffect(() => {
+  console.log(wootstate)
+})
+// const observers = computed(() => sessionData.value.filter(u => u.users === true))
+// const voters = computed(() => allUsers.value.filter(u => u.isObserver === false))
 </script>
 
 <script lang="ts">
@@ -23,6 +38,9 @@ export default {
 </script>
 
 <template>
+  <div>state: {{ wootstate }}</div>
+  <br>
+  <div>users: {{ wootusers }}</div>
   <div v-if="error">
     <SessionNotFound />
   </div>
@@ -61,9 +79,9 @@ export default {
     />
     <div class="mx-auto max-w-3xl">
       <TheButtons />
-      <LoadingTable v-if="!voters" />
-      <TheTable v-else :voters="voters" />
-      <TheObservers :observers="observers" />
+      <!-- <LoadingTable v-if="!voters" /> -->
+      <!-- <TheTable v-else :voters="voters" /> -->
+      <!-- <TheObservers :observers="observers" /> -->
     </div>
   </div>
 </template>
