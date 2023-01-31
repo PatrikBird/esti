@@ -9,14 +9,19 @@ export interface SessionData {
 
 export interface User {
   isObserver: boolean
-  lastVoteOn: string
+  lastVoteOn: string | null
   name: string
   voteValue: string | null
 }
 
 export interface SessionState {
-  createdOn: string
+  createdOn: TimeStamp
   isVoteRevealed: boolean
-  lastRevealOn: string
-  lastResetOn: string
+  lastRevealOn: string | null
+  lastResetOn: string | null
+}
+
+interface TimeStamp {
+  seconds: number
+  nanoseconds: number
 }
