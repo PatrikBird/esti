@@ -34,6 +34,8 @@ async function joinSession() {
   }
   else {
     console.log('User found!')
+    // TODO: Show modal to ask if user wants to retrieve data from DB
+    // TRUE: Retrieve data from DB, FALSE: Create new user
     mainStore.user.name = retrievedUser.data.name
     mainStore.user.isObserver = retrievedUser.data.isObserver
     mainStore.user.id = retrievedUser.id

@@ -38,10 +38,9 @@ const isEvenClasses = computed(() => ({
                 {{ user.name }}
               </td>
               <td class="whitespace-nowrap p-2 text-center text-sm">
-                <!-- {{ user.voteValue }} -->
-                <icon:line-md:circle class="inline-block h-5 w-5 text-amber-500" />
-                <!-- <icon:line-md:circle-to-confirm-circle-transition class="inline-block h-5 w-5 text-emerald-500" />
-                <icon:line-md:confirm-circle-to-circle-transition class="inline-block h-5 w-5 text-amber-500" /> -->
+                <icon:line-md:circle v-if="!user.voteValue" class="inline-block h-5 w-5 text-amber-500" />
+                <icon:line-md:circle-to-confirm-circle-transition v-else class="inline-block h-5 w-5 text-emerald-500" />
+                <!-- <icon:line-md:confirm-circle-to-circle-transition class="inline-block h-5 w-5 text-amber-500" /> -->
               </td>
               <td class="text-center">
                 <icon:ic:baseline-settings class="inline-block h-5 w-5 cursor-pointer" />
