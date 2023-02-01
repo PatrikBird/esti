@@ -23,6 +23,9 @@ const voters = computed(() => {
 const observers = computed(() => {
   return users.value.filter(u => u.isObserver === true)
 })
+const voteRevealed = computed(() => {
+  return sessionState.value?.isVoteRevealed
+})
 </script>
 
 <script lang="ts">
@@ -75,9 +78,14 @@ export default {
     />
     <div class="mx-auto max-w-3xl">
       <TheButtons />
+      <!-- <div v-if="!voteRevealed"> -->
       <LoadingTable v-if="!users" />
       <TheTable v-else :voters="voters" />
       <TheObservers :observers="observers" />
+      <!-- </div> -->
+      <!-- <div v-else>
+        <p>Vote has been revelead!</p>
+      </div> -->
     </div>
   </div>
 </template>
