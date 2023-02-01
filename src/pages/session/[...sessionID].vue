@@ -1,23 +1,31 @@
 <script setup lang='ts'>
-import { useDatabaseObject } from 'vuefire'
-import { ref as dbRef, getDatabase } from 'firebase/database'
-import type { SessionData, User } from '../../types'
+import { useCollection, useDocument } from 'vuefire'
+import { collection, doc, getFirestore, query, where } from 'firebase/firestore'
+import type { SessionState, User } from '../../types'
 
-const db = getDatabase()
+const db = getFirestore()
 const route = useRoute()
 const mainStore = useMainStore()
 
-const regex = /\/session\/\d{13}/
-const invalidSessionID = computed(() => !regex.test(route.path))
+const collectionID = ref(route.params.sessionID as string)
 
-const sessionID = `session-${route.params.sessionID as string}`
-mainStore.session.id = sessionID
-const { data: sessionData, pending, error } = useDatabaseObject<SessionData>(dbRef(db, sessionID))
+const { data: sessionState, pending: statePending, error: stateError } = useDocument<SessionState>(
+  doc(collection(db, collectionID.value), 'sessionState'))
 
-// const sessionState = computed(() => sessionData.value?.sessionState as unknown as SessionState)
-const allUser = computed(() => sessionData.value?.users as unknown as User[])
-const allVoter = computed(() => allUser.value?.filter(user => user.isObserver === false))
-const allObserver = computed(() => allUser.value?.filter(user => user.isObserver === true))
+const { data: users, pending: usersPending, error: usersError } = useCollection<User>(
+  query(
+    collection(db, collectionID.value),
+    where('name', '!=', null)))
+
+const voters = computed(() => {
+  return users.value.filter(u => u.isObserver === false)
+})
+const observers = computed(() => {
+  return users.value.filter(u => u.isObserver === true)
+})
+const voteRevealed = computed(() => {
+  return sessionState.value?.isVoteRevealed
+})
 </script>
 
 <script lang="ts">
@@ -27,10 +35,15 @@ export default {
 </script>
 
 <template>
-  <div v-if="invalidSessionID || error">
+  <div>voters: {{ voters }}</div>
+  <br>
+  <div>observers: {{ observers }}</div>
+  <br>
+  <div>state: {{ sessionState }}</div>
+  <div v-if="stateError">
     <SessionNotFound />
   </div>
-  <div v-else-if="pending">
+  <div v-else-if="statePending">
     <!-- Temp loader -->
     <div class="flex h-screen flex-col items-center justify-center">
       <div class="flex flex-col items-center justify-center">
@@ -46,6 +59,7 @@ export default {
     </div>
   </div>
   <div v-else>
+    <!-- <user-connection v-if="!mainStore.user.id" /> -->
     <VoteCards
       :available-votes="[
         '0',
@@ -64,9 +78,14 @@ export default {
     />
     <div class="mx-auto max-w-3xl">
       <TheButtons />
-      <LoadingTable v-if="!allVoter" />
-      <TheTable v-else :voters="allVoter" />
-      <TheObservers :observers="allObserver" />
+      <!-- <div v-if="!voteRevealed"> -->
+      <LoadingTable v-if="!users" />
+      <TheTable v-else :voters="voters" />
+      <TheObservers :observers="observers" />
+      <!-- </div> -->
+      <!-- <div v-else>
+        <p>Vote has been revelead!</p>
+      </div> -->
     </div>
   </div>
 </template>

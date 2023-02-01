@@ -1,28 +1,46 @@
 <script setup lang='ts'>
-import { child, ref as dbRef, get, getDatabase } from 'firebase/database'
-import { useMainStore } from '../stores/main'
-// import { generateID } from '../composables/generateIDs'
+import { addDoc, collection, doc, getDoc, getFirestore } from 'firebase/firestore'
+import { RouterLink } from 'vue-router'
 
 const mainStore = useMainStore()
-const sessionID = ref(mainStore.session.id)
-const username = ref(mainStore.user.name)
-
 const router = useRouter()
-// const { newUserID } = generateID()
+const db = getFirestore()
 
-// replace dash with slash in sessionID
-const idurl = computed(() => sessionID.value.replace(/-/g, '/'))
+async function retrieveUserFromDB() {
+  const docRef = doc(db, mainStore.session.id, mainStore.user.id)
+  const docSnap = await getDoc(docRef)
 
-function sessionLookup() {
-  const reference = dbRef(getDatabase())
-  get(child(reference, sessionID.value)).then((snapshot) => {
-    if (snapshot.exists())
-      router.push(idurl.value)
-    else
-      console.log('No data available')
-  }).catch((error) => {
-    console.error(error)
-  })
+  if (docSnap.exists()) {
+    console.log('Document data:', docSnap.data(), docSnap.id)
+    return { data: docSnap.data(), id: docSnap.id }
+  }
+  else {
+    console.log('User not found!')
+  }
+}
+
+async function joinSession() {
+  const retrievedUser = await retrieveUserFromDB()
+  if (!retrievedUser) {
+    console.log('Creating new user!')
+    const collectionRef = collection(db, mainStore.session.id)
+    const userDocRef = await addDoc(collectionRef, {
+      name: mainStore.user.name,
+      voteValue: null,
+      isObserver: mainStore.user.isObserver,
+      lastVoteOn: null,
+    })
+    mainStore.user.id = userDocRef.id
+  }
+  else {
+    console.log('User found!')
+    // TODO: Show modal to ask if user wants to retrieve data from DB
+    // TRUE: Retrieve data from DB, FALSE: Create new user
+    mainStore.user.name = retrievedUser.data.name
+    mainStore.user.isObserver = retrievedUser.data.isObserver
+    mainStore.user.id = retrievedUser.id
+  }
+  router.push(`/session/${mainStore.session.id}`)
 }
 </script>
 
@@ -43,15 +61,15 @@ function sessionLookup() {
 
     <div class="mx-auto mt-8 w-full max-w-md">
       <div class="rounded-lg border border-zinc-200 py-8 px-10 shadow-xl dark:border-zinc-700/50">
-        <form class="space-y-6" @submit.prevent="sessionLookup">
+        <form class="space-y-6" @submit.prevent="joinSession">
           <div>
             <label for="id" class="block text-left text-sm font-medium">Session ID</label>
             <div class="mt-1">
-              <input id="id" v-model="sessionID" name="id" type="text" required class="block w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none dark:border-zinc-700 dark:bg-zinc-800 dark:focus:border-indigo-500">
+              <input id="id" v-model="mainStore.session.id" name="id" type="text" required class="block w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none dark:border-zinc-700 dark:bg-zinc-800 dark:focus:border-indigo-500">
             </div>
             <label for="username" class="mt-5 block text-left text-sm font-medium">Name</label>
             <div class="mt-1">
-              <input id="username" v-model="username" name="username" type="text" required class="block w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none dark:border-zinc-700 dark:bg-zinc-800 dark:focus:border-indigo-500">
+              <input id="username" v-model="mainStore.user.name" name="username" type="text" required class="block w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none dark:border-zinc-700 dark:bg-zinc-800 dark:focus:border-indigo-500">
             </div>
           </div>
 

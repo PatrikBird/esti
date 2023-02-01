@@ -2,6 +2,7 @@
 import type { User } from '../types'
 
 const props = defineProps<{ observers?: User[] }>()
+const mainStore = useMainStore()
 </script>
 
 <template>
@@ -19,15 +20,18 @@ const props = defineProps<{ observers?: User[] }>()
       y: 1,
     }"
   >
-    <div v-for="person in observers" :key="person.id" class="relative flex select-none items-center space-x-2 rounded-lg border border-zinc-300 px-6 py-5 shadow-sm dark:border-zinc-700 dark:bg-zinc-800">
+    <div
+      v-for="user in observers" :key="user.id"
+      class="relative flex select-none items-center space-x-2 rounded-lg border border-zinc-300 px-6 py-5 shadow-sm dark:border-zinc-700 dark:bg-zinc-800"
+    >
       <div class="shrink-0">
         <icon:mdi:eye class="h-6 w-6" />
       </div>
       <div class="min-w-0 flex-1">
         <div href="#">
           <span class="absolute inset-0" aria-hidden="true" />
-          <p class="truncate text-sm font-medium">
-            {{ person.name }}
+          <p :class="user.id === mainStore.user.id && 'text-emerald-600'" class="truncate text-sm font-medium">
+            {{ user.name }}
           </p>
         </div>
       </div>

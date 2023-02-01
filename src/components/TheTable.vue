@@ -3,6 +3,8 @@ import type { User } from '../types'
 
 const props = defineProps<{ voters?: User[] }>()
 
+const mainStore = useMainStore()
+
 const isEvenClasses = computed(() => ({
   'bg-zinc-100': true,
   'dark:bg-zinc-700/50': true,
@@ -28,15 +30,17 @@ const isEvenClasses = computed(() => ({
             </tr>
           </thead>
           <tbody class="divide-y divide-zinc-200 dark:divide-zinc-700">
-            <tr v-for="(user, idx) in voters" :key="user.id" :class="idx % 2 && isEvenClasses">
-              <td class="whitespace-nowrap p-2 text-right text-sm">
+            <tr v-for="(user, idx) in voters" :key="user.id" :class="idx as number % 2 && isEvenClasses">
+              <td
+                class="whitespace-nowrap p-2 text-right text-sm"
+                :class="user.id === mainStore.user.id && 'text-emerald-600'"
+              >
                 {{ user.name }}
               </td>
               <td class="whitespace-nowrap p-2 text-center text-sm">
-                <!-- {{ user.voteValue }} -->
-                <icon:line-md:circle class="inline-block h-5 w-5 text-amber-500" />
-                <!-- <icon:line-md:circle-to-confirm-circle-transition class="inline-block h-5 w-5 text-emerald-500" />
-                <icon:line-md:confirm-circle-to-circle-transition class="inline-block h-5 w-5 text-amber-500" /> -->
+                <icon:line-md:circle v-if="!user.voteValue" class="inline-block h-5 w-5 text-amber-500" />
+                <icon:line-md:circle-to-confirm-circle-transition v-else class="inline-block h-5 w-5 text-emerald-500" />
+                <!-- <icon:line-md:confirm-circle-to-circle-transition class="inline-block h-5 w-5 text-amber-500" /> -->
               </td>
               <td class="text-center">
                 <icon:ic:baseline-settings class="inline-block h-5 w-5 cursor-pointer" />
