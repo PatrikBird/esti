@@ -15,13 +15,13 @@ export interface User {
 }
 
 export interface SessionState {
-  createdOn: TimeStamp
+  // createdOn: TimeStamp
   isVoteRevealed: boolean
   lastRevealOn: string | null
   lastResetOn: string | null
 }
 
-interface TimeStamp {
-  seconds: number
-  nanoseconds: number
-}
+// interface TimeStamp {
+//   seconds: number
+//   nanoseconds: number
+// }
