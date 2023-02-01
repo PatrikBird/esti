@@ -3,6 +3,8 @@ import type { User } from '../types'
 
 const props = defineProps<{ voters?: User[] }>()
 
+const mainStore = useMainStore()
+
 const isEvenClasses = computed(() => ({
   'bg-zinc-100': true,
   'dark:bg-zinc-700/50': true,
@@ -28,8 +30,11 @@ const isEvenClasses = computed(() => ({
             </tr>
           </thead>
           <tbody class="divide-y divide-zinc-200 dark:divide-zinc-700">
-            <tr v-for="(user, idx) in voters" :key="idx" :class="idx as number % 2 && isEvenClasses">
-              <td class="whitespace-nowrap p-2 text-right text-sm">
+            <tr v-for="(user, idx) in voters" :key="user.id" :class="idx as number % 2 && isEvenClasses">
+              <td
+                class="whitespace-nowrap p-2 text-right text-sm"
+                :class="user.id === mainStore.user.id && 'text-emerald-600'"
+              >
                 {{ user.name }}
               </td>
               <td class="whitespace-nowrap p-2 text-center text-sm">

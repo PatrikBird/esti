@@ -8,6 +8,7 @@ export interface SessionData {
 }
 
 export interface User {
+  id: string
   isObserver: boolean
   lastVoteOn: string | null
   name: string
