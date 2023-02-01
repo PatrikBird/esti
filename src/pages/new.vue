@@ -1,5 +1,4 @@
 <script setup lang='ts'>
-// import { ref as dbRef, getDatabase, push } from 'firebase/database'
 import { Timestamp, addDoc, collection, doc, getFirestore, setDoc } from 'firebase/firestore'
 
 const router = useRouter()
@@ -32,29 +31,6 @@ async function writeData() {
   mainStore.user.id = userDocRef.id
   router.push(`/session/${mainStore.session.id}`)
 }
-
-// function writeData() {
-//   const db = getDatabase()
-//   const rootRef = dbRef(db)
-
-//   mainStore.session.id = push(rootRef, {
-//     sessionState: {
-//       isRevealed: false,
-//       lastVoteReveal: 'null',
-//       lastVoteReset: 'null',
-//     },
-//   }).key!.toString()
-
-//   const usersRef = dbRef(db, `${mainStore.session.id}/users`)
-//   mainStore.user.id = push(usersRef, {
-//     name: mainStore.user.name,
-//     voteValue: 'null',
-//     isObserver: mainStore.user.isObserver,
-//     lastVote: 'null',
-//   }).key!.toString()
-
-//   router.push(`/session/${mainStore.session.id}`)
-// }
 </script>
 
 <template>
