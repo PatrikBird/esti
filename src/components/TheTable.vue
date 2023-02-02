@@ -33,12 +33,12 @@ const isEvenClasses = computed(() => ({
             <tr v-for="(user, idx) in voters" :key="user.id" :class="idx as number % 2 && isEvenClasses">
               <td
                 class="whitespace-nowrap p-2 text-right text-sm"
-                :class="user.id === mainStore.user.id && 'text-emerald-600'"
+                :class="user.id === mainStore.user.id && 'text-emerald-500'"
               >
                 {{ user.name }}
               </td>
               <td class="whitespace-nowrap p-2 text-center text-sm">
-                <icon:line-md:circle v-if="!user.voteValue" class="inline-block h-5 w-5 text-amber-500" />
+                <icon:line-md:confirm-circle-to-circle-transition v-if="!user.voteValue" class="inline-block h-5 w-5 text-amber-500" />
                 <icon:line-md:circle-to-confirm-circle-transition v-else class="inline-block h-5 w-5 text-emerald-500" />
                 <!-- <icon:line-md:confirm-circle-to-circle-transition class="inline-block h-5 w-5 text-amber-500" /> -->
               </td>

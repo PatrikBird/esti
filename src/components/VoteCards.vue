@@ -1,8 +1,15 @@
 <script setup lang='ts'>
-import { doc, getFirestore, updateDoc } from 'firebase/firestore'
-import type { Ref } from 'vue'
+import { collection, doc, getFirestore, query, updateDoc, where } from 'firebase/firestore'
+import { useCollection, useDocument } from 'vuefire'
+import type { SessionState, User } from '../types'
 
 const props = defineProps<{ availableVotes: string[]; coffee: boolean }>()
+
+const mainStore = useMainStore()
+const db = getFirestore()
+const route = useRoute()
+const collectionID = ref(route.params.sessionID as string)
+
 const votes = computed(() => {
   if (props.coffee)
     return [...props.availableVotes, 'coffee']
@@ -10,16 +17,40 @@ const votes = computed(() => {
     return props.availableVotes
 })
 
-// TODO: create watcher to reset selectedVote when Reset button is clicked
-const mainStore = useMainStore()
-const db = getFirestore()
-const route = useRoute()
-const collectionID = ref(route.params.sessionID as string)
-const selectedVote: Ref<string | undefined > = ref()
+// TODO: refactor hacky solution to avoid running watcher on initial load
+const lastResetOnUpdated = ref(false)
+
+const selectedVote = ref()
 function selectVote(vote: string) {
   selectedVote.value = vote
   updateDoc(doc(db, collectionID.value, mainStore.user.id), { voteValue: selectedVote.value })
+  lastResetOnUpdated.value = false
 }
+
+const { data: users, pending: usersPending, error: usersError } = useCollection<User>(
+  query(
+    collection(db, collectionID.value),
+    where('name', '!=', null)))
+
+const getSelectedVoteFromDB = computed(() => {
+  return users.value.find(u => u.id === mainStore.user.id)?.voteValue
+})
+watch(getSelectedVoteFromDB, () => {
+  if (!usersPending.value)
+    selectedVote.value = getSelectedVoteFromDB.value
+})
+
+const { data: sessionState, pending: statePending, error: stateError } = useDocument<SessionState>(
+  doc(collection(db, collectionID.value), 'sessionState'))
+
+const lastResetOn = computed(() => sessionState.value?.lastResetOn)
+watch(lastResetOn, () => {
+  if (!statePending.value && !lastResetOnUpdated.value) {
+    console.log('Reset vote visuals')
+    lastResetOnUpdated.value = true
+    selectedVote.value = undefined
+  }
+})
 </script>
 
 <template>
