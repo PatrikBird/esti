@@ -78,14 +78,14 @@ export default {
     />
     <div class="mx-auto max-w-3xl">
       <TheButtons />
-      <!-- <div v-if="!voteRevealed"> -->
-      <LoadingTable v-if="!users" />
-      <TheTable v-else :voters="voters" />
-      <TheObservers :observers="observers" />
-      <!-- </div> -->
-      <!-- <div v-else>
-        <p>Vote has been revelead!</p>
-      </div> -->
+      <div v-if="!voteRevealed">
+        <LoadingTable v-if="!users" />
+        <TheTable v-else :voters="voters" />
+        <TheObservers :observers="observers" />
+      </div>
+      <div v-else>
+        <test-me :voters="voters" />
+      </div>
     </div>
   </div>
 </template>

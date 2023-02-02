@@ -12,7 +12,21 @@ const isEvenClasses = computed(() => ({
 </script>
 
 <template>
-  <div class="mt-8 flex flex-col">
+  <div
+    v-motion
+    class="mt-8 flex flex-col" :initial="{
+      opacity: 0,
+      y: 100,
+    }"
+    :enter="{
+      opacity: 1,
+      y: 0,
+    }"
+    :leave="{
+      opacity: 0,
+      y: 1,
+    }"
+  >
     <div class="inline-block min-w-full py-2 align-middle">
       <div class="overflow-hidden shadow ring-1 ring-black/5 dark:ring-zinc-700 md:rounded-lg">
         <table class="min-w-full divide-y divide-zinc-300 dark:divide-zinc-700 dark:bg-zinc-800">

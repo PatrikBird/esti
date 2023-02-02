@@ -7,11 +7,15 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    AverageVote: typeof import('./components/AverageVote.vue')['default']
     ComboBox: typeof import('./components/ComboBox.vue')['default']
     'Icon:ic:baselineSettings': typeof import('~icons/ic/baseline-settings')['default']
     'Icon:lineMd:chevronLeft': typeof import('~icons/line-md/chevron-left')['default']
     'Icon:lineMd:circle': typeof import('~icons/line-md/circle')['default']
     'Icon:lineMd:circleToConfirmCircleTransition': typeof import('~icons/line-md/circle-to-confirm-circle-transition')['default']
+    'Icon:lineMd:coffee': typeof import('~icons/line-md/coffee')['default']
+    'Icon:lineMd:coffeeFilled': typeof import('~icons/line-md/coffee-filled')['default']
+    'Icon:lineMd:coffeeLeft': typeof import('~icons/line-md/coffee-left')['default']
     'Icon:lineMd:confirmCircleToCircleTransition': typeof import('~icons/line-md/confirm-circle-to-circle-transition')['default']
     'Icon:lineMd:githubLoop': typeof import('~icons/line-md/github-loop')['default']
     'Icon:lineMd:loadingTwotoneLoop': typeof import('~icons/line-md/loading-twotone-loop')['default']
@@ -23,9 +27,11 @@ declare module '@vue/runtime-core' {
     'Icon:mdi:eye': typeof import('~icons/mdi/eye')['default']
     ItsToast: typeof import('./components/ItsToast.vue')['default']
     LoadingTable: typeof import('./components/LoadingTable.vue')['default']
+    ProgressBar: typeof import('./components/ProgressBar.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SessionNotFound: typeof import('./components/SessionNotFound.vue')['default']
+    TestMe: typeof import('./components/TestMe.vue')['default']
     TheButtons: typeof import('./components/TheButtons.vue')['default']
     TheNavbar: typeof import('./components/TheNavbar.vue')['default']
     TheObservers: typeof import('./components/TheObservers.vue')['default']
@@ -33,5 +39,6 @@ declare module '@vue/runtime-core' {
     TheToggle: typeof import('./components/TheToggle.vue')['default']
     UserConnection: typeof import('./components/UserConnection.vue')['default']
     VoteCards: typeof import('./components/VoteCards.vue')['default']
+    VoteResults: typeof import('./components/VoteResults.vue')['default']
   }
 }

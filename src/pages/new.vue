@@ -21,12 +21,14 @@ async function writeData() {
     voteValue: null,
     isObserver: mainStore.user.isObserver,
     lastVoteOn: null,
+    joinedOn: Timestamp.fromDate(new Date()),
   })
   await addDoc(collectionRef, {
     name: 'another user',
     voteValue: null,
     isObserver: true,
     lastVoteOn: null,
+    joinedOn: Timestamp.fromDate(new Date()),
   })
   mainStore.user.id = userDocRef.id
   router.push(`/session/${mainStore.session.id}`)
