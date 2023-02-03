@@ -84,7 +84,7 @@ export default {
         <TheObservers :observers="observers" />
       </div>
       <div v-else>
-        <test-me :voters="voters" />
+        <vote-results :voters="voters" />
       </div>
     </div>
   </div>
