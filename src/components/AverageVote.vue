@@ -25,10 +25,12 @@ const averageVoteValue = computed(() => {
     <p class="ml-2 font-medium text-zinc-900 dark:text-white">
       Average
     </p>
-    <span>&nbsp;translates to...</span>
+    <span>&nbsp;<icon:line-md:arrow-left class="inline-block rotate-180" />
+      value
+    </span>
     <span class="mx-2 h-1 w-1 rounded-full bg-zinc-900 dark:bg-zinc-500" />
     <p class="text-sm font-medium text-zinc-500 dark:text-zinc-400">
-      {{ voters?.length }} votes
+      based on {{ voters?.length }} votes
     </p>
   </div>
 </template>

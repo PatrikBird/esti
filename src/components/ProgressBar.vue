@@ -1,10 +1,25 @@
 <script setup lang='ts'>
-// import type { StyleValue } from 'vue'
-import type { User } from '../types'
+const props = defineProps<{ name: string; voteValue: string | null; maxVote?: number }>()
 
-const props = defineProps<{ voters?: User[] }>()
+const val = computed(() =>
+  (props.voteValue === '?' || props.voteValue === 'break') ? '100' : props.voteValue,
+)
 
-// const progressWidth = computed(() => 80 as unknown as StyleValue)
+const progressWidth = computed(() => {
+  if (val.value === null)
+    return 'w-0'
+  if (val.value === 'coffee' || val.value === '?')
+    return 'w-100'
+
+  // if (props.maxVote)
+  //   return `w-${Math.round((+val.value / props.maxVote) * 100)}%`
+
+  return `w-[${val.value}%]`
+})
+
+watchEffect(() => {
+  console.log('progressWidth', progressWidth.value)
+})
 </script>
 
 <template>
@@ -13,19 +28,21 @@ const props = defineProps<{ voters?: User[] }>()
       45%
     </div>
   </div> -->
-  <dl v-for="user in voters" :key="user.id">
-    <dt class="text-sm font-medium text-zinc-500 dark:text-zinc-400">
-      {{ user.name }}
-      <!-- TODO: move name on front of progress bar -->
+  <dl>
+    <dt class="pt-2 text-sm font-medium text-zinc-500 dark:text-zinc-400 sm:pt-0">
+      {{ name }}
     </dt>
     <dd class="mb-3 flex items-center">
       <div class="mr-2 h-2.5 w-full rounded bg-zinc-200 dark:bg-zinc-700">
-        <div class="h-2.5 rounded bg-indigo-600 dark:bg-indigo-500" style="width: 45%" />
+        <div
+          :class="progressWidth"
+          class="h-2.5 rounded bg-indigo-600 dark:bg-indigo-500"
+        />
       </div>
-      <span v-if="user.voteValue === 'coffee'" class="text-sm font-medium text-zinc-500 dark:text-zinc-400">
+      <span v-if="voteValue === 'coffee'" class="text-sm font-medium text-zinc-500 dark:text-zinc-400">
         <icon:line-md:coffee-filled />
       </span>
-      <span v-else class="text-sm font-medium text-zinc-500 dark:text-zinc-400">{{ user.voteValue }}</span>
+      <span v-else class="text-sm font-medium text-zinc-500 dark:text-zinc-400">{{ voteValue }}</span>
     </dd>
   </dl>
 </template>

@@ -6,7 +6,11 @@ const props = defineProps<{ voters?: User[] }>()
 
 <template>
   <average-vote :voters="voters" />
-  <div class="gap-y-2 gap-x-8 sm:grid sm:grid-cols-2">
-    <progress-bar :voters="voters" />
+  <div class="sm:grid sm:grid-cols-2 sm:gap-y-2 sm:gap-x-8">
+    <progress-bar
+      v-for="{ id, name, voteValue } in voters" :key="id"
+      :name="name"
+      :vote-value="voteValue"
+    />
   </div>
 </template>
