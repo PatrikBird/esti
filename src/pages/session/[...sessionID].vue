@@ -35,11 +35,11 @@ export default {
 </script>
 
 <template>
-  <div>voters: {{ voters }}</div>
+  <!-- <div>voters: {{ voters }}</div>
   <br>
   <div>observers: {{ observers }}</div>
   <br>
-  <div>state: {{ sessionState }}</div>
+  <div>state: {{ sessionState }}</div> -->
   <div v-if="stateError">
     <SessionNotFound />
   </div>
@@ -59,7 +59,7 @@ export default {
     </div>
   </div>
   <div v-else>
-    <!-- <user-connection v-if="!mainStore.user.id" /> -->
+    <user-connection v-if="!mainStore.user.id" :users="users" />
     <VoteCards
       :available-votes="[
         '0',

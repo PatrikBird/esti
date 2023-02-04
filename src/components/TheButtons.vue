@@ -24,7 +24,7 @@ const mainStore = useMainStore()
 const collectionRef = collection(db, mainStore.session.id)
 async function addObserver() {
   await addDoc(collectionRef, {
-    name: 'another user',
+    name: `observer${Math.floor(Math.random() * 100)}`,
     voteValue: null,
     isObserver: true,
     lastVoteOn: null,

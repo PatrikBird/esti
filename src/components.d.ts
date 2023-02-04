@@ -19,6 +19,8 @@ declare module '@vue/runtime-core' {
     'Icon:lineMd:loadingTwotoneLoop': typeof import('~icons/line-md/loading-twotone-loop')['default']
     'Icon:lineMd:sunnyFilledLoop': typeof import('~icons/line-md/sunny-filled-loop')['default']
     'Icon:lineMd:sunnyFilledLoopToMoonFilledLoopTransition': typeof import('~icons/line-md/sunny-filled-loop-to-moon-filled-loop-transition')['default']
+    'Icon:mdi:accountQuestion': typeof import('~icons/mdi/account-question')['default']
+    'Icon:mdi:checkCircleOutline': typeof import('~icons/mdi/check-circle-outline')['default']
     'Icon:mdi:close': typeof import('~icons/mdi/close')['default']
     'Icon:mdi:coffee': typeof import('~icons/mdi/coffee')['default']
     'Icon:mdi:diameterVariant': typeof import('~icons/mdi/diameter-variant')['default']
