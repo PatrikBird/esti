@@ -47,7 +47,7 @@ watchEffect(() => {
         class="relative w-full cursor-default overflow-hidden rounded-lg bg-white text-left shadow-md focus:outline-none sm:text-sm"
       >
         <ComboboxInput
-          class="w-full border-none py-2 pl-3 pr-10 text-sm leading-5 text-zinc-900 focus:ring-0"
+          class="w-full border-none py-2 pl-3 pr-10 text-sm leading-5 focus:ring-0"
           :display-value="(person) => person.name"
           @change="query = $event.target.value"
         />
@@ -64,11 +64,11 @@ watchEffect(() => {
         @after-leave="query = ''"
       >
         <ComboboxOptions
-          class="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm"
+          class="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none dark:bg-zinc-700 sm:text-sm"
         >
           <div
             v-if="filteredPeople.length === 0 && query !== ''"
-            class="relative cursor-default select-none py-2 px-4 text-zinc-700"
+            class="relative cursor-default select-none py-2 px-4 text-zinc-700 dark:text-white"
           >
             Nothing found.
           </div>
@@ -83,8 +83,8 @@ watchEffect(() => {
             <li
               class="relative cursor-default select-none py-2 pl-10 pr-4"
               :class="{
-                'bg-emerald-500 text-white': active,
-                'text-zinc-900': !active,
+                'bg-emerald-600 text-white': active,
+                'text-zinc-900, dark:text-white': !active,
               }"
             >
               <span
@@ -96,7 +96,7 @@ watchEffect(() => {
               <span
                 v-if="selected"
                 class="absolute inset-y-0 left-0 flex items-center pl-3"
-                :class="{ 'text-white': active, 'text-emerald-500': !active }"
+                :class="{ 'text-white': active, 'text-emerald-600': !active }"
               >
                 <icon:mdi:check-circle-outline class="h-5 w-5" />
               </span>
