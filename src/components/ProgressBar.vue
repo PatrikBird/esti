@@ -39,10 +39,12 @@ watchEffect(() => {
           class="h-2.5 rounded bg-indigo-600 dark:bg-indigo-500"
         />
       </div>
-      <span v-if="voteValue === 'coffee'" class="text-sm font-medium text-zinc-500 dark:text-zinc-400">
-        <icon:line-md:coffee-filled />
-      </span>
-      <span v-else class="text-sm font-medium text-zinc-500 dark:text-zinc-400">{{ voteValue }}</span>
+      <div class="float-right w-1/12">
+        <span v-if="voteValue === 'coffee'" class="text-center text-lg font-medium text-zinc-500 dark:text-zinc-400">
+          <icon:mdi:coffee />
+        </span>
+        <span v-else class="text-sm font-medium text-zinc-500 dark:text-zinc-400">{{ voteValue }}</span>
+      </div>
     </dd>
   </dl>
 </template>
