@@ -1,8 +1,14 @@
 <script setup lang="ts">
+import { deleteDoc, doc, getFirestore } from 'firebase/firestore'
 import type { User } from '../types'
 
 const props = defineProps<{ observers?: User[] }>()
 const mainStore = useMainStore()
+
+const db = getFirestore()
+function removeUser(userID: string) {
+  deleteDoc(doc(db, mainStore.session.id, userID))
+}
 </script>
 
 <template>
@@ -37,7 +43,7 @@ const mainStore = useMainStore()
       </div>
       <div class="absolute top-0 right-0">
         <button class="opacity-75 hover:opacity-100">
-          <icon:mdi:close class="h-4 w-4" />
+          <icon:mdi:close class="h-4 w-4" @click="removeUser(user.id)" />
         </button>
       </div>
     </div>

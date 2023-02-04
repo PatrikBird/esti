@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { deleteDoc, doc, getFirestore } from 'firebase/firestore'
 import type { User } from '../types'
 
 const props = defineProps<{ voters?: User[] }>()
@@ -9,6 +10,11 @@ const isEvenClasses = computed(() => ({
   'bg-zinc-100': true,
   'dark:bg-zinc-700/50': true,
 }))
+
+const db = getFirestore()
+function removeUser(userID: string) {
+  deleteDoc(doc(db, mainStore.session.id, userID))
+}
 </script>
 
 <template>
@@ -57,7 +63,13 @@ const isEvenClasses = computed(() => ({
                 <!-- <icon:line-md:confirm-circle-to-circle-transition class="inline-block h-5 w-5 text-amber-500" /> -->
               </td>
               <td class="text-center">
-                <icon:ic:baseline-settings class="inline-block h-5 w-5 cursor-pointer" />
+                <button
+                  type="button"
+                  class="rounded-md bg-black/20 px-2 py-1 text-sm font-medium text-white hover:bg-black/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75"
+                  @click="removeUser(user.id)"
+                >
+                  <icon:mdi:delete class="inline-block h-5 w-5 cursor-pointer" />
+                </button>
               </td>
             </tr>
           </tbody>
