@@ -7,51 +7,54 @@ import {
   ComboboxOptions,
   TransitionRoot,
 } from '@headlessui/vue'
+import type { Ref } from 'vue'
+import type { Person, User } from '../types'
 
-const people = [
-  { id: 1, name: 'Wade Cooper' },
-  { id: 2, name: 'Arlene Mccoy' },
-  { id: 3, name: 'Devon Webb' },
-  { id: 4, name: 'Tom Cook' },
-  { id: 5, name: 'Tanya Fox' },
-  { id: 6, name: 'Hellen Schmidt' },
-]
+const props = defineProps<{ users: User[] }>()
+const emit = defineEmits<{
+  (e: 'selectedChanged', person: Person): void
+}>()
 
-const selected = ref(people[0])
+const people = computed<Person[]>(() => {
+  return props.users.map((u) => {
+    return { id: u.id, name: u.name }
+  })
+})
+
+const selected: Ref<Person> = ref(people.value[0])
 const query = ref('')
 
-const filteredPeople = computed(() =>
+const filteredPeople = computed<Person[]>(() =>
   query.value === ''
-    ? people
-    : people.filter(person =>
-      person.name
+    ? people.value
+    : people.value.filter(user =>
+      user.name
         .toLowerCase()
         .replace(/\s+/g, '')
         .includes(query.value.toLowerCase().replace(/\s+/g, '')),
     ),
 )
+
+watchEffect(() => {
+  emit('selectedChanged', selected.value)
+})
 </script>
 
 <template>
-  <!-- <div class="fixed top-16 w-72"> -->
   <Combobox v-model="selected">
     <div class="relative mt-1">
       <div
-        class="relative w-full cursor-default overflow-hidden rounded-lg bg-white text-left shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75 focus-visible:ring-offset-2 focus-visible:ring-offset-teal-300 sm:text-sm"
+        class="relative w-full cursor-default overflow-hidden rounded-lg bg-white text-left shadow-md focus:outline-none sm:text-sm"
       >
         <ComboboxInput
-          class="w-full border-none py-2 pl-3 pr-10 text-sm leading-5 text-gray-900 focus:ring-0"
+          class="w-full border-none py-2 pl-3 pr-10 text-sm leading-5 text-zinc-900 focus:ring-0"
           :display-value="(person) => person.name"
           @change="query = $event.target.value"
         />
         <ComboboxButton
           class="absolute inset-y-0 right-0 flex items-center pr-2"
         >
-          <!-- <ChevronUpDownIcon
-              class="h-5 w-5 text-gray-400"
-              aria-hidden="true"
-            /> -->
-          <icon:line-md:chevron-left class="rotate-90" />
+          <icon:line-md:chevron-left class="-rotate-90" />
         </ComboboxButton>
       </div>
       <TransitionRoot
@@ -61,11 +64,11 @@ const filteredPeople = computed(() =>
         @after-leave="query = ''"
       >
         <ComboboxOptions
-          class="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm"
+          class="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm"
         >
           <div
             v-if="filteredPeople.length === 0 && query !== ''"
-            class="relative cursor-default select-none py-2 px-4 text-gray-700"
+            class="relative cursor-default select-none py-2 px-4 text-zinc-700"
           >
             Nothing found.
           </div>
@@ -80,8 +83,8 @@ const filteredPeople = computed(() =>
             <li
               class="relative cursor-default select-none py-2 pl-10 pr-4"
               :class="{
-                'bg-teal-600 text-white': active,
-                'text-gray-900': !active,
+                'bg-emerald-500 text-white': active,
+                'text-zinc-900': !active,
               }"
             >
               <span
@@ -93,9 +96,8 @@ const filteredPeople = computed(() =>
               <span
                 v-if="selected"
                 class="absolute inset-y-0 left-0 flex items-center pl-3"
-                :class="{ 'text-white': active, 'text-teal-600': !active }"
+                :class="{ 'text-white': active, 'text-emerald-500': !active }"
               >
-                <!-- <CheckIcon class="h-5 w-5" aria-hidden="true" /> -->
                 <icon:mdi:check-circle-outline class="h-5 w-5" />
               </span>
             </li>
@@ -104,5 +106,4 @@ const filteredPeople = computed(() =>
       </TransitionRoot>
     </div>
   </Combobox>
-  <!-- </div> -->
 </template>

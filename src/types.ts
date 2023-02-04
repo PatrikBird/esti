@@ -8,18 +8,21 @@ export interface SessionData {
   sessionState: SessionState
 }
 
-export interface User {
-  id: string
-  isObserver: boolean
-  lastVoteOn: string | null
-  name: string
-  voteValue: string | null
-  joinedOn: Timestamp
-}
-
 export interface SessionState {
   createdOn: Timestamp
   isVoteRevealed: boolean
   lastRevealOn: string | null
   lastResetOn: string | null
+}
+
+export interface Person {
+  id: string
+  name: string
+}
+
+export interface User extends Person {
+  isObserver: boolean
+  lastVoteOn: string | null
+  voteValue: string | null
+  joinedOn: Timestamp
 }

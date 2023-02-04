@@ -26,6 +26,7 @@ declare module '@vue/runtime-core' {
     'Icon:mdi:diameterVariant': typeof import('~icons/mdi/diameter-variant')['default']
     'Icon:mdi:eye': typeof import('~icons/mdi/eye')['default']
     ItsToast: typeof import('./components/ItsToast.vue')['default']
+    JoinWithNewUser: typeof import('./components/JoinWithNewUser.vue')['default']
     LoadingTable: typeof import('./components/LoadingTable.vue')['default']
     ProgressBar: typeof import('./components/ProgressBar.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
