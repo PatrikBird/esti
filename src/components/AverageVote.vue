@@ -15,6 +15,21 @@ const averageVoteValue = computed(() => {
   if (votes.value)
     return (votes.value.reduce((sum, v) => sum + v, 0) / votes.value.length).toFixed(1)
 })
+
+const availableVotes: string[] = inject('availableVotes')!
+const availableVotesNum = computed(() => availableVotes.map(v => +v))
+
+const closestAvailableVote = computed(() => {
+  const availableVotes = availableVotesNum.value
+  const average = +averageVoteValue.value!
+  if (average === null)
+    return null
+
+  const closest = availableVotes.reduce((acc, v) =>
+    Math.abs(v - average) < Math.abs(acc - average) ? v : acc,
+  )
+  return closest.toString()
+})
 </script>
 
 <template>
@@ -25,9 +40,9 @@ const averageVoteValue = computed(() => {
     <p class="ml-2 font-medium text-zinc-900 dark:text-white">
       Average
     </p>
-    <!-- <span>&nbsp;<icon:line-md:arrow-left class="inline-block rotate-180" />
-      value
-    </span> -->
+    <span>&nbsp;<icon:line-md:arrow-left class="inline-block rotate-180" />
+      {{ closestAvailableVote }}
+    </span>
     <span class="mx-2 h-1 w-1 rounded-full bg-zinc-900 dark:bg-zinc-500" />
     <p class="text-sm font-medium text-zinc-500 dark:text-zinc-400">
       based on {{ voters?.length }} votes

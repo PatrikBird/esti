@@ -30,6 +30,21 @@ const observers = computed(() => {
 const voteRevealed = computed(() => {
   return sessionState.value?.isVoteRevealed
 })
+
+const availableVotes = [
+  '0',
+  '1',
+  '2',
+  '3',
+  '5',
+  '8',
+  '13',
+  '20',
+  '40',
+  '100',
+  '?',
+]
+provide('availableVotes', availableVotes)
 </script>
 
 <script lang="ts">
@@ -65,19 +80,7 @@ export default {
   <div v-else>
     <user-connection v-if="!mainStore.user.id || userIDNotInDB" :users="users" />
     <VoteCards
-      :available-votes="[
-        '0',
-        '1',
-        '2',
-        '3',
-        '5',
-        '8',
-        '13',
-        '20',
-        '40',
-        '100',
-        '?',
-      ]"
+      :available-votes="availableVotes"
       :coffee="true"
     />
     <div class="mx-auto max-w-3xl">
