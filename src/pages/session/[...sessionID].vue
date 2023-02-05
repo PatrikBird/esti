@@ -62,17 +62,15 @@ export default {
   <div v-if="stateError">
     <SessionNotFound />
   </div>
-  <div v-else-if="statePending">
+  <div v-else-if="!statePending">
     <!-- Temp loader -->
     <div class="flex h-screen flex-col items-center justify-center">
       <div class="flex flex-col items-center justify-center">
-        <div class="flex h-12 w-12 items-center justify-center rounded-full bg-green-500">
-          <svg class="h-6 w-6 text-white" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-            <path d="M5 13l4 4L19 7" />
-          </svg>
+        <div class="flex h-12 w-12 items-center justify-center rounded-full">
+          <icon:line-md:loading-twotone-loop class="h-10 w-10" />
         </div>
-        <p class="mt-2 text-green-500">
-          Loading...
+        <p class="mt-2">
+          Just a sec...
         </p>
       </div>
     </div>
