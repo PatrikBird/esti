@@ -8,7 +8,8 @@ import {
   TransitionRoot,
 } from '@headlessui/vue'
 import type { Ref } from 'vue'
-import type { Person, User } from '~/types'
+import { Person } from '~/types'
+import type { User } from '~/types'
 
 const props = defineProps<{ users: User[] }>()
 const emit = defineEmits<{
@@ -48,7 +49,7 @@ watchEffect(() => {
       >
         <ComboboxInput
           class="w-full border-none py-2 pl-3 pr-10 text-sm leading-5 focus:ring-0"
-          :display-value="(person) => person.name"
+          :display-value="(person) => (person as Person).name"
           @change="query = $event.target.value"
         />
         <ComboboxButton
