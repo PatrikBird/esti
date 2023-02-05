@@ -5,7 +5,10 @@ import { db } from '~/modules/firebase'
 const router = useRouter()
 const mainStore = useMainStore()
 
+const formSending = ref(false)
+
 async function writeData() {
+  formSending.value = true
   mainStore.session.id = Date.now().toString()
   const collectionRef = collection(db, mainStore.session.id)
 
@@ -74,9 +77,11 @@ async function writeData() {
           <div>
             <button
               type="submit"
-              class="flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+              class="flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:bg-indigo-600/50 disabled:hover:bg-indigo-600/50"
+              :disabled="formSending"
             >
-              Create session
+              <icon:line-md:loading-twotone-loop v-if="formSending" class="mr-1 h-5 w-5" />
+              {{ formSending ? 'Loading...' : 'Create session' }}
             </button>
           </div>
         </form>
