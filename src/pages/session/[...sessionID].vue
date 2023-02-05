@@ -62,7 +62,7 @@ export default {
   <div v-if="stateError">
     <SessionNotFound />
   </div>
-  <div v-else-if="!statePending">
+  <div v-else-if="statePending">
     <!-- Temp loader -->
     <div class="flex h-screen flex-col items-center justify-center">
       <div class="flex flex-col items-center justify-center">
