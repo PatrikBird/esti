@@ -8,6 +8,8 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     AverageVote: typeof import('./components/AverageVote.vue')['default']
+    BuyMeACoffee: typeof import('./components/icons/BuyMeACoffee.vue')['default']
+    BuyMeACoffeeDark: typeof import('./components/icons/BuyMeACoffeeDark.vue')['default']
     ComboBox: typeof import('./components/ComboBox.vue')['default']
     'Icon:ic:baselineSettings': typeof import('~icons/ic/baseline-settings')['default']
     'Icon:lineMd:chevronLeft': typeof import('~icons/line-md/chevron-left')['default']

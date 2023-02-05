@@ -21,6 +21,15 @@
             >
               <icon:line-md:github-loop class="h-6 w-6" />
             </a>
+            <a
+              href="https://www.buymeacoffee.com/patbird"
+              target="_blank"
+              title="Buy Me A Coffee"
+              class="dark:text-primary-100 opacity-75 hover:opacity-100"
+            >
+              <BuyMeACoffeeDark v-if="isDark" />
+              <BuyMeACoffee v-else />
+            </a>
             <button
               class="dark:text-primary-100 opacity-75 hover:opacity-100" title="Toggle color mode"
               @click="toggleDark()"
