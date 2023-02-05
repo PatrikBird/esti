@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { deleteDoc, doc } from 'firebase/firestore'
-import type { User } from '../types'
-import { db } from '../modules/firebase'
+import { db } from '~/modules/firebase'
+import type { User } from '~/types'
 
+// eslint-disable-next-line unused-imports/no-unused-vars
 const props = defineProps<{ voters?: User[] }>()
 
 const mainStore = useMainStore()

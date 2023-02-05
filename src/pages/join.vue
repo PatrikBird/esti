@@ -1,7 +1,7 @@
 <script setup lang='ts'>
 import { addDoc, collection, doc, getDoc } from 'firebase/firestore'
 import { RouterLink } from 'vue-router'
-import { db } from '../modules/firebase'
+import { db } from '~/modules/firebase'
 
 const mainStore = useMainStore()
 const router = useRouter()

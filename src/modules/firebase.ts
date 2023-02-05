@@ -2,7 +2,7 @@ import { VueFire } from 'vuefire'
 import { initializeApp } from 'firebase/app'
 // import { connectDatabaseEmulator, getDatabase } from 'firebase/database'
 import { connectFirestoreEmulator, getFirestore } from 'firebase/firestore'
-import { type UserModule } from '../types'
+import { type UserModule } from '~/types'
 
 const firebaseApp = initializeApp({
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY! as string,

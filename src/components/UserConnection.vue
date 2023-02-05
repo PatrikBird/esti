@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
-import type { Person, User } from '../types'
+import type { Person, User } from '~/types'
 
 const props = defineProps<{ users: User[] }>()
 

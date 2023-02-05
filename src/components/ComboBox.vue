@@ -8,7 +8,7 @@ import {
   TransitionRoot,
 } from '@headlessui/vue'
 import type { Ref } from 'vue'
-import type { Person, User } from '../types'
+import type { Person, User } from '~/types'
 
 const props = defineProps<{ users: User[] }>()
 const emit = defineEmits<{
