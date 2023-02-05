@@ -3,6 +3,7 @@ import { ref } from 'vue'
 import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
 import type { Person, User } from '~/types'
 
+// eslint-disable-next-line unused-imports/no-unused-vars
 const props = defineProps<{ users: User[] }>()
 
 const open = ref(true)
