@@ -1,11 +1,11 @@
 <script setup lang='ts'>
-import { Timestamp, addDoc, collection, doc, getFirestore, setDoc } from 'firebase/firestore'
+import { Timestamp, addDoc, collection, doc, setDoc } from 'firebase/firestore'
+import { db } from '../modules/firebase'
 
 const router = useRouter()
 const mainStore = useMainStore()
 
 async function writeData() {
-  const db = getFirestore()
   mainStore.session.id = Date.now().toString()
   const collectionRef = collection(db, mainStore.session.id)
 

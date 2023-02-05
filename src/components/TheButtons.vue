@@ -1,7 +1,7 @@
 <script setup lang='ts'>
-import { addDoc, collection, doc, getDocs, getFirestore, serverTimestamp, updateDoc } from 'firebase/firestore'
+import { addDoc, collection, doc, getDocs, serverTimestamp, updateDoc } from 'firebase/firestore'
+import { db } from '../modules/firebase'
 
-const db = getFirestore()
 const route = useRoute()
 const collectionID = ref(route.params.sessionID as string)
 

@@ -1,10 +1,10 @@
 <script setup lang='ts'>
-import { addDoc, collection, doc, getDoc, getFirestore } from 'firebase/firestore'
+import { addDoc, collection, doc, getDoc } from 'firebase/firestore'
 import { RouterLink } from 'vue-router'
+import { db } from '../modules/firebase'
 
 const mainStore = useMainStore()
 const router = useRouter()
-const db = getFirestore()
 
 async function retrieveUserFromDB() {
   const docRef = doc(db, mainStore.session.id, mainStore.user.id)

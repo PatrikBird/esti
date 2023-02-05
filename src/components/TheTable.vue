@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { deleteDoc, doc, getFirestore } from 'firebase/firestore'
+import { deleteDoc, doc } from 'firebase/firestore'
 import type { User } from '../types'
+import { db } from '../modules/firebase'
 
 const props = defineProps<{ voters?: User[] }>()
 
@@ -11,7 +12,6 @@ const isEvenClasses = computed(() => ({
   'dark:bg-zinc-700/50': true,
 }))
 
-const db = getFirestore()
 function removeUser(userID: string) {
   deleteDoc(doc(db, mainStore.session.id, userID))
 }

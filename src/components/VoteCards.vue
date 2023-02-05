@@ -1,12 +1,12 @@
 <script setup lang='ts'>
-import { collection, doc, getFirestore, query, updateDoc, where } from 'firebase/firestore'
+import { collection, doc, query, updateDoc, where } from 'firebase/firestore'
 import { useCollection, useDocument } from 'vuefire'
 import type { SessionState, User } from '../types'
+import { db } from '../modules/firebase'
 
 const props = defineProps<{ availableVotes: string[]; coffee: boolean }>()
 
 const mainStore = useMainStore()
-const db = getFirestore()
 const route = useRoute()
 const collectionID = ref(route.params.sessionID as string)
 

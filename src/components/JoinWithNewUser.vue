@@ -1,8 +1,8 @@
 <script setup lang='ts'>
-import { Timestamp, addDoc, collection, getFirestore } from 'firebase/firestore'
+import { Timestamp, addDoc, collection } from 'firebase/firestore'
+import { db } from '../modules/firebase'
 
 const mainStore = useMainStore()
-const db = getFirestore()
 
 async function writeData() {
   const userDocRef = await addDoc(collection(db, mainStore.session.id), {

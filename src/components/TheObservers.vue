@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import { deleteDoc, doc, getFirestore } from 'firebase/firestore'
+import { deleteDoc, doc } from 'firebase/firestore'
 import type { User } from '../types'
+import { db } from '../modules/firebase'
 
+// eslint-disable-next-line unused-imports/no-unused-vars
 const props = defineProps<{ observers?: User[] }>()
 const mainStore = useMainStore()
 
-const db = getFirestore()
 function removeUser(userID: string) {
   deleteDoc(doc(db, mainStore.session.id, userID))
 }
