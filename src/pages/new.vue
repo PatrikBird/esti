@@ -6,11 +6,10 @@ const router = useRouter()
 const mainStore = useMainStore()
 
 async function writeData() {
-  console.log('writing data...')
-
   mainStore.session.id = Date.now().toString()
   const collectionRef = collection(db, mainStore.session.id)
 
+  console.log('sessionState writing...')
   await setDoc(doc(db, mainStore.session.id, 'sessionState'), {
     isVoteRevealed: false,
     lastRevealOn: null,
@@ -19,6 +18,7 @@ async function writeData() {
   })
   console.log('sessionState written')
 
+  console.log('user writing...')
   const userDocRef = await addDoc(collectionRef, {
     name: mainStore.user.name,
     voteValue: null,
