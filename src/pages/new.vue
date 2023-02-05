@@ -6,6 +6,8 @@ const router = useRouter()
 const mainStore = useMainStore()
 
 async function writeData() {
+  console.log('writing data...')
+
   mainStore.session.id = Date.now().toString()
   const collectionRef = collection(db, mainStore.session.id)
 
