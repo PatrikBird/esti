@@ -26,9 +26,13 @@ const val: ComputedRef<string> = computed(() => {
           class="fill-me h-2.5 rounded bg-indigo-600 dark:bg-indigo-500"
         />
       </div>
-      <div class="float-right w-1/12">
-        <span v-if="voteValue === 'coffee'" class="text-center text-lg font-medium text-zinc-500 dark:text-zinc-400">
-          <icon:mdi:coffee />
+      <div
+        v-motion-pop
+        :delay="400"
+        class="float-right flex w-1/12"
+      >
+        <span v-if="voteValue === 'coffee'" class="text-sm font-medium text-zinc-500 dark:text-zinc-400">
+          <icon:mdi:coffee class="h-5 w-5" />
         </span>
         <span v-else class="text-sm font-medium text-zinc-500 dark:text-zinc-400">{{ voteValue }}</span>
       </div>
@@ -38,6 +42,25 @@ const val: ComputedRef<string> = computed(() => {
 
 <style scoped>
 .fill-me {
-width: v-bind('`${val}%`');
+  /* width: v-bind('`${val}%`'); */
+  animation: load .5s ease-in-out .1s;
+  animation-fill-mode: forwards;
+  width: 0%;
+}
+@keyframes load {
+  from {
+    width: 0%;
+  }
+  to {
+    width: v-bind('`${val}%`');
+  }
+}
+@-webkit-keyframes load {
+  from {
+    width: 0%;
+  }
+  to {
+    width: v-bind('`${val}%`');
+  }
 }
 </style>
