@@ -38,7 +38,7 @@ const maxVote = computed(() =>
   />
   <div class="grid gap-y-2 gap-x-8 sm:grid-cols-2">
     <progress-bar
-      v-for="{ id, name, voteValue } in votersWithoutNull" :key="id"
+      v-for="{ id, name, voteValue } in sortedVotersWithoutNull" :key="id"
       :name="name"
       :vote-value="voteValue"
       :max-vote="maxVote"
