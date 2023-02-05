@@ -15,6 +15,7 @@ async function writeData() {
     lastResetOn: null,
     createdOn: Timestamp.fromDate(new Date()),
   })
+  console.log('sessionState written')
 
   const userDocRef = await addDoc(collectionRef, {
     name: mainStore.user.name,
@@ -23,13 +24,7 @@ async function writeData() {
     lastVoteOn: null,
     joinedOn: Timestamp.fromDate(new Date()),
   })
-  await addDoc(collectionRef, {
-    name: 'another user',
-    voteValue: null,
-    isObserver: true,
-    lastVoteOn: null,
-    joinedOn: Timestamp.fromDate(new Date()),
-  })
+  console.log('user written')
   mainStore.user.id = userDocRef.id
   router.push(`/session/${mainStore.session.id}`)
 }
