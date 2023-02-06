@@ -19,6 +19,9 @@ const userIDNotInDB = computed(() => {
   return !users.value?.find(u => u.id === mainStore.user.id)
 })
 
+const { data: currentUserData, pending: currentUserPending, error: currentUserError } = useDocument<SessionState>(
+  doc(collection(db, collectionID.value), mainStore.user.id))
+
 const { data: sessionState, pending: statePending, error: stateError } = useDocument<SessionState>(
   doc(collection(db, collectionID.value), 'sessionState'))
 
@@ -78,6 +81,7 @@ export default {
     </div>
   </div>
   <div v-else>
+    <user-connection v-if="!mainStore.user.id || !currentUserPending || currentUserError" :users="users" />
     <div class="mt-5">
       <VoteCards
         :available-votes="availableVotes"
@@ -96,7 +100,6 @@ export default {
         </div>
       </div>
     </div>
-    <user-connection v-if="!mainStore.user.id || userIDNotInDB" :users="users" />
   </div>
 </template>
 
