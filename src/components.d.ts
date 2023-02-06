@@ -29,7 +29,7 @@ declare module '@vue/runtime-core' {
     ItsToast: typeof import('./components/ItsToast.vue')['default']
     JoinWithNewUser: typeof import('./components/JoinWithNewUser.vue')['default']
     LoadingTable: typeof import('./components/LoadingTable.vue')['default']
-    MyNavBar: typeof import('./components/MyNavBar.vue')['default']
+    MyNavBar: typeof import('./components/TheNavbar.vue')['default']
     ProgressBar: typeof import('./components/ProgressBar.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']

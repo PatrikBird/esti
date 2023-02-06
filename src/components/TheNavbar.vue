@@ -1,45 +1,47 @@
 <template>
-  <div class="text-primary-800 top-0 z-40 flex justify-center">
-    <nav class="dark:bg-primary-800">
-      <div class="mx-auto max-w-none px-4 sm:px-6 lg:px-8">
-        <div class="flex h-16 justify-between">
-          <div class="flex items-center space-x-6">
-            <RouterLink class="icon-btn mx-2" to="/" title="Home">
-              Home
-            </RouterLink>
-            <RouterLink class="icon-btn mx-2" to="/about" title="About">
-              About
-            </RouterLink>
-            <RouterLink class="icon-btn mx-2" to="/dummy-session" title="Session">
-              Session
-            </RouterLink>
-            <a
-              href="https://github.com/PatrikBird/esti"
-              target="_blank"
-              title="GitHub"
-              class="dark:text-primary-100 opacity-75 hover:opacity-100"
-            >
-              <icon:line-md:github-loop class="h-6 w-6" />
-            </a>
-            <a
-              href="https://www.buymeacoffee.com/patbird"
-              target="_blank"
-              title="Buy Me A Coffee"
-              class="dark:text-primary-100 opacity-75 hover:opacity-100"
-            >
-              <BuyMeACoffeeDark v-if="isDark" />
-              <BuyMeACoffee v-else />
-            </a>
-            <button
-              class="dark:text-primary-100 opacity-75 hover:opacity-100" title="Toggle color mode"
-              @click="toggleDark()"
-            >
-              <icon:line-md:sunny-filled-loop v-if="!isDark" class="h-6 w-6" />
-              <icon:line-md:sunny-filled-loop-to-moon-filled-loop-transition v-else class="h-6 w-6" />
-            </button>
+  <div class="top-0 z-10 h-16 pt-6">
+    <div
+      class="w-full sm:px-8"
+    >
+      <div class="mx-auto max-w-7xl lg:px-8">
+        <div class="relative px-4 sm:px-8">
+          <div class="mx-auto max-w-2xl">
+            <div class="relative flex gap-4">
+              <div class="flex flex-1 justify-center gap-3 md:justify-center">
+                <nav class="pointer-events-auto block">
+                  <ul class="flex rounded-full px-3 text-sm font-medium shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:bg-zinc-800 dark:text-zinc-200 dark:ring-white/10">
+                    <li>
+                      <RouterLink to="/" class="relative block px-3 py-2 transition hover:text-emerald-500 dark:hover:text-emerald-400" href="/about">
+                        Home
+                      </RouterLink>
+                    </li>
+                    <li>
+                      <RouterLink to="/about" class="relative block px-3 py-2 transition hover:text-emerald-500 dark:hover:text-emerald-400" href="/articles">
+                        About
+                      </RouterLink>
+                    </li>
+                    <li>
+                      <RouterLink to="/" class="relative block px-3 py-2 transition hover:text-emerald-500 dark:hover:text-emerald-400" href="/projects">
+                        Session
+                      </RouterLink>
+                    </li>
+                  </ul>
+                </nav>
+                <div class="pointer-events-auto">
+                  <button
+                    type="button" aria-label="Toggle dark mode"
+                    class="group rounded-full px-3 py-2 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 hover:text-emerald-500 dark:ring-white/10 dark:hover:ring-white/20"
+                    @click="toggleDark()"
+                  >
+                    <icon:line-md:sunny-filled-loop v-if="!isDark" class="h-[1.3rem] w-[1.3rem] " />
+                    <icon:line-md:sunny-filled-loop-to-moon-filled-loop-transition v-else class="h-[1.35rem] w-[1.35rem] text-emerald-400" />
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </nav>
+    </div>
   </div>
 </template>
