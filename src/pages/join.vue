@@ -6,7 +6,11 @@ import { db } from '~/modules/firebase'
 const mainStore = useMainStore()
 const router = useRouter()
 
+const isObserver = ref(false)
+
 async function retrieveUserFromDB() {
+  if (!mainStore.user.id)
+    return
   const docRef = doc(db, mainStore.session.id, mainStore.user.id)
   const docSnap = await getDoc(docRef)
 
@@ -27,7 +31,7 @@ async function joinSession() {
     const userDocRef = await addDoc(collectionRef, {
       name: mainStore.user.name,
       voteValue: null,
-      isObserver: mainStore.user.isObserver,
+      isObserver: isObserver.value,
       lastVoteOn: null,
     })
     mainStore.user.id = userDocRef.id
@@ -36,8 +40,8 @@ async function joinSession() {
     console.log('User found!')
     // TODO: Show modal to ask if user wants to retrieve data from DB
     // TRUE: Retrieve data from DB, FALSE: Create new user
+    // Or just show Toast that user already exists and will be retrieved?
     mainStore.user.name = retrievedUser.data.name
-    mainStore.user.isObserver = retrievedUser.data.isObserver
     mainStore.user.id = retrievedUser.id
   }
   router.push(`/session/${mainStore.session.id}`)
@@ -74,7 +78,7 @@ async function joinSession() {
           </div>
 
           <div class="flex items-center justify-center">
-            <TheToggle />
+            <TheToggle @is-observer="(e) => isObserver = e" />
           </div>
 
           <div>

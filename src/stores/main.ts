@@ -10,7 +10,6 @@ export const useMainStore = defineStore('main', () => {
   const user = ref({
     id: useLocalStorage('userID', ''),
     name: useLocalStorage('username', ''),
-    isObserver: useLocalStorage('isObserver', Boolean),
   })
 
   return { session, user }

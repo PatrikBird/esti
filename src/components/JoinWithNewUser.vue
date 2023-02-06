@@ -4,11 +4,13 @@ import { db } from '~/modules/firebase'
 
 const mainStore = useMainStore()
 
+const isObserver = ref(false)
+
 async function writeData() {
   const userDocRef = await addDoc(collection(db, mainStore.session.id), {
     name: mainStore.user.name,
     voteValue: null,
-    isObserver: mainStore.user.isObserver,
+    isObserver: isObserver.value,
     lastVoteOn: null,
     joinedOn: Timestamp.fromDate(new Date()),
   })
@@ -33,7 +35,7 @@ async function writeData() {
       </div>
     </div>
     <div class="flex items-center justify-center">
-      <TheToggle />
+      <TheToggle @is-observer="(e) => isObserver = e" />
     </div>
     <div>
       <button
