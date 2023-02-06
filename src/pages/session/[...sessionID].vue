@@ -8,6 +8,7 @@ const route = useRoute()
 const mainStore = useMainStore()
 
 const collectionID = ref(route.params.sessionID as string)
+mainStore.session.id = collectionID.value
 
 const { data: sessionState, pending: statePending, error: stateError } = useDocument<SessionState>(
   doc(collection(db, collectionID.value), 'sessionState'))

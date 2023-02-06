@@ -4,7 +4,7 @@ export const useMainStore = defineStore('main', () => {
   const route = useRoute()
 
   const session = ref({
-    id: route.params.sessionID as string,
+    id: useLocalStorage('sessionID', route.params.sessionID as string),
   })
 
   const user = ref({

@@ -1,3 +1,13 @@
+<script setup lang='ts'>
+const mainStore = useMainStore()
+
+const lastSessionLink = computed(() =>
+  mainStore.session.id === 'undefined'
+    ? false
+    : `/session/${mainStore.session.id}`,
+)
+</script>
+
 <template>
   <div class="top-0 z-10 h-16 pt-6">
     <div
@@ -11,17 +21,27 @@
                 <nav class="pointer-events-auto block">
                   <ul class="flex rounded-full px-3 text-sm font-medium shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:bg-zinc-800 dark:text-zinc-200 dark:ring-white/10">
                     <li>
-                      <RouterLink to="/" class="relative block px-3 py-2 transition hover:text-emerald-500 dark:hover:text-emerald-400" href="/about">
+                      <RouterLink
+                        to="/"
+                        class="relative block px-3 py-2 transition hover:text-emerald-500 dark:hover:text-emerald-400"
+                      >
                         Home
                       </RouterLink>
                     </li>
                     <li>
-                      <RouterLink to="/about" class="relative block px-3 py-2 transition hover:text-emerald-500 dark:hover:text-emerald-400" href="/articles">
+                      <RouterLink
+                        to="/about"
+                        class="relative block px-3 py-2 transition hover:text-emerald-500 dark:hover:text-emerald-400"
+                      >
                         About
                       </RouterLink>
                     </li>
-                    <li>
-                      <RouterLink to="/" class="relative block px-3 py-2 transition hover:text-emerald-500 dark:hover:text-emerald-400" href="/projects">
+                    <li v-if="lastSessionLink">
+                      <RouterLink
+                        :to="lastSessionLink"
+                        title="Back to last session"
+                        class="relave block px-3 py-2 transition hover:text-emerald-500 dark:hover:text-emerald-400"
+                      >
                         Session
                       </RouterLink>
                     </li>
@@ -29,7 +49,9 @@
                 </nav>
                 <div class="pointer-events-auto">
                   <button
-                    type="button" aria-label="Toggle dark mode"
+                    type="button"
+                    aria-label="Toggle dark mode"
+                    title="Toggle dark mode"
                     class="group rounded-full px-3 py-2 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 hover:text-emerald-500 dark:ring-white/10 dark:hover:ring-white/20"
                     @click="toggleDark()"
                   >
