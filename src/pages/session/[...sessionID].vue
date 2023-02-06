@@ -79,7 +79,8 @@ export default {
     </div>
   </div>
   <div v-else>
-    <user-connection v-if="!mainStore.user.id && userIDNotInDB" :users="users" />
+    <!-- FIXME: delete self, user connection does not show up! -->
+    <user-connection v-if="!mainStore.user.id || userIDNotInDB" :users="users" />
     <div class="mt-5">
       <VoteCards
         :available-votes="availableVotes"
