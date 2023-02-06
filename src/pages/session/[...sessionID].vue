@@ -79,7 +79,7 @@ export default {
     </div>
   </div>
   <div v-else>
-    <user-connection v-if="!mainStore.user.id || userIDNotInDB" :users="users" />
+    <user-connection v-if="!mainStore.user.id || userIDNotInDB && !usersPending" :users="users" />
     <div class="mt-5">
       <VoteCards
         :available-votes="availableVotes"
