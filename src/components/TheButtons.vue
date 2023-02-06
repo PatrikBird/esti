@@ -2,8 +2,6 @@
 import { addDoc, collection, doc, getDocs, serverTimestamp, updateDoc } from 'firebase/firestore'
 import { db } from '~/modules/firebase'
 
-const IS_DEV = import.meta.env.DEV
-
 const route = useRoute()
 const collectionID = ref(route.params.sessionID as string)
 
@@ -67,7 +65,6 @@ async function addVoter() {
       Add Observer
     </button>
     <button
-      v-if="IS_DEV"
       type="button"
       class="inline-flex items-center justify-center rounded-md
     border border-zinc-200 p-5 text-sm font-medium shadow-sm
@@ -78,7 +75,6 @@ async function addVoter() {
       RESET
     </button>
     <button
-      v-if="IS_DEV"
       type="button"
       class="inline-flex items-center justify-center rounded-md bg-indigo-600 p-5
     text-sm font-medium text-white shadow-sm hover:bg-indigo-700
