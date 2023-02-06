@@ -7,8 +7,7 @@
         <div class="relative px-4 sm:px-8">
           <div class="mx-auto max-w-2xl">
             <div class="relative flex gap-4">
-              <!-- <div class="flex flex-1" /> -->
-              <div class="flex flex-1 justify-center md:justify-center">
+              <div class="flex flex-1 justify-center gap-3 md:justify-center">
                 <nav class="pointer-events-auto block">
                   <ul class="flex rounded-full bg-white/90 px-3 text-sm font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10">
                     <li>
@@ -28,8 +27,6 @@
                     </li>
                   </ul>
                 </nav>
-              </div>
-              <div class="flex justify-start md:flex-1">
                 <div class="pointer-events-auto">
                   <button
                     type="button" aria-label="Toggle dark mode"
