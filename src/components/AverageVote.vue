@@ -40,7 +40,7 @@ const closestAvailableVote = computed(() => {
     <p class="ml-2 font-medium text-zinc-900 dark:text-white">
       Average
     </p>
-    <span>&nbsp;<icon:line-md:arrow-left class="inline-block rotate-180" />
+    <span>&nbsp;<icon:mdi:arrow-right class="inline-block h-5 w-5" />
       {{ closestAvailableVote }}
     </span>
     <span class="mx-2 h-1 w-1 rounded-full bg-zinc-900 dark:bg-zinc-500" />

@@ -22,6 +22,8 @@ declare module '@vue/runtime-core' {
     'Icon:lineMd:sunnyFilledLoopToMoonFilledLoopTransition': typeof import('~icons/line-md/sunny-filled-loop-to-moon-filled-loop-transition')['default']
     'Icon:mdi:accountQuestion': typeof import('~icons/mdi/account-question')['default']
     'Icon:mdi:arrow': typeof import('~icons/mdi/arrow')['default']
+    'Icon:mdi:arrowLeft': typeof import('~icons/mdi/arrow-left')['default']
+    'Icon:mdi:arrowRight': typeof import('~icons/mdi/arrow-right')['default']
     'Icon:mdi:arrowUp': typeof import('~icons/mdi/arrow-up')['default']
     'Icon:mdi:checkCircleOutline': typeof import('~icons/mdi/check-circle-outline')['default']
     'Icon:mdi:close': typeof import('~icons/mdi/close')['default']
