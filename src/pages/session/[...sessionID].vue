@@ -16,7 +16,7 @@ const { data: users, pending: usersPending, error: usersError } = useCollection<
     where('name', '!=', null)))
 
 const userIDNotInDB = computed(() => {
-  return mainStore.user.id && !users.value?.find(u => u.id === mainStore.user.id)
+  return !users.value?.find(u => u.id === mainStore.user.id)
 })
 
 const { data: sessionState, pending: statePending, error: stateError } = useDocument<SessionState>(
@@ -66,7 +66,6 @@ export default {
     <SessionNotFound />
   </div>
   <div v-else-if="statePending || usersPending">
-    <!-- Temp loader -->
     <div class="flex h-screen flex-col items-center justify-center">
       <div class="flex flex-col items-center justify-center">
         <div class="flex h-12 w-12 items-center justify-center rounded-full">
@@ -79,8 +78,6 @@ export default {
     </div>
   </div>
   <div v-else>
-    <!-- FIXME: delete self, user connection does not show up! -->
-    <user-connection v-if="!mainStore.user.id || userIDNotInDB" :users="users" />
     <div class="mt-5">
       <VoteCards
         :available-votes="availableVotes"
@@ -99,6 +96,7 @@ export default {
         </div>
       </div>
     </div>
+    <user-connection v-if="!mainStore.user.id || userIDNotInDB" :users="users" />
   </div>
 </template>
 
