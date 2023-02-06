@@ -10,11 +10,6 @@ const mainStore = useMainStore()
 const collectionID = ref(route.params.sessionID as string)
 mainStore.session.id = collectionID.value
 
-const { data: sessionState, pending: statePending, error: stateError } = useDocument<SessionState>(
-  doc(collection(db, collectionID.value), 'sessionState'))
-
-const isVoteRevealed = computed(() => sessionState.value?.isVoteRevealed)
-
 const { data: users, pending: usersPending, error: usersError } = useCollection<User>(
   query(
     collection(db, collectionID.value),
@@ -23,6 +18,11 @@ const { data: users, pending: usersPending, error: usersError } = useCollection<
 const userIDNotInDB = computed(() => {
   return mainStore.user.id && !users.value?.find(u => u.id === mainStore.user.id)
 })
+
+const { data: sessionState, pending: statePending, error: stateError } = useDocument<SessionState>(
+  doc(collection(db, collectionID.value), 'sessionState'))
+
+const isVoteRevealed = computed(() => sessionState.value?.isVoteRevealed)
 
 const voters = computed(() => {
   return users.value.filter(u => u.isObserver === false)
