@@ -1,10 +1,8 @@
 import { acceptHMRUpdate, defineStore } from 'pinia'
 
 export const useMainStore = defineStore('main', () => {
-  const route = useRoute()
-
   const session = ref({
-    id: useLocalStorage('sessionID', route.params.sessionID as string),
+    id: useLocalStorage('sessionID', ''),
   })
 
   const user = ref({

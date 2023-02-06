@@ -2,9 +2,7 @@
 const mainStore = useMainStore()
 
 const lastSessionLink = computed(() =>
-  mainStore.session.id === 'undefined'
-    ? false
-    : `/session/${mainStore.session.id}`,
+  mainStore.session.id === '' ? false : `/session/${mainStore.session.id}`,
 )
 </script>
 
