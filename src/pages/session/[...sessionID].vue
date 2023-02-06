@@ -77,19 +77,21 @@ export default {
   </div>
   <div v-else>
     <user-connection v-if="!mainStore.user.id || userIDNotInDB" :users="users" />
-    <VoteCards
-      :available-votes="availableVotes"
-      :coffee="true"
-    />
-    <div class="mx-auto max-w-3xl">
-      <TheButtons />
-      <div v-if="!voteRevealed">
-        <LoadingTable v-if="!users" />
-        <TheTable v-else :voters="voters" />
-        <TheObservers :observers="observers" />
-      </div>
-      <div v-else>
-        <vote-results :voters="voters" />
+    <div class="mt-5">
+      <VoteCards
+        :available-votes="availableVotes"
+        :coffee="true"
+      />
+      <div class="mx-auto max-w-3xl">
+        <TheButtons />
+        <div v-if="!voteRevealed">
+          <LoadingTable v-if="!users" />
+          <TheTable v-else :voters="voters" />
+          <TheObservers :observers="observers" />
+        </div>
+        <div v-else>
+          <vote-results :voters="voters" />
+        </div>
       </div>
     </div>
   </div>

@@ -1,5 +1,5 @@
 <template>
-  <div class="text-primary-800 top-0 z-40">
+  <div class="text-primary-800 top-0 z-40 flex justify-center">
     <nav class="dark:bg-primary-800">
       <div class="mx-auto max-w-none px-4 sm:px-6 lg:px-8">
         <div class="flex h-16 justify-between">

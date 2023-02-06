@@ -25,7 +25,8 @@ useHead({
 </script>
 
 <template>
-  <TheNavbar class="mb-8" />
+  <MyNavBar />
+  <!-- <TheNavbar class="mb-8" /> -->
   <div class="border-zinc-300 text-zinc-700 dark:border-zinc-700 dark:text-zinc-300">
     <!-- <Suspense> -->
     <RouterView />
