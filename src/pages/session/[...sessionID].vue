@@ -20,9 +20,9 @@ const { data: users, pending: usersPending, error: usersError } = useCollection<
     collection(db, collectionID.value),
     where('name', '!=', null)))
 
-const userIDNotInDB = computed(() => {
-  return mainStore.user.id && !users.value?.find(u => u.id === mainStore.user.id)
-})
+// const userIDNotInDB = computed(() => {
+//   return mainStore.user.id && !users.value?.find(u => u.id === mainStore.user.id)
+// })
 
 const voters = computed(() => {
   return users.value.filter(u => u.isObserver === false)
@@ -79,7 +79,7 @@ export default {
     </div>
   </div>
   <div v-else>
-    <user-connection v-if="!mainStore.user.id || userIDNotInDB && !usersPending" :users="users" />
+    <user-connection v-if="!mainStore.user.id" :users="users" />
     <div class="mt-5">
       <VoteCards
         :available-votes="availableVotes"
