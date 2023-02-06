@@ -7,7 +7,7 @@
     "dev": "vite --open",
     "lint": "eslint .",
     "typecheck": "vue-tsc --noEmit",
-    "build": "vite-ssg build"
+    "build": "vite build"
   },
   "dependencies": {
     "@headlessui/vue": "^1.7.9",
