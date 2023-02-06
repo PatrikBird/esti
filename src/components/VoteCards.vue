@@ -46,7 +46,6 @@ const { data: sessionState, pending: statePending, error: stateError } = useDocu
 const lastResetOn = computed(() => sessionState.value?.lastResetOn)
 watch(lastResetOn, () => {
   if (!statePending.value && !lastResetOnUpdated.value) {
-    console.log('Reset vote visuals')
     lastResetOnUpdated.value = true
     selectedVote.value = undefined
   }
@@ -61,7 +60,7 @@ watch(lastResetOn, () => {
     :class="[{ '!bg-emerald-400': vote === selectedVote }, { '!text-black': vote === selectedVote }]"
     class="m-1 inline-block w-24 cursor-pointer select-none rounded-lg border border-zinc-200 p-6
     text-center shadow-md transition-transform duration-75 ease-in hover:scale-95 hover:bg-zinc-100
-    dark:border-zinc-900 dark:bg-zinc-800 dark:hover:bg-zinc-700 "
+    dark:border-zinc-900 dark:bg-zinc-800 dark:hover:bg-zinc-700"
     @click="selectVote(vote)"
   >
     <p v-if="vote !== 'coffee'">
