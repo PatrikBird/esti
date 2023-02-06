@@ -4,7 +4,7 @@ import { useCollection, useDocument } from 'vuefire'
 import type { SessionState, User } from '~/types'
 import { db } from '~/modules/firebase'
 
-const props = defineProps<{ availableVotes: string[]; coffee: boolean }>()
+const props = defineProps<{ availableVotes: string[]; coffee: boolean ; isVoteRevealed?: boolean }>()
 
 const mainStore = useMainStore()
 const route = useRoute()
@@ -57,7 +57,11 @@ watch(lastResetOn, () => {
     v-for="vote in votes"
     :key="vote"
     tabindex="0"
-    :class="[{ '!bg-emerald-400': vote === selectedVote }, { '!text-black': vote === selectedVote }]"
+    :class="[
+      { '!bg-emerald-400': vote === selectedVote },
+      { '!text-black': vote === selectedVote },
+      { 'pointer-events-none': isVoteRevealed },
+      { 'opacity-40': isVoteRevealed }]"
     class="m-1 inline-block w-24 cursor-pointer select-none rounded-lg border border-zinc-200 p-6
     text-center shadow-md transition-transform duration-75 ease-in hover:scale-95 hover:bg-zinc-100
     dark:border-zinc-900 dark:bg-zinc-800 dark:hover:bg-zinc-700"

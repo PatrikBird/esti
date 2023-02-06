@@ -13,6 +13,8 @@ mainStore.session.id = collectionID.value
 const { data: sessionState, pending: statePending, error: stateError } = useDocument<SessionState>(
   doc(collection(db, collectionID.value), 'sessionState'))
 
+const isVoteRevealed = computed(() => sessionState.value?.isVoteRevealed)
+
 const { data: users, pending: usersPending, error: usersError } = useCollection<User>(
   query(
     collection(db, collectionID.value),
@@ -82,6 +84,7 @@ export default {
       <VoteCards
         :available-votes="availableVotes"
         :coffee="true"
+        :is-vote-revealed="isVoteRevealed"
       />
       <div class="mx-auto max-w-3xl">
         <TheButtons />
