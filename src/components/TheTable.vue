@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { deleteDoc, doc } from 'firebase/firestore'
+import { deleteDoc, doc, updateDoc } from 'firebase/firestore'
 import { db } from '~/modules/firebase'
 import type { User } from '~/types'
 
@@ -7,6 +7,7 @@ import type { User } from '~/types'
 const props = defineProps<{ voters?: User[] }>()
 
 const mainStore = useMainStore()
+const route = useRoute()
 
 const isEvenClasses = computed(() => ({
   'bg-zinc-100': true,
@@ -15,6 +16,11 @@ const isEvenClasses = computed(() => ({
 
 function removeUser(userID: string) {
   deleteDoc(doc(db, mainStore.session.id, userID))
+}
+
+const collectionID = ref(route.params.sessionID as string)
+function switchVoterToObserver(userID: string) {
+  updateDoc(doc(db, collectionID.value, userID), { isObserver: true })
 }
 </script>
 
@@ -36,17 +42,17 @@ function removeUser(userID: string) {
   >
     <div class="inline-block min-w-full py-2 align-middle">
       <div class="overflow-hidden shadow ring-1 ring-black/5 dark:ring-zinc-700 md:rounded-lg">
-        <table class="min-w-full divide-y divide-zinc-300 dark:divide-zinc-700 dark:bg-zinc-800">
+        <table class="min-w-full table-fixed divide-y divide-zinc-300 dark:divide-zinc-700 dark:bg-zinc-800">
           <thead>
             <tr>
-              <th scope="col" class="whitespace-nowrap px-2 py-3.5 text-right font-medium">
+              <th scope="col" class="w-1/2 whitespace-nowrap px-2 py-3.5 text-right font-medium">
                 Name
               </th>
-              <th scope="col" class="whitespace-nowrap px-2 py-3.5 text-center font-medium">
+              <th scope="col" class="w-1/4 whitespace-nowrap px-2 py-3.5 text-center font-medium">
                 Vote
               </th>
-              <th scope="col" class="select-none whitespace-nowrap px-2 py-3.5 text-center font-medium">
-                Edit
+              <th scope="col" class="w-1/4 select-none whitespace-nowrap px-2 py-3.5 text-center font-medium">
+                Actions
               </th>
             </tr>
           </thead>
@@ -54,22 +60,30 @@ function removeUser(userID: string) {
             <tr v-for="(user, idx) in voters" :key="user.id" :class="idx as number % 2 && isEvenClasses">
               <td
                 class="whitespace-nowrap p-2 text-right text-sm"
-                :class="user.id === mainStore.user.id && 'text-emerald-500'"
+                :class="user.id === mainStore.user.id && 'text-indigo-500'"
               >
                 {{ user.name }}
               </td>
               <td class="whitespace-nowrap p-2 text-center text-sm">
                 <icon:line-md:confirm-circle-to-circle-transition v-if="!user.voteValue" class="inline-block h-5 w-5 text-amber-500" />
                 <icon:line-md:circle-to-confirm-circle-transition v-else class="inline-block h-5 w-5 text-emerald-500" />
-                <!-- <icon:line-md:confirm-circle-to-circle-transition class="inline-block h-5 w-5 text-amber-500" /> -->
               </td>
-              <td class="text-center">
+              <td class="flex justify-center gap-2">
                 <button
                   type="button"
-                  class="rounded-md bg-black/20 px-2 py-1 text-sm font-medium text-white hover:bg-black/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75"
+                  class="rounded-md px-1.5 py-1 text-sm font-medium shadow-sm hover:bg-zinc-200 focus:outline-none focus:ring-1 focus:ring-indigo-500 dark:hover:bg-zinc-700"
+                  title="Delete User"
                   @click="removeUser(user.id)"
                 >
                   <icon:mdi:delete class="inline-block h-5 w-5 cursor-pointer" />
+                </button>
+                <button
+                  type="button"
+                  class="rounded-md px-1.5 py-1 text-sm font-medium shadow-sm hover:bg-zinc-200 focus:outline-none focus:ring-1 focus:ring-indigo-500 dark:hover:bg-zinc-700"
+                  title="Switch to Observer"
+                  @click="switchVoterToObserver(user.id)"
+                >
+                  <icon:mdi:eye class="inline-block h-5 w-5 cursor-pointer" />
                 </button>
               </td>
             </tr>
