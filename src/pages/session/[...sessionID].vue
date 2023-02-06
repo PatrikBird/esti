@@ -65,7 +65,7 @@ export default {
   <div v-if="stateError">
     <SessionNotFound />
   </div>
-  <div v-else-if="statePending">
+  <div v-else-if="statePending || usersPending">
     <!-- Temp loader -->
     <div class="flex h-screen flex-col items-center justify-center">
       <div class="flex flex-col items-center justify-center">
@@ -79,7 +79,7 @@ export default {
     </div>
   </div>
   <div v-else>
-    <user-connection v-if="!mainStore.user.id && !usersPending && userIDNotInDB" :users="users" />
+    <user-connection v-if="!mainStore.user.id && userIDNotInDB" :users="users" />
     <div class="mt-5">
       <VoteCards
         :available-votes="availableVotes"
