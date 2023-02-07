@@ -61,7 +61,7 @@ function claimExistingUser() {
 
               <div class="inline-flex w-full items-center justify-center">
                 <hr class="my-8 h-px w-64 border-0 bg-zinc-200 dark:bg-zinc-700">
-                <span class="absolute left-1/2 -translate-x-1/2 bg-white px-3 font-medium dark:bg-zinc-800">or join as</span>
+                <span class="absolute left-1/2 -translate-x-1/2 bg-white px-3 font-medium dark:bg-zinc-800">or join as new user</span>
               </div>
 
               <JoinWithNewUser />
