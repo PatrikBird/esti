@@ -60,15 +60,10 @@ export default {
 </script>
 
 <template>
-  <!-- <div>voters: {{ voters }}</div>
-  <br>
-  <div>observers: {{ observers }}</div>
-  <br>
-  <div>state: {{ sessionState }}</div> -->
-  <div v-if="stateError">
+  <div v-if="stateError || usersError">
     <SessionNotFound />
   </div>
-  <div v-else-if="statePending || usersPending">
+  <div v-else-if="statePending || usersPending || currentUserPending">
     <div class="flex h-screen flex-col items-center justify-center">
       <div class="flex flex-col items-center justify-center">
         <div class="flex h-12 w-12 items-center justify-center rounded-full">
@@ -81,7 +76,7 @@ export default {
     </div>
   </div>
   <div v-else>
-    <user-connection v-if="!mainStore.user.id || !currentUserPending || currentUserError" :users="users" />
+    <user-connection v-if="!currentUserData && userIDNotInDB" :users="users" />
     <div class="mt-5">
       <VoteCards
         :available-votes="availableVotes"
