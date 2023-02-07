@@ -19,8 +19,8 @@ const userIDNotInDB = computed(() => {
   return !users.value?.find(u => u.id === mainStore.user.id)
 })
 
-const { data: currentUserData, pending: currentUserPending, error: currentUserError } = useDocument<SessionState>(
-  doc(collection(db, collectionID.value), mainStore.user.id))
+const { data: currentUserData, pending: currentUserPending, error: currentUserError } = useDocument<User>(
+  doc(collection(db, collectionID.value), mainStore.user.id ?? 0))
 
 const { data: sessionState, pending: statePending, error: stateError } = useDocument<SessionState>(
   doc(collection(db, collectionID.value), 'sessionState'))
@@ -82,9 +82,12 @@ export default {
         :available-votes="availableVotes"
         :coffee="true"
         :is-vote-revealed="isVoteRevealed"
+        :current-user-data="currentUserData"
       />
       <div class="mx-auto max-w-3xl">
-        <TheButtons />
+        <TheButtons
+          :is-vote-revealed="isVoteRevealed"
+        />
         <div v-if="!voteRevealed">
           <LoadingTable v-if="!users" />
           <TheTable v-else :voters="voters" />

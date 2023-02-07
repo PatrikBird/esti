@@ -2,6 +2,10 @@
 import { addDoc, collection, doc, getDocs, serverTimestamp, updateDoc } from 'firebase/firestore'
 import { db } from '~/modules/firebase'
 
+const props = defineProps<{
+  isVoteRevealed?: boolean
+}>()
+
 const route = useRoute()
 const collectionID = ref(route.params.sessionID as string)
 
@@ -85,4 +89,7 @@ async function addVoter() {
       REVEAL
     </button>
   </div>
+  <p v-if="isVoteRevealed" class="mt-4">
+    Reset to begin a new vote
+  </p>
 </template>

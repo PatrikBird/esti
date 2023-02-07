@@ -4,7 +4,12 @@ import { useCollection, useDocument } from 'vuefire'
 import type { SessionState, User } from '~/types'
 import { db } from '~/modules/firebase'
 
-const props = defineProps<{ availableVotes: string[]; coffee: boolean ; isVoteRevealed?: boolean }>()
+const props = defineProps<{
+  availableVotes: string[]
+  coffee: boolean
+  isVoteRevealed?: boolean
+  currentUserData?: User | undefined
+}>()
 
 const mainStore = useMainStore()
 const route = useRoute()
@@ -60,8 +65,8 @@ watch(lastResetOn, () => {
     :class="[
       { '!bg-emerald-400': vote === selectedVote },
       { '!text-black': vote === selectedVote },
-      { 'pointer-events-none': isVoteRevealed },
-      { 'opacity-40': isVoteRevealed }]"
+      { 'pointer-events-none': isVoteRevealed || currentUserData?.isObserver },
+      { 'opacity-40': isVoteRevealed || currentUserData?.isObserver }]"
     class="m-1 inline-block w-24 cursor-pointer select-none rounded-lg border border-zinc-200 p-6
     text-center shadow-md transition-transform duration-75 ease-in hover:scale-95 hover:bg-zinc-100
     dark:border-zinc-900 dark:bg-zinc-800 dark:hover:bg-zinc-700"
