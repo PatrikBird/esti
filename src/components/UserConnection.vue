@@ -5,6 +5,7 @@ import type { Person, User } from '~/types'
 
 // eslint-disable-next-line unused-imports/no-unused-vars
 const props = defineProps<{ users: User[] }>()
+console.log('user connection')
 
 const open = ref(true)
 
