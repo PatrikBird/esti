@@ -1,4 +1,5 @@
 <script setup lang='ts'>
+// eslint-disable-next-line unused-imports/no-unused-vars
 const props = defineProps<{ userId: string; setIsObserverTo: boolean }>()
 const hoveredUserID = ref('')
 

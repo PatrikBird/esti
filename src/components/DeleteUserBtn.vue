@@ -2,6 +2,7 @@
 import { deleteDoc, doc } from 'firebase/firestore'
 import { db } from '~/modules/firebase'
 
+// eslint-disable-next-line unused-imports/no-unused-vars
 const props = defineProps<{ userId: string }>()
 const hoveredUserID = ref('')
 const mainStore = useMainStore()
