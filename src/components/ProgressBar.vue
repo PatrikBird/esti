@@ -8,7 +8,7 @@ const props = defineProps<{ name: string; voteValue: string | null; maxVote?: nu
 // )
 const val: ComputedRef<string> = computed(() => {
   let percentage = 100
-  if (props.voteValue && props.voteValue !== '?' && props.voteValue !== 'break')
+  if (props.voteValue && props.voteValue !== '?' && props.voteValue !== 'coffee')
     percentage = (parseInt(props.voteValue) / props.maxVote!) * 100
 
   return `${percentage}`
