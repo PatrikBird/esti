@@ -1,27 +1,15 @@
 <script setup lang="ts">
-import { deleteDoc, doc, updateDoc } from 'firebase/firestore'
-import { db } from '~/modules/firebase'
 import type { User } from '~/types'
 
 // eslint-disable-next-line unused-imports/no-unused-vars
 const props = defineProps<{ voters?: User[] }>()
 
 const mainStore = useMainStore()
-const route = useRoute()
 
 const isEvenClasses = computed(() => ({
   'bg-zinc-100': true,
   'dark:bg-zinc-700/50': true,
 }))
-
-function removeUser(userID: string) {
-  deleteDoc(doc(db, mainStore.session.id, userID))
-}
-
-const collectionID = ref(route.params.sessionID as string)
-function switchVoterToObserver(userID: string) {
-  updateDoc(doc(db, collectionID.value, userID), { isObserver: true })
-}
 </script>
 
 <template>
