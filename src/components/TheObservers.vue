@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { deleteDoc, doc, updateDoc } from 'firebase/firestore'
+import { deleteDoc, doc } from 'firebase/firestore'
 import type { User } from '~/types'
 import { db } from '~/modules/firebase'
 
@@ -7,17 +7,9 @@ import { db } from '~/modules/firebase'
 const props = defineProps<{ observers?: User[] }>()
 
 const mainStore = useMainStore()
-const route = useRoute()
-
-const hoveredUserID = ref('')
 
 function removeUser(userID: string) {
   deleteDoc(doc(db, mainStore.session.id, userID))
-}
-
-const collectionID = ref(route.params.sessionID as string)
-function switchUserMode(userID: string) {
-  updateDoc(doc(db, collectionID.value, userID), { isObserver: false })
 }
 </script>
 
@@ -46,17 +38,10 @@ function switchUserMode(userID: string) {
         </p>
       </div>
       <div class="shrink-0">
-        <button
-          type="button"
-          class="rounded-md px-1.5 py-1 text-sm font-medium shadow-sm hover:bg-zinc-200 focus:outline-none focus:ring-1 focus:ring-indigo-500 dark:hover:bg-zinc-700"
-          title="Move User to Voters"
-          @click="switchUserMode(user.id)"
-          @mouseover="hoveredUserID = user.id"
-          @mouseleave="hoveredUserID = ''"
-        >
-          <icon:mdi:arrow-up v-show="hoveredUserID === user.id" class="inline-block h-5 w-5" />
-          <icon:mdi:eye v-show="hoveredUserID !== user.id" class="inline-block h-5 w-5" />
-        </button>
+        <switch-user-btn
+          :user-id="user.id"
+          :set-is-observer-to="false"
+        />
         <button
           type="button"
           class="rounded-md px-1.5 py-1 text-sm font-medium shadow-sm hover:bg-zinc-200 focus:outline-none focus:ring-1 focus:ring-indigo-500 dark:hover:bg-zinc-700"
