@@ -33,6 +33,7 @@ declare module '@vue/runtime-core' {
     RouterView: typeof import('vue-router')['RouterView']
     SessionNotFound: typeof import('./components/SessionNotFound.vue')['default']
     SwitchUserBtn: typeof import('./components/SwitchUserBtn.vue')['default']
+    TableActionBtn: typeof import('./components/TableActionBtn.vue')['default']
     TheButtons: typeof import('./components/TheButtons.vue')['default']
     TheNavbar: typeof import('./components/TheNavbar.vue')['default']
     TheObservers: typeof import('./components/TheObservers.vue')['default']
