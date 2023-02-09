@@ -33,19 +33,22 @@ const closestAvailableVote = computed(() => {
 </script>
 
 <template>
-  <div class="mb-5 flex items-center pt-12">
-    <p class="inline-flex items-center rounded bg-indigo-100 p-1.5 text-sm font-semibold text-indigo-800 dark:bg-indigo-200 dark:text-indigo-800">
+  <div class="mb-5 flex items-center gap-1 pt-12">
+    <p class="items-center rounded bg-indigo-100 p-1.5 text-sm font-semibold text-indigo-800 dark:bg-indigo-200 dark:text-indigo-800">
       {{ averageVoteValue ?? "None" }}
     </p>
-    <p class="ml-2 font-medium text-zinc-900 dark:text-white">
+    <p class="font-medium text-zinc-900 dark:text-white">
       Average
     </p>
-    <span>&nbsp;<icon:mdi:arrow-right class="inline-block h-5 w-5" />
-      {{ closestAvailableVote }}
-    </span>
-    <span class="mx-2 h-1 w-1 rounded-full bg-zinc-900 dark:bg-zinc-500" />
-    <p class="text-sm font-medium text-zinc-500 dark:text-zinc-400">
-      based on {{ voters?.length }} votes
-    </p>
+    <div class="flex items-center gap-1">
+      <icon:mdi:arrow-right-thin class="inline-block h-5 w-5" />
+      <pop-over>
+        {{ closestAvailableVote }}
+      </pop-over>
+      <span class="mx-2 h-1 w-1 rounded-full bg-zinc-900 dark:bg-zinc-500" />
+      <p class="text-sm font-medium text-zinc-500 dark:text-zinc-400">
+        based on {{ voters?.length }} votes
+      </p>
+    </div>
   </div>
 </template>
