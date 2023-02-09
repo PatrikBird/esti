@@ -11,6 +11,7 @@ declare module '@vue/runtime-core' {
     BuyMeACoffee: typeof import('./components/icons/BuyMeACoffee.vue')['default']
     BuyMeACoffeeDark: typeof import('./components/icons/BuyMeACoffeeDark.vue')['default']
     ComboBox: typeof import('./components/ComboBox.vue')['default']
+    DeleteUserBtn: typeof import('./components/DeleteUserBtn.vue')['default']
     'Icon:ic:baselineSettings': typeof import('~icons/ic/baseline-settings')['default']
     'Icon:lineMd:chevronLeft': typeof import('~icons/line-md/chevron-left')['default']
     'Icon:lineMd:circleToConfirmCircleTransition': typeof import('~icons/line-md/circle-to-confirm-circle-transition')['default']
