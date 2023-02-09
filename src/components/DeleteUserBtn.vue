@@ -18,6 +18,13 @@ function removeUser(userID: string) {
     @mouseover="hoveredUserID = userId"
     @mouseleave="hoveredUserID = ''"
   >
-    <icon:mdi:delete class="inline-block h-5 w-5" />
+    <icon:mdi:delete
+      v-show="hoveredUserID !== userId"
+      class="inline-block h-5 w-5"
+    />
+    <icon:mdi:delete-forever
+      v-show="hoveredUserID === userId"
+      class="inline-block h-5 w-5"
+    />
   </table-action-btn>
 </template>
