@@ -21,7 +21,8 @@ const lastSessionLink = computed(() =>
                     <li>
                       <RouterLink
                         to="/"
-                        class="relative block px-3 py-2 transition hover:text-emerald-500 dark:hover:text-emerald-400"
+                        active-class="text-emerald-600"
+                        class="relative block px-3 py-2 transition hover:text-emerald-500"
                       >
                         Home
                       </RouterLink>
@@ -29,7 +30,8 @@ const lastSessionLink = computed(() =>
                     <li>
                       <RouterLink
                         to="/about"
-                        class="relative block px-3 py-2 transition hover:text-emerald-500 dark:hover:text-emerald-400"
+                        active-class="text-emerald-600"
+                        class="relative block px-3 py-2 transition hover:text-emerald-500"
                       >
                         About
                       </RouterLink>
@@ -37,8 +39,9 @@ const lastSessionLink = computed(() =>
                     <li v-if="lastSessionLink">
                       <RouterLink
                         :to="lastSessionLink"
+                        active-class="text-emerald-600"
                         title="Back to last session"
-                        class="relave block px-3 py-2 transition hover:text-emerald-500 dark:hover:text-emerald-400"
+                        class="relave block px-3 py-2 transition hover:text-emerald-500"
                       >
                         Session
                       </RouterLink>
@@ -54,7 +57,7 @@ const lastSessionLink = computed(() =>
                     @click="toggleDark()"
                   >
                     <icon:line-md:sunny-filled-loop v-if="!isDark" class="h-[1.3rem] w-[1.3rem] " />
-                    <icon:line-md:sunny-filled-loop-to-moon-filled-loop-transition v-else class="h-[1.35rem] w-[1.35rem] text-emerald-400" />
+                    <icon:line-md:sunny-filled-loop-to-moon-filled-loop-transition v-else class="h-[1.35rem] w-[1.35rem] text-emerald-600 hover:text-emerald-500" />
                   </button>
                 </div>
               </div>
