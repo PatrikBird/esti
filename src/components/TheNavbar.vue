@@ -53,11 +53,11 @@ const lastSessionLink = computed(() =>
                     type="button"
                     aria-label="Toggle dark mode"
                     title="Toggle dark mode"
-                    class="group rounded-full px-3 py-2 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 hover:text-emerald-500 dark:ring-white/10 dark:hover:ring-white/20"
+                    class="group rounded-full px-3 py-2 text-emerald-600 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 hover:text-emerald-500 dark:ring-white/10 dark:hover:ring-white/20"
                     @click="toggleDark()"
                   >
                     <icon:line-md:sunny-filled-loop v-if="!isDark" class="h-[1.3rem] w-[1.3rem] " />
-                    <icon:line-md:sunny-filled-loop-to-moon-filled-loop-transition v-else class="h-[1.35rem] w-[1.35rem] text-emerald-600 hover:text-emerald-500" />
+                    <icon:line-md:sunny-filled-loop-to-moon-filled-loop-transition v-else class="h-[1.35rem] w-[1.35rem]" />
                   </button>
                 </div>
               </div>
