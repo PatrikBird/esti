@@ -2,6 +2,7 @@
 import { addDoc, collection, doc, getDocs, serverTimestamp, updateDoc } from 'firebase/firestore'
 import { db } from '~/modules/firebase'
 
+// eslint-disable-next-line unused-imports/no-unused-vars
 const props = defineProps<{
   isVoteRevealed?: boolean
 }>()
@@ -90,6 +91,6 @@ async function addVoter() {
     </button>
   </div>
   <p v-if="isVoteRevealed" class="mt-4">
-    Reset to begin a new vote
+    Click 'Reset' to begin a new vote.
   </p>
 </template>

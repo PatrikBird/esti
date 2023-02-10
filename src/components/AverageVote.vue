@@ -33,7 +33,11 @@ const closestAvailableVote = computed(() => {
 </script>
 
 <template>
-  <div class="mb-5 flex items-center gap-1 pt-12">
+  <div
+    v-motion-fade
+    :delay="600"
+    class="mb-5 flex items-center justify-center gap-1 pt-12"
+  >
     <p class="items-center rounded bg-indigo-100 p-1.5 text-sm font-semibold text-indigo-800 dark:bg-indigo-200 dark:text-indigo-800">
       {{ averageVoteValue ?? "None" }}
     </p>
@@ -47,7 +51,7 @@ const closestAvailableVote = computed(() => {
       </pop-over>
       <span class="mx-2 h-1 w-1 rounded-full bg-zinc-900 dark:bg-zinc-500" />
       <p class="text-sm font-medium text-zinc-500 dark:text-zinc-400">
-        based on {{ voters?.length }} votes
+        based on {{ voters?.length }} {{ voters?.length === 1 ? 'vote' : 'votes' }}
       </p>
     </div>
   </div>

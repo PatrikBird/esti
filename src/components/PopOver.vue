@@ -9,13 +9,13 @@ const showTooltip = ref(false)
     @mouseleave="showTooltip = false"
   >
     <div
-      class="relative m-1 inline-block select-none rounded-lg border border-zinc-200 p-2 text-center shadow-md dark:border-zinc-900 dark:bg-zinc-800"
+      class="relative m-1 inline-block h-10 w-12 select-none rounded-lg border border-zinc-200 p-2 text-center shadow-md dark:border-zinc-900 dark:bg-zinc-800"
     >
       <slot />
     </div>
     <div
       v-show="showTooltip"
-      class="absolute left-0 z-20 -mt-16 ml-10 w-64 rounded bg-white/90 p-4 shadow-lg"
+      class="absolute left-0 z-20 -mt-16 ml-10 w-64 rounded-lg bg-white p-4 shadow-lg"
     >
       <svg
         class="absolute inset-y-0 left-0 -ml-2 h-full" width="9px" height="16px" viewBox="0 0 9 16"
@@ -34,11 +34,8 @@ const showTooltip = ref(false)
           </g>
         </g>
       </svg>
-      <p class="pb-1 text-sm font-bold text-zinc-800">
-        Closest Vote
-      </p>
-      <p class="pb-3 text-xs leading-4 text-zinc-600">
-        Bla bla bla.
+      <p class="py-1 text-sm text-zinc-800">
+        Represents the closest available vote.
       </p>
     </div>
   </div>
