@@ -26,7 +26,7 @@ const voteIsNotANumber = computed(() => {
     <dd class="mb-3 flex items-center">
       <div class="mr-2 h-2.5 w-full rounded bg-zinc-200 dark:bg-zinc-700">
         <div
-          class="fill-me h-2.5 rounded bg-indigo-600 dark:bg-indigo-500"
+          class="fill-me h-2.5 rounded bg-blue-600 dark:bg-blue-500"
           :class="{ '!bg-amber-500': voteIsNotANumber }"
         />
       </div>

@@ -34,7 +34,7 @@ const show = ref(true)
               <div class="ml-4 flex shrink-0 self-start">
                 <button
                   type="button"
-                  class="inline-flex rounded-md bg-zinc-50 text-zinc-800 opacity-75 hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:bg-zinc-200"
+                  class="inline-flex rounded-md bg-zinc-50 text-zinc-800 opacity-75 hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:bg-zinc-200"
                   @click="show = false"
                 >
                   <span class="sr-only">Close</span>

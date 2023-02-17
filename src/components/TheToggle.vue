@@ -23,8 +23,8 @@ watchEffect(() => {
     </SwitchLabel>
     <Switch
       v-model="isObserver"
-      class="relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent ring-offset-zinc-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:ring-offset-zinc-800"
-      :class="[isObserver ? 'bg-indigo-600' : isDisabledClasses]"
+      class="relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent ring-offset-zinc-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:ring-offset-zinc-800"
+      :class="[isObserver ? 'bg-blue-600' : isDisabledClasses]"
     >
       <span class="sr-only">Use setting</span>
       <span

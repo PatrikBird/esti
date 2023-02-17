@@ -48,7 +48,7 @@ const isEvenClasses = computed(() => ({
             <tr v-for="(user, idx) in voters" :key="user.id" :class="idx as number % 2 && isEvenClasses">
               <td
                 class="whitespace-nowrap p-2 text-right text-sm"
-                :class="user.id === mainStore.user.id && 'text-indigo-500'"
+                :class="user.id === mainStore.user.id && 'text-blue-500'"
               >
                 {{ user.name }}
               </td>

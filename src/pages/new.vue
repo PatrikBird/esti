@@ -39,7 +39,7 @@ async function writeData() {
 <template>
   <div class="flex min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8">
     <div class="sm:mx-auto sm:w-full sm:max-w-md">
-      <img class="mx-auto h-12 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="Your Company">
+      <img class="mx-auto h-24 w-auto" src="esti.svg" alt="Esti Logo">
       <h2 class="mt-6 text-center text-3xl font-bold tracking-tight">
         Create a new estimation
       </h2>
@@ -47,7 +47,7 @@ async function writeData() {
         Or
         <RouterLink
           to="/join"
-          class="font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-500 dark:hover:text-indigo-400"
+          class="font-medium text-blue-600 hover:text-blue-500 dark:text-blue-500 dark:hover:text-blue-400"
         >
           join an existing session
         </RouterLink>
@@ -66,7 +66,7 @@ async function writeData() {
                 name="username"
                 type="text"
                 required
-                class="block w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none dark:border-zinc-700 dark:bg-zinc-800 dark:focus:border-indigo-500"
+                class="block w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:outline-none dark:border-zinc-700 dark:bg-zinc-800 dark:focus:border-blue-500"
               >
             </div>
           </div>
@@ -78,7 +78,7 @@ async function writeData() {
           <div>
             <button
               type="submit"
-              class="flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:bg-indigo-600/50 disabled:hover:bg-indigo-600/50"
+              class="flex w-full justify-center rounded-md border border-transparent bg-blue-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:bg-blue-600/50 disabled:hover:bg-blue-600/50"
               :disabled="formSending"
             >
               <icon:line-md:loading-twotone-loop v-if="formSending" class="mr-1 h-5 w-5" />

@@ -38,7 +38,7 @@ const closestAvailableVote = computed(() => {
     :delay="600"
     class="mb-5 flex items-center justify-center gap-1 pt-12"
   >
-    <p class="items-center rounded bg-indigo-100 p-1.5 text-sm font-semibold text-indigo-800 dark:bg-indigo-200 dark:text-indigo-800">
+    <p class="items-center rounded bg-blue-100 p-1.5 text-sm font-semibold text-blue-800 dark:bg-blue-200 dark:text-blue-800">
       {{ averageVoteValue ?? "None" }}
     </p>
     <p class="font-medium text-zinc-900 dark:text-white">
