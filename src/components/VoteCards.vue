@@ -63,10 +63,9 @@ watch(lastResetOn, () => {
     :key="vote"
     tabindex="0"
     :class="[
-      { '!bg-emerald-400': vote === selectedVote },
-      { '!text-black': vote === selectedVote },
-      { 'pointer-events-none': isVoteRevealed || currentUserData?.isObserver },
-      { 'opacity-40': isVoteRevealed || currentUserData?.isObserver }]"
+      { '!bg-emerald-400 !text-black': vote === selectedVote },
+      { 'pointer-events-none opacity-40': isVoteRevealed || currentUserData?.isObserver },
+    ]"
     class="m-1 inline-block w-24 cursor-pointer select-none rounded-lg border border-zinc-200 p-6
     text-center shadow-md transition-colors duration-100 ease-in-out hover:bg-emerald-100
     dark:border-zinc-900 dark:bg-zinc-800 dark:hover:bg-emerald-700"
