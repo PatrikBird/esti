@@ -39,7 +39,7 @@ async function writeData() {
 <template>
   <div class="flex min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8">
     <div class="sm:mx-auto sm:w-full sm:max-w-md">
-      <img class="mx-auto h-24 w-auto" src="esti.svg" alt="Esti Logo">
+      <img class="mx-auto h-24 w-auto" src="/esti.svg" alt="Esti Logo">
       <h2 class="mt-6 text-center text-3xl font-bold tracking-tight">
         Create a new estimation
       </h2>

@@ -1,7 +1,7 @@
 <template>
   <div class="mx-auto max-w-7xl px-6 pb-24 sm:pb-32 lg:flex lg:py-10 lg:px-8">
     <div class="mx-auto max-w-2xl lg:mx-0 lg:max-w-xl lg:shrink-0 lg:pt-8">
-      <img class="h-28" src="esti.svg" alt="Esti Logo">
+      <img class="h-28" src="/esti.svg" alt="Esti Logo">
       <h1 class="mt-10 text-4xl font-bold tracking-tight dark:bg-gradient-to-r dark:from-emerald-400 dark:via-cyan-500 dark:to-blue-600 dark:bg-clip-text dark:text-transparent sm:text-6xl">
         Esti - effortless estimations
       </h1>
