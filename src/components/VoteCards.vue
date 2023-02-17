@@ -8,7 +8,7 @@ const props = defineProps<{
   availableVotes: string[]
   coffee: boolean
   isVoteRevealed?: boolean
-  currentUserData?: User | undefined
+  // currentUserData: User | undefined | null
 }>()
 
 const mainStore = useMainStore()
@@ -55,6 +55,9 @@ watch(lastResetOn, () => {
     selectedVote.value = undefined
   }
 })
+
+const { data: currentUserData, pending: currentUserPending, error: currentUserError } = useDocument<User>(
+  doc(collection(db, collectionID.value), mainStore.user.id ?? 0))
 </script>
 
 <template>

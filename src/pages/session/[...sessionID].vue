@@ -51,10 +51,6 @@ const availableVotes = [
   '?',
 ]
 provide('availableVotes', availableVotes)
-
-watchEffect(() => {
-  console.log(currentUserData.value)
-})
 </script>
 
 <script lang="ts">
@@ -86,7 +82,6 @@ export default {
         :available-votes="availableVotes"
         :coffee="true"
         :is-vote-revealed="isVoteRevealed"
-        :current-user-data="currentUserData"
       />
       <div class="mx-auto max-w-3xl">
         <the-buttons
