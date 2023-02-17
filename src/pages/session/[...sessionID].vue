@@ -51,6 +51,10 @@ const availableVotes = [
   '?',
 ]
 provide('availableVotes', availableVotes)
+
+watchEffect(() => {
+  console.log(currentUserData.value)
+})
 </script>
 
 <script lang="ts">
@@ -61,7 +65,7 @@ export default {
 
 <template>
   <div v-if="stateError || usersError">
-    <SessionNotFound />
+    <session-not-found />
   </div>
   <div v-else-if="statePending || usersPending || currentUserPending">
     <div class="flex h-screen flex-col items-center justify-center">
@@ -77,21 +81,21 @@ export default {
   </div>
   <div v-else>
     <user-connection v-if="!currentUserData && userIDNotInDB" :users="users" />
-    <div class="mt-5">
-      <VoteCards
+    <div v-else class="mt-5">
+      <vote-cards
         :available-votes="availableVotes"
         :coffee="true"
         :is-vote-revealed="isVoteRevealed"
         :current-user-data="currentUserData"
       />
       <div class="mx-auto max-w-3xl">
-        <TheButtons
+        <the-buttons
           :is-vote-revealed="isVoteRevealed"
         />
         <div v-if="!voteRevealed">
-          <LoadingTable v-if="!users" />
-          <TheTable v-else :voters="voters" />
-          <TheObservers :observers="observers" />
+          <loading-table v-if="!users" />
+          <the-table v-else :voters="voters" />
+          <the-observers :observers="observers" />
         </div>
         <div v-else>
           <vote-results :voters="voters" />
