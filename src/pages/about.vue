@@ -1,21 +1,8 @@
 <template>
-  <h1
-    v-motion
-    class="text-3xl"
-    :initial="{
-      opacity: 0,
-      y: 100,
-    }"
-    :enter="{
-      opacity: 1,
-      y: 0,
-    }"
-  >
-    Hello 👋
-  </h1>
+  <main class="max-w-2xl p-10">
+    <h1 class="text-3xl font-semibold">
+      Hello :)
+    </h1>
+    <p>My name is Patrik</p>
+  </main>
 </template>
-
-<route lang="yaml">
-meta:
-  layout: clean
-</route>
