@@ -45,30 +45,34 @@ async function addVoter() {
     joinedOn: serverTimestamp(),
   })
 }
+
+const isDev = ref(import.meta.env.DEV)
 </script>
 
 <template>
   <div class="mt-5 flex select-none justify-center space-x-3">
-    <button
-      type="button"
-      class="inline-flex items-center justify-center rounded-md
+    <div v-if="isDev" class="space-x-3">
+      <button
+        type="button"
+        class="inline-flex items-center justify-center rounded-md
+      border border-zinc-200 p-5 text-sm font-medium shadow-sm
+      hover:bg-zinc-100 focus:outline-none focus:ring-1 focus:ring-zinc-500 focus:ring-offset-2 focus:ring-offset-zinc-100
+      dark:border-none dark:border-zinc-700 dark:bg-zinc-800 dark:hover:bg-zinc-700 dark:focus:ring-offset-zinc-900"
+        @click="addVoter"
+      >
+        Add Voter
+      </button>
+      <button
+        type="button"
+        class="inline-flex items-center justify-center rounded-md
     border border-zinc-200 p-5 text-sm font-medium shadow-sm
     hover:bg-zinc-100 focus:outline-none focus:ring-1 focus:ring-zinc-500 focus:ring-offset-2 focus:ring-offset-zinc-100
     dark:border-none dark:border-zinc-700 dark:bg-zinc-800 dark:hover:bg-zinc-700 dark:focus:ring-offset-zinc-900"
-      @click="addVoter"
-    >
-      Add Voter
-    </button>
-    <button
-      type="button"
-      class="inline-flex items-center justify-center rounded-md
-    border border-zinc-200 p-5 text-sm font-medium shadow-sm
-    hover:bg-zinc-100 focus:outline-none focus:ring-1 focus:ring-zinc-500 focus:ring-offset-2 focus:ring-offset-zinc-100
-    dark:border-none dark:border-zinc-700 dark:bg-zinc-800 dark:hover:bg-zinc-700 dark:focus:ring-offset-zinc-900"
-      @click="addObserver"
-    >
-      Add Observer
-    </button>
+        @click="addObserver"
+      >
+        Add Observer
+      </button>
+    </div>
     <button
       type="button"
       class="inline-flex items-center justify-center rounded-md
