@@ -15,3 +15,18 @@
     @apply inline-block rounded-full shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:ring-white/10 dark:hover:ring-white/20;
   }
 }
+
+@layer utilities {
+  .link-underline {
+    @apply relative font-semibold;
+  }
+
+  .link-underline::before {
+    @apply absolute bottom-0 left-0 w-full h-0.5 bg-blue-600 transform -translate-y-1/2 origin-left scale-x-0 transition-all duration-200;
+    content: "";
+  }
+
+  .link-underline:hover::before {
+    @apply transform scale-x-100;
+  }
+}
