@@ -1,5 +1,5 @@
 import { ViteSSG } from 'vite-ssg'
-import './style.css'
+import '~/assets/style.css'
 import { setupLayouts } from 'virtual:generated-layouts'
 import generatedRoutes from 'virtual:generated-pages'
 import type { UserModule } from './types'
