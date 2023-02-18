@@ -67,16 +67,16 @@ async function joinSession() {
     </div>
 
     <div class="mx-auto mt-8 w-full max-w-md">
-      <div class="rounded-lg border border-zinc-200 py-8 px-10 shadow-xl dark:border-zinc-700/50">
+      <div class="rounded-lg bg-zinc-50 py-8 px-10 shadow-xl dark:bg-zinc-700">
         <form class="space-y-6" @submit.prevent="joinSession">
           <div>
             <label for="id" class="block text-left text-sm font-medium">Session ID</label>
             <div class="mt-1">
-              <input id="id" v-model="mainStore.session.id" name="id" type="text" required class="block w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:outline-none dark:border-zinc-700 dark:bg-zinc-800 dark:focus:border-blue-500">
+              <input id="id" v-model="mainStore.session.id" name="id" type="text" required class="block w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:outline-none dark:border-zinc-700/5 dark:bg-zinc-800 dark:focus:border-blue-500">
             </div>
             <label for="username" class="mt-5 block text-left text-sm font-medium">Name</label>
             <div class="mt-1">
-              <input id="username" v-model="mainStore.user.name" name="username" type="text" required class="block w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:outline-none dark:border-zinc-700 dark:bg-zinc-800 dark:focus:border-blue-500">
+              <input id="username" v-model="mainStore.user.name" name="username" type="text" required class="block w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:outline-none dark:border-zinc-700/5 dark:bg-zinc-800 dark:focus:border-blue-500">
             </div>
           </div>
 
