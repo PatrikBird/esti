@@ -21,8 +21,8 @@ const lastSessionLink = computed(() =>
                     <li>
                       <RouterLink
                         to="/"
-                        active-class="text-blue-600"
-                        class="relative block px-3 py-2 transition hover:text-blue-600"
+                        active-class="text-blue-600 dark:text-blue-500"
+                        class="relative block px-3 py-2 transition hover:text-blue-500 dark:hover:text-blue-400"
                       >
                         Home
                       </RouterLink>
@@ -30,8 +30,8 @@ const lastSessionLink = computed(() =>
                     <li>
                       <RouterLink
                         to="/about"
-                        active-class="text-blue-600"
-                        class="relative block px-3 py-2 transition hover:text-blue-600"
+                        active-class="text-blue-600 dark:text-blue-500"
+                        class="relative block px-3 py-2 transition hover:text-blue-500 dark:hover:text-blue-400"
                       >
                         About
                       </RouterLink>
@@ -39,9 +39,9 @@ const lastSessionLink = computed(() =>
                     <li v-if="lastSessionLink">
                       <RouterLink
                         :to="lastSessionLink"
-                        active-class="text-blue-600"
+                        active-class="text-blue-600 dark:text-blue-500"
                         title="Back to last session"
-                        class="relave block px-3 py-2 transition hover:text-blue-600"
+                        class="relave block px-3 py-2 transition hover:text-blue-500 dark:hover:text-blue-400"
                       >
                         Session
                       </RouterLink>
@@ -53,7 +53,7 @@ const lastSessionLink = computed(() =>
                     type="button"
                     aria-label="Toggle dark mode"
                     title="Toggle dark mode"
-                    class="group rounded-full px-3 py-2 text-blue-600 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 hover:text-blue-700 dark:ring-white/10 dark:hover:ring-white/20"
+                    class="group rounded-full px-3 py-2 text-blue-600 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 hover:text-blue-500 dark:text-blue-500 dark:ring-white/10 dark:hover:text-blue-400 dark:hover:ring-white/20"
                     @click="toggleDark()"
                   >
                     <icon:line-md:sunny-filled-loop v-if="!isDark" class="h-[1.3rem] w-[1.3rem] " />

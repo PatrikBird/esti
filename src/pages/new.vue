@@ -50,7 +50,7 @@ async function writeData() {
         Or
         <RouterLink
           to="/join"
-          class="font-medium text-blue-600 hover:text-blue-500 dark:text-blue-500 dark:hover:text-blue-400"
+          class="font-medium text-blue-600 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-400"
         >
           join an existing session
         </RouterLink>

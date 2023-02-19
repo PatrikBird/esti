@@ -14,11 +14,11 @@ mainStore.session.id = ''
       </h2>
       <p class="mt-2 text-center text-sm">
         Try to
-        <RouterLink to="/new" class="font-medium text-blue-600 hover:text-blue-500 dark:text-blue-500 dark:hover:text-blue-400">
+        <RouterLink to="/new" class="font-medium text-blue-600 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-400">
           create a new session
         </RouterLink>
         or
-        <RouterLink to="/join" class="font-medium text-blue-600 hover:text-blue-500 dark:text-blue-500 dark:hover:text-blue-400">
+        <RouterLink to="/join" class="font-medium text-blue-600 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-400">
           join a session
         </RouterLink>
         instead.
