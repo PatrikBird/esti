@@ -26,9 +26,6 @@ const userIDNotInDB = computed(() => {
   return !users.value?.find(u => u.id === mainStore.user.id)
 })
 
-const { data: currentUserData, pending: currentUserPending, error: currentUserError } = useDocument<User>(
-  doc(collection(db, collectionID.value), mainStore.user.id ?? 0))
-
 const { data: sessionState, pending: statePending, error: stateError } = useDocument<SessionState>(
   doc(collection(db, collectionID.value), 'sessionState'))
 
@@ -67,10 +64,10 @@ export default {
 </script>
 
 <template>
-  <div v-if="showSessionNotFound">
+  <div v-if="showSessionNotFound || stateError || usersError">
     <session-not-found />
   </div>
-  <div v-else-if="statePending || usersPending || currentUserPending">
+  <div v-else-if="statePending || usersPending">
     <div class="flex h-screen flex-col items-center justify-center">
       <div class="flex flex-col items-center justify-center">
         <div class="flex h-12 w-12 items-center justify-center rounded-full">
@@ -83,7 +80,7 @@ export default {
     </div>
   </div>
   <div v-else>
-    <user-connection v-if="!currentUserData && userIDNotInDB" :users="users" />
+    <user-connection v-if="userIDNotInDB" :users="users" />
     <div v-else class="mt-5">
       <vote-cards
         :available-votes="availableVotes"
