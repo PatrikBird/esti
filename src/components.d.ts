@@ -23,6 +23,7 @@ declare module '@vue/runtime-core' {
     'Icon:mdi:arrowRightThin': typeof import('~icons/mdi/arrow-right-thin')['default']
     'Icon:mdi:arrowUp': typeof import('~icons/mdi/arrow-up')['default']
     'Icon:mdi:checkCircleOutline': typeof import('~icons/mdi/check-circle-outline')['default']
+    'Icon:mdi:close': typeof import('~icons/mdi/close')['default']
     'Icon:mdi:coffee': typeof import('~icons/mdi/coffee')['default']
     'Icon:mdi:delete': typeof import('~icons/mdi/delete')['default']
     'Icon:mdi:deleteForever': typeof import('~icons/mdi/delete-forever')['default']
