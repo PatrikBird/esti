@@ -2,6 +2,10 @@
 import { Timestamp, addDoc, collection } from 'firebase/firestore'
 import { db } from '~/modules/firebase'
 
+const emit = defineEmits<{
+  (e: 'newUserCreated', userDocRef: string): void
+}>()
+
 const mainStore = useMainStore()
 
 const isObserver = ref(false)
@@ -15,6 +19,7 @@ async function writeData() {
     joinedOn: Timestamp.fromDate(new Date()),
   })
   mainStore.user.id = userDocRef.id
+  emit('newUserCreated', userDocRef.id)
 }
 </script>
 

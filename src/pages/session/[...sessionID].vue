@@ -1,7 +1,7 @@
 <script setup lang='ts'>
 import { useCollection, useDocument } from 'vuefire'
 import { collection, doc, query, where } from 'firebase/firestore'
-import type { SessionState, User } from '~/types'
+import type { Person, SessionState, User } from '~/types'
 import { db } from '~/modules/firebase'
 
 const route = useRoute()
@@ -55,6 +55,15 @@ const availableVotes = [
   '?',
 ]
 provide('availableVotes', availableVotes)
+const showToast = ref(false)
+function userHasBeenClaimed(user: Person) {
+  console.log('User has been claimed: ', user)
+  showToast.value = true
+}
+function newUserHasBeenCreated(userID: string) {
+  console.log('New User has been created: ', userID)
+  showToast.value = true
+}
 </script>
 
 <script lang="ts">
@@ -80,8 +89,15 @@ export default {
     </div>
   </div>
   <div v-else>
-    <user-connection v-if="userIDNotInDB" :users="users" />
+    <user-connection
+      v-if="userIDNotInDB" :users="users"
+      @user-claimed="userHasBeenClaimed"
+      @user-created="newUserHasBeenCreated"
+    />
     <div v-else class="mt-5">
+      <!-- <div v-if="showToast">
+        <its-toast />
+      </div> -->
       <vote-cards
         :available-votes="availableVotes"
         :coffee="true"

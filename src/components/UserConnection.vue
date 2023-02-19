@@ -8,6 +8,10 @@ import { db } from '~/modules/firebase'
 
 // eslint-disable-next-line unused-imports/no-unused-vars
 const props = defineProps<{ users: User[] }>()
+const emit = defineEmits<{
+  (e: 'userClaimed', user: Person): void
+  (e: 'userCreated', userID: string): void
+}>()
 
 const open = ref(true)
 
@@ -21,6 +25,7 @@ function claimExistingUser() {
   open.value = false
   mainStore.user.id = user.value.id
   mainStore.user.name = user.value.name
+  emit('userClaimed', user.value)
 }
 
 const userIDIfSet = computed(() => {
@@ -31,6 +36,10 @@ const userIDIfSet = computed(() => {
 })
 const { data: currentUserData } = useDocument<User>(
   doc(collection(db, mainStore.session.id), userIDIfSet.value))
+
+function userCreated(userDocRef: string) {
+  emit('userCreated', userDocRef)
+}
 </script>
 
 <template>
@@ -82,7 +91,7 @@ const { data: currentUserData } = useDocument<User>(
                   <span class="absolute left-1/2 -translate-x-1/2 bg-white px-3 font-medium dark:bg-zinc-800">or join as new user</span>
                 </div>
 
-                <JoinWithNewUser />
+                <JoinWithNewUser @new-user-created="userCreated" />
               </DialogPanel>
             </TransitionChild>
           </div>
