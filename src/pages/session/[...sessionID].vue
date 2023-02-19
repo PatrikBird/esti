@@ -10,6 +10,13 @@ const mainStore = useMainStore()
 const collectionID = ref(route.params.sessionID as string)
 mainStore.session.id = collectionID.value
 
+const showSessionNotFound = ref(false)
+const { isSessionIDValid } = await useSessionExists(collectionID)
+if (!isSessionIDValid.value) {
+  console.error('Session ID is not valid!')
+  showSessionNotFound.value = true
+}
+
 const { data: users, pending: usersPending, error: usersError } = useCollection<User>(
   query(
     collection(db, collectionID.value),
@@ -60,7 +67,7 @@ export default {
 </script>
 
 <template>
-  <div v-if="stateError || usersError">
+  <div v-if="showSessionNotFound">
     <session-not-found />
   </div>
   <div v-else-if="statePending || usersPending || currentUserPending">

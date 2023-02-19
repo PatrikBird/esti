@@ -24,6 +24,11 @@ async function retrieveUserFromDB() {
 }
 
 async function joinSession() {
+  const { isSessionIDValid } = await useSessionExists(mainStore.session.id)
+  if (!isSessionIDValid.value) {
+    console.error('Session ID is not valid!')
+    return
+  }
   const retrievedUser = await retrieveUserFromDB()
   if (!retrievedUser) {
     console.log('Creating new user!')
@@ -49,7 +54,7 @@ async function joinSession() {
 </script>
 
 <template>
-  <div class="flex min-h-full flex-col justify-center py-24 sm:px-6 lg:px-8">
+  <div class="flex min-h-full flex-col justify-center py-14 sm:px-6 lg:px-8">
     <div class="sm:mx-auto sm:w-full sm:max-w-md">
       <!-- <img class="mx-auto h-24 w-auto" src="/esti.svg" alt="Esti Logo"> -->
       <h1 class="text-2xl font-bold tracking-tight">

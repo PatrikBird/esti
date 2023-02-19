@@ -8,7 +8,9 @@ mainStore.session.id = ''
 <template>
   <div class="flex min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8">
     <div class="sm:mx-auto sm:w-full sm:max-w-md">
-      <img class="mx-auto h-24 w-auto" src="/esti.svg" alt="Esti Logo">
+      <h1 class="text-2xl font-bold tracking-tight">
+        <span class="text-blue-600">esti</span>mate
+      </h1>
       <h2 class="mt-6 text-center text-3xl font-bold tracking-tight">
         Session not found
       </h2>
