@@ -1,7 +1,6 @@
 <template>
   <TheNavbar class="z-30" />
-
-  <div class="mx-auto max-w-7xl px-6 py-24 sm:pb-32">
+  <div class="mx-auto max-w-7xl px-6 py-28">
     <div class="mx-auto max-w-2xl">
       <!-- <img class="h-28" src="/esti.svg" alt="Esti Logo"> -->
       <h1 class="text-6xl font-bold tracking-tight dark:bg-gradient-to-r dark:from-emerald-400 dark:via-sky-500 dark:to-blue-600 dark:bg-clip-text dark:text-transparent">
