@@ -17,7 +17,7 @@ const lastSessionLink = computed(() =>
             <div class="relative flex gap-4">
               <div class="flex flex-1 justify-center gap-3 md:justify-center">
                 <nav class="pointer-events-auto block">
-                  <ul class="flex rounded-full px-3 text-sm font-medium shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:bg-zinc-800 dark:text-zinc-200 dark:ring-white/10">
+                  <ul class="flex rounded-full bg-white px-3 text-sm font-medium shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:bg-zinc-800 dark:text-zinc-200 dark:ring-white/10">
                     <li>
                       <RouterLink
                         to="/"

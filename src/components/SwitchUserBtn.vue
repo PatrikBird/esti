@@ -8,7 +8,7 @@ const { switchUserMode } = useUserModeSwitch()
 
 <template>
   <table-action-btn
-    :title="setIsObserverTo ? 'Make Observer' : 'Make Voter'"
+    :title="setIsObserverTo ? 'Move User to Observer' : 'Move User to Voter'"
     @click="switchUserMode(userId, setIsObserverTo)"
     @mouseover="hoveredUserID = userId"
     @mouseleave="hoveredUserID = ''"

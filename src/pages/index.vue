@@ -1,4 +1,6 @@
 <template>
+  <TheNavbar class="z-30" />
+
   <div class="mx-auto max-w-7xl px-6 py-24 sm:pb-32">
     <div class="mx-auto max-w-2xl">
       <!-- <img class="h-28" src="/esti.svg" alt="Esti Logo"> -->
