@@ -13,16 +13,13 @@ async function writeData() {
   mainStore.session.id = Date.now().toString()
   const collectionRef = collection(db, mainStore.session.id)
 
-  console.log('sessionState writing...')
   await setDoc(doc(db, mainStore.session.id, 'sessionState'), {
     isVoteRevealed: false,
     lastRevealOn: null,
     lastResetOn: null,
     createdOn: Timestamp.fromDate(new Date()),
   })
-  console.log('sessionState written')
 
-  console.log('user writing...')
   const userDocRef = await addDoc(collectionRef, {
     name: mainStore.user.name,
     voteValue: null,
@@ -30,7 +27,6 @@ async function writeData() {
     lastVoteOn: null,
     joinedOn: Timestamp.fromDate(new Date()),
   })
-  console.log('user written')
   mainStore.user.id = userDocRef.id
   router.push(`/session/${mainStore.session.id}`)
 }

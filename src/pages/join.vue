@@ -14,13 +14,8 @@ async function retrieveUserFromDB() {
   const docRef = doc(db, mainStore.session.id, mainStore.user.id)
   const docSnap = await getDoc(docRef)
 
-  if (docSnap.exists()) {
-    console.log('Document data:', docSnap.data(), docSnap.id)
+  if (docSnap.exists())
     return { data: docSnap.data(), id: docSnap.id }
-  }
-  else {
-    console.log('User not found!')
-  }
 }
 
 async function joinSession() {
@@ -31,7 +26,6 @@ async function joinSession() {
   }
   const retrievedUser = await retrieveUserFromDB()
   if (!retrievedUser) {
-    console.log('Creating new user!')
     const collectionRef = collection(db, mainStore.session.id)
     const userDocRef = await addDoc(collectionRef, {
       name: mainStore.user.name,
@@ -42,7 +36,6 @@ async function joinSession() {
     mainStore.user.id = userDocRef.id
   }
   else {
-    console.log('User found!')
     // TODO: Show modal to ask if user wants to retrieve data from DB
     // TRUE: Retrieve data from DB, FALSE: Create new user
     // Or just show Toast that user already exists and will be retrieved?

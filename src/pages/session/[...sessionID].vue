@@ -66,11 +66,9 @@ const availableVotes = [
 provide('availableVotes', availableVotes)
 const showToast = ref(false)
 function userHasBeenClaimed(user: Person) {
-  console.log('User has been claimed: ', user)
   showToast.value = true
 }
 function newUserHasBeenCreated(userID: string) {
-  console.log('New User has been created: ', userID)
   showToast.value = true
 }
 </script>
