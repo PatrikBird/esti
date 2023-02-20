@@ -39,7 +39,7 @@ const { data: currentUserData } = useDocument<User>(
 
 function userCreated(userDocRef: string) {
   emit('userCreated', userDocRef)
-  open.value = false
+  // open.value = false
 }
 </script>
 
@@ -73,7 +73,8 @@ function userCreated(userDocRef: string) {
                     </div>
                   </div>
                 </div>
-                <div v-show="users.length > 0" class="mt-5 sm:mt-6 sm:grid sm:grid-flow-row-dense sm:grid-cols-2 sm:gap-3">
+                <!-- <div v-show="users.length > 0" class="mt-5 sm:mt-6 sm:grid sm:grid-flow-row-dense sm:grid-cols-2 sm:gap-3"> -->
+                <div class="mt-5 sm:mt-6 sm:grid sm:grid-flow-row-dense sm:grid-cols-2 sm:gap-3">
                   <button
                     type="button"
                     class="inline-flex w-full justify-center rounded-md border border-transparent bg-blue-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:col-start-2 sm:text-sm"
@@ -84,10 +85,8 @@ function userCreated(userDocRef: string) {
                   <ComboBox :users="users" @selected-changed="onSelectedPersonChanged" />
                 </div>
 
-                <div
-                  v-show="users.length > 0"
-                  class="inline-flex w-full items-center justify-center"
-                >
+                <!-- <div v-show="users.length > 0" class="inline-flex w-full items-center justify-center"> -->
+                <div class="inline-flex w-full items-center justify-center">
                   <hr class="my-8 h-px w-64 border-0 bg-zinc-200 dark:bg-zinc-700">
                   <span class="absolute left-1/2 -translate-x-1/2 bg-white px-3 font-medium dark:bg-zinc-800">or join as new user</span>
                 </div>
