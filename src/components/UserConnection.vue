@@ -39,6 +39,7 @@ const { data: currentUserData } = useDocument<User>(
 
 function userCreated(userDocRef: string) {
   emit('userCreated', userDocRef)
+  open.value = false
 }
 </script>
 
