@@ -5,6 +5,7 @@ import { db } from '~/modules/firebase'
 // eslint-disable-next-line unused-imports/no-unused-vars
 const props = defineProps<{
   isVoteRevealed?: boolean
+  allVotersHaveVoted?: boolean
 }>()
 
 const route = useRoute()
@@ -85,10 +86,10 @@ const isDev = ref(import.meta.env.DEV)
     </button>
     <button
       type="button"
-      class="inline-flex items-center justify-center rounded-md bg-blue-600 p-5
-    text-sm font-medium text-white shadow-sm hover:bg-blue-700
-    focus:outline-none focus:ring-1 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-zinc-100
+      class="inline-flex items-center justify-center rounded-md bg-blue-600 p-5 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-zinc-100
     dark:focus:ring-offset-zinc-900"
+      :class="{ 'ring-emerald-400 ring-2 ring-offset-2 dark:ring-offset-zinc-800': allVotersHaveVoted }"
+
       @click="revealVotes"
     >
       REVEAL

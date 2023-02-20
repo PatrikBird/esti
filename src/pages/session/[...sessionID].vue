@@ -50,6 +50,10 @@ const voteRevealed = computed(() => {
   return sessionState.value?.isVoteRevealed
 })
 
+const allVotersHaveVoted = computed(() => {
+  return voters.value.every(v => v.voteValue !== undefined && v.voteValue !== null)
+})
+
 const availableVotes = [
   '0',
   '1',
@@ -97,6 +101,7 @@ export default {
       <div class="mx-auto max-w-3xl">
         <TheButtons
           :is-vote-revealed="isVoteRevealed"
+          :all-voters-have-voted="allVotersHaveVoted"
         />
         <div v-if="!voteRevealed">
           <LoadingTable v-if="!users" />
