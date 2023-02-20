@@ -26,6 +26,15 @@ const userIDNotInDB = computed(() => {
   return !users.value?.find(u => u.id === mainStore.user.id)
 })
 
+const userIDIfSet = computed(() => {
+  if (mainStore.user.id.length === 0)
+    return '12345'
+  else
+    return mainStore.user.id
+})
+const { data: currentUserData, pending: currentUserPending, error: currentUserError } = useDocument<User>(
+  doc(collection(db, collectionID.value), userIDIfSet.value))
+
 const { data: sessionState, pending: statePending, error: stateError } = useDocument<SessionState>(
   doc(collection(db, collectionID.value), 'sessionState'))
 
@@ -76,32 +85,27 @@ export default {
   <SessionNotFound v-if="showSessionNotFound || stateError || usersError" />
   <LoadingSpinner v-else-if="statePending || usersPending" />
   <div v-else>
-    <user-connection
-      v-if="userIDNotInDB" :users="users"
+    <UserConnection
+      v-if="!currentUserData && userIDNotInDB" :users="users"
       @user-claimed="userHasBeenClaimed"
       @user-created="newUserHasBeenCreated"
     />
     <div v-else class="mt-5">
-      <!-- <div v-if="showToast">
-        <its-toast />
-      </div> -->
-      <vote-cards
+      <VoteCards
         :available-votes="availableVotes"
         :coffee="true"
         :is-vote-revealed="isVoteRevealed"
       />
       <div class="mx-auto max-w-3xl">
-        <the-buttons
+        <TheButtons
           :is-vote-revealed="isVoteRevealed"
         />
         <div v-if="!voteRevealed">
-          <loading-table v-if="!users" />
-          <the-table v-else :voters="voters" />
-          <the-observers :observers="observers" />
+          <LoadingTable v-if="!users" />
+          <TheTable v-else :voters="voters" />
+          <TheObservers :observers="observers" />
         </div>
-        <div v-else>
-          <vote-results :voters="voters" />
-        </div>
+        <VoteResults v-else :voters="voters" />
       </div>
     </div>
   </div>
