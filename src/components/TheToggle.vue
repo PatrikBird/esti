@@ -7,7 +7,7 @@ const emit = defineEmits<{
 
 const isDisabledClasses = computed(() => ({
   'bg-zinc-200': true,
-  'dark:bg-zinc-800': true,
+  'dark:bg-zinc-500': true,
 }))
 
 const isObserver = ref(false)

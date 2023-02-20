@@ -46,12 +46,12 @@ watchEffect(() => {
     v-model="selected"
     :disabled="people.length === 0"
   >
-    <div class="relative mt-1">
+    <div class="relative">
       <div
-        class="relative w-full cursor-default overflow-hidden rounded-lg bg-white text-left shadow-md focus:outline-none sm:text-sm"
+        class="relative w-full cursor-default overflow-hidden rounded-lg bg-white text-left shadow-md sm:text-sm"
       >
         <ComboboxInput
-          class="w-full border-none py-2 pl-3 pr-10 text-sm leading-5 focus:ring-0"
+          class="w-full rounded-lg border-none py-2 pl-3 pr-10 text-sm leading-5 dark:bg-zinc-600"
           :display-value="(person) => (person as Person).name"
           :disabled="people.length === 0"
           @change="query = $event.target.value"
@@ -69,7 +69,7 @@ watchEffect(() => {
         @after-leave="query = ''"
       >
         <ComboboxOptions
-          class="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none dark:bg-zinc-700 sm:text-sm"
+          class="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-lg bg-white py-1 text-sm shadow-lg ring-1 ring-black/5 focus:outline-none dark:bg-zinc-600 sm:text-sm"
         >
           <div
             v-if="filteredPeople.length === 0"
