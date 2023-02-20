@@ -73,21 +73,8 @@ export default {
 </script>
 
 <template>
-  <div v-if="showSessionNotFound || stateError || usersError">
-    <session-not-found />
-  </div>
-  <div v-else-if="statePending || usersPending">
-    <div class="flex h-screen flex-col items-center justify-center">
-      <div class="flex flex-col items-center justify-center">
-        <div class="flex h-12 w-12 items-center justify-center rounded-full">
-          <icon:line-md:loading-twotone-loop class="h-10 w-10" />
-        </div>
-        <p class="mt-2">
-          Just a sec...
-        </p>
-      </div>
-    </div>
-  </div>
+  <SessionNotFound v-if="showSessionNotFound || stateError || usersError" />
+  <LoadingSpinner v-else-if="statePending || usersPending" />
   <div v-else>
     <user-connection
       v-if="userIDNotInDB" :users="users"
