@@ -20,8 +20,11 @@ function onSelectedPersonChanged(person: Person) {
   user.value = person
 }
 
+const formSending = ref(false)
 const mainStore = useMainStore()
+
 function claimExistingUser() {
+  formSending.value = true
   open.value = false
   mainStore.user.id = user.value.id
   mainStore.user.name = user.value.name
@@ -75,18 +78,19 @@ function userCreated(userDocRef: string) {
                 <!-- <div v-show="users.length > 0" class="mt-5 sm:mt-6 sm:grid sm:grid-flow-row-dense sm:grid-cols-2 sm:gap-3"> -->
                 <div class="mt-5 sm:mt-6 sm:grid sm:grid-flow-row-dense sm:grid-cols-2 sm:gap-3">
                   <button
-                    type="button"
-                    :disabled="!user"
+                    type="submit"
+                    :disabled="!user || formSending"
                     :class="{
-                      'bg-gray-300': !user,
-                      'hover:bg-gray-300': !user,
-                      'dark:bg-gray-600': !user,
-                      'cursor-not-allowed': !user,
+                      'bg-gray-300': !user || formSending,
+                      'hover:bg-gray-300': !user || formSending,
+                      'dark:bg-gray-600': !user || formSending,
+                      'cursor-not-allowed': !user || formSending,
                     }"
                     class="inline-flex w-full justify-center rounded-md border border-transparent bg-blue-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:col-start-2 sm:text-sm"
                     @click="claimExistingUser"
                   >
-                    Claim existing user
+                    <icon:line-md:loading-twotone-loop v-if="formSending" class="mr-1 h-5 w-5" />
+                    {{ formSending ? 'Loading...' : 'Claim existing user' }}
                   </button>
                   <ComboBox :users="users" @selected-changed="onSelectedPersonChanged" />
                 </div>
