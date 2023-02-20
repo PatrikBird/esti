@@ -10,7 +10,7 @@ const mainStore = useMainStore()
 
 const isObserver = ref(false)
 
-async function writeData() {
+async function addUserToDB() {
   const userDocRef = await addDoc(collection(db, mainStore.session.id), {
     name: mainStore.user.name,
     voteValue: null,
@@ -24,7 +24,7 @@ async function writeData() {
 </script>
 
 <template>
-  <form class="space-y-6" @submit.prevent="writeData">
+  <form class="space-y-6" @submit.prevent="addUserToDB">
     <div>
       <label for="username" class="block text-left text-sm font-medium">Name</label>
       <div class="mt-1">
