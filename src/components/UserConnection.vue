@@ -66,9 +66,8 @@ function userCreated(userDocRef: string) {
                     <div class="mt-2">
                       <p class="text-sm text-zinc-500 dark:text-zinc-300">
                         The user could not be retrieved from database. <br>
-                        <span v-show="users.length > 0">
-                          You can either claim an existing user or create a new one.
-                        </span>
+                        <!-- <span v-show="users.length > 0"> -->
+                        You can either claim an existing user or create a new one.
                       </p>
                     </div>
                   </div>
@@ -77,6 +76,13 @@ function userCreated(userDocRef: string) {
                 <div class="mt-5 sm:mt-6 sm:grid sm:grid-flow-row-dense sm:grid-cols-2 sm:gap-3">
                   <button
                     type="button"
+                    :disabled="!user"
+                    :class="{
+                      'bg-gray-300': !user,
+                      'hover:bg-gray-300': !user,
+                      'dark:bg-gray-600': !user,
+                      'cursor-not-allowed': !user,
+                    }"
                     class="inline-flex w-full justify-center rounded-md border border-transparent bg-blue-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:col-start-2 sm:text-sm"
                     @click="claimExistingUser"
                   >
