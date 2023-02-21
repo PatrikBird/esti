@@ -69,6 +69,7 @@ watchEffect(() => {
       'L',
       'XL',
       '?',
+      'coffee',
     ]
   }
   else {
@@ -84,6 +85,7 @@ watchEffect(() => {
       '40',
       '100',
       '?',
+      'coffee',
     ]
   }
 })
@@ -113,7 +115,6 @@ export default {
     <div v-else class="mt-5">
       <VoteCards
         :available-votes="availableVotes"
-        :coffee="true"
         :is-vote-revealed="isVoteRevealed"
       />
       <div class="mx-auto max-w-3xl">

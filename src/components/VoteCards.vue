@@ -4,22 +4,15 @@ import { useCollection, useDocument } from 'vuefire'
 import type { SessionState, User } from '~/types'
 import { db } from '~/modules/firebase'
 
+// eslint-disable-next-line unused-imports/no-unused-vars
 const props = defineProps<{
   availableVotes: string[]
-  coffee: boolean
   isVoteRevealed?: boolean
 }>()
 
 const mainStore = useMainStore()
 const route = useRoute()
 const collectionID = ref(route.params.sessionID as string)
-
-const votes = computed(() => {
-  if (props.coffee)
-    return [...props.availableVotes, 'coffee']
-  else
-    return props.availableVotes
-})
 
 // TODO: refactor hacky solution to avoid running watcher on initial load
 const lastResetOnUpdated = ref(false)
@@ -55,13 +48,13 @@ watch(lastResetOn, () => {
   }
 })
 
-const { data: currentUserData, pending: currentUserPending, error: currentUserError } = useDocument<User>(
+const { data: currentUserData } = useDocument<User>(
   doc(collection(db, collectionID.value), mainStore.user.id ?? 0))
 </script>
 
 <template>
   <div
-    v-for="vote in votes"
+    v-for="vote in availableVotes"
     :key="vote"
     tabindex="0"
     :class="[
