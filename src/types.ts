@@ -22,7 +22,7 @@ export interface Person {
 
 export interface User extends Person {
   isObserver: boolean
-  lastVoteOn: string | null
+  lastVoteOn: Timestamp | null
   voteValue: string | null
   joinedOn: Timestamp
 }

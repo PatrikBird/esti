@@ -28,7 +28,7 @@ const lastResetOnUpdated = ref(false)
 const selectedVote = ref()
 function selectVote(vote: string) {
   selectedVote.value = vote
-  updateDoc(doc(db, collectionID.value, mainStore.user.id), { voteValue: selectedVote.value })
+  updateDoc(doc(db, collectionID.value, mainStore.user.id), { voteValue: selectedVote.value, lastVoteOn: serverTimestamp() })
   lastResetOnUpdated.value = false
 }
 
