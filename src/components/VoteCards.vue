@@ -1,26 +1,18 @@
 <script setup lang='ts'>
-import { collection, doc, query, updateDoc, where } from 'firebase/firestore'
+import { collection, doc, query, serverTimestamp, updateDoc, where } from 'firebase/firestore'
 import { useCollection, useDocument } from 'vuefire'
 import type { SessionState, User } from '~/types'
 import { db } from '~/modules/firebase'
 
+// eslint-disable-next-line unused-imports/no-unused-vars
 const props = defineProps<{
   availableVotes: string[]
-  coffee: boolean
   isVoteRevealed?: boolean
-  // currentUserData: User | undefined | null
 }>()
 
 const mainStore = useMainStore()
 const route = useRoute()
 const collectionID = ref(route.params.sessionID as string)
-
-const votes = computed(() => {
-  if (props.coffee)
-    return [...props.availableVotes, 'coffee']
-  else
-    return props.availableVotes
-})
 
 // TODO: refactor hacky solution to avoid running watcher on initial load
 const lastResetOnUpdated = ref(false)
@@ -28,7 +20,7 @@ const lastResetOnUpdated = ref(false)
 const selectedVote = ref()
 function selectVote(vote: string) {
   selectedVote.value = vote
-  updateDoc(doc(db, collectionID.value, mainStore.user.id), { voteValue: selectedVote.value })
+  updateDoc(doc(db, collectionID.value, mainStore.user.id), { voteValue: selectedVote.value, lastVoteOn: serverTimestamp() })
   lastResetOnUpdated.value = false
 }
 
@@ -56,13 +48,13 @@ watch(lastResetOn, () => {
   }
 })
 
-const { data: currentUserData, pending: currentUserPending, error: currentUserError } = useDocument<User>(
+const { data: currentUserData } = useDocument<User>(
   doc(collection(db, collectionID.value), mainStore.user.id ?? 0))
 </script>
 
 <template>
   <div
-    v-for="vote in votes"
+    v-for="vote in availableVotes"
     :key="vote"
     tabindex="0"
     :class="[

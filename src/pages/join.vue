@@ -79,7 +79,7 @@ async function joinSession() {
           </div>
 
           <div class="flex items-center justify-center">
-            <TheToggle @is-observer="(e) => isObserver = e" />
+            <GenericToggle off="Voter" on="Observer" @is-active="(e) => isObserver = e" />
           </div>
 
           <div>

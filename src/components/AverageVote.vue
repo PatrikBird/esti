@@ -16,8 +16,8 @@ const averageVoteValue = computed(() => {
     return (votes.value.reduce((sum, v) => sum + v, 0) / votes.value.length).toFixed(1)
 })
 
-const availableVotes: string[] = inject('availableVotes')!
-const availableVotesNum = computed(() => availableVotes.map(v => +v))
+const availableVotes: Ref<string[]> = inject('availableVotes') as Ref<string[]>
+const availableVotesNum = computed(() => availableVotes.value.map(v => +v))
 
 const closestAvailableVote = computed(() => {
   const availableVotes = availableVotesNum.value
@@ -37,7 +37,7 @@ const closestAvailableVote = computed(() => {
     v-visible="averageVoteValue"
     v-motion-fade
     :delay="600"
-    class="mb-5 flex items-center justify-center gap-1 pt-12"
+    class="mb-5 flex items-center justify-center gap-1"
   >
     <p class="items-center rounded bg-blue-100 p-1.5 text-sm font-semibold text-blue-800 dark:bg-blue-200 dark:text-blue-800">
       {{ averageVoteValue ?? "None" }}
