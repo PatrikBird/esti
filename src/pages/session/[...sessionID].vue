@@ -1,7 +1,7 @@
 <script setup lang='ts'>
 import { useCollection, useDocument } from 'vuefire'
 import { collection, doc, query, where } from 'firebase/firestore'
-import type { Person, SessionState, User } from '~/types'
+import type { SessionState, User } from '~/types'
 import { db } from '~/modules/firebase'
 
 const route = useRoute()
@@ -56,27 +56,45 @@ const allVotersHaveVoted = computed(() => {
   return voters.value.every(v => v.voteValue !== undefined && v.voteValue !== null)
 })
 
-const availableVotes = [
-  '0',
-  '1',
-  '2',
-  '3',
-  '5',
-  '8',
-  '13',
-  '20',
-  '40',
-  '100',
-  '?',
-]
+const isShirtMode = computed(() => {
+  return sessionState.value?.isShirtMode
+})
+const availableVotes: Ref<string[]> = ref([])
+watchEffect(() => {
+  if (isShirtMode.value) {
+    availableVotes.value = [
+      'XS',
+      'S',
+      'M',
+      'L',
+      'XL',
+      '?',
+    ]
+  }
+  else {
+    availableVotes.value = [
+      '0',
+      '1',
+      '2',
+      '3',
+      '5',
+      '8',
+      '13',
+      '20',
+      '40',
+      '100',
+      '?',
+    ]
+  }
+})
 provide('availableVotes', availableVotes)
-const showToast = ref(false)
-function userHasBeenClaimed(user: Person) {
-  showToast.value = true
-}
-function newUserHasBeenCreated(userID: string) {
-  showToast.value = true
-}
+// const showToast = ref(false)
+// function userHasBeenClaimed(user: Person) {
+//   showToast.value = true
+// }
+// function newUserHasBeenCreated(userID: string) {
+//   showToast.value = true
+// }
 </script>
 
 <script lang="ts">
@@ -91,8 +109,6 @@ export default {
   <div v-else>
     <UserConnection
       v-if="!currentUserData && userIDNotInDB" :users="users"
-      @user-claimed="userHasBeenClaimed"
-      @user-created="newUserHasBeenCreated"
     />
     <div v-else class="mt-5">
       <VoteCards
@@ -110,7 +126,11 @@ export default {
           <TheTable v-else :voters="voters" />
           <TheObservers :observers="observers" />
         </div>
-        <VoteResults v-else :voters="voters" />
+        <VoteResults
+          v-else
+          :voters="voters"
+          :is-shirt-mode="isShirtMode"
+        />
       </div>
     </div>
   </div>

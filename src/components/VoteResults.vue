@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import type { User } from '~/types'
 
-const props = defineProps<{ voters?: User[] }>()
+const props = defineProps<{ voters?: User[]; isShirtMode?: boolean }>()
+
+const availableVotes = inject('availableVotes') as Ref<string[]>
 
 const votersWithoutNull = computed(() => props.voters?.filter(v => v.voteValue !== null))
 

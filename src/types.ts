@@ -11,6 +11,7 @@ export interface SessionData {
 export interface SessionState {
   createdOn: Timestamp
   isVoteRevealed: boolean
+  isShirtMode: boolean
   lastRevealOn: string | null
   lastResetOn: string | null
 }
