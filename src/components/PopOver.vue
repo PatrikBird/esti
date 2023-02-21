@@ -13,7 +13,7 @@ const showTooltip = ref(false)
     >
       <slot />
     </div>
-    <div
+    <!-- <div
       v-show="showTooltip"
       class="absolute left-0 z-20 -mt-16 ml-10 w-64 rounded-lg bg-white p-4 shadow-lg"
     >
@@ -37,6 +37,6 @@ const showTooltip = ref(false)
       <p class="py-1 text-sm text-zinc-800">
         Represents the closest available vote.
       </p>
-    </div>
+    </div> -->
   </div>
 </template>
