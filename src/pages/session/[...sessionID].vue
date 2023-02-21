@@ -51,6 +51,8 @@ const voteRevealed = computed(() => {
 })
 
 const allVotersHaveVoted = computed(() => {
+  if (voters.value.length < 1)
+    return false
   return voters.value.every(v => v.voteValue !== undefined && v.voteValue !== null)
 })
 
