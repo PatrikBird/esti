@@ -41,6 +41,7 @@ declare module '@vue/runtime-core' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SessionNotFound: typeof import('./components/SessionNotFound.vue')['default']
+    ShirtProgressBar: typeof import('./components/results/ShirtProgressBar.vue')['default']
     ShirtVoteResults: typeof import('./components/results/ShirtVoteResults.vue')['default']
     SwitchUserBtn: typeof import('./components/SwitchUserBtn.vue')['default']
     TableActionBtn: typeof import('./components/TableActionBtn.vue')['default']
