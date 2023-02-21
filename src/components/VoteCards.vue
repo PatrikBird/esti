@@ -1,5 +1,5 @@
 <script setup lang='ts'>
-import { collection, doc, query, updateDoc, where } from 'firebase/firestore'
+import { collection, doc, query, serverTimestamp, updateDoc, where } from 'firebase/firestore'
 import { useCollection, useDocument } from 'vuefire'
 import type { SessionState, User } from '~/types'
 import { db } from '~/modules/firebase'
@@ -8,7 +8,6 @@ const props = defineProps<{
   availableVotes: string[]
   coffee: boolean
   isVoteRevealed?: boolean
-  // currentUserData: User | undefined | null
 }>()
 
 const mainStore = useMainStore()
