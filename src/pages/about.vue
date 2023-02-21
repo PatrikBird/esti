@@ -1,5 +1,5 @@
 <template>
-  <main class="prose p-10">
+  <main class="prose p-2 md:p-10">
     <div class="mx-auto max-w-xl text-left">
       <h1 class="text-3xl font-semibold leading-loose">
         Hello :)
