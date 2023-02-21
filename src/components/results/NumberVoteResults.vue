@@ -22,7 +22,7 @@ const sortedVotersWithoutNull = computed(() => {
 })
 
 const votersThatVotedANumber = computed(() =>
-  props.voters && props.voters.filter(u => u.voteValue !== null && u.voteValue !== '?' && u.voteValue !== 'coffee'),
+  props.voters && props.voters.filter(u => u.voteValue !== '?' && u.voteValue !== 'coffee'),
 )
 
 const maxVote = computed(() =>
