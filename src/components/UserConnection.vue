@@ -81,7 +81,7 @@ function userCreated(userDocRef: string) {
                   </DialogTitle>
                   <p class="my-2 text-sm text-zinc-500 dark:text-zinc-300">
                     The user could not be retrieved from database. <br>
-                    You can either claim an existing user...
+                    You can either claim an existing user within the current session...
                   </p>
                 </div>
                 <div class="grid grid-flow-row-dense gap-3 sm:mt-6 sm:grid-cols-2">
