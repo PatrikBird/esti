@@ -16,8 +16,8 @@ const averageVoteValue = computed(() => {
     return (votes.value.reduce((sum, v) => sum + v, 0) / votes.value.length).toFixed(1)
 })
 
-const availableVotes: string[] = inject('availableVotes')!
-const availableVotesNum = computed(() => availableVotes.map(v => +v))
+const availableVotes: Ref<string[]> = inject('availableVotes') as Ref<string[]>
+const availableVotesNum = computed(() => availableVotes.value.map(v => +v))
 
 const closestAvailableVote = computed(() => {
   const availableVotes = availableVotesNum.value

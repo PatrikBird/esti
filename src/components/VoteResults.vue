@@ -3,38 +3,13 @@ import type { User } from '~/types'
 
 const props = defineProps<{ voters?: User[]; isShirtMode?: boolean }>()
 
-const availableVotes = inject('availableVotes') as Ref<string[]>
-
-const votersWithoutNull = computed(() => props.voters?.filter(v => v.voteValue !== null))
-
-const sortedVotersWithoutNull = computed(() => {
-  if (!votersWithoutNull.value)
-    return undefined
-  const voters = votersWithoutNull.value.slice()
-  voters.sort((a, b) => {
-    if (a.voteValue === '?')
-      return 1
-    if (b.voteValue === '?')
-      return -1
-    if (a.voteValue === 'coffee')
-      return 1
-    if (b.voteValue === 'coffee')
-      return -1
-    return +a.voteValue! - +b.voteValue!
-  })
-
-  return voters
-})
-const votersThatVotedANumber = computed(() =>
-  votersWithoutNull.value?.filter(u => u.voteValue !== null && u.voteValue !== '?' && u.voteValue !== 'coffee'),
-)
-const maxVote = computed(() =>
-  votersThatVotedANumber.value?.reduce((max, v) => Math.max(max, +v.voteValue!), 0),
-)
+// const availableVotes = inject('availableVotes') as Ref<string[]>
 </script>
 
 <template>
-  <div v-if="sortedVotersWithoutNull && sortedVotersWithoutNull?.length > 0">
+  <number-vote-results v-if="!props.isShirtMode" :voters="voters" />
+  <shirt-vote-results v-else-if="props.isShirtMode" :voters="voters" />
+  <!-- <div v-if="sortedVotersWithoutNull && sortedVotersWithoutNull?.length > 0">
     <average-vote
       :voters="sortedVotersWithoutNull"
       class="pl-2 sm:pl-0"
@@ -47,7 +22,7 @@ const maxVote = computed(() =>
         :max-vote="maxVote"
       />
     </div>
-  </div>
+  </div> -->
   <p v-else>
     <img
       v-motion-pop
