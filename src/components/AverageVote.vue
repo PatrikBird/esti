@@ -34,6 +34,7 @@ const closestAvailableVote = computed(() => {
 
 <template>
   <div
+    v-visible="averageVoteValue"
     v-motion-fade
     :delay="600"
     class="mb-5 flex items-center justify-center gap-1 pt-12"
