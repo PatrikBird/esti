@@ -8,11 +8,6 @@ const emit = defineEmits<{
   (e: 'isActive', isActive: boolean): void
 }>()
 
-const isDisabledClasses = computed(() => ({
-  'bg-zinc-200': true,
-  'dark:bg-zinc-500': true,
-}))
-
 const isActive = ref(false)
 watchEffect(() => {
   emit('isActive', isActive.value)
