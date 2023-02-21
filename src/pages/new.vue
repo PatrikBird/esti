@@ -7,6 +7,7 @@ const mainStore = useMainStore()
 
 const formSending = ref(false)
 const isObserver = ref(false)
+const isShirtMode = ref(false)
 
 async function writeData() {
   formSending.value = true
@@ -15,6 +16,7 @@ async function writeData() {
 
   await setDoc(doc(db, mainStore.session.id, 'sessionState'), {
     isVoteRevealed: false,
+    isShirtMode: isShirtMode.value,
     lastRevealOn: null,
     lastResetOn: null,
     createdOn: Timestamp.fromDate(new Date()),
@@ -71,7 +73,10 @@ async function writeData() {
           </div>
 
           <div class="flex items-center justify-center">
-            <TheToggle @is-observer="(e) => isObserver = e" />
+            <GenericToggle off="Voter" on="Observer" @is-active="(e) => isObserver = e" />
+          </div>
+          <div class="flex items-center justify-center">
+            <GenericToggle off="Numbers" on="T-Shirt" @is-active="(e) => isShirtMode = e" />
           </div>
 
           <div>
