@@ -16,6 +16,18 @@ const lastSessionLink = computed(() =>
           <div class="mx-auto max-w-2xl">
             <div class="relative flex gap-4">
               <div class="flex flex-1 justify-center gap-3 md:justify-center">
+                <!-- <div class="pointer-events-auto">
+                  <button
+                    type="button"
+                    aria-label="Toggle dark mode"
+                    title="Toggle dark mode"
+                    class="group rounded-full px-3 py-2 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 hover:text-blue-500 dark:text-blue-500 dark:ring-white/10 dark:hover:text-blue-400 dark:hover:ring-white/20"
+                    @click="toggleDark()"
+                  >
+                    <icon:line-md:sunny-filled-loop v-if="!isDark" class="h-[1.3rem] w-[1.3rem] " />
+                    <icon:line-md:sunny-filled-loop-to-moon-filled-loop-transition v-else class="h-[1.35rem] w-[1.35rem]" />
+                  </button>
+                </div> -->
                 <nav class="pointer-events-auto block">
                   <ul class="flex rounded-full bg-white px-3 text-sm font-medium shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:bg-zinc-800 dark:text-zinc-200 dark:ring-white/10">
                     <li>
@@ -53,7 +65,7 @@ const lastSessionLink = computed(() =>
                     type="button"
                     aria-label="Toggle dark mode"
                     title="Toggle dark mode"
-                    class="group rounded-full px-3 py-2 text-blue-600 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 hover:text-blue-500 dark:text-blue-500 dark:ring-white/10 dark:hover:text-blue-400 dark:hover:ring-white/20"
+                    class="group rounded-full px-3 py-2 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 hover:text-blue-500 dark:text-blue-500 dark:ring-white/10 dark:hover:text-blue-400 dark:hover:ring-white/20"
                     @click="toggleDark()"
                   >
                     <icon:line-md:sunny-filled-loop v-if="!isDark" class="h-[1.3rem] w-[1.3rem] " />
