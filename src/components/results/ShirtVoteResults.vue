@@ -15,7 +15,7 @@ const votersByVoteValue = computed(() => {
   for (const vote of availableVotes.value)
     result[vote] = myVoters.filter(v => v.voteValue === vote)
 
-  // filter empty values
+  // TODO: refactor filter empty values
   for (const key in result) {
     if (result[key].length === 0)
       delete result[key]
@@ -23,22 +23,10 @@ const votersByVoteValue = computed(() => {
 
   return result
 })
-
-// const voteValues = computed(() => Object.values(votersByVoteValue.value || {}))
-// const totalVotes = computed(() =>
-//   voteValues.value.reduce((sum, votes) => sum + votes.length, 0),
-// )
-// const totalSlices = computed(() => voteValues.value.length)
-
-watchEffect(() => {
-  // console.log('votersByVoteValue', votersByVoteValue.value)
-  // console.log('voteValues', voteValues.value)
-  // console.log('totalVotes', totalVotes.value)
-  // console.log('totalSlices', totalSlices.value)
-})
 </script>
 
 <template>
+  <ShirtAverageVote />
   <div class="grid grid-cols-1 gap-y-2 gap-x-8">
     <div v-for="(users, key) in votersByVoteValue" :key="key">
       <ShirtProgressBar

@@ -9,6 +9,7 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    AverageShirtValue: typeof import('./components/results/ShirtAverageVote.vue')['default']
     AverageVote: typeof import('./components/AverageVote.vue')['default']
     BuyMeACoffee: typeof import('./components/icons/BuyMeACoffee.vue')['default']
     BuyMeACoffeeDark: typeof import('./components/icons/BuyMeACoffeeDark.vue')['default']
@@ -41,6 +42,7 @@ declare module '@vue/runtime-core' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SessionNotFound: typeof import('./components/SessionNotFound.vue')['default']
+    ShirtAverageVote: typeof import('./components/results/ShirtAverageVote.vue')['default']
     ShirtProgressBar: typeof import('./components/results/ShirtProgressBar.vue')['default']
     ShirtVoteResults: typeof import('./components/results/ShirtVoteResults.vue')['default']
     SwitchUserBtn: typeof import('./components/SwitchUserBtn.vue')['default']
