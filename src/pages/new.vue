@@ -62,12 +62,14 @@ async function writeData() {
       <div class="rounded-lg bg-zinc-50 py-8 px-10 shadow-xl dark:bg-zinc-700">
         <form class="space-y-6" @submit.prevent="writeData">
           <UsernameInput v-model="enteredName" />
+
           <div class="flex items-center justify-center">
             <GenericToggle off="Voter" on="Observer" @is-active="(e) => isObserver = e" />
           </div>
           <div class="flex items-center justify-center">
             <GenericToggle off="Numbers" on="T-Shirt" @is-active="(e) => isShirtMode = e" />
           </div>
+
           <FormButton
             btn-text="Create session"
             :form-sending="formSending"
@@ -75,9 +77,6 @@ async function writeData() {
             :entered-name-too-long="enteredNameTooLong"
           />
         </form>
-        <!-- <div class="mt-6">
-          <div class="mt-6 grid grid-cols-3 gap-3" />
-        </div> -->
       </div>
     </div>
   </div>

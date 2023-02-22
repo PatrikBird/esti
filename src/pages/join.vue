@@ -56,7 +56,6 @@ async function joinSession() {
 <template>
   <div class="flex min-h-full flex-col justify-center py-14 sm:px-6 lg:px-8">
     <div class="sm:mx-auto sm:w-full sm:max-w-md">
-      <!-- <img class="mx-auto h-24 w-auto" src="/esti.svg" alt="Esti Logo"> -->
       <h1 class="text-2xl font-bold tracking-tight">
         <span class="text-blue-600">esti</span>mate
       </h1>
@@ -75,10 +74,8 @@ async function joinSession() {
       <div class="rounded-lg bg-zinc-50 py-8 px-10 shadow-xl dark:bg-zinc-700">
         <form class="space-y-6" @submit.prevent="joinSession">
           <div>
-            <label for="id" class="block text-left text-sm font-medium">Session ID</label>
-            <div class="mt-1">
-              <input id="id" v-model="mainStore.session.id" name="id" type="text" required class="block w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:outline-none dark:border-zinc-700/5 dark:bg-zinc-800 dark:focus:border-blue-500">
-            </div>
+            <label for="id" class="block py-1 text-left text-sm font-medium">Session ID</label>
+            <input id="id" v-model="mainStore.session.id" name="id" type="text" required class="block w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:outline-none dark:border-zinc-700/5 dark:bg-zinc-800 dark:focus:border-blue-500">
             <UsernameInput v-model="enteredName" class="mt-1" />
           </div>
 
@@ -93,10 +90,6 @@ async function joinSession() {
             :entered-name-too-long="enteredNameTooLong"
           />
         </form>
-
-        <div class="mt-6">
-          <div class="mt-6 grid grid-cols-3 gap-3" />
-        </div>
       </div>
     </div>
   </div>

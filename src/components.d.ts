@@ -11,6 +11,7 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     AverageShirtValue: typeof import('./components/results/ShirtAverageVote.vue')['default']
     AverageVote: typeof import('./components/AverageVote.vue')['default']
+    BaseUserForm: typeof import('./components/BaseUserForm.vue')['default']
     BuyMeACoffee: typeof import('./components/icons/BuyMeACoffee.vue')['default']
     BuyMeACoffeeDark: typeof import('./components/icons/BuyMeACoffeeDark.vue')['default']
     ComboBox: typeof import('./components/ComboBox.vue')['default']
