@@ -36,6 +36,7 @@ declare module '@vue/runtime-core' {
     JoinWithNewUser: typeof import('./components/JoinWithNewUser.vue')['default']
     LoadingSpinner: typeof import('./components/LoadingSpinner.vue')['default']
     LoadingTable: typeof import('./components/LoadingTable.vue')['default']
+    NameInput: typeof import('./components/UsernameInput.vue')['default']
     NumberVoteResults: typeof import('./components/results/NumberVoteResults.vue')['default']
     PopOver: typeof import('./components/PopOver.vue')['default']
     ProgressBar: typeof import('./components/ProgressBar.vue')['default']
@@ -53,6 +54,7 @@ declare module '@vue/runtime-core' {
     TheTable: typeof import('./components/TheTable.vue')['default']
     TheToggle: typeof import('./components/TheToggle.vue')['default']
     UserConnection: typeof import('./components/UserConnection.vue')['default']
+    UsernameInput: typeof import('./components/UsernameInput.vue')['default']
     VoteCards: typeof import('./components/VoteCards.vue')['default']
     VoteResults: typeof import('./components/VoteResults.vue')['default']
   }

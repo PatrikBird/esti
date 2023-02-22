@@ -9,6 +9,9 @@ const router = useRouter()
 const formSending = ref(false)
 const isObserver = ref(false)
 
+const enteredName = ref('')
+const { nameIsValid, enteredNameTooLong } = useNameValidator(enteredName)
+
 async function retrieveUserFromDB() {
   if (!mainStore.user.id)
     return
@@ -21,6 +24,8 @@ async function retrieveUserFromDB() {
 
 async function joinSession() {
   formSending.value = true
+  mainStore.user.name = enteredName.value
+
   const { isSessionIDValid } = await useSessionExists(mainStore.session.id)
   if (!isSessionIDValid.value) {
     console.error('Session ID is not valid!')
@@ -74,10 +79,7 @@ async function joinSession() {
             <div class="mt-1">
               <input id="id" v-model="mainStore.session.id" name="id" type="text" required class="block w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:outline-none dark:border-zinc-700/5 dark:bg-zinc-800 dark:focus:border-blue-500">
             </div>
-            <label for="username" class="mt-5 block text-left text-sm font-medium">Name</label>
-            <div class="mt-1">
-              <input id="username" v-model="mainStore.user.name" name="username" type="text" required class="block w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:outline-none dark:border-zinc-700/5 dark:bg-zinc-800 dark:focus:border-blue-500">
-            </div>
+            <UsernameInput v-model="enteredName" class="mt-1" />
           </div>
 
           <div class="flex items-center justify-center">
@@ -88,8 +90,8 @@ async function joinSession() {
             <button
               autofocus
               type="submit"
-              class="flex w-full justify-center rounded-md border border-transparent bg-blue-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-              :disabled="formSending"
+              class="flex w-full justify-center rounded-md border border-transparent bg-blue-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:bg-blue-600/50 disabled:hover:bg-blue-600/50"
+              :disabled="formSending || !nameIsValid || enteredNameTooLong"
             >
               <icon:line-md:loading-twotone-loop v-if="formSending" class="mr-1 h-5 w-5" />
               {{ formSending ? 'Loading...' : 'Join session' }}
