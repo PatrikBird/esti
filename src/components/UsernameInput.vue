@@ -24,7 +24,7 @@ watch(enteredName, (newValue) => {
       name="username"
       type="text"
       required
-      class="block w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:outline-none dark:border-zinc-700/5 dark:bg-zinc-800 dark:focus:border-blue-500"
+      class="block w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:outline-none dark:border-zinc-700/5 dark:bg-zinc-600 dark:focus:border-blue-500"
       :class="{ '!border-rose-400': enteredNameTooLong }"
       autofocus
     >
