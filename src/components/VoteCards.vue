@@ -24,7 +24,7 @@ function selectVote(vote: string) {
   lastResetOnUpdated.value = false
 }
 
-const { data: users, pending: usersPending, error: usersError } = useCollection<User>(
+const { data: users, pending: usersPending } = useCollection<User>(
   query(
     collection(db, collectionID.value),
     where('name', '!=', null)))
@@ -37,7 +37,7 @@ watch(getSelectedVoteFromDB, () => {
     selectedVote.value = getSelectedVoteFromDB.value
 })
 
-const { data: sessionState, pending: statePending, error: stateError } = useDocument<SessionState>(
+const { data: sessionState, pending: statePending } = useDocument<SessionState>(
   doc(collection(db, collectionID.value), 'sessionState'))
 
 const lastResetOn = computed(() => sessionState.value?.lastResetOn)
