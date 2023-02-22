@@ -15,8 +15,8 @@ watch(enteredName, (newValue) => {
   <div>
     <label
       for="username"
-      class="block text-left text-sm font-medium"
-      :class="{ 'text-red-500': enteredNameTooLong }"
+      class="block py-1 text-left text-sm font-medium"
+      :class="{ 'text-rose-400': enteredNameTooLong }"
     >Name</label>
     <input
       id="username"
@@ -25,10 +25,10 @@ watch(enteredName, (newValue) => {
       type="text"
       required
       class="block w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:outline-none dark:border-zinc-700/5 dark:bg-zinc-800 dark:focus:border-blue-500"
-      :class="{ '!border-red-500': enteredNameTooLong }"
+      :class="{ '!border-rose-400': enteredNameTooLong }"
       autofocus
     >
-    <p v-visible="enteredNameTooLong" class="text-left text-sm text-red-500">
+    <p v-visible="enteredNameTooLong" class="text-left text-sm text-rose-400">
       Are you writing a novel?
     </p>
   </div>
