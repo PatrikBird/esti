@@ -59,7 +59,7 @@ function userCreated(userDocRef: string) {
           leave-from="opacity-100"
           leave-to="opacity-0"
         >
-          <div class="fixed inset-0 bg-zinc-500/75 transition-opacity" />
+          <div class="fixed inset-0 bg-zinc-800/75 transition-opacity" />
         </TransitionChild>
 
         <div class="fixed inset-0 z-10 overflow-y-auto">
@@ -71,7 +71,7 @@ function userCreated(userDocRef: string) {
               leave-from="opacity-100 translate-y-0 sm:scale-100"
               leave-to="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
             >
-              <DialogPanel class="relative overflow-visible rounded-lg bg-white px-4 pt-5 pb-4 text-left shadow-xl transition-all dark:bg-zinc-800 sm:my-8 sm:w-full sm:max-w-lg sm:p-6">
+              <DialogPanel class="relative overflow-visible rounded-lg bg-white px-4 pt-5 pb-4 text-left shadow-xl transition-all dark:bg-zinc-700 sm:my-8 sm:w-full sm:max-w-lg sm:p-6">
                 <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-amber-100">
                   <icon:mdi:account-question class="h-6 w-6 text-amber-600" />
                 </div>
