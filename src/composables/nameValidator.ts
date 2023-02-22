@@ -5,7 +5,7 @@ export function useNameValidator(enteredName: Ref<string>) {
   })
 
   const enteredNameTooLong = computed(() => {
-    return enteredName.value.length > 25
+    return enteredName.value.length > 18
   })
 
   return { nameIsValid, enteredNameTooLong }
