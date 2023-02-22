@@ -11,10 +11,12 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     AverageShirtValue: typeof import('./components/results/ShirtAverageVote.vue')['default']
     AverageVote: typeof import('./components/AverageVote.vue')['default']
+    BaseUserForm: typeof import('./components/BaseUserForm.vue')['default']
     BuyMeACoffee: typeof import('./components/icons/BuyMeACoffee.vue')['default']
     BuyMeACoffeeDark: typeof import('./components/icons/BuyMeACoffeeDark.vue')['default']
     ComboBox: typeof import('./components/ComboBox.vue')['default']
     DeleteUserBtn: typeof import('./components/DeleteUserBtn.vue')['default']
+    FormButton: typeof import('./components/FormButton.vue')['default']
     GenericToggle: typeof import('./components/GenericToggle.vue')['default']
     'Icon:ic:baselineSettings': typeof import('~icons/ic/baseline-settings')['default']
     'Icon:lineMd:chevronLeft': typeof import('~icons/line-md/chevron-left')['default']
@@ -36,6 +38,7 @@ declare module '@vue/runtime-core' {
     JoinWithNewUser: typeof import('./components/JoinWithNewUser.vue')['default']
     LoadingSpinner: typeof import('./components/LoadingSpinner.vue')['default']
     LoadingTable: typeof import('./components/LoadingTable.vue')['default']
+    NameInput: typeof import('./components/UsernameInput.vue')['default']
     NumberVoteResults: typeof import('./components/results/NumberVoteResults.vue')['default']
     PopOver: typeof import('./components/PopOver.vue')['default']
     ProgressBar: typeof import('./components/ProgressBar.vue')['default']
@@ -53,6 +56,7 @@ declare module '@vue/runtime-core' {
     TheTable: typeof import('./components/TheTable.vue')['default']
     TheToggle: typeof import('./components/TheToggle.vue')['default']
     UserConnection: typeof import('./components/UserConnection.vue')['default']
+    UsernameInput: typeof import('./components/UsernameInput.vue')['default']
     VoteCards: typeof import('./components/VoteCards.vue')['default']
     VoteResults: typeof import('./components/VoteResults.vue')['default']
   }

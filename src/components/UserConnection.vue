@@ -8,10 +8,6 @@ import { db } from '~/modules/firebase'
 
 // eslint-disable-next-line unused-imports/no-unused-vars
 const props = defineProps<{ users: User[] }>()
-const emit = defineEmits<{
-  (e: 'userClaimed', user: Person): void
-  (e: 'userCreated', userID: string): void
-}>()
 
 const open = ref(true)
 
@@ -19,6 +15,8 @@ const user = ref()
 function onSelectedPersonChanged(person: Person) {
   user.value = person
 }
+
+const isUserNotUndefined = computed(() => user.value !== undefined)
 
 const formSending = ref(false)
 const mainStore = useMainStore()
@@ -28,7 +26,6 @@ function claimExistingUser() {
   open.value = false
   mainStore.user.id = user.value.id
   mainStore.user.name = user.value.name
-  emit('userClaimed', user.value)
 }
 
 const userIDIfSet = computed(() => {
@@ -39,11 +36,6 @@ const userIDIfSet = computed(() => {
 })
 const { data: currentUserData } = useDocument<User>(
   doc(collection(db, mainStore.session.id), userIDIfSet.value))
-
-function userCreated(userDocRef: string) {
-  emit('userCreated', userDocRef)
-  // open.value = false
-}
 </script>
 
 <template>
@@ -59,7 +51,7 @@ function userCreated(userDocRef: string) {
           leave-from="opacity-100"
           leave-to="opacity-0"
         >
-          <div class="fixed inset-0 bg-zinc-500/75 transition-opacity" />
+          <div class="fixed inset-0 bg-zinc-900/50 transition-opacity" />
         </TransitionChild>
 
         <div class="fixed inset-0 z-10 overflow-y-auto">
@@ -71,7 +63,10 @@ function userCreated(userDocRef: string) {
               leave-from="opacity-100 translate-y-0 sm:scale-100"
               leave-to="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
             >
-              <DialogPanel class="relative overflow-visible rounded-lg bg-white px-4 pt-5 pb-4 text-left shadow-xl transition-all dark:bg-zinc-800 sm:my-8 sm:w-full sm:max-w-lg sm:p-6">
+              <DialogPanel
+                class="relative overflow-visible rounded-lg bg-white px-4 pt-5 pb-4 text-left shadow-xl
+              transition-all dark:bg-zinc-800 sm:my-8 sm:w-full sm:max-w-lg sm:p-6"
+              >
                 <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-amber-100">
                   <icon:mdi:account-question class="h-6 w-6 text-amber-600" />
                 </div>
@@ -84,31 +79,25 @@ function userCreated(userDocRef: string) {
                     You can either claim an existing user within the current session...
                   </p>
                 </div>
-                <div class="grid grid-flow-row-dense gap-3 sm:mt-6 sm:grid-cols-2">
-                  <ComboBox :users="users" @selected-changed="onSelectedPersonChanged" />
-                  <button
-                    type="submit"
-                    :disabled="!user || formSending"
-                    :class="{
-                      'bg-gray-300': !user || formSending,
-                      'hover:bg-gray-300': !user || formSending,
-                      'dark:bg-gray-600': !user || formSending,
-                      'cursor-not-allowed': !user || formSending,
-                    }"
-                    class="inline-flex w-full justify-center rounded-md border border-transparent bg-blue-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-                    @click="claimExistingUser"
-                  >
-                    <icon:line-md:loading-twotone-loop v-if="formSending" class="mr-1 h-5 w-5" />
-                    {{ formSending ? 'Loading...' : 'Claim existing user' }}
-                  </button>
-                </div>
+                <form @submit.prevent="claimExistingUser">
+                  <div class="grid grid-flow-row-dense gap-3 sm:mt-6 sm:grid-cols-2">
+                    <ComboBox :users="users" @selected-changed="onSelectedPersonChanged" />
+                    <FormButton
+                      btn-text="Claim existing user"
+                      :form-sending="formSending"
+                      :name-or-user-is-valid="isUserNotUndefined"
+                    />
+                  </div>
+                </form>
 
                 <div class="inline-flex w-full items-center justify-center">
                   <hr class="my-8 h-px w-64 border-0 bg-zinc-200 dark:bg-zinc-700">
-                  <span class="absolute left-1/2 -translate-x-1/2 bg-white px-3 font-medium dark:bg-zinc-800">or join as new user</span>
+                  <span class="absolute left-1/2 -translate-x-1/2 bg-white px-3 font-medium dark:bg-zinc-800">
+                    or join as new user
+                  </span>
                 </div>
 
-                <JoinWithNewUser @new-user-created="userCreated" />
+                <JoinWithNewUser />
               </DialogPanel>
             </TransitionChild>
           </div>

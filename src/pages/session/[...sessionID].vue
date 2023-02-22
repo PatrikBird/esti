@@ -32,7 +32,7 @@ const userIDIfSet = computed(() => {
   else
     return mainStore.user.id
 })
-const { data: currentUserData, pending: currentUserPending, error: currentUserError } = useDocument<User>(
+const { data: currentUserData } = useDocument<User>(
   doc(collection(db, collectionID.value), userIDIfSet.value))
 
 const { data: sessionState, pending: statePending, error: stateError } = useDocument<SessionState>(
@@ -90,13 +90,6 @@ watchEffect(() => {
   }
 })
 provide('availableVotes', availableVotes)
-// const showToast = ref(false)
-// function userHasBeenClaimed(user: Person) {
-//   showToast.value = true
-// }
-// function newUserHasBeenCreated(userID: string) {
-//   showToast.value = true
-// }
 </script>
 
 <script lang="ts">
