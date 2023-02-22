@@ -22,7 +22,7 @@ const people = computed<Person[]>(() => {
   })
 })
 
-const selected: Ref<Person> = ref(people.value[0])
+const selectedPerson: Ref<Person> = ref(people.value[0])
 const query = ref('')
 
 const filteredPeople = computed<Person[]>(() =>
@@ -37,13 +37,13 @@ const filteredPeople = computed<Person[]>(() =>
 )
 
 watchEffect(() => {
-  emit('selectedChanged', selected.value)
+  emit('selectedChanged', selectedPerson.value)
 })
 </script>
 
 <template>
   <Combobox
-    v-model="selected"
+    v-model="selectedPerson"
     :disabled="people.length === 0"
   >
     <div class="relative">
