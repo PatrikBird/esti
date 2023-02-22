@@ -1,10 +1,8 @@
 <script setup lang='ts'>
-const formIsSending = ref(false)
-
-function sentForm() {
-  formIsSending.value = true
-  console.log('sentForm')
-}
+const props = defineProps<{ linkHref: string }>()
+const emits = defineEmits<{
+  (e: 'onFormSubmit'): void
+}>()
 </script>
 
 <template>
@@ -18,43 +16,23 @@ function sentForm() {
       </h2>
       <p class="mt-2 text-center text-sm">
         Or
-        <slot name="link" />
-        <!-- <RouterLink to="/new" class="font-medium text-blue-600 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-400">
-          create a new session
-        </RouterLink> -->
+        <RouterLink
+          :to="props.linkHref"
+          class="font-medium text-blue-600 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-400"
+        >
+          <slot name="linkText" />
+        </RouterLink>
       </p>
     </div>
-
     <div class="mx-auto mt-8 w-full max-w-md">
       <div class="rounded-lg bg-zinc-50 py-8 px-10 shadow-xl dark:bg-zinc-700">
-        <form class="space-y-6" @submit.prevent="sentForm">
+        <form class="space-y-4" @submit.prevent="emits('onFormSubmit')">
           <div>
             <slot name="formInput" />
-            <!-- <label for="id" class="block text-left text-sm font-medium">Session ID</label>
-            <div class="mt-1">
-              <input
-                id="id"
-                v-model="mainStore.session.id"
-                name="id"
-                type="text"
-                required
-                class="block w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:outline-none dark:border-zinc-700/5 dark:bg-zinc-800 dark:focus:border-blue-500"
-              >
-            </div>
-            <UsernameInput v-model="enteredName" class="mt-1" /> -->
           </div>
-
-          <div class="flex items-center justify-center">
-            <!-- <GenericToggle off="Voter" on="Observer" @is-active="(e) => isObserver = e" /> -->
+          <div class="flex flex-col items-center justify-center gap-5">
             <slot name="formToggle" />
           </div>
-
-          <!-- <FormButton
-            btn-text="Join session"
-            :form-sending="formIsSending"
-            :name-is-valid="nameIsValid"
-            :entered-name-too-long="enteredNameTooLong"
-          /> -->
           <slot name="formButton" />
         </form>
       </div>
