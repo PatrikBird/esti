@@ -57,7 +57,7 @@ async function onFormSubmit() {
       <FormButton
         btn-text="Create session"
         :form-sending="formSending"
-        :name-is-valid="nameIsValid"
+        :name-or-user-is-valid="nameIsValid"
         :entered-name-too-long="enteredNameTooLong"
       />
     </template>

@@ -34,7 +34,7 @@ async function addUserToDB() {
     <FormButton
       btn-text="Join as new user"
       :form-sending="formSending"
-      :name-is-valid="nameIsValid"
+      :name-or-user-is-valid="nameIsValid"
       :entered-name-too-long="enteredNameTooLong"
     />
   </form>
