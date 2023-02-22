@@ -3,12 +3,14 @@ const emit = defineEmits<{
   (e: 'update:modelValue', username: string): void
 }>()
 
-const enteredName = ref('')
+const mainStore = useMainStore()
+
+const enteredName = ref(mainStore.user.name)
 const { enteredNameTooLong } = useNameValidator(enteredName)
 
 watch(enteredName, (newValue) => {
   emit('update:modelValue', newValue)
-})
+}, { immediate: true })
 </script>
 
 <template>
