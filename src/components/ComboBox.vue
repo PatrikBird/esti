@@ -47,21 +47,17 @@ watchEffect(() => {
     :disabled="people.length === 0"
   >
     <div class="relative">
-      <div
-        class="relative w-full cursor-default overflow-hidden rounded-lg bg-white text-left shadow-md sm:text-sm"
+      <ComboboxInput
+        class="w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:outline-none dark:border-zinc-700/5 dark:bg-zinc-700 dark:focus:border-blue-500"
+        :display-value="(person) => (person as Person).name"
+        :disabled="people.length === 0"
+        @change="query = $event.target.value"
+      />
+      <ComboboxButton
+        class="absolute inset-y-0 right-0 flex items-center pr-2"
       >
-        <ComboboxInput
-          class="w-full rounded-lg border-none py-2 pl-3 pr-10 text-sm leading-5 dark:bg-zinc-700"
-          :display-value="(person) => (person as Person).name"
-          :disabled="people.length === 0"
-          @change="query = $event.target.value"
-        />
-        <ComboboxButton
-          class="absolute inset-y-0 right-0 flex items-center pr-2"
-        >
-          <icon:line-md:chevron-left class="-rotate-90" />
-        </ComboboxButton>
-      </div>
+        <icon:line-md:chevron-left class="-rotate-90" />
+      </ComboboxButton>
       <TransitionRoot
         leave="transition ease-in duration-100"
         leave-from="opacity-100"
@@ -88,7 +84,7 @@ watchEffect(() => {
             <li
               class="relative cursor-default select-none py-2 pl-10 pr-4"
               :class="{
-                'bg-emerald-600 text-white': active,
+                'bg-emerald-500 text-white': active,
                 'text-zinc-900, dark:text-white': !active,
               }"
             >
@@ -101,7 +97,7 @@ watchEffect(() => {
               <span
                 v-if="selected"
                 class="absolute inset-y-0 left-0 flex items-center pl-3"
-                :class="{ 'text-white': active, 'text-emerald-600': !active }"
+                :class="{ 'text-white': active, 'text-emerald-500': !active }"
               >
                 <icon:mdi:check-circle-outline class="h-5 w-5" />
               </span>
