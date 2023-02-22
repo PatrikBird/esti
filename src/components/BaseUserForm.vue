@@ -25,7 +25,7 @@ const emits = defineEmits<{
       </p>
     </div>
     <div class="mx-auto mt-8 w-full max-w-md">
-      <div class="rounded-lg bg-zinc-50 py-8 px-10 shadow-xl dark:bg-zinc-700">
+      <div class="rounded-lg bg-zinc-50 py-8 px-10 shadow-xl dark:bg-zinc-800">
         <form class="space-y-4" @submit.prevent="emits('onFormSubmit')">
           <div>
             <slot name="formInput" />

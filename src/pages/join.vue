@@ -67,7 +67,7 @@ async function onFormSubmit() {
         name="id"
         type="text"
         required
-        class="block w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:outline-none dark:border-zinc-700/5 dark:bg-zinc-800 dark:focus:border-blue-500"
+        class="block w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:outline-none dark:border-zinc-700/5 dark:bg-zinc-700 dark:focus:border-blue-500"
       >
       <UsernameInput v-model="enteredName" />
     </template>

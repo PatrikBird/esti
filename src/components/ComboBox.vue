@@ -51,7 +51,7 @@ watchEffect(() => {
         class="relative w-full cursor-default overflow-hidden rounded-lg bg-white text-left shadow-md sm:text-sm"
       >
         <ComboboxInput
-          class="w-full rounded-lg border-none py-2 pl-3 pr-10 text-sm leading-5 dark:bg-zinc-600"
+          class="w-full rounded-lg border-none py-2 pl-3 pr-10 text-sm leading-5 dark:bg-zinc-700"
           :display-value="(person) => (person as Person).name"
           :disabled="people.length === 0"
           @change="query = $event.target.value"
