@@ -1,6 +1,5 @@
 <script setup lang='ts'>
 import { addDoc, collection, doc, getDoc } from 'firebase/firestore'
-import { RouterLink } from 'vue-router'
 import { db } from '~/modules/firebase'
 
 const mainStore = useMainStore()
@@ -22,7 +21,7 @@ async function retrieveUserFromDB() {
     return { data: docSnap.data(), id: docSnap.id }
 }
 
-async function joinSession() {
+async function onFormSubmit() {
   formSending.value = true
   mainStore.user.name = enteredName.value
 
@@ -54,43 +53,34 @@ async function joinSession() {
 </script>
 
 <template>
-  <div class="flex min-h-full flex-col justify-center py-14 sm:px-6 lg:px-8">
-    <div class="sm:mx-auto sm:w-full sm:max-w-md">
-      <h1 class="text-2xl font-bold tracking-tight">
-        <span class="text-blue-600">esti</span>mate
-      </h1>
-      <h2 class="mt-6 text-center text-3xl font-bold tracking-tight">
-        Join an existing estimation
-      </h2>
-      <p class="mt-2 text-center text-sm">
-        Or
-        <RouterLink to="/new" class="font-medium text-blue-600 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-400">
-          create a new session
-        </RouterLink>
-      </p>
-    </div>
-
-    <div class="mx-auto mt-8 w-full max-w-md">
-      <div class="rounded-lg bg-zinc-50 py-8 px-10 shadow-xl dark:bg-zinc-700">
-        <form class="space-y-6" @submit.prevent="joinSession">
-          <div>
-            <label for="id" class="block py-1 text-left text-sm font-medium">Session ID</label>
-            <input id="id" v-model="mainStore.session.id" name="id" type="text" required class="block w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:outline-none dark:border-zinc-700/5 dark:bg-zinc-800 dark:focus:border-blue-500">
-            <UsernameInput v-model="enteredName" class="mt-1" />
-          </div>
-
-          <div class="flex items-center justify-center">
-            <GenericToggle off="Voter" on="Observer" @is-active="(e) => isObserver = e" />
-          </div>
-
-          <FormButton
-            btn-text="Join session"
-            :form-sending="formSending"
-            :name-is-valid="nameIsValid"
-            :entered-name-too-long="enteredNameTooLong"
-          />
-        </form>
-      </div>
-    </div>
-  </div>
+  <BaseUserForm link-href="/new" @on-form-submit="onFormSubmit">
+    <template #headline>
+      Join an existing estimation
+    </template>
+    <template #linkText>
+      create a new session
+    </template>
+    <template #formInput>
+      <label for="id" class="block py-1 text-left text-sm font-medium">Session ID</label>
+      <input
+        id="id" v-model="mainStore.session.id"
+        name="id"
+        type="text"
+        required
+        class="block w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:outline-none dark:border-zinc-700/5 dark:bg-zinc-800 dark:focus:border-blue-500"
+      >
+      <UsernameInput v-model="enteredName" />
+    </template>
+    <template #formToggle>
+      <GenericToggle off="Voter" on="Observer" @is-active="(e) => isObserver = e" />
+    </template>
+    <template #formButton>
+      <FormButton
+        btn-text="Join session"
+        :form-sending="formSending"
+        :name-is-valid="nameIsValid"
+        :entered-name-too-long="enteredNameTooLong"
+      />
+    </template>
+  </BaseUserForm>
 </template>
