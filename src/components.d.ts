@@ -15,6 +15,7 @@ declare module '@vue/runtime-core' {
     BuyMeACoffeeDark: typeof import('./components/icons/BuyMeACoffeeDark.vue')['default']
     ComboBox: typeof import('./components/ComboBox.vue')['default']
     DeleteUserBtn: typeof import('./components/DeleteUserBtn.vue')['default']
+    FormButton: typeof import('./components/FormButton.vue')['default']
     GenericToggle: typeof import('./components/GenericToggle.vue')['default']
     'Icon:ic:baselineSettings': typeof import('~icons/ic/baseline-settings')['default']
     'Icon:lineMd:chevronLeft': typeof import('~icons/line-md/chevron-left')['default']

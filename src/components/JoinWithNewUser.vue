@@ -36,15 +36,11 @@ async function addUserToDB() {
     <div class="flex items-center justify-center">
       <GenericToggle off="Voter" on="Observer" @is-active="(e) => isObserver = e" />
     </div>
-    <div>
-      <button
-        type="submit"
-        class="flex w-full justify-center rounded-md border border-transparent bg-blue-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:bg-blue-600/50 disabled:hover:bg-blue-600/50"
-        :disabled="formSending || !nameIsValid || enteredNameTooLong"
-      >
-        <icon:line-md:loading-twotone-loop v-if="formSending" class="mr-1 h-5 w-5" />
-        {{ formSending ? 'Loading...' : 'Join as new user' }}
-      </button>
-    </div>
+    <FormButton
+      btn-text="Join as new user"
+      :form-sending="formSending"
+      :name-is-valid="nameIsValid"
+      :entered-name-too-long="enteredNameTooLong"
+    />
   </form>
 </template>
