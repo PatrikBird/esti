@@ -7,7 +7,10 @@ export function useUserModeSwitch() {
   function switchUserMode(userID: string, isObserver: boolean) {
     const collectionID = ref(route.params.sessionID as string)
 
-    updateDoc(doc(db, collectionID.value, userID), { isObserver, voteValue: null })
+    updateDoc(doc(db, collectionID.value, userID), {
+      isObserver,
+      voteValue: null,
+    })
   }
 
   return {
