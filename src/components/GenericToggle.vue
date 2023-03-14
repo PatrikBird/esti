@@ -29,13 +29,13 @@ watchEffect(() => {
       >
         <span
           class="absolute inset-0 flex h-full w-full items-center justify-center"
-          :class="[isActive ? 'opacity-0 ease-out duration-100' : 'opacity-100 ease-in duration-200']" aria-hidden="true"
+          :class="[isActive ? 'opacity-0 duration-100 ease-out' : 'opacity-100 duration-200 ease-in']" aria-hidden="true"
         >
           <icon:line-md:chevron-left class="text-black" />
         </span>
         <span
           class="absolute inset-0 flex h-full w-full items-center justify-center"
-          :class="[isActive ? 'opacity-100 ease-in duration-200' : 'opacity-0 ease-out duration-100']" aria-hidden="true"
+          :class="[isActive ? 'opacity-100 duration-200 ease-in' : 'opacity-0 duration-100 ease-out']" aria-hidden="true"
         >
           <icon:line-md:chevron-left class="rotate-180 text-black" />
         </span>

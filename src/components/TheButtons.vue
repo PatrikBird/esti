@@ -88,7 +88,7 @@ const isDev = ref(import.meta.env.DEV)
       type="button"
       class="inline-flex items-center justify-center rounded-md bg-blue-600 p-5 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-zinc-100
     dark:focus:ring-offset-zinc-900"
-      :class="{ 'ring-zinc-500 dark:ring-zinc-300 ring-2 ring-offset-2 dark:ring-offset-zinc-800': allVotersHaveVoted }"
+      :class="{ 'ring-2 ring-zinc-500 ring-offset-2 dark:ring-zinc-300 dark:ring-offset-zinc-800': allVotersHaveVoted }"
 
       @click="revealVotes"
     >
