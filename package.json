@@ -21,7 +21,7 @@
     "vuefire": "3.1.11"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "0.39.8",
+    "@antfu/eslint-config": "1.2.1",
     "@iconify-json/bx": "1.1.6",
     "@iconify-json/ic": "1.1.13",
     "@iconify-json/line-md": "1.1.25",
