@@ -5,21 +5,33 @@
         Hello :)
       </h1>
       <p class="text-lg leading-relaxed">
-        I am <a href="https://patbird.me" target="_blank" class="font-medium text-blue-600 hover:underline dark:text-blue-400">Patrik</a>
-        and <i>esti</i> is a fun project of mine that also aims to help with remote user story estimation.
-        I want to keep this tool as simple and distraction free as possible.
-        <br>
-        If you have any accessibility issues, suggestions or
-        If you find any bugs, please let me know by creating
-        an
+        I am
+        <a href="https://patbird.me" target="_blank" class="font-medium text-blue-600 hover:underline dark:text-blue-400">Patrik</a>,
+        and <i>esti</i> is my project aimed at aiding in remote user story estimation.
+        My goal is to maintain the tool's simplicity and minimize distractions.
+        Please inform me if you encounter any accessibility issues, bugs, or have any suggestions by creating an
         <a href="https://github.com/PatrikBird/esti/issues/new" target="_blank" class="font-medium text-blue-600 hover:underline dark:text-blue-400">issue on GitHub</a>.
-        If you like <i>esti</i>, please consider
+        If you enjoy using <i>esti</i>, kindly consider
         <a
           href="https://www.buymeacoffee.com/patbird"
           target="_blank"
           class="font-medium text-blue-600 hover:underline dark:text-blue-400"
         >buying me a coffee</a>
-        to keep it sustainable.
+        to support its longevity.
+        <br>
+        <br>
+        Feel free to contact me on
+        <a
+          href="https://www.linkedin.com/"
+          target="_blank"
+          class="font-medium text-blue-600 hover:underline dark:text-blue-400"
+        >LinkedIn</a>
+        or
+        <a
+          href="https://www.github.com/"
+          target="_blank"
+          class="font-medium text-blue-600 hover:underline dark:text-blue-400"
+        >GitHub</a>.
       </p>
     </div>
   </main>
