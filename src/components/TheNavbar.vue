@@ -7,7 +7,7 @@ const lastSessionLink = computed(() =>
 </script>
 
 <template>
-  <div class="top-0 z-10 h-16 pt-6">
+  <nav class="top-0 z-10 h-16 pt-6">
     <div
       class="w-full sm:px-8"
     >
@@ -29,7 +29,7 @@ const lastSessionLink = computed(() =>
                   </button>
                 </div> -->
                 <nav class="pointer-events-auto block">
-                  <ul class="flex rounded-full bg-white px-3 text-sm font-medium shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:bg-zinc-800 dark:text-zinc-200 dark:ring-white/10">
+                  <ul class="list-none flex rounded-full bg-white px-3 text-sm shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:bg-zinc-800 dark:text-zinc-200 dark:ring-white/10">
                     <li>
                       <RouterLink
                         to="/"
@@ -78,5 +78,5 @@ const lastSessionLink = computed(() =>
         </div>
       </div>
     </div>
-  </div>
+  </nav>
 </template>

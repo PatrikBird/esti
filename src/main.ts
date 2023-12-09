@@ -1,8 +1,10 @@
 import { ViteSSG } from 'vite-ssg'
-import '~/assets/style.css'
 import { setupLayouts } from 'virtual:generated-layouts'
 import generatedRoutes from 'virtual:generated-pages'
 import type { UserModule } from './types'
+import 'virtual:uno.css'
+import '@unocss/reset/tailwind.css'
+import '~/assets/style.css'
 import App from './App.vue'
 
 const routes = setupLayouts(generatedRoutes)

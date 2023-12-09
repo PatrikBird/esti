@@ -25,8 +25,10 @@ useHead({
 </script>
 
 <template>
-  <TheNavbar />
-  <div class="border-zinc-300 text-zinc-700 dark:border-zinc-700 dark:text-zinc-300">
-    <RouterView />
+  <div class="font-sans">
+    <TheNavbar />
+    <div class="border-zinc-300 text-zinc-700 dark:border-zinc-700 dark:text-zinc-300">
+      <RouterView />
+    </div>
   </div>
 </template>
