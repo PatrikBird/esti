@@ -22,13 +22,13 @@
         <br>
         Feel free to contact me on
         <a
-          href="https://www.linkedin.com/"
+          href="https://www.linkedin.com/in/patbirdme/"
           target="_blank"
           class="font-medium text-blue-600 hover:underline dark:text-blue-400"
         >LinkedIn</a>
         or
         <a
-          href="https://www.github.com/"
+          href="https://github.com/PatrikBird"
           target="_blank"
           class="font-medium text-blue-600 hover:underline dark:text-blue-400"
         >GitHub</a>.
