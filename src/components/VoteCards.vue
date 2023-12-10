@@ -53,15 +53,14 @@ const { data: currentUserData } = useDocument<User>(
 </script>
 
 <template>
-  <div
+  <button
     v-for="vote in availableVotes"
     :key="vote"
-    tabindex="0"
     :class="[
       { '!bg-emerald-400 !text-black': vote === selectedVote },
       { 'pointer-events-none opacity-40': isVoteRevealed || currentUserData?.isObserver },
     ]"
-    class="m-1 inline-block w-24 cursor-pointer select-none rounded-lg border border-zinc-200 p-6
+    class="m-1 inline-block w-24 rounded-lg border border-zinc-200 p-6
     text-center shadow-md transition-colors duration-100 ease-in-out hover:bg-emerald-100
     dark:border-zinc-900 dark:bg-zinc-800 dark:hover:bg-emerald-700"
     @click="selectVote(vote)"
@@ -72,5 +71,5 @@ const { data: currentUserData } = useDocument<User>(
     <p v-else>
       <span i-mdi:coffee class="inline-block h-6 w-6" />
     </p>
-  </div>
+  </button>
 </template>
