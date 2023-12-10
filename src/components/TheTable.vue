@@ -53,8 +53,8 @@ const isEvenClasses = computed(() => ({
                 {{ user.name }}
               </td>
               <td class="whitespace-nowrap p-2 text-center text-sm">
-                <icon:line-md:confirm-circle-to-circle-transition v-if="!user.voteValue" class="inline-block h-5 w-5 text-amber-500" />
-                <icon:line-md:circle-to-confirm-circle-transition v-else class="inline-block h-5 w-5 text-emerald-600" />
+                <span v-if="!user.voteValue" i-line-md:confirm-circle-to-circle-transition class="inline-block h-5 w-5 text-amber-500" />
+                <span v-else i-line-md:circle-to-confirm-circle-transition class="inline-block h-5 w-5 text-emerald-600" />
               </td>
               <td>
                 <switch-user-btn

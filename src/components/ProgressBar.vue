@@ -6,7 +6,7 @@ const props = defineProps<{ name: string; voteValue: string | null; maxVote?: nu
 const val: ComputedRef<string> = computed(() => {
   let percentage = 100
   if (props.voteValue && props.voteValue !== '?' && props.voteValue !== 'coffee')
-    percentage = (parseInt(props.voteValue) / props.maxVote!) * 100
+    percentage = (Number.parseInt(props.voteValue) / props.maxVote!) * 100
 
   return `${percentage}`
 })
@@ -36,7 +36,7 @@ const voteIsNotANumber = computed(() => {
         class="float-right flex w-1/12"
       >
         <span v-if="voteValue === 'coffee'" class="text-sm font-medium text-zinc-500 dark:text-zinc-400">
-          <icon:mdi:coffee class="h-5 w-5" />
+          <span i-mdi:coffee class="h-5 w-5" />
         </span>
         <span v-else class="text-sm font-medium text-zinc-500 dark:text-zinc-400">{{ voteValue }}</span>
       </div>

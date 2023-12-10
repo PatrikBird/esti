@@ -13,13 +13,15 @@ const { switchUserMode } = useUserModeSwitch()
     @mouseover="hoveredUserID = userId"
     @mouseleave="hoveredUserID = ''"
   >
-    <icon:mdi:arrow-up
+    <span
       v-show="hoveredUserID === userId"
+      i-mdi:arrow-up
       class="inline-block h-5 w-5"
       :class="setIsObserverTo && 'rotate-180'"
     />
-    <icon:mdi:eye
+    <span
       v-show="hoveredUserID !== userId"
+      i-mdi:eye
       class="inline-block h-5 w-5"
     />
   </table-action-btn>

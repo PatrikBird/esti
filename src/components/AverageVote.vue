@@ -46,7 +46,7 @@ const closestAvailableVote = computed(() => {
       Average
     </p>
     <div class="flex items-center gap-1">
-      <icon:mdi:arrow-right-thin class="inline-block h-5 w-5" />
+      <span i-mdi:arrow-right-thin class="inline-block h-5 w-5" />
       <pop-over>
         {{ closestAvailableVote }}
       </pop-over>

@@ -70,7 +70,7 @@ const { data: currentUserData } = useDocument<User>(
       {{ vote }}
     </p>
     <p v-else>
-      <icon:mdi:coffee class="inline-block h-6 w-6" />
+      <span i-mdi:coffee class="inline-block h-6 w-6" />
     </p>
   </div>
 </template>

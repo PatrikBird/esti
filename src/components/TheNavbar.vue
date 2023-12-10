@@ -24,8 +24,8 @@ const lastSessionLink = computed(() =>
                     class="group rounded-full px-3 py-2 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 hover:text-blue-500 dark:text-blue-500 dark:ring-white/10 dark:hover:text-blue-400 dark:hover:ring-white/20"
                     @click="toggleDark()"
                   >
-                    <icon:line-md:sunny-filled-loop v-if="!isDark" class="h-[1.3rem] w-[1.3rem] " />
-                    <icon:line-md:sunny-filled-loop-to-moon-filled-loop-transition v-else class="h-[1.35rem] w-[1.35rem]" />
+                    <span i-line-md:sunny-filled-loop v-if="!isDark" class="h-[1.3rem] w-[1.3rem] " />
+                    <span i-line-md:sunny-filled-loop-to-moon-filled-loop-transition v-else class="h-[1.35rem] w-[1.35rem]" />
                   </button>
                 </div> -->
                 <nav class="pointer-events-auto block">
@@ -34,7 +34,7 @@ const lastSessionLink = computed(() =>
                       <RouterLink
                         to="/"
                         active-class="text-blue-600 dark:text-blue-500"
-                        class="relative block px-3 py-2 transition hover:text-blue-500 dark:hover:text-blue-400"
+                        class="relative block px-3 py-0.6rem transition hover:text-blue-500 dark:hover:text-blue-400"
                       >
                         Home
                       </RouterLink>
@@ -43,7 +43,7 @@ const lastSessionLink = computed(() =>
                       <RouterLink
                         to="/about"
                         active-class="text-blue-600 dark:text-blue-500"
-                        class="relative block px-3 py-2 transition hover:text-blue-500 dark:hover:text-blue-400"
+                        class="relative block px-3 py-0.6rem transition hover:text-blue-500 dark:hover:text-blue-400"
                       >
                         About
                       </RouterLink>
@@ -53,7 +53,7 @@ const lastSessionLink = computed(() =>
                         :to="lastSessionLink"
                         active-class="text-blue-600 dark:text-blue-500"
                         title="Back to last session"
-                        class="relave block px-3 py-2 transition hover:text-blue-500 dark:hover:text-blue-400"
+                        class="relave block px-3 py-0.6rem transition hover:text-blue-500 dark:hover:text-blue-400"
                       >
                         Session
                       </RouterLink>
@@ -68,8 +68,8 @@ const lastSessionLink = computed(() =>
                     class="group rounded-full px-3 py-2 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 hover:text-blue-500 dark:text-blue-500 dark:ring-white/10 dark:hover:text-blue-400 dark:hover:ring-white/20"
                     @click="toggleDark()"
                   >
-                    <icon:line-md:sunny-filled-loop v-if="!isDark" class="h-[1.3rem] w-[1.3rem] " />
-                    <icon:line-md:sunny-filled-loop-to-moon-filled-loop-transition v-else class="h-[1.35rem] w-[1.35rem]" />
+                    <span v-if="!isDark" i-line-md:sunny-filled-loop class="h-[1.3rem] w-[1.3rem] " />
+                    <span v-else i-line-md:sunny-filled-loop-to-moon-filled-loop-transition class="h-[1.35rem] w-[1.35rem]" />
                   </button>
                 </div>
               </div>

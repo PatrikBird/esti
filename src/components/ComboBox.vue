@@ -8,8 +8,7 @@ import {
   TransitionRoot,
 } from '@headlessui/vue'
 import type { Ref } from 'vue'
-import { Person } from '~/types'
-import type { User } from '~/types'
+import type { Person, User } from '~/types'
 
 const props = defineProps<{ users: User[] }>()
 const emit = defineEmits<{
@@ -56,7 +55,7 @@ watchEffect(() => {
       <ComboboxButton
         class="absolute inset-y-0 right-0 flex items-center pr-2"
       >
-        <icon:line-md:chevron-left class="-rotate-90" />
+        <span i-line-md:chevron-left class="-rotate-90" />
       </ComboboxButton>
       <TransitionRoot
         leave="transition ease-in duration-100"
@@ -99,7 +98,7 @@ watchEffect(() => {
                 class="absolute inset-y-0 left-0 flex items-center pl-3"
                 :class="{ 'text-white': active, 'text-emerald-500': !active }"
               >
-                <icon:mdi:check-circle-outline class="h-5 w-5" />
+                <span i-mdi:check-circle-outline class="h-5 w-5" />
               </span>
             </li>
           </ComboboxOption>

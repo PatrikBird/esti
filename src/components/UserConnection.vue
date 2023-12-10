@@ -68,7 +68,7 @@ const { data: currentUserData } = useDocument<User>(
               transition-all dark:bg-zinc-800 sm:my-8 sm:w-full sm:max-w-lg sm:p-6"
               >
                 <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-amber-100">
-                  <icon:mdi:account-question class="h-6 w-6 text-amber-600" />
+                  <span i-mdi:account-question class="h-6 w-6 text-amber-600" />
                 </div>
                 <div class="mt-3 text-center sm:mt-5">
                   <DialogTitle as="h3" class="text-lg font-medium leading-6">
