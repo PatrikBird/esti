@@ -75,7 +75,6 @@ const isDev = ref(import.meta.env.DEV)
       </button>
     </div>
     <button
-      type="button"
       class="inline-flex items-center justify-center rounded-md
     border border-zinc-200 p-5 text-sm font-medium shadow-sm
     hover:bg-zinc-100 focus:outline-none focus:ring-1 focus:ring-zinc-500 focus:ring-offset-2 focus:ring-offset-zinc-100
@@ -85,9 +84,10 @@ const isDev = ref(import.meta.env.DEV)
       RESET
     </button>
     <button
-      type="button"
-      class="inline-flex items-center justify-center rounded-md bg-blue-600 p-5 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-zinc-100
-    dark:focus:ring-offset-zinc-900"
+      class="inline-flex items-center justify-center rounded-md bg-blue-600 p-5 text-sm
+      font-medium text-white shadow-sm hover:bg-blue-700
+      focus:(outline-none ring-1 ring-blue-500 ring-offset-2 ring-offset-zinc-100)
+      dark:focus:ring-offset-zinc-900"
       :class="{ 'ring-2 ring-zinc-500 ring-offset-2 dark:ring-zinc-300 dark:ring-offset-zinc-800': allVotersHaveVoted }"
 
       @click="revealVotes"
