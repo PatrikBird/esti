@@ -6,7 +6,6 @@ import { useDocument } from 'vuefire'
 import type { Person, User } from '~/types'
 import { db } from '~/modules/firebase'
 
-// eslint-disable-next-line unused-imports/no-unused-vars
 const props = defineProps<{ users: User[] }>()
 
 const open = ref(true)
@@ -72,7 +71,7 @@ const { data: currentUserData } = useDocument<User>(
                 </div>
                 <div class="mt-3 text-center sm:mt-5">
                   <DialogTitle as="h3" class="text-lg font-medium leading-6">
-                    Cached user not found
+                    User not found
                   </DialogTitle>
                   <p class="my-2 text-sm text-zinc-500 dark:text-zinc-300">
                     The user could not be retrieved from database. <br>
@@ -81,7 +80,7 @@ const { data: currentUserData } = useDocument<User>(
                 </div>
                 <form @submit.prevent="claimExistingUser">
                   <div class="grid grid-flow-row-dense gap-3 sm:mt-6 sm:grid-cols-2">
-                    <ComboBox :users="users" @selected-changed="onSelectedPersonChanged" />
+                    <ComboBox :users="props.users" @selected-changed="onSelectedPersonChanged" />
                     <FormButton
                       btn-text="Claim existing user"
                       :form-sending="formSending"

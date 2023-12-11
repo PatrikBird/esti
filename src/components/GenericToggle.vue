@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { Switch, SwitchGroup, SwitchLabel } from '@headlessui/vue'
 
-// eslint-disable-next-line unused-imports/no-unused-vars
 const props = defineProps<{ off: string; on: string }>()
 
 const emit = defineEmits<{
@@ -17,7 +16,7 @@ watchEffect(() => {
 <template>
   <SwitchGroup as="div" class="flex items-center">
     <SwitchLabel as="span" class="mr-3 cursor-pointer">
-      <span class="text-sm font-medium">{{ off }}</span>
+      <span class="text-sm font-medium">{{ props.off }}</span>
     </SwitchLabel>
     <Switch
       v-model="isActive"
@@ -42,7 +41,7 @@ watchEffect(() => {
       </span>
     </Switch>
     <SwitchLabel as="span" class="ml-3 cursor-pointer">
-      <span class="text-sm font-medium">{{ on }}</span>
+      <span class="text-sm font-medium">{{ props.on }}</span>
     </SwitchLabel>
   </SwitchGroup>
 </template>
