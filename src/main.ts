@@ -3,7 +3,7 @@ import { setupLayouts } from 'virtual:generated-layouts'
 import generatedRoutes from 'virtual:generated-pages'
 import type { UserModule } from './types'
 import 'virtual:uno.css'
-import '@unocss/reset/tailwind.css'
+import '@unocss/reset/tailwind-compat.css'
 import '~/assets/style.css'
 import App from './App.vue'
 

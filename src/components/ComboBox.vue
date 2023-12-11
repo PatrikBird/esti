@@ -55,7 +55,7 @@ watchEffect(() => {
       <ComboboxButton
         class="absolute inset-y-0 right-0 flex items-center pr-2"
       >
-        <span i-line-md:chevron-left class="-rotate-90" />
+        <span i-line-md:chevron-left class="-rotate-90 text-xs" />
       </ComboboxButton>
       <TransitionRoot
         leave="transition ease-in duration-100"
