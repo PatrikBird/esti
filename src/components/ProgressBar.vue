@@ -32,13 +32,13 @@ const voteIsNotANumber = computed(() => {
       </div>
       <div
         v-motion-pop
-        :delay="600"
+        :delay="200"
         class="float-right flex w-1/12"
       >
         <span v-if="voteValue === 'coffee'" class="text-sm font-medium text-zinc-500 dark:text-zinc-400">
           <span i-mdi:coffee class="h-5 w-5" />
         </span>
-        <span v-else class="text-sm font-medium text-zinc-500 dark:text-zinc-400">{{ voteValue }}</span>
+        <span v-else class="text-sm font-semibold text-zinc-500 dark:text-zinc-400">{{ voteValue }}</span>
       </div>
     </dd>
   </dl>
