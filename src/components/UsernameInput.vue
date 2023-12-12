@@ -16,7 +16,6 @@ onMounted(() => {
 </script>
 
 <template>
-  <!-- <Suspense> -->
   <div>
     <label
       for="username"
@@ -39,5 +38,4 @@ onMounted(() => {
       Are you writing a novel?
     </p>
   </div>
-  <!-- </Suspense> -->
 </template>

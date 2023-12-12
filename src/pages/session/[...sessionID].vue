@@ -96,12 +96,6 @@ watchEffect(() => {
 provide('availableVotes', availableVotes)
 </script>
 
-<!-- <script lang="ts">
-export default {
-  inheritAttrs: false,
-}
-</script> -->
-
 <template>
   <SessionNotFound v-if="showSessionNotFound || stateError || usersError" />
   <LoadingSpinner v-else-if="statePending || usersPending" />
