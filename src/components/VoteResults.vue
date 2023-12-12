@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { User } from '~/types'
 
-const props = defineProps<{ voters?: User[]; isShirtMode?: boolean }>()
+const props = defineProps<{ voters?: User[], isShirtMode?: boolean }>()
 
 const votersWithoutNull = computed(() => props.voters?.filter(v => v.voteValue !== null))
 </script>

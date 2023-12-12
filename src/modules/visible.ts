@@ -1,4 +1,4 @@
-import { type UserModule } from '~/types'
+import type { UserModule } from '~/types'
 
 export const install: UserModule = ({ app }) => {
   app.directive('visible', (el, binding) => {

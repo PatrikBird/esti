@@ -1,7 +1,7 @@
 <script setup lang='ts'>
 import type { ComputedRef } from 'vue'
 
-const props = defineProps<{ name: string; voteValue: string | null; maxVote?: number }>()
+const props = defineProps<{ name: string, voteValue: string | null, maxVote?: number }>()
 
 const voteIsNotAShirtSize = computed(() => {
   if (props.voteValue && props.voteValue !== '?' && props.voteValue !== 'coffee')

@@ -27,7 +27,9 @@ function selectVote(vote: string) {
 const { data: users, pending: usersPending } = useCollection<User>(
   query(
     collection(db, collectionID.value),
-    where('name', '!=', null)))
+    where('name', '!=', null),
+  ),
+)
 
 const getSelectedVoteFromDB = computed(() => {
   return users.value.find(u => u.id === mainStore.user.id)?.voteValue
@@ -38,7 +40,8 @@ watch(getSelectedVoteFromDB, () => {
 })
 
 const { data: sessionState, pending: statePending } = useDocument<SessionState>(
-  doc(collection(db, collectionID.value), 'sessionState'))
+  doc(collection(db, collectionID.value), 'sessionState'),
+)
 
 const lastResetOn = computed(() => sessionState.value?.lastResetOn)
 watch(lastResetOn, () => {
@@ -49,7 +52,8 @@ watch(lastResetOn, () => {
 })
 
 const { data: currentUserData } = useDocument<User>(
-  doc(collection(db, collectionID.value), mainStore.user.id ?? 0))
+  doc(collection(db, collectionID.value), mainStore.user.id ?? 0),
+)
 </script>
 
 <template>

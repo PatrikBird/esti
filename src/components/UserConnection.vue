@@ -34,7 +34,8 @@ const userIDIfSet = computed(() => {
     return mainStore.user.id
 })
 const { data: currentUserData } = useDocument<User>(
-  doc(collection(db, mainStore.session.id), userIDIfSet.value))
+  doc(collection(db, mainStore.session.id), userIDIfSet.value),
+)
 </script>
 
 <template>

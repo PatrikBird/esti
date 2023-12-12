@@ -1,7 +1,7 @@
 import { VueFire } from 'vuefire'
 import { initializeApp } from 'firebase/app'
 import { connectFirestoreEmulator, getFirestore } from 'firebase/firestore'
-import { type UserModule } from '~/types'
+import type { UserModule } from '~/types'
 
 const firebaseApp = initializeApp({
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY! as string,
@@ -17,6 +17,7 @@ export const db = getFirestore()
 
 if (import.meta.env.MODE === 'development') {
   connectFirestoreEmulator(db, 'localhost', 8080)
+  // eslint-disable-next-line no-console
   console.info('Using local FireStore emulator!')
 }
 

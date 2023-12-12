@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Switch, SwitchGroup, SwitchLabel } from '@headlessui/vue'
 
-const props = defineProps<{ off: string; on: string }>()
+const props = defineProps<{ off: string, on: string }>()
 
 const emit = defineEmits<{
   (e: 'isActive', isActive: boolean): void
