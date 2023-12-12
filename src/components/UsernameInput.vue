@@ -8,12 +8,15 @@ const mainStore = useMainStore()
 const enteredName = ref(mainStore.user.name)
 const { enteredNameTooLong } = useNameValidator(enteredName)
 
-watch(enteredName, (newValue) => {
-  emit('update:modelValue', newValue)
-}, { immediate: true })
+onMounted(() => {
+  watch(enteredName, (newValue) => {
+    emit('update:modelValue', newValue)
+  }, { immediate: true })
+})
 </script>
 
 <template>
+  <!-- <Suspense> -->
   <div>
     <label
       for="username"
@@ -23,15 +26,18 @@ watch(enteredName, (newValue) => {
     <input
       id="username"
       v-model.trim="enteredName"
+      class="block w-full rounded-md border px-3 py-2 text-sm shadow-sm
+      focus:(border-blue-500 outline-none)
+      dark:(border-zinc-700/5 bg-zinc-700 focus:border-blue-500)"
+      :class="{ '!border-rose-400': enteredNameTooLong }"
       name="username"
       type="text"
       required
-      class="block w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:outline-none dark:border-zinc-700/5 dark:bg-zinc-700 dark:focus:border-blue-500"
-      :class="{ '!border-rose-400': enteredNameTooLong }"
       autofocus
     >
     <p v-visible="enteredNameTooLong" class="text-left text-sm text-rose-400">
       Are you writing a novel?
     </p>
   </div>
+  <!-- </Suspense> -->
 </template>
