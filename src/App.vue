@@ -1,7 +1,7 @@
 <script setup lang="ts">
 useHead({
   meta: [
-    { name: 'description', content: 'Opinionated Vite Starter Template' },
+    { name: 'description', content: 'Story estimation made easy' },
     {
       name: 'theme-color',
       content: computed(() => isDark.value ? '#00aba9' : '#ffffff'),
