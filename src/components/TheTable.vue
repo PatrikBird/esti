@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import type { User } from '~/types'
 
-// eslint-disable-next-line unused-imports/no-unused-vars
 const props = defineProps<{ voters?: User[] }>()
 
 const mainStore = useMainStore()
@@ -13,21 +12,7 @@ const isEvenClasses = computed(() => ({
 </script>
 
 <template>
-  <div
-    v-motion
-    class="mt-8 flex flex-col" :initial="{
-      opacity: 0,
-      y: 100,
-    }"
-    :enter="{
-      opacity: 1,
-      y: 0,
-    }"
-    :leave="{
-      opacity: 0,
-      y: 1,
-    }"
-  >
+  <div class="mt-8 flex flex-col slide-up-animation">
     <div class="inline-block min-w-full py-2 align-middle">
       <div class="overflow-hidden shadow ring-1 ring-black/5 dark:ring-zinc-700 md:rounded-lg">
         <table class="min-w-full table-fixed divide-y divide-zinc-300 dark:divide-zinc-700 dark:bg-zinc-800">
@@ -45,7 +30,7 @@ const isEvenClasses = computed(() => ({
             </tr>
           </thead>
           <tbody class="divide-y divide-zinc-200 dark:divide-zinc-700">
-            <tr v-for="(user, idx) in voters" :key="user.id" :class="idx as number % 2 && isEvenClasses">
+            <tr v-for="(user, idx) in props.voters" :key="user.id" :class="idx as number % 2 && isEvenClasses">
               <td
                 class="whitespace-nowrap p-2 text-right text-sm"
                 :class="user.id === mainStore.user.id && 'text-blue-600 dark:text-blue-500'"
@@ -70,3 +55,23 @@ const isEvenClasses = computed(() => ({
     </div>
   </div>
 </template>
+
+<style scoped>
+.slide-up-animation {
+  animation: slide-up 0.3s ease-in-out forwards;
+}
+@keyframes slide-up {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  70% {
+    opacity: 0.8;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+</style>

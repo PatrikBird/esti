@@ -35,9 +35,7 @@ const closestAvailableVote = computed(() => {
 <template>
   <div
     v-visible="averageVoteValue"
-    v-motion-fade
-    :delay="200"
-    class="mb-5 flex items-center justify-center gap-1"
+    class="mb-5 flex items-center justify-center gap-1 fade-animation"
   >
     <p class="items-center rounded bg-blue-100 p-1.5 text-sm font-semibold text-blue-800 dark:bg-blue-200 dark:text-blue-800">
       {{ averageVoteValue ?? "None" }}
@@ -57,3 +55,22 @@ const closestAvailableVote = computed(() => {
     </div>
   </div>
 </template>
+
+<style scoped>
+.fade-animation {
+  opacity: 0; /* Initial state: hidden */
+  /* transform: scale(0); Initial state: scale(0); */
+  animation: fade .2s ease-in 0.5s forwards;
+}
+
+@keyframes fade {
+  0% {
+    /* transform: scale(0); */
+    opacity: 0;
+  }
+  100% {
+    /* transform: scale(1); */
+    opacity: 1;
+  }
+}
+</style>

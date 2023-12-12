@@ -5,8 +5,6 @@ const mapping = { XS: 20, S: 40, M: 60, L: 80, XL: 100 }
 <template>
   <div
     v-visible="averageVoteValue"
-    v-motion-fade
-    :delay="200"
     class="mb-5 flex items-center justify-center gap-1"
   >
     <p class="items-center rounded bg-blue-100 p-1.5 text-sm font-semibold text-blue-800 dark:bg-blue-200 dark:text-blue-800">

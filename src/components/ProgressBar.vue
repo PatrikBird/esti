@@ -31,9 +31,7 @@ const voteIsNotANumber = computed(() => {
         />
       </div>
       <div
-        v-motion-pop
-        :delay="200"
-        class="float-right flex w-1/12"
+        class="float-right flex w-1/12 pop-animation"
       >
         <span v-if="voteValue === 'coffee'" class="text-sm font-medium text-zinc-500 dark:text-zinc-400">
           <span i-mdi:coffee class="h-5 w-5" />
@@ -64,6 +62,23 @@ const voteIsNotANumber = computed(() => {
   }
   to {
     width: v-bind('`${val}%`');
+  }
+}
+
+.pop-animation {
+  opacity: 0; /* Initial state: hidden */
+  /* transform: scale(0); Initial state: scale(0); */
+  animation: pop .2s ease-in 0.5s forwards;
+}
+
+@keyframes pop {
+  0% {
+    /* transform: scale(0); */
+    opacity: 0;
+  }
+  100% {
+    /* transform: scale(1); */
+    opacity: 1;
   }
 }
 </style>

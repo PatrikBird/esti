@@ -12,9 +12,9 @@ const votersWithoutNull = computed(() => props.voters?.filter(v => v.voteValue !
       <number-vote-results v-if="!props.isShirtMode" :voters="votersWithoutNull" />
       <shirt-vote-results v-else-if="props.isShirtMode" :voters="votersWithoutNull" />
     </div>
+    <!-- TODO: remove -->
     <p v-else>
       <img
-        v-motion-pop
         src="https://media.tenor.com/WnjJsVOwoJQAAAAC/john-travolta-well.gif"
         alt="Confused Travolta"
         class="mx-auto my-5"
