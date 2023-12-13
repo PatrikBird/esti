@@ -18,7 +18,10 @@ const props = withDefaults(defineProps<{
     focus:ring-offset-2 disabled:bg-blue-600/50 disabled:hover:bg-blue-600/50"
     :disabled="formSending || !nameOrUserIsValid || enteredNameTooLong"
   >
-    <icon:line-md:loading-twotone-loop v-if="formSending" class="mr-1 h-5 w-5" />
+    <span
+      v-if="formSending" i-line-md:loading-twotone-loop
+      class="mr-1 h-5 w-5"
+    />
     {{ formSending ? 'Loading...' : props.btnText }}
   </button>
 </template>

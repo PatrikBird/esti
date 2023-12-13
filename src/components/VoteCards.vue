@@ -27,7 +27,9 @@ function selectVote(vote: string) {
 const { data: users, pending: usersPending } = useCollection<User>(
   query(
     collection(db, collectionID.value),
-    where('name', '!=', null)))
+    where('name', '!=', null),
+  ),
+)
 
 const getSelectedVoteFromDB = computed(() => {
   return users.value.find(u => u.id === mainStore.user.id)?.voteValue
@@ -38,7 +40,8 @@ watch(getSelectedVoteFromDB, () => {
 })
 
 const { data: sessionState, pending: statePending } = useDocument<SessionState>(
-  doc(collection(db, collectionID.value), 'sessionState'))
+  doc(collection(db, collectionID.value), 'sessionState'),
+)
 
 const lastResetOn = computed(() => sessionState.value?.lastResetOn)
 watch(lastResetOn, () => {
@@ -49,28 +52,28 @@ watch(lastResetOn, () => {
 })
 
 const { data: currentUserData } = useDocument<User>(
-  doc(collection(db, collectionID.value), mainStore.user.id ?? 0))
+  doc(collection(db, collectionID.value), mainStore.user.id ?? 0),
+)
 </script>
 
 <template>
-  <div
+  <button
     v-for="vote in availableVotes"
     :key="vote"
-    tabindex="0"
     :class="[
       { '!bg-emerald-400 !text-black': vote === selectedVote },
       { 'pointer-events-none opacity-40': isVoteRevealed || currentUserData?.isObserver },
     ]"
-    class="m-1 inline-block w-24 cursor-pointer select-none rounded-lg border border-zinc-200 p-6
+    class="m-1 inline-block w-24 rounded-lg bg-white border border-zinc-200 p-6
     text-center shadow-md transition-colors duration-100 ease-in-out hover:bg-emerald-100
-    dark:border-zinc-900 dark:bg-zinc-800 dark:hover:bg-emerald-700"
+    dark:(border-zinc-900 bg-zinc-800 hover:bg-emerald-700)"
     @click="selectVote(vote)"
   >
     <p v-if="vote !== 'coffee'">
       {{ vote }}
     </p>
     <p v-else>
-      <icon:mdi:coffee class="inline-block h-6 w-6" />
+      <span i-mdi:coffee class="inline-block h-6 w-6" />
     </p>
-  </div>
+  </button>
 </template>

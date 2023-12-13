@@ -8,8 +8,7 @@ import {
   TransitionRoot,
 } from '@headlessui/vue'
 import type { Ref } from 'vue'
-import { Person } from '~/types'
-import type { User } from '~/types'
+import type { Person, User } from '~/types'
 
 const props = defineProps<{ users: User[] }>()
 const emit = defineEmits<{
@@ -48,15 +47,17 @@ watchEffect(() => {
   >
     <div class="relative">
       <ComboboxInput
-        class="w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:outline-none dark:border-zinc-700/5 dark:bg-zinc-700 dark:focus:border-blue-500"
+        class="w-full rounded-md border px-3 py-2 text-sm shadow-sm
+        focus:(border-blue-500 outline-none)
+        dark:(border-zinc-700/5 bg-zinc-700 focus:border-blue-500)"
         :display-value="(person) => (person as Person).name"
         :disabled="people.length === 0"
         @change="query = $event.target.value"
       />
       <ComboboxButton
-        class="absolute inset-y-0 right-0 flex items-center pr-2"
+        class="absolute inset-y-0 right-0 flex items-center pr-2 bg-transparent"
       >
-        <icon:line-md:chevron-left class="-rotate-90" />
+        <span i-line-md:chevron-left class="-rotate-90 text-xs" />
       </ComboboxButton>
       <TransitionRoot
         leave="transition ease-in duration-100"
@@ -65,7 +66,8 @@ watchEffect(() => {
         @after-leave="query = ''"
       >
         <ComboboxOptions
-          class="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-lg bg-white py-1 text-sm shadow-lg ring-1 ring-black/5 focus:outline-none dark:bg-zinc-600 sm:text-sm"
+          class="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-lg bg-white py-1
+          text-sm shadow-lg ring-1 ring-black/5 focus:outline-none dark:bg-zinc-600 sm:text-sm"
         >
           <div
             v-if="filteredPeople.length === 0"
@@ -82,7 +84,7 @@ watchEffect(() => {
             :value="person"
           >
             <li
-              class="relative cursor-default select-none py-2 pl-10 pr-4"
+              class="relative cursor-pointer select-none py-2 pl-10 pr-4"
               :class="{
                 'bg-emerald-500 text-white': active,
                 'text-zinc-900, dark:text-white': !active,
@@ -99,7 +101,7 @@ watchEffect(() => {
                 class="absolute inset-y-0 left-0 flex items-center pl-3"
                 :class="{ 'text-white': active, 'text-emerald-500': !active }"
               >
-                <icon:mdi:check-circle-outline class="h-5 w-5" />
+                <span i-mdi:check-circle-outline class="h-5 w-5" />
               </span>
             </li>
           </ComboboxOption>

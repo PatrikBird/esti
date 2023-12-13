@@ -1,4 +1,4 @@
-import { type ViteSSGContext } from 'vite-ssg'
+import type { ViteSSGContext } from 'vite-ssg'
 import type { Timestamp } from 'firebase/firestore'
 
 export type UserModule = (ctx: ViteSSGContext) => void

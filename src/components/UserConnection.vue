@@ -6,7 +6,6 @@ import { useDocument } from 'vuefire'
 import type { Person, User } from '~/types'
 import { db } from '~/modules/firebase'
 
-// eslint-disable-next-line unused-imports/no-unused-vars
 const props = defineProps<{ users: User[] }>()
 
 const open = ref(true)
@@ -35,7 +34,8 @@ const userIDIfSet = computed(() => {
     return mainStore.user.id
 })
 const { data: currentUserData } = useDocument<User>(
-  doc(collection(db, mainStore.session.id), userIDIfSet.value))
+  doc(collection(db, mainStore.session.id), userIDIfSet.value),
+)
 </script>
 
 <template>
@@ -68,11 +68,11 @@ const { data: currentUserData } = useDocument<User>(
               transition-all dark:bg-zinc-800 sm:my-8 sm:w-full sm:max-w-lg sm:p-6"
               >
                 <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-amber-100">
-                  <icon:mdi:account-question class="h-6 w-6 text-amber-600" />
+                  <span i-mdi:account-question class="h-6 w-6 text-amber-600" />
                 </div>
                 <div class="mt-3 text-center sm:mt-5">
                   <DialogTitle as="h3" class="text-lg font-medium leading-6">
-                    Cached user not found
+                    User not found
                   </DialogTitle>
                   <p class="my-2 text-sm text-zinc-500 dark:text-zinc-300">
                     The user could not be retrieved from database. <br>
@@ -81,7 +81,7 @@ const { data: currentUserData } = useDocument<User>(
                 </div>
                 <form @submit.prevent="claimExistingUser">
                   <div class="grid grid-flow-row-dense gap-3 sm:mt-6 sm:grid-cols-2">
-                    <ComboBox :users="users" @selected-changed="onSelectedPersonChanged" />
+                    <ComboBox :users="props.users" @selected-changed="onSelectedPersonChanged" />
                     <FormButton
                       btn-text="Claim existing user"
                       :form-sending="formSending"

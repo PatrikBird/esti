@@ -24,7 +24,7 @@ onMounted(() => {
           <div class="p-4">
             <div class="flex items-center">
               <div class="shrink-0 align-middle">
-                <icon:mdi:check-circle-outline class="h-6 w-6 text-emerald-600" />
+                <span i-mdi:check-circle-outline class="h-6 w-6 text-emerald-600" />
               </div>
               <div class="ml-3 w-0 flex-1 pt-0.5">
                 <p class="text-sm font-medium">
@@ -41,7 +41,7 @@ onMounted(() => {
                   @click="show = false"
                 >
                   <span class="sr-only">Close</span>
-                  <icon:mdi:close class="h-4 w-4" />
+                  <span i-mdi:close class="h-4 w-4" />
                 </button>
               </div>
             </div>

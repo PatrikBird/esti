@@ -1,7 +1,7 @@
 <script setup lang='ts'>
 import type { ComputedRef } from 'vue'
 
-const props = defineProps<{ name: string; voteValue: string | null; maxVote?: number }>()
+const props = defineProps<{ name: string, voteValue: string | null, maxVote?: number }>()
 
 const voteIsNotAShirtSize = computed(() => {
   if (props.voteValue && props.voteValue !== '?' && props.voteValue !== 'coffee')
@@ -39,14 +39,12 @@ const val: ComputedRef<number> = computed(() => {
         />
       </div>
       <div
-        v-motion-pop
-        :delay="600"
-        class="float-right flex w-1/12"
+        class="float-right flex w-1/12 pop-animation"
       >
         <span v-if="voteValue === 'coffee'" class="text-sm font-medium text-zinc-500 dark:text-zinc-400">
-          <icon:mdi:coffee class="h-5 w-5" />
+          <span i-mdi:coffee class="h-5 w-5" />
         </span>
-        <span v-else class="text-sm font-medium text-zinc-500 dark:text-zinc-400">{{ voteValue }}</span>
+        <span v-else class="text-sm font-semibold text-zinc-500 dark:text-zinc-400">{{ voteValue }}</span>
       </div>
     </dd>
   </dl>
@@ -72,6 +70,23 @@ const val: ComputedRef<number> = computed(() => {
   }
   to {
     width: v-bind('`${val}%`');
+  }
+}
+
+.pop-animation {
+  opacity: 0; /* Initial state: hidden */
+  /* transform: scale(0); Initial state: scale(0); */
+  animation: pop .2s ease-in 0.5s forwards;
+}
+
+@keyframes pop {
+  0% {
+    /* transform: scale(0); */
+    opacity: 0;
+  }
+  100% {
+    /* transform: scale(1); */
+    opacity: 1;
   }
 }
 </style>

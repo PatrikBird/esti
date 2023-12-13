@@ -20,7 +20,9 @@ if (!isSessionIDValid.value) {
 const { data: users, pending: usersPending, error: usersError } = useCollection<User>(
   query(
     collection(db, collectionID.value),
-    where('name', '!=', null)))
+    where('name', '!=', null),
+  ),
+)
 
 const userIDNotInDB = computed(() => {
   return !users.value?.find(u => u.id === mainStore.user.id)
@@ -33,10 +35,12 @@ const userIDIfSet = computed(() => {
     return mainStore.user.id
 })
 const { data: currentUserData } = useDocument<User>(
-  doc(collection(db, collectionID.value), userIDIfSet.value))
+  doc(collection(db, collectionID.value), userIDIfSet.value),
+)
 
 const { data: sessionState, pending: statePending, error: stateError } = useDocument<SessionState>(
-  doc(collection(db, collectionID.value), 'sessionState'))
+  doc(collection(db, collectionID.value), 'sessionState'),
+)
 
 const isVoteRevealed = computed(() => sessionState.value?.isVoteRevealed)
 
@@ -90,12 +94,6 @@ watchEffect(() => {
   }
 })
 provide('availableVotes', availableVotes)
-</script>
-
-<script lang="ts">
-export default {
-  inheritAttrs: false,
-}
 </script>
 
 <template>

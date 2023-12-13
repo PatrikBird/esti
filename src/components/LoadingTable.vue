@@ -22,10 +22,10 @@
                 Whatever Name
               </td>
               <td class="whitespace-nowrap p-2 text-center text-sm">
-                <icon:line-md:loading-twotone-loop class="inline-block h-5 w-5" />
+                <span i-line-md:loading-twotone-loop class="inline-block h-5 w-5" />
               </td>
               <td class="text-center">
-                <icon:ic:baseline-settings class="inline-block h-5 w-5 cursor-pointer" />
+                <span i-ic:baseline-settings class="inline-block h-5 w-5 cursor-pointer" />
               </td>
             </tr>
           </tbody>

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { User } from '~/types'
 
-const props = defineProps<{ voters?: User[]; isShirtMode?: boolean }>()
+const props = defineProps<{ voters?: User[], isShirtMode?: boolean }>()
 
 const votersWithoutNull = computed(() => props.voters?.filter(v => v.voteValue !== null))
 </script>
@@ -14,8 +14,7 @@ const votersWithoutNull = computed(() => props.voters?.filter(v => v.voteValue !
     </div>
     <p v-else>
       <img
-        v-motion-pop
-        src="https://media.tenor.com/WnjJsVOwoJQAAAAC/john-travolta-well.gif"
+        src="/src/assets/JohnTravolta.webp"
         alt="Confused Travolta"
         class="mx-auto my-5"
       >

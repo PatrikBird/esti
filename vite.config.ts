@@ -8,6 +8,8 @@ import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import Icons from 'unplugin-icons/vite'
 import IconsResolver from 'unplugin-icons/resolver'
+import UnoCSS from 'unocss/vite'
+import VueDevTools from 'vite-plugin-vue-devtools'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -18,6 +20,8 @@ export default defineConfig({
   },
   plugins: [
     vue(),
+    VueDevTools(),
+    UnoCSS(),
     Pages(),
     Layouts(),
     AutoImport({
