@@ -19,7 +19,7 @@ const routeContainsSession = computed(() => route.path.includes('session'))
           <div class="mx-auto max-w-2xl">
             <div class="relative flex gap-4">
               <div class="flex flex-1 justify-center gap-3 md:justify-center">
-d                <nav class="pointer-events-auto block">
+                <nav class="pointer-events-auto block">
                   <ul class="list-none flex rounded-full bg-white px-3 text-sm shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:bg-zinc-800 dark:text-zinc-200 dark:ring-white/10">
                     <li>
                       <RouterLink
@@ -97,8 +97,8 @@ d                <nav class="pointer-events-auto block">
 </template>
 
 <style lang="postcss">
-.v-popper__wrapper 
-.v-popper__arrow-container 
+.v-popper__wrapper
+.v-popper__arrow-container
 .v-popper__arrow-inner {
   @apply border-zinc-800 dark:border-zinc-100;
 }
