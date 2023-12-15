@@ -6,12 +6,9 @@ const lastSessionLink = computed(() =>
   mainStore.session.id === '' ? false : `/session/${mainStore.session.id}`,
 )
 
-watchEffect(() => {
-  // eslint-disable-next-line no-console
-  console.log(route.path)
-})
-const source = ref(`${window.location.origin}${route.path}`)
+const source = computed(() => `${window.location.origin}${route.path}`)
 const { copy, copied } = useClipboard({ source })
+
 const routeContainsSession = computed(() => route.path.includes('session'))
 </script>
 
