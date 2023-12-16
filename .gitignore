@@ -26,3 +26,7 @@ dist-ssr
 .vite-ssg-dist
 .vite-ssg-temp
 cypress/downloads
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
