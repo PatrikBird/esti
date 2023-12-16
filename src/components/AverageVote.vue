@@ -45,9 +45,13 @@ const closestAvailableVote = computed(() => {
     </p>
     <div class="flex items-center gap-1">
       <span i-mdi:arrow-right-thin class="inline-block h-5 w-5" />
-      <pop-over>
+      <div
+        class="relative m-1 inline-block h-10 w-12 select-none rounded-lg
+        border border-zinc-200 p-2 text-center shadow-md
+        dark:(border-zinc-900 bg-zinc-800)"
+      >
         {{ closestAvailableVote }}
-      </pop-over>
+      </div>
       <span class="mx-2 h-1 w-1 rounded-full bg-zinc-900 dark:bg-zinc-500" />
       <p class="text-sm font-medium text-zinc-500 dark:text-zinc-400">
         based on {{ voters?.length }} {{ voters?.length === 1 ? 'vote' : 'votes' }}
