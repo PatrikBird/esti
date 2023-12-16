@@ -104,7 +104,7 @@ devDependencies:
     specifier: 0.23.5
     version: 0.23.5(critters@0.0.20)(vite@5.0.8)(vue-router@4.2.5)(vue@3.3.11)
   vitest:
-    specifier: ^1.0.4
+    specifier: 1.0.4
     version: 1.0.4(@types/node@20.10.4)
   vue-tsc:
     specifier: 1.8.25
