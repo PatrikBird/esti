@@ -8,7 +8,10 @@
     "dev": "vite --open",
     "lint": "eslint .",
     "types": "vue-tsc --noEmit",
-    "build": "vite build"
+    "build": "vite build",
+    "test": "vitest --run",
+    "test:watch": "vitest",
+    "test:e2e": "pnpm exec playwright test"
   },
   "dependencies": {
     "@headlessui/vue": "1.7.16",
@@ -45,6 +48,7 @@
     "vite-plugin-vue-devtools": "1.0.0-rc.7",
     "vite-plugin-vue-layouts": "0.9.1",
     "vite-ssg": "0.23.5",
+    "vitest": "^1.0.4",
     "vue-tsc": "1.8.25"
   }
 }
