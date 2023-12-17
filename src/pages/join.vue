@@ -50,6 +50,10 @@ async function onFormSubmit() {
   }
   router.push(`/session/${mainStore.session.id}`)
 }
+
+function handleUserOptionSelected(option: string) {
+  isObserver.value = option === 'Observer'
+}
 </script>
 
 <template>
@@ -67,12 +71,13 @@ async function onFormSubmit() {
         name="id"
         type="text"
         required
-        class="block w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:outline-none dark:border-zinc-700/5 dark:bg-zinc-700 dark:focus:border-blue-500"
+        class="block w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:outline-none
+        dark:(border-zinc-700/5 bg-zinc-700 focus:border-blue-500)"
       >
       <UsernameInput v-model="enteredName" />
     </template>
     <template #formToggle>
-      <GenericToggle off="Voter" on="Observer" @is-active="(e) => isObserver = e" />
+      <GenericToggle :options="['Voter', 'Observer']" @option-selected="handleUserOptionSelected" />
     </template>
     <template #formButton>
       <FormButton

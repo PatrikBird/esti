@@ -1,47 +1,90 @@
 <script setup lang="ts">
-import { Switch, SwitchGroup, SwitchLabel } from '@headlessui/vue'
-
-const props = defineProps<{ off: string, on: string }>()
-
-const emit = defineEmits<{
-  (e: 'isActive', isActive: boolean): void
+const props = defineProps<{
+  options: [string, string]
 }>()
 
-const isActive = ref(false)
+const emit = defineEmits<{
+  (e: 'optionSelected', selectedOption: string): void
+}>()
+
+const selectedOption = ref(props.options[0])
+
+function updateValue(value: string) {
+  selectedOption.value = value
+}
+
 watchEffect(() => {
-  emit('isActive', isActive.value)
+  emit('optionSelected', selectedOption.value)
 })
 </script>
 
 <template>
-  <SwitchGroup as="div" class="flex items-center">
-    <SwitchLabel as="span" class="mr-3 cursor-pointer">
-      <span class="text-sm font-medium">{{ props.off }}</span>
-    </SwitchLabel>
-    <Switch
-      v-model="isActive"
-      class="relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent bg-blue-600 ring-offset-zinc-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:ring-offset-zinc-800"
-    >
-      <span
-        class="pointer-events-none relative inline-block h-5 w-5 rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out"
-        :class="[isActive ? 'translate-x-5' : 'translate-x-0']"
+  <div class="flex items-center space-x-3">
+    <label class="label">
+      {{ props.options[0] }}
+      <input
+        type="radio"
+        :name="props.options[0]"
+        class="radio"
+        :checked="selectedOption === props.options[0]"
+        @change="updateValue(props.options[0])"
       >
-        <span
-          class="absolute inset-0 flex h-full w-full items-center justify-center"
-          :class="[isActive ? 'opacity-0 duration-100 ease-out' : 'opacity-100 duration-200 ease-in']" aria-hidden="true"
-        >
-          <span i-line-md:chevron-left class="text-black" />
-        </span>
-        <span
-          class="absolute inset-0 flex h-full w-full items-center justify-center"
-          :class="[isActive ? 'opacity-100 duration-200 ease-in' : 'opacity-0 duration-100 ease-out']" aria-hidden="true"
-        >
-          <span i-line-md:chevron-left class="rotate-180 text-black" />
-        </span>
-      </span>
-    </Switch>
-    <SwitchLabel as="span" class="ml-3 cursor-pointer">
-      <span class="text-sm font-medium">{{ props.on }}</span>
-    </SwitchLabel>
-  </SwitchGroup>
+    </label>
+
+    <label class="label flex-row-reverse">
+      {{ options[1] }}
+      <input
+        type="radio"
+        :name="props.options[1]"
+        class="radio"
+        :checked="selectedOption === props.options[1]"
+        @change="updateValue(props.options[1])"
+      >
+    </label>
+  </div>
 </template>
+
+<style scoped lang="postcss">
+.label {
+  @apply cursor-pointer flex gap-2 text-sm items-center
+}
+
+.radio {
+  @apply h-6 w-6 cursor-pointer appearance-none rounded-full
+  border border-blue-600 border-opacity-30;
+
+  &:checked,
+  &[aria-checked="true"] {
+    @apply bg-blue-600;
+    /* background-image: none; */
+    animation: radiomark .2s ease-out forwards;
+    box-shadow:
+      0 0 0 4px var(--radio-bg) inset,
+      0 0 0 4px var(--radio-bg) inset;
+  }
+
+  &:disabled {
+    @apply cursor-not-allowed opacity-20;
+  }
+}
+
+@keyframes radiomark {
+  0% {
+    box-shadow:
+      0 0 0 12px var(--radio-bg) inset,
+      0 0 0 12px var(--radio-bg) inset;
+  }
+
+  50% {
+    box-shadow:
+      0 0 0 3px var(--radio-bg) inset,
+      0 0 0 3px var(--radio-bg) inset;
+  }
+
+  100% {
+    box-shadow:
+      0 0 0 4px var(--radio-bg) inset,
+      0 0 0 4px var(--radio-bg) inset;
+  }
+}
+</style>
