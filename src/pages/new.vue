@@ -36,6 +36,13 @@ async function onFormSubmit() {
   mainStore.user.id = userDocRef.id
   router.push(`/session/${mainStore.session.id}`)
 }
+
+function handleUserOptionSelected(option: string) {
+  isObserver.value = option === 'Observer'
+}
+function handleVoteOptionSelected(option: string) {
+  isShirtMode.value = option === 'T-Shirt'
+}
 </script>
 
 <template>
@@ -50,8 +57,8 @@ async function onFormSubmit() {
       <UsernameInput v-model="enteredName" />
     </template>
     <template #formToggle>
-      <GenericToggle off="Voter" on="Observer" @is-active="(e) => isObserver = e" />
-      <GenericToggle off="Numbers" on="T-Shirt" @is-active="(e) => isShirtMode = e" />
+      <GenericToggle :options="['Voter', 'Observer']" @option-selected="handleUserOptionSelected" />
+      <GenericToggle :options="['Numbers', 'T-Shirt']" @option-selected="handleVoteOptionSelected" />
     </template>
     <template #formButton>
       <FormButton

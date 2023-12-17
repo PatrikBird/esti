@@ -23,13 +23,17 @@ async function addUserToDB() {
   })
   mainStore.user.id = userDocRef.id
 }
+
+function handleUserOptionSelected(option: string) {
+  isObserver.value = option === 'Observer'
+}
 </script>
 
 <template>
   <form class="space-y-6" @submit.prevent="addUserToDB">
     <UsernameInput v-model="enteredName" class="mt-1" />
     <div class="flex items-center justify-center">
-      <GenericToggle off="Voter" on="Observer" @is-active="(e) => isObserver = e" />
+      <GenericToggle :options="['Voter', 'Observer']" @option-selected="handleUserOptionSelected" />
     </div>
     <FormButton
       btn-text="Join as new user"

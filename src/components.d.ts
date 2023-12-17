@@ -19,6 +19,7 @@ declare module 'vue' {
     JoinWithNewUser: typeof import('./components/JoinWithNewUser.vue')['default']
     LoadingSpinner: typeof import('./components/LoadingSpinner.vue')['default']
     LoadingTable: typeof import('./components/LoadingTable.vue')['default']
+    NewToggle: typeof import('./components/NewToggle.vue')['default']
     NumberVoteResults: typeof import('./components/results/NumberVoteResults.vue')['default']
     ProgressBar: typeof import('./components/ProgressBar.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
