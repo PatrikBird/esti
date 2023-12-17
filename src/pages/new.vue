@@ -37,11 +37,6 @@ async function onFormSubmit() {
   router.push(`/session/${mainStore.session.id}`)
 }
 
-// watchEffect(() => {
-//   console.log(`is Obs: ${isObserver.value}`)
-//   console.log(`is Shirt Mode: ${isShirtMode.value}`);
-// })
-
 function handleUserOptionSelected(option: string) {
   isObserver.value = option === 'Observer'
 }
