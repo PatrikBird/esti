@@ -1,4 +1,5 @@
 /// <reference types="vite-ssg" />
+/// <reference types="vitest" />
 import { URL, fileURLToPath } from 'node:url'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
@@ -11,7 +12,6 @@ import IconsResolver from 'unplugin-icons/resolver'
 import UnoCSS from 'unocss/vite'
 import VueDevTools from 'vite-plugin-vue-devtools'
 
-// https://vitejs.dev/config/
 export default defineConfig({
   resolve: {
     alias: {
@@ -28,8 +28,6 @@ export default defineConfig({
       imports: [
         'vue',
         'vue-router',
-        'vue-i18n',
-        'vue/macros',
         '@vueuse/head',
         '@vueuse/core',
       ],
@@ -42,9 +40,7 @@ export default defineConfig({
     }),
     // https://github.com/antfu/unplugin-vue-components
     Components({
-      // allow auto load markdown components under `./src/components/`
       extensions: ['vue'],
-      // allow auto import and register components used in markdown
       include: [/\.vue$/, /\.vue\?vue/],
       dts: 'src/components.d.ts',
       resolvers: [
@@ -64,5 +60,10 @@ export default defineConfig({
       // exclude all the route paths that contains 'about'
       return paths.filter(i => !i.includes('session') && !i.includes('about'))
     },
+  },
+  test: {
+    include: ['tests/unit/**/*.{test,spec}.?(c|m)[jt]s?(x)'],
+    globals: true,
+    environment: 'happy-dom',
   },
 })
