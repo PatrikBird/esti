@@ -58,7 +58,7 @@ const routeContainsSession = computed(() => route.path.includes('session'))
                   title="Toggle dark mode"
                   class="group rounded-full px-3 py-2 bg-white shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 hover:text-blue-500
                 dark:(bg-zinc-800 text-blue-500 ring-white/10 hover:text-blue-400 hover:ring-white/20)"
-                  @click="toggleDark()"
+                  @click="toggleDark"
                 >
                   <span v-if="!isDark" i-line-md:sunny-filled-loop class="h-[1.3rem] w-[1.3rem]" />
                   <span v-else i-line-md:sunny-filled-loop-to-moon-filled-loop-transition class="h-[1.35rem] w-[1.35rem]" />
