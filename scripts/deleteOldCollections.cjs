@@ -58,7 +58,8 @@ async function deleteCollectionsBasedOnCondition() {
         console.log(`Collection ${collection.id} last revealed on ${date.toISOString()}`)
         // await deleteCollection(db, collection.id, 100);
         // console.log(`Collection ${collection.id} deleted`);
-    } 
+    }
+    // TODO: if last reveal date is NULL and creatdOn date is older than 6 months, delete collection
   }
 }
 

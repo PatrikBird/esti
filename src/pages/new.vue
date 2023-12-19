@@ -23,7 +23,7 @@ async function onFormSubmit() {
     isShirtMode: isShirtMode.value,
     lastRevealOn: null,
     lastResetOn: null,
-    createdOn: Timestamp.fromDate(new Date()),
+    createdOn: '1111111111111',
   })
 
   const userDocRef = await addDoc(collectionRef, {
