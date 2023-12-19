@@ -15,7 +15,7 @@ const { nameIsValid, enteredNameTooLong } = useNameValidator(enteredName)
 async function onFormSubmit() {
   formSending.value = true
   mainStore.user.name = enteredName.value
-  mainStore.session.id = Date.now().toString()
+  mainStore.session.id = '1111111111111'
   const collectionRef = collection(db, mainStore.session.id)
 
   await setDoc(doc(db, mainStore.session.id, 'sessionState'), {
@@ -23,7 +23,7 @@ async function onFormSubmit() {
     isShirtMode: isShirtMode.value,
     lastRevealOn: null,
     lastResetOn: null,
-    createdOn: '1111111111111',
+    createdOn: Timestamp.fromDate(new Date()),
   })
 
   const userDocRef = await addDoc(collectionRef, {
