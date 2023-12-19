@@ -55,11 +55,17 @@ async function deleteCollectionsBasedOnCondition() {
     if (lastRevealOn) {
       const date = lastRevealOn.toDate()
       if (date < sixMonthsAgo)
-        console.log(`Collection ${collection.id} last revealed on ${date.toISOString()}`)
+        console.log(`Collection ${collection.id} LAST REVEALED on ${date.toISOString()}`)
         // await deleteCollection(db, collection.id, 100);
         // console.log(`Collection ${collection.id} deleted`);
     }
-    // TODO: if last reveal date is NULL and creatdOn date is older than 6 months, delete collection
+    else {
+      const createdOnDate = sessionStateDoc.data().createdOn.toDate()
+      if (createdOnDate < sixMonthsAgo)
+        console.log(`Collection ${collection.id} CREATED on ${date.toISOString()}`)
+        // await deleteCollection(db, collection.id, 100);
+        // console.log(`Collection ${collection.id} deleted`);
+    }
   }
 }
 
