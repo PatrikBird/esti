@@ -14,8 +14,9 @@ export default defineConfig({
   shortcuts: [
     {
       myLink: 'font-semibold text-blue-600 no-underline hover:underline dark:text-blue-400',
+      // tooltipText: 'p2 text-xs bg-zinc-800 text-white dark:(text-zinc-800 bg-zinc-100)'
     },
-    // [/^btn-(\w+)$/, ([_, color]) => `op50 px2.5 py1 transition-all duration-200 ease-out no-underline! hover:(op100 text-${color} bg-${color}/10) border border-base! rounded`],
+    [/^size-(\w+)$/, ([_, num]) => `h-${num} w-${num}`],
   ],
   presets: [
     PresetAttributify({
