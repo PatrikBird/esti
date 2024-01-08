@@ -15,7 +15,10 @@ const isEvenClasses = computed(() => ({
   <div class="mt-8 flex flex-col slide-up-animation">
     <div class="inline-block min-w-full py-2 align-middle">
       <div class="overflow-hidden shadow ring-1 ring-black/5 dark:ring-zinc-700 md:rounded-lg">
-        <table class="min-w-full table-fixed divide-y divide-zinc-300 dark:divide-zinc-700 dark:bg-zinc-800">
+        <table
+          class="min-w-full table-fixed divide-y divide-zinc-300
+        dark:(divide-zinc-700 bg-zinc-800)"
+        >
           <thead>
             <tr>
               <th scope="col" class="w-1/2 whitespace-nowrap px-2 py-3.5 text-right font-medium">
@@ -24,13 +27,20 @@ const isEvenClasses = computed(() => ({
               <th scope="col" class="w-1/4 whitespace-nowrap px-2 py-3.5 text-center font-medium">
                 Vote
               </th>
-              <th scope="col" class="w-1/4 select-none whitespace-nowrap px-2 py-3.5 text-center font-medium">
+              <th
+                scope="col"
+                class="w-1/4 select-none whitespace-nowrap px-2 py-3.5 text-center font-medium"
+              >
                 Actions
               </th>
             </tr>
           </thead>
           <tbody class="divide-y divide-zinc-200 dark:divide-zinc-700">
-            <tr v-for="(user, idx) in props.voters" :key="user.id" :class="idx as number % 2 && isEvenClasses">
+            <tr
+              v-for="(user, idx) in props.voters"
+              :key="user.id"
+              :class="idx as number % 2 && isEvenClasses"
+            >
               <td
                 class="whitespace-nowrap p-2 text-right text-sm"
                 :class="user.id === mainStore.user.id && 'text-blue-600 dark:text-blue-500'"
@@ -38,8 +48,14 @@ const isEvenClasses = computed(() => ({
                 {{ user.name }}
               </td>
               <td class="whitespace-nowrap p-2 text-center text-sm">
-                <span v-if="!user.voteValue" i-line-md:confirm-circle-to-circle-transition class="inline-block h-5 w-5 text-amber-500" />
-                <span v-else i-line-md:circle-to-confirm-circle-transition class="inline-block h-5 w-5 text-emerald-600" />
+                <span
+                  v-if="!user.voteValue" i-line-md:confirm-circle-to-circle-transition
+                  class="inline-block h-5 w-5 text-amber-500"
+                />
+                <span
+                  v-else i-line-md:circle-to-confirm-circle-transition
+                  class="inline-block h-5 w-5 text-emerald-600"
+                />
               </td>
               <td>
                 <switch-user-btn
