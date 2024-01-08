@@ -6,8 +6,9 @@
   "packageManager": "pnpm@8.12.0",
   "scripts": {
     "dev": "vite",
+    "dev:arc": "BROWSER='Arc' vite --open",
     "db": "firebase emulators:start --import=./database --only firestore",
-    "esti": "pnpm db & pnpm dev",
+    "esti": "pnpm db & pnpm dev:arc",
     "lint": "eslint .",
     "types": "vue-tsc --noEmit",
     "build": "vite build",
