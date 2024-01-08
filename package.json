@@ -15,7 +15,8 @@
     "generate": "vite-ssg build",
     "test": "vitest --run",
     "test:watch": "vitest",
-    "test:e2e": "pnpm exec playwright test"
+    "test:e2e": "pnpm exec playwright test",
+    "test:e2e:prod": "MY_BASE_URL=https://esti.patbird.me/ pnpm exec playwright test"
   },
   "dependencies": {
     "@headlessui/vue": "1.7.16",
