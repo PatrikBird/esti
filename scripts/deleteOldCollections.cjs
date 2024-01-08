@@ -1,3 +1,4 @@
+/* eslint-disable unused-imports/no-unused-vars */
 const admin = require('firebase-admin')
 
 admin.initializeApp({
