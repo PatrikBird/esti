@@ -1,6 +1,9 @@
 import { VueFire } from 'vuefire'
 import { initializeApp } from 'firebase/app'
-import { connectFirestoreEmulator, getFirestore } from 'firebase/firestore'
+import {
+  connectFirestoreEmulator,
+  getFirestore,
+} from 'firebase/firestore'
 import type { UserModule } from '~/types'
 
 const firebaseApp = initializeApp({
@@ -19,6 +22,15 @@ if (import.meta.env.MODE === 'development') {
   connectFirestoreEmulator(db, 'localhost', 8080)
   // eslint-disable-next-line no-console
   console.info('Using local FireStore emulator!')
+
+//   await setDoc(doc(db, '1111111111111', 'sessionState'), {
+//     isVoteRevealed: false,
+//     isShirtMode: false,
+//     lastRevealOn: null,
+//     lastResetOn: null,
+//     createdOn: Timestamp.fromDate(new Date()),
+//   })
+//   console.log('Data seeded successfully!')
 }
 
 export const install: UserModule = ({ app }) => {
