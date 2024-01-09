@@ -26,7 +26,6 @@ const votersByVoteValue = computed(() => {
 </script>
 
 <template>
-  <!-- <ShirtAverageVote /> -->
   <div class="grid grid-cols-1 gap-y-2 gap-x-8">
     <div v-for="(users, key) in votersByVoteValue" :key="key">
       <ShirtProgressBar
