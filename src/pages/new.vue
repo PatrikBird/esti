@@ -7,6 +7,7 @@ const mainStore = useMainStore()
 
 const formSending = ref(false)
 const isObserver = ref(false)
+
 const isShirtMode = ref(false)
 provide('isShirtMode', isShirtMode)
 const availableVotes: Ref<string[]> = ref([])
@@ -24,6 +25,7 @@ async function onFormSubmit() {
   await setDoc(doc(db, mainStore.session.id, 'sessionState'), {
     isVoteRevealed: false,
     isShirtMode: isShirtMode.value,
+    availableVotes: availableVotes.value,
     lastRevealOn: null,
     lastResetOn: null,
     createdOn: Timestamp.fromDate(new Date()),
@@ -40,12 +42,12 @@ async function onFormSubmit() {
   router.push(`/session/${mainStore.session.id}`)
 }
 
-function handleUserOptionSelected(option: string) {
-  isObserver.value = option === 'Observer'
-}
-function handleVoteOptionSelected(option: string) {
-  isShirtMode.value = option === 'T-Shirt'
-}
+// function handleUserOptionSelected(option: string) {
+//   isObserver.value = option === 'Observer'
+// }
+// function handleVoteOptionSelected(option: string) {
+//   isShirtMode.value = option === 'T-Shirt'
+// }
 </script>
 
 <template>
@@ -60,16 +62,23 @@ function handleVoteOptionSelected(option: string) {
       <UsernameInput v-model="enteredName" />
     </template>
     <template #formToggle>
-      <GenericToggle :options="['Voter', 'Observer']" @option-selected="handleUserOptionSelected" />
-      <GenericToggle :options="['Numbers', 'T-Shirt']" @option-selected="handleVoteOptionSelected" />
+      <!-- <GenericToggle
+        :options="['Voter', 'Observer']" @option-selected="handleUserOptionSelected"
+      />
+      <GenericToggle
+        :options="['Numbers', 'T-Shirt']" @option-selected="handleVoteOptionSelected"
+      /> -->
+      <VoteSystemSelect />
     </template>
     <template #formButton>
-      <FormButton
-        btn-text="Create session"
-        :form-sending="formSending"
-        :name-or-user-is-valid="nameIsValid"
-        :entered-name-too-long="enteredNameTooLong"
-      />
+      <div class="flex items-center gap4">
+        <FormButton
+          btn-text="Create session"
+          :form-sending="formSending"
+          :name-or-user-is-valid="nameIsValid"
+          :entered-name-too-long="enteredNameTooLong"
+        />
+      </div>
     </template>
   </BaseUserForm>
 </template>

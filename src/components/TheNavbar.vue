@@ -74,13 +74,17 @@ const routeContainsSession = computed(() => route.path.includes('session'))
                 >
                   <button
                     type="button"
-                    class="group rounded-full px-3 py-2 bg-white shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 hover:text-blue-500
-                  dark:(bg-zinc-800 text-white ring-white/10 hover:text-blue-400 hover:ring-white/20)"
+                    class="group rounded-full px-3 py-2 bg-white shadow-lg shadow-zinc-800/5
+                    ring-1 ring-zinc-900/5 hover:text-blue-500
+                    dark:(bg-zinc-800 text-white ring-white/10 hover:text-blue-400 hover:ring-white/20)"
                     :class="copied ? 'text-blue-500 dark:text-blue-500!' : 'text-zinc-900 dark:text-zinc-200'"
                     @click="copy()"
                   >
                     <span v-if="!copied" i-fluent:clipboard-24-regular class="h-[1.3rem] w-[1.3rem]" />
-                    <span v-else i-fluent:clipboard-checkmark-24-regular class="h-[1.3rem] w-[1.3rem]" />
+                    <span
+                      v-else i-fluent:clipboard-checkmark-24-regular
+                      class="h-[1.3rem] w-[1.3rem]"
+                    />
                   </button>
                   <template #popper>
                     <p class="p2 text-xs bg-zinc-800 text-white dark:(text-zinc-800 bg-zinc-100)">
@@ -88,6 +92,7 @@ const routeContainsSession = computed(() => route.path.includes('session'))
                     </p>
                   </template>
                 </VDropdown>
+                <SessionSettings v-if="routeContainsSession" />
               </div>
             </div>
           </div>
