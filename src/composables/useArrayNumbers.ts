@@ -1,6 +1,6 @@
 import type { MaybeRef } from 'vue'
 
-export function useArrayNumbersFilter(array: MaybeRef<unknown[]>): Ref<number[]> {
+export function useArrayNumbers(array: MaybeRef<unknown[]>) {
   const filteredArray = ref<number[]>([])
   const arrayValue = toValue(array)
 
@@ -9,5 +9,7 @@ export function useArrayNumbersFilter(array: MaybeRef<unknown[]>): Ref<number[]>
       filteredArray.value.push(Number(element))
   }
 
-  return filteredArray
+  const sortedArray = useSorted(filteredArray)
+
+  return { filteredArray, sortedArray }
 }
