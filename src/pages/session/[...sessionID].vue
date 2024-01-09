@@ -63,36 +63,11 @@ const allVotersHaveVoted = computed(() => {
 const isShirtMode = computed(() => {
   return sessionState.value?.isShirtMode
 })
-const availableVotes: Ref<string[]> = ref([])
-watchEffect(() => {
-  if (isShirtMode.value) {
-    availableVotes.value = [
-      'XS',
-      'S',
-      'M',
-      'L',
-      'XL',
-      '?',
-      'coffee',
-    ]
-  }
-  else {
-    availableVotes.value = [
-      '0',
-      '1',
-      '2',
-      '3',
-      '5',
-      '8',
-      '13',
-      '20',
-      '40',
-      '100',
-      '?',
-      'coffee',
-    ]
-  }
+
+const availableVotes = computed(() => {
+  return sessionState.value?.availableVotes
 })
+
 provide('availableVotes', availableVotes)
 </script>
 

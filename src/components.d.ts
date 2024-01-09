@@ -8,10 +8,12 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     AverageVote: typeof import('./components/AverageVote.vue')['default']
+    BaseInput: typeof import('./components/BaseInput.vue')['default']
     BaseUserForm: typeof import('./components/BaseUserForm.vue')['default']
     BuyMeACoffee: typeof import('./components/icons/BuyMeACoffee.vue')['default']
     BuyMeACoffeeDark: typeof import('./components/icons/BuyMeACoffeeDark.vue')['default']
     ComboBox: typeof import('./components/ComboBox.vue')['default']
+    CustomVoteOptions: typeof import('./components/CustomVoteOptions.vue')['default']
     DeleteUserBtn: typeof import('./components/DeleteUserBtn.vue')['default']
     FormButton: typeof import('./components/FormButton.vue')['default']
     GenericToggle: typeof import('./components/GenericToggle.vue')['default']
@@ -24,6 +26,7 @@ declare module 'vue' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SessionNotFound: typeof import('./components/SessionNotFound.vue')['default']
+    SessionSettings: typeof import('./components/SessionSettings.vue')['default']
     ShirtAverageVote: typeof import('./components/results/ShirtAverageVote.vue')['default']
     ShirtProgressBar: typeof import('./components/results/ShirtProgressBar.vue')['default']
     ShirtVoteResults: typeof import('./components/results/ShirtVoteResults.vue')['default']
@@ -37,5 +40,6 @@ declare module 'vue' {
     UsernameInput: typeof import('./components/UsernameInput.vue')['default']
     VoteCards: typeof import('./components/VoteCards.vue')['default']
     VoteResults: typeof import('./components/VoteResults.vue')['default']
+    VoteSystemSelect: typeof import('./components/VoteSystemSelect.vue')['default']
   }
 }
