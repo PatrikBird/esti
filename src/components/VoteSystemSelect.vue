@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue'
 import { Listbox, ListboxButton, ListboxOption, ListboxOptions } from '@headlessui/vue'
+
+// const props = defineProps<{ isShirtMode?: boolean, availableVotes?: string[] }>()
 
 enum VoteSystem {
   ModifiedFibonacci = 'Modified Fibonacci (0,½,1,2,3,5,8,13,20,40,100)',
@@ -21,40 +22,43 @@ const voteSystems = [
   { name: VoteSystem.TShirtSizes, values: ['XS', 'S', 'M', 'L', 'XL'] },
 ]
 
-const isShirtMode: Ref<boolean> = inject('isShirtMode') as Ref<boolean>
-// FIXME: provide is not available in the session, get isShirtMode from DB?
+// const { collectionID } = useCollectionId()
+// console.log('collectionID', collectionID)
+
+// if (!props.isShirtMode || !props.availableVotes)
+// const { isShirtMode, availableVotes } = useSessionState(collectionID)
+
+// const { isShirtMode, availableVotes } = useSessionStateInjector(collectionID)
 
 const selectedVoteSystem = ref(voteSystems[0])
-
-const availableVotes: Ref<string[]> = inject('availableVotes') as Ref<string[]>
 
 const coffeeChecked = ref(true)
 const questionMarkChecked = ref(true)
 
-function addCustomVotesIfNotPresent() {
-  if (questionMarkChecked.value && !availableVotes.value.includes('?'))
-    availableVotes.value.push('?')
-  else if (!questionMarkChecked.value && availableVotes.value.includes('?'))
-    availableVotes.value = availableVotes.value.filter(vote => vote !== '?')
+// function addCustomVotesIfNotPresent() {
+//   if (questionMarkChecked.value && !availableVotes.value.includes('?'))
+//     availableVotes.value.push('?')
+//   else if (!questionMarkChecked.value && availableVotes.value.includes('?'))
+//     availableVotes.value = availableVotes.value.filter(vote => vote !== '?')
 
-  if (coffeeChecked.value && !availableVotes.value.includes('coffee'))
-    availableVotes.value.push('coffee')
-  else if (!coffeeChecked.value && availableVotes.value.includes('coffee'))
-    availableVotes.value = availableVotes.value.filter(vote => vote !== 'coffee')
-}
+//   if (coffeeChecked.value && !availableVotes.value.includes('coffee'))
+//     availableVotes.value.push('coffee')
+//   else if (!coffeeChecked.value && availableVotes.value.includes('coffee'))
+//     availableVotes.value = availableVotes.value.filter(vote => vote !== 'coffee')
+// }
 
-watch([selectedVoteSystem, coffeeChecked, questionMarkChecked], ([newSelectedVoteSystem]) => {
-  if (newSelectedVoteSystem.name === VoteSystem.TShirtSizes)
-    isShirtMode.value = true
-  else
-    isShirtMode.value = false
+// watch([selectedVoteSystem, coffeeChecked, questionMarkChecked], ([newSelectedVoteSystem]) => {
+//   if (newSelectedVoteSystem.name === VoteSystem.TShirtSizes)
+//     isShirtMode.value = true
+//   else
+//     isShirtMode.value = false
 
-  // Update availableVotes with voteSystem values based on user choice
-  availableVotes.value = newSelectedVoteSystem.values
+//   // Update availableVotes with voteSystem values based on user choice
+//   availableVotes.value = newSelectedVoteSystem.values
 
-  // Add '?' or 'coffee' based on checkbox values
-  addCustomVotesIfNotPresent()
-}, { immediate: true })
+//   // Add '?' or 'coffee' based on checkbox values
+//   addCustomVotesIfNotPresent()
+// }, { immediate: true })
 </script>
 
 <template>
