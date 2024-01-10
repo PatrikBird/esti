@@ -1,9 +1,8 @@
 <script setup lang='ts'>
-const route = useRoute()
 const mainStore = useMainStore()
 
-const collectionID = ref(route.params.sessionID as string)
-mainStore.session.id = collectionID.value
+const { collectionID } = useCollectionId()
+mainStore.session.id = collectionID
 
 const {
   sessionStatePending,
