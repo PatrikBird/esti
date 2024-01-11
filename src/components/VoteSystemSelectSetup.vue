@@ -1,39 +1,30 @@
 <script setup lang="ts">
 import { Listbox, ListboxButton, ListboxOption, ListboxOptions } from '@headlessui/vue'
+import { voteSystems } from '../utils/voteSystemProvider'
+import type { VoteSystem } from '~/types'
 
-// const props = defineProps<{ isShirtMode?: boolean, availableVotes?: string[] }>()
-
-enum VoteSystem {
-  ModifiedFibonacci = 'Modified Fibonacci (0,½,1,2,3,5,8,13,20,40,100)',
-  Fibonacci = 'Fibonacci (0,1,2,3,5,8,13,21,34,55,89)',
-  TShirtSizes = 'T-Shirt Sizes (XS,S,M,L,XL)',
-}
-
-const voteSystems = [
-  {
-    name: VoteSystem.ModifiedFibonacci,
-    values: ['0', '0.5', '1', '2', '3', '5', '8', '13', '20', '40', '100',
-    ],
-  },
-  {
-    name: VoteSystem.Fibonacci,
-    values: ['0', '1', '2', '3', '5', '8', '13', '21', '34', '55', '89'],
-  },
-  { name: VoteSystem.TShirtSizes, values: ['XS', 'S', 'M', 'L', 'XL'] },
-]
-
-// const { collectionID } = useCollectionId()
-// console.log('collectionID', collectionID)
-
-// if (!props.isShirtMode || !props.availableVotes)
-// const { isShirtMode, availableVotes } = useSessionState(collectionID)
-
-// const { isShirtMode, availableVotes } = useSessionStateInjector(collectionID)
+const emit = defineEmits<{
+  (e: 'selectedVoteSystem', selectedVoteSystem: { name: VoteSystem, values: string[] }): void
+  (e: 'isCoffeeChecked', isCoffeeChecked: boolean): void
+  (e: 'isQuestionMarkChecked', isQuestionMarkChecked: boolean): void
+}>()
 
 const selectedVoteSystem = ref(voteSystems[0])
+const isCoffeeChecked = ref(true)
+const isQuestionMarkChecked = ref(true)
 
-const coffeeChecked = ref(true)
-const questionMarkChecked = ref(true)
+// watchEffect(() => {
+//   emit('selectedVoteSystem', selectedVoteSystem.value)
+//   emit('isCoffeeChecked', isCoffeeChecked.value)
+//   emit('isQuestionMarkChecked', isQuestionMarkChecked.value)
+// })
+
+// TODO: sort array before matching
+const matchingVoteSystem = computed(() => {
+  return voteSystems.find((voteSystem) => {
+    return JSON.stringify(voteSystem.values) === JSON.stringify(props.availableVotes)
+  })
+})
 
 // function addCustomVotesIfNotPresent() {
 //   if (questionMarkChecked.value && !availableVotes.value.includes('?'))
@@ -70,8 +61,9 @@ const questionMarkChecked = ref(true)
         <div class="relative mt-1">
           <ListboxButton
             class="relative w-full cursor-default rounded bg-white py-2 pl-3
-        pr-10 text-left shadow focus:outline-none cursor-pointer
-        focus-visible:(border-indigo-500 ring-2 ring-white/75 ring-offset-2 ring-offset-orange-300) sm:text-sm"
+            pr-10 text-left shadow focus:outline-none cursor-pointer
+            focus-visible:(border-indigo-500 ring-2 ring-white/75 ring-offset-2 ring-offset-orange-300)
+            sm:text-sm"
           >
             <span class="block truncate">{{ selectedVoteSystem.name }}</span>
             <span class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
@@ -86,8 +78,8 @@ const questionMarkChecked = ref(true)
           >
             <ListboxOptions
               class="absolute mt-1 max-h-60 w-full overflow-auto rounded bg-white
-      py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none
-      sm:text-sm"
+              py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none
+              sm:text-sm"
             >
               <ListboxOption
                 v-for="voteSystem in voteSystems"
@@ -116,10 +108,10 @@ const questionMarkChecked = ref(true)
     </div>
   </label>
   <div class="flex gap4">
-    <input id="questionMarkCheckbox" v-model="questionMarkChecked" type="checkbox">
+    <input id="questionMarkCheckbox" v-model="isQuestionMarkChecked" type="checkbox">
     <label for="questionMarkCheckbox">Question Mark</label>
 
-    <input id="coffeeCheckbox" v-model="coffeeChecked" type="checkbox">
+    <input id="coffeeCheckbox" v-model="isCoffeeChecked" type="checkbox">
     <label for="coffeeCheckbox">Coffee</label>
   </div>
 </template>

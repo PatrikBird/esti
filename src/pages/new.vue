@@ -1,6 +1,8 @@
 <script setup lang='ts'>
 import { Timestamp, addDoc, collection, doc, setDoc } from 'firebase/firestore'
+import { voteSystems } from '../utils/voteSystemProvider'
 import { db } from '~/modules/firebase'
+import type { VoteSystem } from '~/types'
 
 const router = useRouter()
 const mainStore = useMainStore()
@@ -8,9 +10,13 @@ const mainStore = useMainStore()
 const formSending = ref(false)
 const isObserver = ref(false)
 
+const isCoffeeChecked = ref(true)
+const isQuestionMarkChecked = ref(true)
+const availableVotes = ref(voteSystems[0])
+
 const isShirtMode = ref(false)
-provide('isShirtMode', isShirtMode)
-const availableVotes: Ref<string[]> = ref([])
+// provide('isShirtMode', isShirtMode)
+// const availableVotes: Ref<string[]> = ref([])
 provide('availableVotes', availableVotes)
 
 const enteredName = ref('')
@@ -68,7 +74,11 @@ async function onFormSubmit() {
       <GenericToggle
         :options="['Numbers', 'T-Shirt']" @option-selected="handleVoteOptionSelected"
       /> -->
-      <VoteSystemSelect />
+      <VoteSystemSelectSetup
+        @question-mark-checked="isQuestionMarkChecked"
+        @coffee-checked="isCoffeeChecked"
+        @selected-vote-system="availableVotes.values"
+      />
     </template>
     <template #formButton>
       <div class="flex items-center gap4">

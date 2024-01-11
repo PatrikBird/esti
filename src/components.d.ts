@@ -42,5 +42,6 @@ declare module 'vue' {
     VoteCards: typeof import('./components/VoteCards.vue')['default']
     VoteResults: typeof import('./components/VoteResults.vue')['default']
     VoteSystemSelect: typeof import('./components/VoteSystemSelect.vue')['default']
+    VoteSystemSelectSetup: typeof import('./components/VoteSystemSelectSetup.vue')['default']
   }
 }

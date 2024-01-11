@@ -16,6 +16,9 @@ function closeModal() {
 function openModal() {
   isOpen.value = true
 }
+
+const { collectionID } = useCollectionId()
+const { isShirtMode, availableVotes } = useSessionState(collectionID)
 </script>
 
 <template>
@@ -72,7 +75,7 @@ function openModal() {
                   Your payment has been successfully submitted. We've sent you
                   an email with all of the details of your order.
                 </p>
-                <VoteSystemSelect />
+                <!-- <VoteSystemSelect :is-shirt-mode="isShirtMode" :available-votes="availableVotes" /> -->
               </div>
 
               <div class="mt-4">

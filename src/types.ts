@@ -28,3 +28,9 @@ export interface User extends Person {
   voteValue: string | null
   joinedOn: Timestamp
 }
+
+export enum VoteSystem {
+  ModifiedFibonacci = 'Modified Fibonacci (0,½,1,2,3,5,8,13,20,40,100)',
+  Fibonacci = 'Fibonacci (0,1,2,3,5,8,13,21,34,55,89)',
+  TShirtSizes = 'T-Shirt Sizes (XS,S,M,L,XL)',
+}
