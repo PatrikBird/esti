@@ -11,8 +11,7 @@ const props = defineProps<{
 }>()
 
 const mainStore = useMainStore()
-const route = useRoute()
-const collectionID = ref(route.params.sessionID as string)
+const { collectionID } = useCollectionId()
 
 // TODO: refactor hacky solution to avoid running watcher on initial load
 const lastResetOnUpdated = ref(false)
@@ -20,13 +19,13 @@ const lastResetOnUpdated = ref(false)
 const selectedVote = ref()
 function selectVote(vote: string) {
   selectedVote.value = vote
-  updateDoc(doc(db, collectionID.value, mainStore.user.id), { voteValue: selectedVote.value, lastVoteOn: serverTimestamp() })
+  updateDoc(doc(db, collectionID, mainStore.user.id), { voteValue: selectedVote.value, lastVoteOn: serverTimestamp() })
   lastResetOnUpdated.value = false
 }
 
 const { data: users, pending: usersPending } = useCollection<User>(
   query(
-    collection(db, collectionID.value),
+    collection(db, collectionID),
     where('name', '!=', null),
   ),
 )
@@ -40,7 +39,7 @@ watch(getSelectedVoteFromDB, () => {
 })
 
 const { data: sessionState, pending: statePending } = useDocument<SessionState>(
-  doc(collection(db, collectionID.value), 'sessionState'),
+  doc(collection(db, collectionID), 'sessionState'),
 )
 
 const lastResetOn = computed(() => sessionState.value?.lastResetOn)
@@ -52,7 +51,7 @@ watch(lastResetOn, () => {
 })
 
 const { data: currentUserData } = useDocument<User>(
-  doc(collection(db, collectionID.value), mainStore.user.id ?? 0),
+  doc(collection(db, collectionID), mainStore.user.id ?? 0),
 )
 </script>
 

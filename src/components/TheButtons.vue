@@ -8,22 +8,21 @@ const props = defineProps<{
   allVotersHaveVoted?: boolean
 }>()
 
-const route = useRoute()
-const collectionID = ref(route.params.sessionID as string)
+const { collectionID } = useCollectionId()
 
 async function resetVotes() {
-  updateDoc(doc(db, collectionID.value, 'sessionState'), { isVoteRevealed: false, lastResetOn: serverTimestamp() })
+  updateDoc(doc(db, collectionID, 'sessionState'), { isVoteRevealed: false, lastResetOn: serverTimestamp() })
   // TODO: verify if unsub necessary or any memory leaks
-  const querySnapshot = await getDocs(collection(db, collectionID.value))
+  const querySnapshot = await getDocs(collection(db, collectionID))
   querySnapshot.forEach((userDoc) => {
     if (userDoc.id === 'sessionState')
       return
-    updateDoc(doc(db, collectionID.value, userDoc.id), { voteValue: null })
+    updateDoc(doc(db, collectionID, userDoc.id), { voteValue: null })
   })
 }
 
 async function revealVotes() {
-  updateDoc(doc(db, collectionID.value, 'sessionState'), { isVoteRevealed: true, lastRevealOn: serverTimestamp() })
+  updateDoc(doc(db, collectionID, 'sessionState'), { isVoteRevealed: true, lastRevealOn: serverTimestamp() })
 }
 
 const mainStore = useMainStore()
@@ -52,7 +51,7 @@ async function addVoter() {
 //   querySnapshot.forEach((userDoc) => {
 //     if (userDoc.id === 'sessionState')
 //       return
-//     updateDoc(doc(db, collectionID.value, userDoc.id), { voteValue: Math.floor(Math.random() * 100).toString() })
+//     updateDoc(doc(db, collectionID, userDoc.id), { voteValue: Math.floor(Math.random() * 100).toString() })
 //   })
 // }
 

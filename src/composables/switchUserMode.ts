@@ -1,13 +1,12 @@
 import { doc, updateDoc } from 'firebase/firestore'
+import { useCollectionId } from './useCollectionId'
 import { db } from '~/modules/firebase'
 
 export function useUserModeSwitch() {
-  const route = useRoute()
-
   function switchUserMode(userID: string, isObserver: boolean) {
-    const collectionID = ref(route.params.sessionID as string)
+    const { collectionID } = useCollectionId()
 
-    updateDoc(doc(db, collectionID.value, userID), {
+    updateDoc(doc(db, collectionID, userID), {
       isObserver,
       voteValue: null,
     })
