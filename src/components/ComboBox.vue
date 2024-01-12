@@ -21,7 +21,7 @@ const people = computed<Person[]>(() => {
   })
 })
 
-const selectedPerson: Ref<Person> = ref(people.value[0])
+const selectedPerson: Ref<Person> = ref({ id: '', name: '' })
 const query = ref('')
 
 const filteredPeople = computed<Person[]>(() =>

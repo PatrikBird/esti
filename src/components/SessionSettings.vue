@@ -34,7 +34,7 @@ const { isShirtMode, availableVotes } = useSessionState(collectionID)
     </button>
   </div>
   <TransitionRoot appear :show="isOpen" as="template">
-    <Dialog as="div" class="relative z-10" @close="closeModal">
+    <Dialog as="div" class="relative z-40" @close="closeModal">
       <TransitionChild
         as="template"
         enter="duration-300 ease-out"
@@ -44,7 +44,7 @@ const { isShirtMode, availableVotes } = useSessionState(collectionID)
         leave-from="opacity-100"
         leave-to="opacity-0"
       >
-        <div class="fixed inset-0 bg-black/25" />
+        <div class="fixed inset-0 bg-zinc-900/50 transition-opacity" />
       </TransitionChild>
 
       <div class="fixed inset-0 overflow-y-auto">
@@ -61,36 +61,29 @@ const { isShirtMode, availableVotes } = useSessionState(collectionID)
             leave-to="opacity-0 scale-95"
           >
             <DialogPanel
-              class="w-full max-w-xl transform overflow-hidden rounded-2xl
-              bg-white p-6 text-left align-middle shadow-xl transition-all"
+              class="relative overflow-visible rounded-lg bg-white px-4 pt-5 pb-4
+                text-left shadow-xl transition-all dark:bg-zinc-800 sm:(my-8 w-full max-w-lg p-6)"
             >
-              <DialogTitle
-                as="h3"
-                class="text-lg font-medium leading-6 text-gray-900"
-              >
-                Payment successful
-              </DialogTitle>
-              <div class="mt-2">
-                <p class="text-sm text-gray-500">
-                  Your payment has been successfully submitted. We've sent you
-                  an email with all of the details of your order.
+              <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-amber-100">
+                <span i-carbon:settings class="h-[1.3rem] w-[1.3rem]" />
+              </div>
+              <div class="mt-3 text-center sm:mt-5">
+                <DialogTitle as="h3" class="text-lg font-medium leading-6">
+                  Settings
+                </DialogTitle>
+                <p class="my-2 text-sm text-zinc-500 dark:text-zinc-300">
+                  Bla bla adjust settings bla bla
                 </p>
-                <!-- <VoteSystemSelect :is-shirt-mode="isShirtMode" :available-votes="availableVotes" /> -->
               </div>
 
-              <div class="mt-4">
-                <button
-                  type="button"
-                  class="inline-flex justify-center rounded-md
-                  border border-transparent bg-blue-100 px-4 py-2
-                  text-sm font-medium text-blue-900 hover:bg-blue-200
-                  focus:outline-none focus-visible:ring-2
-                  focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                  @click="closeModal"
-                >
-                  Got it, thanks!
-                </button>
-              </div>
+              <VoteSystemSelect />
+
+              <FormButton
+                btn-text="Save"
+                :form-sending="false"
+                :name-or-user-is-valid="true"
+                @click="closeModal"
+              />
             </DialogPanel>
           </TransitionChild>
         </div>
