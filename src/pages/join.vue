@@ -74,7 +74,7 @@ function handleUserOptionSelected(option: string) {
         class="block w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:outline-none
         dark:(border-zinc-700/5 bg-zinc-700 focus:border-blue-500)"
       >
-      <UsernameInput v-model="enteredName" />
+      <UsernameInput v-model="enteredName" :error="enteredNameTooLong" />
     </template>
     <template #formToggle>
       <GenericToggle :options="['Voter', 'Observer']" @option-selected="handleUserOptionSelected" />

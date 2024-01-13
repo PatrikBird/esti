@@ -54,7 +54,7 @@ function handleVoteOptionSelected(option: string) {
       join an existing session
     </template>
     <template #formInput>
-      <UsernameInput v-model="enteredName" />
+      <UsernameInput v-model="enteredName" :error="enteredNameTooLong" />
     </template>
     <template #formToggle>
       <GenericToggle :options="['Voter', 'Observer']" @option-selected="handleUserOptionSelected" />

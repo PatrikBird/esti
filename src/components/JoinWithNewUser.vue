@@ -31,7 +31,7 @@ function handleUserOptionSelected(option: string) {
 
 <template>
   <form class="space-y-6" @submit.prevent="addUserToDB">
-    <UsernameInput v-model="enteredName" class="mt-1" />
+    <UsernameInput v-model="enteredName" :error="enteredNameTooLong" class="mt-1" />
     <div class="flex items-center justify-center">
       <GenericToggle :options="['Voter', 'Observer']" @option-selected="handleUserOptionSelected" />
     </div>
