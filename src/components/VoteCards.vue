@@ -4,7 +4,6 @@ import { useCollection, useDocument } from 'vuefire'
 import type { SessionState, User } from '~/types'
 import { db } from '~/modules/firebase'
 
-// eslint-disable-next-line unused-imports/no-unused-vars
 const props = defineProps<{
   availableVotes: string[]
   isVoteRevealed?: boolean
@@ -57,11 +56,11 @@ const { data: currentUserData } = useDocument<User>(
 
 <template>
   <button
-    v-for="vote in availableVotes"
+    v-for="vote in props.availableVotes"
     :key="vote"
     :class="[
       { '!bg-emerald-400 !text-black': vote === selectedVote },
-      { 'pointer-events-none opacity-40': isVoteRevealed || currentUserData?.isObserver },
+      { 'pointer-events-none opacity-40': props.isVoteRevealed || currentUserData?.isObserver },
     ]"
     class="m-1 inline-block w-24 rounded-lg bg-white border border-zinc-200 p-6
     text-center shadow-md transition-colors duration-100 ease-in-out hover:bg-emerald-100

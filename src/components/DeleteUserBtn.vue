@@ -2,7 +2,6 @@
 import { deleteDoc, doc } from 'firebase/firestore'
 import { db } from '~/modules/firebase'
 
-// eslint-disable-next-line unused-imports/no-unused-vars
 const props = defineProps<{ userId: string }>()
 const hoveredUserID = ref('')
 const mainStore = useMainStore()
@@ -15,17 +14,17 @@ function removeUser(userID: string) {
 <template>
   <table-action-btn
     title="Delete User"
-    @click="removeUser(userId)"
-    @mouseover="hoveredUserID = userId"
+    @click="removeUser(props.userId)"
+    @mouseover="hoveredUserID = props.userId"
     @mouseleave="hoveredUserID = ''"
   >
     <span
-      v-show="hoveredUserID !== userId"
+      v-show="hoveredUserID !== props.userId"
       i-mdi:delete
       class="inline-block h-5 w-5"
     />
     <span
-      v-show="hoveredUserID === userId"
+      v-show="hoveredUserID === props.userId"
       i-mdi:delete-forever
       class="inline-block h-5 w-5"
     />
