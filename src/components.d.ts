@@ -33,6 +33,7 @@ declare module 'vue' {
     TheNavbar: typeof import('./components/TheNavbar.vue')['default']
     TheObservers: typeof import('./components/TheObservers.vue')['default']
     TheTable: typeof import('./components/TheTable.vue')['default']
+    ToggleUserModeBtn: typeof import('./components/ToggleUserModeBtn.vue')['default']
     UserConnection: typeof import('./components/UserConnection.vue')['default']
     UsernameInput: typeof import('./components/UsernameInput.vue')['default']
     VoteCards: typeof import('./components/VoteCards.vue')['default']

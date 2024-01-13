@@ -58,7 +58,7 @@ const isEvenClasses = computed(() => ({
                 />
               </td>
               <td :data-testid="user.id">
-                <switch-user-btn
+                <toggle-user-mode-btn
                   :user-id="user.id"
                   :set-is-observer-to="true"
                 />

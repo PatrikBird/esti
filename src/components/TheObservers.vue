@@ -19,7 +19,7 @@ const mainStore = useMainStore()
         </p>
       </div>
       <div class="shrink-0">
-        <switch-user-btn
+        <toggle-user-mode-btn
           :user-id="user.id"
           :set-is-observer-to="false"
         />

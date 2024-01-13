@@ -275,6 +275,7 @@ declare global {
   const useUrlSearchParams: typeof import('@vueuse/core')['useUrlSearchParams']
   const useUserMedia: typeof import('@vueuse/core')['useUserMedia']
   const useUserModeSwitch: typeof import('./composables/switchUserMode')['useUserModeSwitch']
+  const useUserModeToggle: typeof import('./composables/toggleUserMode')['useUserModeToggle']
   const useUserState: typeof import('./composables/useUserState')['useUserState']
   const useVModel: typeof import('@vueuse/core')['useVModel']
   const useVModels: typeof import('@vueuse/core')['useVModels']
@@ -576,7 +577,7 @@ declare module 'vue' {
     readonly useTransition: UnwrapRef<typeof import('@vueuse/core')['useTransition']>
     readonly useUrlSearchParams: UnwrapRef<typeof import('@vueuse/core')['useUrlSearchParams']>
     readonly useUserMedia: UnwrapRef<typeof import('@vueuse/core')['useUserMedia']>
-    readonly useUserModeSwitch: UnwrapRef<typeof import('./composables/switchUserMode')['useUserModeSwitch']>
+    readonly useUserModeToggle: UnwrapRef<typeof import('./composables/toggleUserMode')['useUserModeToggle']>
     readonly useUserState: UnwrapRef<typeof import('./composables/useUserState')['useUserState']>
     readonly useVModel: UnwrapRef<typeof import('@vueuse/core')['useVModel']>
     readonly useVModels: UnwrapRef<typeof import('@vueuse/core')['useVModels']>
@@ -871,7 +872,7 @@ declare module '@vue/runtime-core' {
     readonly useTransition: UnwrapRef<typeof import('@vueuse/core')['useTransition']>
     readonly useUrlSearchParams: UnwrapRef<typeof import('@vueuse/core')['useUrlSearchParams']>
     readonly useUserMedia: UnwrapRef<typeof import('@vueuse/core')['useUserMedia']>
-    readonly useUserModeSwitch: UnwrapRef<typeof import('./composables/switchUserMode')['useUserModeSwitch']>
+    readonly useUserModeToggle: UnwrapRef<typeof import('./composables/toggleUserMode')['useUserModeToggle']>
     readonly useUserState: UnwrapRef<typeof import('./composables/useUserState')['useUserState']>
     readonly useVModel: UnwrapRef<typeof import('@vueuse/core')['useVModel']>
     readonly useVModels: UnwrapRef<typeof import('@vueuse/core')['useVModels']>
