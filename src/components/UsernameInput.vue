@@ -1,18 +1,20 @@
 <script setup lang='ts'>
-const emit = defineEmits<{
-  (e: 'update:modelValue', username: string): void
-}>()
+// const emit = defineEmits<{
+//   (e: 'update:modelValue', username: string): void
+// }>()
 
+const modelValue = defineModel<string>()
 const mainStore = useMainStore()
 
+// TODO: init modelValue with mainStore.user.name
 const enteredName = ref(mainStore.user.name)
 const { enteredNameTooLong } = useNameValidator(enteredName)
 
-onMounted(() => {
-  watch(enteredName, (newValue) => {
-    emit('update:modelValue', newValue)
-  }, { immediate: true })
-})
+// onMounted(() => {
+//   watch(enteredName, (newValue) => {
+//     emit('update:modelValue', newValue)
+//   }, { immediate: true })
+// })
 </script>
 
 <template>
@@ -24,7 +26,7 @@ onMounted(() => {
     >Name</label>
     <input
       id="username"
-      v-model.trim="enteredName"
+      v-model.trim="modelValue"
       class="block w-full rounded-md border px-3 py-2 text-sm shadow-sm
       focus:(border-blue-500 outline-none)
       dark:(border-zinc-700/5 bg-zinc-700 focus:border-blue-500)"
