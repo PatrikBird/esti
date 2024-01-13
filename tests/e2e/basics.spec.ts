@@ -34,3 +34,25 @@ test('join session button', async ({ page }) => {
 
   await page.waitForURL('/join')
 })
+
+test('username input validation on /join', async ({ page }) => {
+  await page.goto('/join')
+  await page.waitForURL('/join')
+  await page.getByLabel('Name').click()
+  await page.getByLabel('Name').fill('this name is too damn long!')
+
+  await expect(page.getByText('That is a very long name.')).toBeVisible()
+  await page.getByLabel('Name').fill('short name')
+  await expect(page.getByText('That is a very long name.')).not.toBeVisible()
+})
+
+test('username input validation on /new', async ({ page }) => {
+  await page.goto('/new')
+  await page.waitForURL('/new')
+  await page.getByLabel('Name').click()
+  await page.getByLabel('Name').fill('this name is too damn long!')
+
+  await expect(page.getByText('That is a very long name.')).toBeVisible()
+  await page.getByLabel('Name').fill('short name')
+  await expect(page.getByText('That is a very long name.')).not.toBeVisible()
+})
