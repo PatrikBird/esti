@@ -1,4 +1,4 @@
-import type { MaybeRef } from '@vueuse/core'
+import type { MaybeRef } from 'vue'
 import { collection, getDocs } from 'firebase/firestore'
 import { db } from '~/modules/firebase'
 

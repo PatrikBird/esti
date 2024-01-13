@@ -1,4 +1,4 @@
-import type { MaybeRef } from '@vueuse/core'
+import type { MaybeRef } from 'vue'
 
 export function useNameValidator(enteredName: MaybeRef<string>) {
   const onlyWhiteSpaces = /^\s*$/
