@@ -22,19 +22,12 @@ function claimExistingUser() {
   mainStore.user.id = user.value.id
   mainStore.user.name = user.value.name
 }
-
-// const { collectionID } = useCollectionID()
-// const { userState } = useUserState(collectionID)
-
-// watchEffect(() => {
-//   console.log(`${userState.value} from UserConnection.vue`)
-// })
 </script>
 
 <template>
   <BaseModal :open="open">
     <template #icon>
-      <span i-mdi:account-question class="h-6 w-6 text-amber-600" />
+      <span i-mdi:account-question class="size-6 text-amber-600" />
     </template>
     <template #title>
       User not found
@@ -45,7 +38,7 @@ function claimExistingUser() {
     </template>
     <template #content>
       <form @submit.prevent="claimExistingUser">
-        <div class="grid grid-flow-row-dense gap-3 sm:mt-6 sm:grid-cols-2">
+        <div class="grid grid-flow-row-dense gap-3 sm:(mt-6 grid-cols-2)">
           <ComboBox :users="props.users" @selected-changed="onSelectedPersonChanged" />
           <FormButton
             btn-text="Claim existing user"
