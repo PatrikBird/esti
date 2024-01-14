@@ -8,6 +8,7 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     AverageVote: typeof import('./components/AverageVote.vue')['default']
+    BaseModal: typeof import('./components/BaseModal.vue')['default']
     BaseUserForm: typeof import('./components/BaseUserForm.vue')['default']
     BuyMeACoffee: typeof import('./components/icons/BuyMeACoffee.vue')['default']
     BuyMeACoffeeDark: typeof import('./components/icons/BuyMeACoffeeDark.vue')['default']
