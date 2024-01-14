@@ -1,3 +1,4 @@
+/* eslint-disable node/prefer-global/process */
 /* eslint-disable unused-imports/no-unused-vars */
 const admin = require('firebase-admin')
 
