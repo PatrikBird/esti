@@ -23,12 +23,16 @@ function claimExistingUser() {
   mainStore.user.name = user.value.name
 }
 
-const { collectionID } = useCollectionID()
-const { userState } = useUserState(collectionID)
+// const { collectionID } = useCollectionID()
+// const { userState } = useUserState(collectionID)
+
+// watchEffect(() => {
+//   console.log(`${userState.value} from UserConnection.vue`)
+// })
 </script>
 
 <template>
-  <BaseModal v-if="!userState" :open="open">
+  <BaseModal :open="open">
     <template #icon>
       <span i-mdi:account-question class="h-6 w-6 text-amber-600" />
     </template>
