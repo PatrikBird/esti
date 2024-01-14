@@ -1,7 +1,7 @@
 <script setup lang='ts'>
 const mainStore = useMainStore()
 
-const { collectionID } = useCollectionId()
+const { collectionID } = useCollectionID()
 mainStore.session.id = collectionID
 
 const {

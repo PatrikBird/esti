@@ -7,7 +7,7 @@ const props = defineProps<{
   allVotersHaveVoted?: boolean
 }>()
 
-const { collectionID } = useCollectionId()
+const { collectionID } = useCollectionID()
 
 async function resetVotes() {
   updateDoc(doc(db, collectionID, 'sessionState'), { isVoteRevealed: false, lastResetOn: serverTimestamp() })

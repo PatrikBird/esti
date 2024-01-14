@@ -1,5 +1,5 @@
 <script setup lang='ts'>
-const props = defineProps<{ userId: string, setIsObserverTo: boolean }>()
+const props = defineProps<{ userID: string, setIsObserverTo: boolean }>()
 const hoveredUserID = ref('')
 
 const { toggleUserMode } = useUserModeToggle()
@@ -8,18 +8,18 @@ const { toggleUserMode } = useUserModeToggle()
 <template>
   <table-action-btn
     :title="props.setIsObserverTo ? 'Move User to Observer' : 'Move User to Voter'"
-    @click="toggleUserMode(props.userId, props.setIsObserverTo)"
-    @mouseover="hoveredUserID = props.userId"
+    @click="toggleUserMode(props.userID, props.setIsObserverTo)"
+    @mouseover="hoveredUserID = props.userID"
     @mouseleave="hoveredUserID = ''"
   >
     <span
-      v-show="hoveredUserID === props.userId"
+      v-show="hoveredUserID === props.userID"
       i-mdi:arrow-up
       class="inline-block h-5 w-5"
       :class="props.setIsObserverTo && 'rotate-180'"
     />
     <span
-      v-show="hoveredUserID !== props.userId"
+      v-show="hoveredUserID !== props.userID"
       i-mdi:eye
       class="inline-block h-5 w-5"
     />

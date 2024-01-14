@@ -23,7 +23,7 @@ function claimExistingUser() {
   mainStore.user.name = user.value.name
 }
 
-const { collectionID } = useCollectionId()
+const { collectionID } = useCollectionID()
 const { userState } = useUserState(collectionID)
 </script>
 

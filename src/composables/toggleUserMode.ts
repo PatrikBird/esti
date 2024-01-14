@@ -1,9 +1,9 @@
 import { doc, updateDoc } from 'firebase/firestore'
-import { useCollectionId } from './useCollectionId'
+import { useCollectionID } from './useCollectionID'
 import { db } from '~/modules/firebase'
 
 export function useUserModeToggle() {
-  const { collectionID } = useCollectionId()
+  const { collectionID } = useCollectionID()
 
   function toggleUserMode(userID: string, isObserver: boolean) {
     updateDoc(doc(db, collectionID, userID), {

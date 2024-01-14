@@ -1,3 +1,4 @@
+<!-- eslint-disable unused-imports/no-unused-vars -->
 <script setup lang='ts'>
 const mapping = { XS: 20, S: 40, M: 60, L: 80, XL: 100 }
 </script>

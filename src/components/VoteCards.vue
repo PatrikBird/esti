@@ -10,7 +10,7 @@ const props = defineProps<{
 }>()
 
 const mainStore = useMainStore()
-const { collectionID } = useCollectionId()
+const { collectionID } = useCollectionID()
 
 // TODO: refactor hacky solution to avoid running watcher on initial load
 const lastResetOnUpdated = ref(false)

@@ -23,10 +23,10 @@ const mainStore = useMainStore()
       </div>
       <div class="shrink-0">
         <toggle-user-mode-btn
-          :user-id="user.id"
+          :user-i-d="user.id"
           :set-is-observer-to="false"
         />
-        <delete-user-btn :user-id="user.id" />
+        <delete-user-btn :user-i-d="user.id" />
       </div>
     </div>
   </div>

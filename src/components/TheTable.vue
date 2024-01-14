@@ -59,10 +59,10 @@ const isEvenClasses = computed(() => ({
               </td>
               <td :data-testid="user.id">
                 <toggle-user-mode-btn
-                  :user-id="user.id"
+                  :user-i-d="user.id"
                   :set-is-observer-to="true"
                 />
-                <delete-user-btn :user-id="user.id" />
+                <delete-user-btn :user-i-d="user.id" />
               </td>
             </tr>
           </tbody>
