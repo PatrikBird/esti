@@ -1,5 +1,4 @@
 import { doc, updateDoc } from 'firebase/firestore'
-import { useCollectionID } from './useCollectionID'
 import { db } from '~/modules/firebase'
 
 export function useUserModeToggle() {
