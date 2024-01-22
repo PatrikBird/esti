@@ -28,7 +28,6 @@ declare module 'vue' {
     ShirtAverageVote: typeof import('./components/results/ShirtAverageVote.vue')['default']
     ShirtProgressBar: typeof import('./components/results/ShirtProgressBar.vue')['default']
     ShirtVoteResults: typeof import('./components/results/ShirtVoteResults.vue')['default']
-    SwitchUserBtn: typeof import('./components/SwitchUserBtn.vue')['default']
     TableActionBtn: typeof import('./components/TableActionBtn.vue')['default']
     TheButtons: typeof import('./components/TheButtons.vue')['default']
     TheNavbar: typeof import('./components/TheNavbar.vue')['default']
