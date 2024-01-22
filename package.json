@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.0.0",
   "private": true,
-  "packageManager": "pnpm@8.12.0",
+  "packageManager": "pnpm@8.14.2",
   "scripts": {
     "dev": "vite",
     "dev:arc": "BROWSER='Arc' vite --open",
@@ -43,7 +43,7 @@
     "critters": "0.0.20",
     "eslint": "8.56.0",
     "eslint-plugin-vue": "9.20.1",
-    "firebase-admin": "^12.0.0",
+    "firebase-admin": "12.0.0",
     "happy-dom": "13.2.1",
     "typescript": "5.3.3",
     "unocss": "0.58.3",
