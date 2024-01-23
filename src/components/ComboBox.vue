@@ -10,13 +10,14 @@ import {
 import type { Ref } from 'vue'
 import type { Person, User } from '~/types'
 
-const props = defineProps<{ users: User[] }>()
 const emits = defineEmits<{
   (e: 'selectedChanged', person: Person): void
 }>()
 
+const allUsers: Ref<User[]> = inject('allUsers') as Ref<User[]>
+
 const people = computed<Person[]>(() => {
-  return props.users.map((u) => {
+  return allUsers.value.map((u) => {
     return { id: u.id, name: u.name }
   })
 })

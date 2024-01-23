@@ -61,14 +61,15 @@ watchEffect(() => {
   }
 })
 provide('availableVotes', availableVotes)
+provide('allUsers', userState)
 </script>
 
 <template>
   <SessionNotFound v-if="showSessionNotFound || sessionStateError || userStateError" />
   <LoadingSpinner v-else-if="sessionStatePending || userStatePending" />
   <div v-else>
-    <UserConnection
-      v-if="!currentUserData && userIDNotInDB" :users="userState"
+    <BaseModal
+      v-if="!currentUserData && userIDNotInDB"
     />
     <div v-else class="mt-5">
       <VoteCards

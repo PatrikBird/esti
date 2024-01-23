@@ -1,9 +1,16 @@
 <script setup lang='ts'>
-import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
+import { Dialog, DialogPanel, TransitionChild, TransitionRoot } from '@headlessui/vue'
+import JoinAsNewUserModal from './JoinAsNewUserModal.vue'
+import ClaimExistingUserModal from './ClaimExistingUserModal.vue'
 
-const props = withDefaults(defineProps<{ open: boolean }>(), {
+const props = withDefaults(defineProps<{ open?: boolean }>(), {
   open: true,
 })
+
+const currentModal = shallowRef(ClaimExistingUserModal)
+function toggle() {
+  currentModal.value = currentModal.value === JoinAsNewUserModal ? ClaimExistingUserModal : JoinAsNewUserModal
+}
 </script>
 
 <template>
@@ -34,18 +41,7 @@ const props = withDefaults(defineProps<{ open: boolean }>(), {
               class="relative overflow-visible rounded-lg bg-white px-4 pt-5 pb-4
               text-left shadow-xl transition-all dark:bg-zinc-800 sm:(my-8 w-full max-w-lg p-6)"
             >
-              <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-amber-100">
-                <slot name="icon" />
-              </div>
-              <div class="mt-3 text-center sm:mt-5">
-                <DialogTitle as="h3" class="text-lg font-medium leading-6">
-                  <slot name="title" />
-                </DialogTitle>
-                <p class="my-2 text-sm text-zinc-500 dark:text-zinc-300">
-                  <slot name="description" />
-                </p>
-              </div>
-              <slot name="content" />
+              <component :is="currentModal" @toggle-modal="toggle" />
             </DialogPanel>
           </TransitionChild>
         </div>
