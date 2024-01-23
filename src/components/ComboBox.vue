@@ -11,7 +11,7 @@ import type { Ref } from 'vue'
 import type { Person, User } from '~/types'
 
 const props = defineProps<{ users: User[] }>()
-const emit = defineEmits<{
+const emits = defineEmits<{
   (e: 'selectedChanged', person: Person): void
 }>()
 
@@ -36,7 +36,7 @@ const filteredPeople = computed<Person[]>(() =>
 )
 
 watchEffect(() => {
-  emit('selectedChanged', selectedPerson.value)
+  emits('selectedChanged', selectedPerson.value)
 })
 </script>
 

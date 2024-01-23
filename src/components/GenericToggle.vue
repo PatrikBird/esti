@@ -3,7 +3,7 @@ const props = defineProps<{
   options: [string, string]
 }>()
 
-const emit = defineEmits<{
+const emits = defineEmits<{
   (e: 'optionSelected', selectedOption: string): void
 }>()
 
@@ -14,7 +14,7 @@ function updateValue(value: string) {
 }
 
 watchEffect(() => {
-  emit('optionSelected', selectedOption.value)
+  emits('optionSelected', selectedOption.value)
 })
 </script>
 
