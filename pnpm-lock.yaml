@@ -77,8 +77,8 @@ devDependencies:
     specifier: 12.0.0
     version: 12.0.0
   happy-dom:
-    specifier: 13.2.1
-    version: 13.2.1
+    specifier: 14.12.3
+    version: 14.12.3
   typescript:
     specifier: 5.3.3
     version: 5.3.3
@@ -111,7 +111,7 @@ devDependencies:
     version: 0.23.6(critters@0.0.20)(vite@5.0.12)(vue-router@4.2.5)(vue@3.4.15)
   vitest:
     specifier: 1.2.1
-    version: 1.2.1(@types/node@20.11.5)(happy-dom@13.2.1)
+    version: 1.2.1(@types/node@20.11.5)(happy-dom@14.12.3)
   vue-tsc:
     specifier: 1.8.27
     version: 1.8.27(typescript@5.3.3)
@@ -3689,7 +3689,7 @@ packages:
       '@typescript-eslint/eslint-plugin': 6.19.0(@typescript-eslint/parser@6.19.0)(eslint@8.56.0)(typescript@5.3.3)
       '@typescript-eslint/utils': 6.19.0(eslint@8.56.0)(typescript@5.3.3)
       eslint: 8.56.0
-      vitest: 1.2.1(@types/node@20.11.5)(happy-dom@13.2.1)
+      vitest: 1.2.1(@types/node@20.11.5)(happy-dom@14.12.3)
     transitivePeerDependencies:
       - supports-color
       - typescript
@@ -4336,8 +4336,8 @@ packages:
       duplexer: 0.1.2
     dev: true
 
-  /happy-dom@13.2.1:
-    resolution: {integrity: sha512-AwSV0OPsLxOu1nsKsw+1aakYGiCgLcYed/BPLMGe4lOxAZY14UWGAw8nB7SSnHRltBPwcM6Rf+5hcMXcU7qxaQ==}
+  /happy-dom@14.12.3:
+    resolution: {integrity: sha512-vsYlEs3E9gLwA1Hp+w3qzu+RUDFf4VTT8cyKqVICoZ2k7WM++Qyd2LwzyTi5bqMJFiIC/vNpTDYuxdreENRK/g==}
     engines: {node: '>=16.0.0'}
     dependencies:
       entities: 4.5.0
@@ -6786,7 +6786,7 @@ packages:
       fsevents: 2.3.3
     dev: true
 
-  /vitest@1.2.1(@types/node@20.11.5)(happy-dom@13.2.1):
+  /vitest@1.2.1(@types/node@20.11.5)(happy-dom@14.12.3):
     resolution: {integrity: sha512-TRph8N8rnSDa5M2wKWJCMnztCZS9cDcgVTQ6tsTFTG/odHJ4l5yNVqvbeDJYJRZ6is3uxaEpFs8LL6QM+YFSdA==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
@@ -6822,7 +6822,7 @@ packages:
       chai: 4.4.1
       debug: 4.3.4
       execa: 8.0.1
-      happy-dom: 13.2.1
+      happy-dom: 14.12.3
       local-pkg: 0.5.0
       magic-string: 0.30.5
       pathe: 1.1.2
@@ -6857,6 +6857,21 @@ packages:
         optional: true
     dependencies:
       vue: 3.4.15(typescript@5.3.3)
+
+  /vue-demi@0.14.8(vue@3.4.15):
+    resolution: {integrity: sha512-Uuqnk9YE9SsWeReYqK2alDI5YzciATE0r2SkA6iMAtuXvNTMNACJLJEXNXaEy94ECuBe4Sk6RzRU80kjdbIo1Q==}
+    engines: {node: '>=12'}
+    hasBin: true
+    requiresBuild: true
+    peerDependencies:
+      '@vue/composition-api': ^1.0.0-rc.1
+      vue: ^3.0.0-0 || ^2.6.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+    dependencies:
+      vue: 3.4.15(typescript@5.3.3)
+    dev: false
 
   /vue-eslint-parser@9.4.1(eslint@8.56.0):
     resolution: {integrity: sha512-EmIbJ5cCI/E06SlI8K5sldVZ+Ef5vy26Ck0lNALxgY7FEAMOjNR32qcsVM3FUJUbvVWTBEiOy5lQvbhPK/ynBw==}
@@ -6944,7 +6959,7 @@ packages:
     dependencies:
       firebase: 10.7.2
       vue: 3.4.15(typescript@5.3.3)
-      vue-demi: 0.14.6(vue@3.4.15)
+      vue-demi: 0.14.8(vue@3.4.15)
     dev: false
 
   /w3c-xmlserializer@5.0.0:
