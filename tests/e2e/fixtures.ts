@@ -1,5 +1,5 @@
-import { test as baseTest, expect } from '@playwright/test'
 import type { Page } from '@playwright/test'
+import { test as baseTest, expect } from '@playwright/test'
 
 export async function getUserContainer({ page }: { page: Page }) {
   const userID = await page.evaluate(() => localStorage.getItem('userID'))

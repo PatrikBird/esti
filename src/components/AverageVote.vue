@@ -9,11 +9,10 @@ const votes = computed(() =>
 )
 
 const averageVoteValue = computed(() => {
-  if (votes.value?.length === 0)
+  if (!votes.value || votes.value.length === 0)
     return null
 
-  if (votes.value)
-    return (votes.value.reduce((sum, v) => sum + v, 0) / votes.value.length).toFixed(1)
+  return (votes.value.reduce((sum, v) => sum + v, 0) / votes.value.length).toFixed(1)
 })
 
 const availableVotes: Ref<string[]> = inject('availableVotes') as Ref<string[]>

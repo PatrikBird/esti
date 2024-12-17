@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { Ref } from 'vue'
+import type { Person, User } from '~/types'
 import {
   Combobox,
   ComboboxButton,
@@ -7,8 +9,6 @@ import {
   ComboboxOptions,
   TransitionRoot,
 } from '@headlessui/vue'
-import type { Ref } from 'vue'
-import type { Person, User } from '~/types'
 
 const props = defineProps<{ users: User[] }>()
 const emits = defineEmits<{
@@ -28,11 +28,11 @@ const filteredPeople = computed<Person[]>(() =>
   query.value === ''
     ? people.value
     : people.value.filter(user =>
-      user.name
-        .toLowerCase()
-        .replace(/\s+/g, '')
-        .includes(query.value.toLowerCase().replace(/\s+/g, '')),
-    ),
+        user.name
+          .toLowerCase()
+          .replace(/\s+/g, '')
+          .includes(query.value.toLowerCase().replace(/\s+/g, '')),
+      ),
 )
 
 watchEffect(() => {

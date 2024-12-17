@@ -8,6 +8,7 @@ admin.initializeApp({
 
 const db = admin.firestore()
 
+// eslint-disable-next-line no-unused-vars
 async function deleteCollection(db, collectionPath, batchSize) {
   const collectionRef = db.collection(collectionPath)
   const query = collectionRef.orderBy('__name__').limit(batchSize)
@@ -54,8 +55,8 @@ async function deleteCollectionsBasedOnCondition() {
   for (const collection of collections) {
     const sessionStateDoc = await db.collection(collection.id).doc('sessionState').get()
     const lastRevealOn = sessionStateDoc.data().lastRevealOn
+    const date = lastRevealOn.toDate()
     if (lastRevealOn) {
-      const date = lastRevealOn.toDate()
       if (date < sixMonthsAgo)
         console.log(`Collection ${collection.id} LAST REVEALED on ${date.toISOString()}`)
         // await deleteCollection(db, collection.id, 100);

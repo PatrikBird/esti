@@ -1,5 +1,5 @@
 <script setup lang='ts'>
-import { Timestamp, addDoc, collection, doc, setDoc } from 'firebase/firestore'
+import { addDoc, collection, doc, setDoc, Timestamp } from 'firebase/firestore'
 import { db } from '~/modules/firebase'
 
 const router = useRouter()

@@ -1,7 +1,7 @@
-import { useCollection, useDocument } from 'vuefire'
-import { collection, doc, query, where } from 'firebase/firestore'
 import type { MaybeRef } from 'vue'
 import type { User } from '~/types'
+import { collection, doc, query, where } from 'firebase/firestore'
+import { useCollection, useDocument } from 'vuefire'
 import { db } from '~/modules/firebase'
 
 const mainStore = useMainStore()

@@ -1,7 +1,7 @@
-import { useDocument } from 'vuefire'
-import { collection, doc } from 'firebase/firestore'
 import type { MaybeRef } from 'vue'
 import type { SessionState } from '~/types'
+import { collection, doc } from 'firebase/firestore'
+import { useDocument } from 'vuefire'
 import { db } from '~/modules/firebase'
 
 export function useSessionState(collectionID: MaybeRef<string>) {

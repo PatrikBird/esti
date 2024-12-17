@@ -1,14 +1,14 @@
-import { defineConfig } from 'unocss'
-
 // Presets
 // https://unocss.dev/presets/
 import PresetAttributify from '@unocss/preset-attributify'
+
 import PresetIcons from '@unocss/preset-icons'
 import PresetTypography from '@unocss/preset-typography'
 import PresetUno from '@unocss/preset-uno'
 import PresetWebFonts from '@unocss/preset-web-fonts'
 import TransformerDirectives from '@unocss/transformer-directives'
 import transformerVariantGroup from '@unocss/transformer-variant-group'
+import { defineConfig } from 'unocss'
 
 export default defineConfig({
   shortcuts: [

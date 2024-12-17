@@ -1,7 +1,9 @@
+/* eslint-disable antfu/no-top-level-await */
+/* eslint-disable no-undef */
 import {
-  Timestamp,
   doc,
   setDoc,
+  Timestamp,
 } from 'firebase/firestore'
 
 await setDoc(doc(db, '1111111111111', 'sessionState'), {

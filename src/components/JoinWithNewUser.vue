@@ -1,5 +1,5 @@
 <script setup lang='ts'>
-import { Timestamp, addDoc, collection } from 'firebase/firestore'
+import { addDoc, collection, Timestamp } from 'firebase/firestore'
 import { db } from '~/modules/firebase'
 
 const mainStore = useMainStore()

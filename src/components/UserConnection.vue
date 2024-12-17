@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import type { Person, User } from '~/types'
+import { ref } from 'vue'
 
 const props = defineProps<{ users: User[] }>()
 
