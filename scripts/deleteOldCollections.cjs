@@ -1,5 +1,6 @@
-/* eslint-disable node/prefer-global/process */
 /* eslint-disable unused-imports/no-unused-vars */
+/* eslint-disable node/prefer-global/process */
+
 const admin = require('firebase-admin')
 
 admin.initializeApp({
@@ -50,24 +51,28 @@ async function deleteQueryBatch(db, query, batchSize, resolve, reject) {
 async function deleteCollectionsBasedOnCondition() {
   const collections = await db.listCollections()
   const sixMonthsAgo = new Date()
-  sixMonthsAgo.setMonth(sixMonthsAgo.getMonth() - 6)
+  sixMonthsAgo.setMonth(sixMonthsAgo.getMonth())
 
   for (const collection of collections) {
+    if (collection.id === '1111111111111')
+      continue
     const sessionStateDoc = await db.collection(collection.id).doc('sessionState').get()
     const lastRevealOn = sessionStateDoc.data().lastRevealOn
-    const date = lastRevealOn.toDate()
     if (lastRevealOn) {
-      if (date < sixMonthsAgo)
+      const date = lastRevealOn.toDate()
+      if (date < sixMonthsAgo) {
         console.log(`Collection ${collection.id} LAST REVEALED on ${date.toISOString()}`)
-        // await deleteCollection(db, collection.id, 100);
-        // console.log(`Collection ${collection.id} deleted`);
+        // await deleteCollection(db, collection.id, 100)
+        // console.log(`Collection ${collection.id} deleted\n`)
+      }
     }
     else {
       const createdOnDate = sessionStateDoc.data().createdOn.toDate()
-      if (createdOnDate < sixMonthsAgo)
-        console.log(`Collection ${collection.id} CREATED on ${date.toISOString()}`)
-        // await deleteCollection(db, collection.id, 100);
-        // console.log(`Collection ${collection.id} deleted`);
+      if (createdOnDate < sixMonthsAgo) {
+        console.log(`Collection ${collection.id} CREATED on ${createdOnDate.toISOString()}`)
+        // await deleteCollection(db, collection.id, 100)
+        // console.log(`Collection ${collection.id} deleted\n`)
+      }
     }
   }
 }
