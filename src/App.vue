@@ -7,13 +7,6 @@ useHead({
       content: computed(() => isDark.value ? '#00aba9' : '#ffffff'),
     },
   ],
-  script: [
-    {
-      'src': 'https://plausible.io/js/script.js',
-      'data-domain': 'esti.patbird.me',
-      'defer': true,
-    },
-  ],
   // link: [
   //   {
   //     rel: 'icon',
